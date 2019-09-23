@@ -8,6 +8,9 @@ public class Player : MonoBehaviour
 
 	[SerializeField]
 	private Vector3 characterDisplace;
+	
+	[SerializeField]
+	private SpriteRenderer sprite;
 
 	[SerializeField]
 	private AnimationCurve movementSpeedCurve;
@@ -53,6 +56,7 @@ public class Player : MonoBehaviour
 		acceptInput = false;
 		var start = transform.position;
 		var end = grid.GetCellCenterWorld(currentPosition) + characterDisplace;
+		var jumpStart = sprite.transform.localPosition;
 		float t = 0;
 		while (t < 1)
 		{
@@ -61,8 +65,9 @@ public class Player : MonoBehaviour
 			var speed = movementSpeedCurve.Evaluate(t);
 			var x = Mathf.Lerp(start.x, end.x, speed);
 			var y = Mathf.Lerp(start.y, end.y, speed);
-			var z = start.z - movementDisplaceCurve.Evaluate(t);
-			transform.position = new Vector3(x, y, z);
+			var spriteJump = jumpStart.y + movementDisplaceCurve.Evaluate(t);
+			transform.position = new Vector3(x, y, end.z);
+			sprite.transform.localPosition = new Vector3(jumpStart.x, spriteJump, jumpStart.z);
 		}
 
 		acceptInput = true;

@@ -1801,6 +1801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 491979261}
   characterDisplace: {x: 0, y: 0, z: 0}
+  sprite: {fileID: 434443824}
   movementSpeedCurve:
     serializedVersion: 2
     m_Curve:
