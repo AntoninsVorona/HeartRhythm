@@ -8,5 +8,6 @@ public class PostprocessImages : AssetPostprocessor
 		TextureImporter textureImporter = (TextureImporter) assetImporter;
 		textureImporter.filterMode = FilterMode.Point;
 		textureImporter.textureCompression = TextureImporterCompression.Uncompressed;
+		textureImporter.spritePixelsPerUnit = 32;
 	}
 }

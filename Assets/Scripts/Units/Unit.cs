@@ -1,46 +1,20 @@
-using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
-public class Player : MonoBehaviour
+public class Unit : MonoBehaviour
 {
 	[SerializeField]
-	private SpriteRenderer sprite;
+	protected SpriteRenderer sprite;
 
 	[SerializeField]
-	private AnimationCurve movementSpeedCurve;
+	protected AnimationCurve movementSpeedCurve;
 
 	[SerializeField]
-	private AnimationCurve movementDisplaceCurve;
+	protected AnimationCurve movementDisplaceCurve;
 
-	private Vector3Int currentPosition;
-	private bool acceptInput;
+	protected Vector3Int currentPosition;
 
-	private void Awake()
-	{
-		Instance = this;
-		acceptInput = true;
-	}
-
-	private void Update()
-	{
-		if (acceptInput)
-		{
-			var horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
-			var vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
-			if (horizontal != 0)
-			{
-				Move(currentPosition + new Vector3Int(horizontal, 0, 0));
-			}
-			else if (vertical != 0)
-			{
-				Move(currentPosition + new Vector3Int(0, vertical, 0));
-			}
-		}
-	}
-
-	public void Move(Vector3Int newPosition, bool force = false)
+	public virtual void Move(Vector3Int newPosition, bool force = false)
 	{
 		if (World.Instance.CanWalk(newPosition))
 		{
@@ -61,9 +35,8 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	private IEnumerator MovementSequence(Vector3Int newPosition, float time = 0.2f)
+	protected virtual IEnumerator MovementSequence(Vector3Int newPosition, float time = 0.2f)
 	{
-		acceptInput = false;
 		var start = transform.position;
 		var end = GetPosition(newPosition);
 		sprite.flipX = start.x > end.x;
@@ -80,13 +53,10 @@ public class Player : MonoBehaviour
 
 			CharacterMovement(t, t, start, end, true, jumpStart);
 		}
-
-		acceptInput = true;
 	}
 
-	private IEnumerator CantMoveSequence(Vector3Int newPosition, bool isHorizontal, float time = 0.2f)
+	protected virtual IEnumerator CantMoveSequence(Vector3Int newPosition, bool isHorizontal, float time = 0.2f)
 	{
-		acceptInput = false;
 		var start = transform.position;
 		var end = GetPosition(newPosition);
 		var jumpStart = sprite.transform.localPosition;
@@ -127,21 +97,9 @@ public class Player : MonoBehaviour
 
 			CharacterMovement(movementT, t, start, end, isHorizontal, jumpStart, false);
 		}
-
-		acceptInput = true;
 	}
 
-	private Vector3 GetCurrentPosition()
-	{
-		return World.Instance.grid.GetCellCenterWorld(currentPosition);
-	}
-
-	private Vector3 GetPosition(Vector3Int position)
-	{
-		return World.Instance.grid.GetCellCenterWorld(position);
-	}
-
-	private void CharacterMovement(float movementT, float characterDisplaceT, Vector3 start, Vector3 end,
+	protected virtual void CharacterMovement(float movementT, float characterDisplaceT, Vector3 start, Vector3 end,
 		bool jump, Vector3 jumpStart, bool updateCamera = true)
 	{
 		var speed = movementSpeedCurve.Evaluate(movementT);
@@ -153,12 +111,15 @@ public class Player : MonoBehaviour
 			var spriteJump = jumpStart.y + movementDisplaceCurve.Evaluate(characterDisplaceT);
 			sprite.transform.localPosition = new Vector3(jumpStart.x, spriteJump, jumpStart.z);
 		}
-
-		if (updateCamera)
-		{
-			GameCamera.Instance.ChangeTargetPosition(transform.position);
-		}
 	}
 
-	public static Player Instance { get; private set; }
+	protected Vector3 GetCurrentPosition()
+	{
+		return World.Instance.grid.GetCellCenterWorld(currentPosition);
+	}
+
+	protected Vector3 GetPosition(Vector3Int position)
+	{
+		return World.Instance.grid.GetCellCenterWorld(position);
+	}
 }

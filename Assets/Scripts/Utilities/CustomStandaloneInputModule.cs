@@ -1,44 +1,40 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class CustomStandaloneInputModule : StandaloneInputModule
 {
-    public bool IsPointerOverUI()
-    {
-        PointerEventData pointerEventData = GetLastPointerEventData(-1);
-        if (pointerEventData != null)
-        {
-            var obj = pointerEventData.pointerEnter;
-            return obj != null && obj.layer == LayerMask.NameToLayer("UI");
-        }
+	public bool IsPointerOverUI()
+	{
+		var pointerEventData = GetLastPointerEventData(-1);
+		if (pointerEventData != null)
+		{
+			var obj = pointerEventData.pointerCurrentRaycast.gameObject;
+			return obj != null && obj.layer == LayerMask.NameToLayer("UI");
+		}
 
-        return false;
-    }
+		return false;
+	}
 
-    public GameObject CurrentHit()
-    {
-        PointerEventData pointerEventData = GetLastPointerEventData(-1);
-        if (pointerEventData != null)
-        {
-            return pointerEventData.pointerEnter;
-        }
+	public GameObject CurrentHit()
+	{
+		var pointerEventData = GetLastPointerEventData(-1);
+		var obj = pointerEventData?.pointerCurrentRaycast.gameObject;
+		return obj;
+	}
 
-        return null;
-    }
-    
-    public GameObject CurrentHitWithLayer(LayerMask layer)
-    {
-        PointerEventData pointerEventData = GetLastPointerEventData(-1);
-        if (pointerEventData != null)
-        {
-            var obj = pointerEventData.pointerEnter;
-            if (obj != null && LayerMask.GetMask(LayerMask.LayerToName(obj.layer)) == layer)
-            {
-                return obj;
-            }
-        }
+	public GameObject CurrentHitWithLayer(LayerMask layer)
+	{
+		var pointerEventData = GetLastPointerEventData(-1);
+		if (pointerEventData != null)
+		{
+			var obj = pointerEventData.pointerCurrentRaycast.gameObject;
+			if (obj != null && LayerMask.GetMask(LayerMask.LayerToName(obj.layer)) == layer)
+			{
+				return obj;
+			}
+		}
 
-        return null;
-    }
-
+		return null;
+	}
 }
