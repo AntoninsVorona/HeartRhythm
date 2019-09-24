@@ -6,35 +6,27 @@ public class GameCamera : MonoBehaviour
 	[SerializeField]
 	private Vector3 offset;
 
-	private bool followPlayer;
+	private Vector3 targetPosition;
 
 	private void Awake()
 	{
 		Instance = this;
 	}
 
-	private void Start()
-	{
-		StartFollowing();
-	}
-
 	private void LateUpdate()
 	{
-		if (followPlayer)
+		transform.position = Vector3.Lerp(transform.position, targetPosition,
+			7 * Time.deltaTime);
+	}
+
+	public void ChangeTargetPosition(Vector3 targetPosition, bool force = false)
+	{
+		this.targetPosition = targetPosition + offset;
+		if (force)
 		{
-			transform.position = Player.Instance.transform.position + offset;
+			transform.position = this.targetPosition;
 		}
 	}
 
-	public void StartFollowing()
-	{
-		followPlayer = true;
-	}
-
-	public void StopFollowing()
-	{
-		followPlayer = false;
-	}
-	
 	public static GameCamera Instance { get; private set; }
 }

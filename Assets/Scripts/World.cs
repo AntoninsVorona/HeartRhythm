@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class World : MonoBehaviour
 {
@@ -31,6 +30,7 @@ public class World : MonoBehaviour
 		yield return null;
 		InitializeWorld();
 		Player.Instance.Move(spawnPoint, true);
+		GameCamera.Instance.ChangeTargetPosition(spawnPoint);
 	}
 
 	private void InitializeWorld()
@@ -62,6 +62,14 @@ public class World : MonoBehaviour
 	public bool CanWalk(Vector3Int position)
 	{
 		return gameTiles.ContainsKey(position) && gameTiles[position].CanWalk();
+	}
+
+	private void OnDrawGizmos()
+	{
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawCube(new Vector3(0.5f, 0.5f, 0), new Vector3(1, 1, 0.2f));
+		Gizmos.color = Color.green;
+		Gizmos.DrawCube(spawnPoint + new Vector3(0.5f, 0.5f, 0), new Vector3(1, 1, 0.2f));
 	}
 
 	public static World Instance { get; private set; }
