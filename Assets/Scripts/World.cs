@@ -10,6 +10,9 @@ public class World : MonoBehaviour
 	{
 	}
 
+	[HideInNormalInspector]
+	public Grid grid;
+
 	[SerializeField]
 	private Vector3Int spawnPoint;
 
@@ -18,6 +21,7 @@ public class World : MonoBehaviour
 	private void Awake()
 	{
 		Instance = this;
+		grid = GetComponent<Grid>();
 	}
 
 	private void Start()

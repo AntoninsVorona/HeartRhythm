@@ -301,6 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79fc7f2ea97e44488f037d8bd0b3af8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grid: {fileID: 0}
   spawnPoint: {x: 2, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -529,8 +530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e94281c1751e44eaa7ca1505523c64e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 491979261}
-  characterDisplace: {x: 0, y: 0, z: 0}
   sprite: {fileID: 434443824}
   movementSpeedCurve:
     serializedVersion: 2
@@ -538,20 +537,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2.777778
-      outSlope: 2.777778
+      inSlope: 1.4810358
+      outSlope: 1.4810358
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.1125
+      outWeight: 0.039961
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.4700502
+      outSlope: 0.4700502
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.04775864
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

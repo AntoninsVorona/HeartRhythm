@@ -5,11 +5,6 @@ using UnityEngine.Tilemaps;
 
 public class Player : MonoBehaviour
 {
-	public Grid grid;
-
-	[SerializeField]
-	private Vector3 characterDisplace;
-
 	[SerializeField]
 	private SpriteRenderer sprite;
 
@@ -26,6 +21,23 @@ public class Player : MonoBehaviour
 	{
 		Instance = this;
 		acceptInput = true;
+	}
+
+	private void Update()
+	{
+		if (acceptInput)
+		{
+			var horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
+			var vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
+			if (horizontal != 0)
+			{
+				Move(currentPosition + new Vector3Int(horizontal, 0, 0));
+			}
+			else if (vertical != 0)
+			{
+				Move(currentPosition + new Vector3Int(0, vertical, 0));
+			}
+		}
 	}
 
 	public void Move(Vector3Int newPosition, bool force = false)
@@ -46,23 +58,6 @@ public class Player : MonoBehaviour
 		else
 		{
 			StartCoroutine(CantMoveSequence(newPosition, currentPosition.x != newPosition.x));
-		}
-	}
-
-	private void Update()
-	{
-		if (acceptInput)
-		{
-			var horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
-			var vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
-			if (horizontal != 0)
-			{
-				Move(currentPosition + new Vector3Int(horizontal, 0, 0));
-			}
-			else if (vertical != 0)
-			{
-				Move(currentPosition + new Vector3Int(0, vertical, 0));
-			}
 		}
 	}
 
@@ -138,19 +133,20 @@ public class Player : MonoBehaviour
 
 	private Vector3 GetCurrentPosition()
 	{
-		return grid.GetCellCenterWorld(currentPosition) + characterDisplace;
+		return World.Instance.grid.GetCellCenterWorld(currentPosition);
 	}
 
 	private Vector3 GetPosition(Vector3Int position)
 	{
-		return grid.GetCellCenterWorld(position) + characterDisplace;
+		return World.Instance.grid.GetCellCenterWorld(position);
 	}
 
 	private void CharacterMovement(float movementT, float characterDisplaceT, Vector3 start, Vector3 end,
 		bool jump, Vector3 jumpStart, bool updateCamera = true)
 	{
-		var x = Mathf.Lerp(start.x, end.x, movementT);
-		var y = Mathf.Lerp(start.y, end.y, movementT);
+		var speed = movementSpeedCurve.Evaluate(movementT);
+		var x = Mathf.Lerp(start.x, end.x, speed);
+		var y = Mathf.Lerp(start.y, end.y, speed);
 		transform.position = new Vector3(x, y, end.z);
 		if (jump)
 		{
