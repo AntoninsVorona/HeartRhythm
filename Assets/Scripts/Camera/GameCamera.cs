@@ -16,7 +16,7 @@ public class GameCamera : MonoBehaviour
 	private void LateUpdate()
 	{
 		transform.position = Vector3.Lerp(transform.position, targetPosition,
-			7 * Time.deltaTime);
+			20 * Time.deltaTime);
 	}
 
 	public void ChangeTargetPosition(Vector3 targetPosition, bool force = false)

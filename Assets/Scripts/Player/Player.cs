@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
 		acceptInput = false;
 		var start = transform.position;
 		var end = GetPosition(newPosition);
+		sprite.flipX = start.x > end.x;
 		var jumpStart = sprite.transform.localPosition;
 		float t = 0;
 		while (t < 1)
