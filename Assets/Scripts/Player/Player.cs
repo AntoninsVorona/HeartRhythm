@@ -35,8 +35,8 @@ public class Player : MonoBehaviour
 			currentPosition = newPosition;
 			if (force)
 			{
-				GameCamera.Instance.ChangeTargetPosition(newPosition, true);
 				transform.position = GetCurrentPosition();
+				GameCamera.Instance.ChangeTargetPosition(transform.position, true);
 			}
 			else
 			{
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 		}
 		else
 		{
-			StartCoroutine(CantMoveSequence(newPosition));
+			StartCoroutine(CantMoveSequence(newPosition, currentPosition.x != newPosition.x));
 		}
 	}
 
@@ -83,13 +83,13 @@ public class Player : MonoBehaviour
 				t = 1;
 			}
 
-			CharacterMovement(t, t, start, end, jumpStart);
+			CharacterMovement(t, t, start, end, true, jumpStart);
 		}
 
 		acceptInput = true;
 	}
 
-	private IEnumerator CantMoveSequence(Vector3Int newPosition, float time = 0.2f)
+	private IEnumerator CantMoveSequence(Vector3Int newPosition, bool isHorizontal, float time = 0.2f)
 	{
 		acceptInput = false;
 		var start = transform.position;
@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
 				t = moveUntil;
 			}
 
-			CharacterMovement(t, t, start, end, jumpStart, false);
+			CharacterMovement(t, t, start, end, isHorizontal, jumpStart, false);
 		}
 
 		end = start;
@@ -130,7 +130,7 @@ public class Player : MonoBehaviour
 				movementT = 1;
 			}
 
-			CharacterMovement(movementT, t, start, end, jumpStart, false);
+			CharacterMovement(movementT, t, start, end, isHorizontal, jumpStart, false);
 		}
 
 		acceptInput = true;
@@ -147,13 +147,17 @@ public class Player : MonoBehaviour
 	}
 
 	private void CharacterMovement(float movementT, float characterDisplaceT, Vector3 start, Vector3 end,
-		Vector3 jumpStart, bool updateCamera = true)
+		bool jump, Vector3 jumpStart, bool updateCamera = true)
 	{
 		var x = Mathf.Lerp(start.x, end.x, movementT);
 		var y = Mathf.Lerp(start.y, end.y, movementT);
-		var spriteJump = jumpStart.y + movementDisplaceCurve.Evaluate(characterDisplaceT);
 		transform.position = new Vector3(x, y, end.z);
-		sprite.transform.localPosition = new Vector3(jumpStart.x, spriteJump, jumpStart.z);
+		if (jump)
+		{
+			var spriteJump = jumpStart.y + movementDisplaceCurve.Evaluate(characterDisplaceT);
+			sprite.transform.localPosition = new Vector3(jumpStart.x, spriteJump, jumpStart.z);
+		}
+
 		if (updateCamera)
 		{
 			GameCamera.Instance.ChangeTargetPosition(transform.position);

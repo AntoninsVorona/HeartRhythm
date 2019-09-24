@@ -30,7 +30,6 @@ public class World : MonoBehaviour
 		yield return null;
 		InitializeWorld();
 		Player.Instance.Move(spawnPoint, true);
-		GameCamera.Instance.ChangeTargetPosition(spawnPoint);
 	}
 
 	private void InitializeWorld()
