@@ -3,43 +3,35 @@ using UnityEngine;
 
 public class Player : Unit
 {
-	private bool acceptInput;
-
 	private void Awake()
 	{
 		Instance = this;
-		acceptInput = true;
 	}
-
-	private void Update()
+	
+	public void ReceiveInput(int horizontal, int vertical)
 	{
-		if (acceptInput)
+		if (horizontal != 0)
 		{
-			var horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
-			var vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
-			if (horizontal != 0)
-			{
-				Move(currentPosition + new Vector3Int(horizontal, 0, 0));
-			}
-			else if (vertical != 0)
-			{
-				Move(currentPosition + new Vector3Int(0, vertical, 0));
-			}
+			Move(currentPosition + new Vector3Int(horizontal, 0, 0));
+		}
+		else if (vertical != 0)
+		{
+			Move(currentPosition + new Vector3Int(0, vertical, 0));
 		}
 	}
 
-	protected override IEnumerator MovementSequence(Vector3Int newPosition, float time = 0.2f)
+	protected override IEnumerator MovementSequence(Vector3Int newPosition)
 	{
-		acceptInput = false;
-		yield return base.MovementSequence(newPosition, time);
-		acceptInput = true;
+		PlayerInput.Instance.acceptor.PlayerReadyForInput = false;
+		yield return base.MovementSequence(newPosition);
+		PlayerInput.Instance.acceptor.PlayerReadyForInput = true;
 	}
 
-	protected override IEnumerator CantMoveSequence(Vector3Int newPosition, bool isHorizontal, float time = 0.2f)
+	protected override IEnumerator CantMoveSequence(Vector3Int newPosition, bool isHorizontal)
 	{
-		acceptInput = false;
-		yield return base.CantMoveSequence(newPosition, isHorizontal, time);
-		acceptInput = true;
+		PlayerInput.Instance.acceptor.PlayerReadyForInput = false;
+		yield return base.CantMoveSequence(newPosition, isHorizontal);
+		PlayerInput.Instance.acceptor.PlayerReadyForInput = true;
 	}
 
 	protected override void CharacterMovement(float movementT, float characterDisplaceT, Vector3 start, Vector3 end,

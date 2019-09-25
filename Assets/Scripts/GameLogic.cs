@@ -40,14 +40,6 @@ public class GameLogic : MonoBehaviour
 		AudioManager.Instance.InitializeBattle(testMusic);
 	}
 
-	private void Update()
-	{
-		if (Input.GetKey(KeyCode.R))
-		{
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-		}
-	}
-
 	private void GameStateChanged()
 	{
 		switch (CurrentGameState)

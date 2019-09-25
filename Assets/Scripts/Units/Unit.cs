@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+	[Tooltip("A value of 5 means traveling will take 0.2 seconds, 1 = 1 second.")]
+	[SerializeField]
+	protected float movementSpeed = 5;
+
 	[SerializeField]
 	protected SpriteRenderer sprite;
 
@@ -35,17 +39,17 @@ public class Unit : MonoBehaviour
 		}
 	}
 
-	protected virtual IEnumerator MovementSequence(Vector3Int newPosition, float time = 0.2f)
+	protected virtual IEnumerator MovementSequence(Vector3Int newPosition)
 	{
 		var start = transform.position;
 		var end = GetPosition(newPosition);
 		sprite.flipX = start.x > end.x;
 		var jumpStart = sprite.transform.localPosition;
 		float t = 0;
-		while (t < 1)
+		while (t < 1 - Time.deltaTime * movementSpeed / 2)
 		{
 			yield return null;
-			t += Time.deltaTime * 5;
+			t += Time.deltaTime * movementSpeed;
 			if (t > 1)
 			{
 				t = 1;
@@ -53,24 +57,21 @@ public class Unit : MonoBehaviour
 
 			CharacterMovement(t, t, start, end, true, jumpStart);
 		}
+		
+		CharacterMovement(1, 1, start, end, true, jumpStart, false);
 	}
 
-	protected virtual IEnumerator CantMoveSequence(Vector3Int newPosition, bool isHorizontal, float time = 0.2f)
+	protected virtual IEnumerator CantMoveSequence(Vector3Int newPosition, bool isHorizontal)
 	{
 		var start = transform.position;
 		var end = GetPosition(newPosition);
 		var jumpStart = sprite.transform.localPosition;
 		float t = 0;
 		const float moveUntil = 0.3f;
-		while (t < moveUntil)
+		while (t < moveUntil - Time.deltaTime * movementSpeed / 2)
 		{
 			yield return null;
-			t += Time.deltaTime * 5;
-			if (t > moveUntil)
-			{
-				t = moveUntil;
-			}
-
+			t += Time.deltaTime * movementSpeed;
 			CharacterMovement(t, t, start, end, isHorizontal, jumpStart, false);
 		}
 
@@ -78,10 +79,10 @@ public class Unit : MonoBehaviour
 		start = transform.position;
 		const float modifier = 1 / moveUntil;
 		float movementT = 0;
-		while (t < 1f)
+		while (t < 1 - Time.deltaTime * movementSpeed / 2)
 		{
 			yield return null;
-			var timeTick = Time.deltaTime * 5;
+			var timeTick = Time.deltaTime * movementSpeed;
 			t += timeTick;
 			if (t > 1)
 			{
@@ -97,6 +98,8 @@ public class Unit : MonoBehaviour
 
 			CharacterMovement(movementT, t, start, end, isHorizontal, jumpStart, false);
 		}
+		
+		CharacterMovement(1, 1, start, end, isHorizontal, jumpStart, false);
 	}
 
 	protected virtual void CharacterMovement(float movementT, float characterDisplaceT, Vector3 start, Vector3 end,
