@@ -19,7 +19,6 @@ public class AudioManager : MonoBehaviour
 		musicAudioSource.Stop();
 		musicAudioSource.loop = true;
 		musicAudioSource.clip = currentMusic.audioClip;
-		Debug.Log(musicAudioSource.clip.length);
 	}
 
 	public void StartPlaying()

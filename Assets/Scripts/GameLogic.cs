@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameLogic : MonoBehaviour
 {
@@ -37,6 +38,14 @@ public class GameLogic : MonoBehaviour
 		CurrentGameState = GameState.Peace;
 		GameStateChanged();
 		AudioManager.Instance.InitializeBattle(testMusic);
+	}
+
+	private void Update()
+	{
+		if (Input.GetKey(KeyCode.R))
+		{
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		}
 	}
 
 	private void GameStateChanged()

@@ -7,6 +7,9 @@ public class BeatController : MonoBehaviour
 	private static readonly int DISAPPEAR_TRIGGER = Animator.StringToHash("Disappear");
 	private static readonly int PULSE_TRIGGER = Animator.StringToHash("Pulse");
 
+	[HideInInspector]
+	public float distancePerSecond;
+
 	[SerializeField]
 	private Animator animator;
 
@@ -23,10 +26,11 @@ public class BeatController : MonoBehaviour
 	private Coroutine beatGenerator;
 	private Coroutine pulse;
 	private float beatDelay;
-	
+
 	private Vector2 leftSpawnPoint;
 	private Vector2 rightSpawnPoint;
 	private float xDifference;
+	private float firstBeatTime;
 
 	public void StartBeat(Music music)
 	{
@@ -35,9 +39,11 @@ public class BeatController : MonoBehaviour
 		leftSpawnPoint = new Vector2(beatHolderRect.xMin, middlePoint.y);
 		rightSpawnPoint = new Vector2(beatHolderRect.xMax, middlePoint.y);
 		xDifference = middlePoint.x - beatHolderRect.xMin;
+		beatDelay = 60 / (float) music.bpm;
+		const int beatsOnScreen = 5;
+		distancePerSecond = xDifference / beatsOnScreen / beatDelay;
 		firstBeatPlayed = false;
 		beatGenerator = StartCoroutine(BeatGenerator());
-		beatDelay = 60 / (float) music.bpm;
 	}
 
 	public void StopPlaying()
@@ -61,16 +67,20 @@ public class BeatController : MonoBehaviour
 	{
 		Appear();
 		yield return new WaitForSeconds(1);
-		const int beatsOnScreen = 5;
-		var distancePerSecond = xDifference / beatsOnScreen / beatDelay;
-		Debug.Log(distancePerSecond);
+		var t = beatDelay;
 		while (true)
 		{
-			var beat = Instantiate(beatPrefab, beatHolder);
-			beat.Initialize(distancePerSecond, leftSpawnPoint, xDifference, true);
-			beat = Instantiate(beatPrefab, beatHolder);
-			beat.Initialize(distancePerSecond, rightSpawnPoint, xDifference, false);
-			yield return new WaitForSeconds(beatDelay);
+			if (t >= beatDelay)
+			{
+				var beat = Instantiate(beatPrefab, beatHolder);
+				beat.Initialize(leftSpawnPoint, xDifference, true);
+				beat = Instantiate(beatPrefab, beatHolder);
+				beat.Initialize(rightSpawnPoint, xDifference, false);
+				t -= beatDelay;
+			}
+
+			yield return null;
+			t += Time.deltaTime;
 		}
 	}
 
@@ -89,10 +99,19 @@ public class BeatController : MonoBehaviour
 
 	private IEnumerator StartPulsing()
 	{
+		var t = beatDelay;
 		while (true)
 		{
-			pulsingObject.SetTrigger(PULSE_TRIGGER);
-			yield return new WaitForSeconds(beatDelay);
+			if (t >= beatDelay)
+			{
+				pulsingObject.SetTrigger(PULSE_TRIGGER);
+				t -= beatDelay;
+			}
+
+			yield return null;
+			t += Time.deltaTime;
+
+//			yield return new WaitForSeconds(beatDelay);
 		}
 	}
 }
