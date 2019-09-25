@@ -30,7 +30,6 @@ public class BeatController : MonoBehaviour
 	private Vector2 leftSpawnPoint;
 	private Vector2 rightSpawnPoint;
 	private float xDifference;
-	private float firstBeatTime;
 
 	public void StartBeat(Music music)
 	{
@@ -70,7 +69,7 @@ public class BeatController : MonoBehaviour
 		var t = beatDelay;
 		while (true)
 		{
-			if (t >= beatDelay)
+			if (t >= beatDelay - Time.deltaTime / 2)
 			{
 				var beat = Instantiate(beatPrefab, beatHolder);
 				beat.Initialize(leftSpawnPoint, xDifference, true);
@@ -102,7 +101,7 @@ public class BeatController : MonoBehaviour
 		var t = beatDelay;
 		while (true)
 		{
-			if (t >= beatDelay)
+			if (t >= beatDelay - Time.deltaTime / 2)
 			{
 				pulsingObject.SetTrigger(PULSE_TRIGGER);
 				t -= beatDelay;
