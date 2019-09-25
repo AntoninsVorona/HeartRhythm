@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: TestMusic
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: dfa478386fab8114d8eb2fff91d42ea9, type: 3}
-  bpm: 120
+  loop: 1
+  bpm: 60

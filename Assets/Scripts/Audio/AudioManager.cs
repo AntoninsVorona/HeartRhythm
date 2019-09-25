@@ -17,7 +17,7 @@ public class AudioManager : MonoBehaviour
 		GameUI.Instance.beatController.StartBeat(fightMusic);
 		currentMusic = fightMusic;
 		musicAudioSource.Stop();
-		musicAudioSource.loop = true;
+		musicAudioSource.loop = currentMusic.loop;
 		musicAudioSource.clip = currentMusic.audioClip;
 	}
 

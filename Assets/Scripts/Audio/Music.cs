@@ -4,5 +4,6 @@ using UnityEngine;
 public class Music : ScriptableObject
 {
 	public AudioClip audioClip;
+	public bool loop = false;
 	public int bpm = 60;
 }
