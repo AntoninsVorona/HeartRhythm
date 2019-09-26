@@ -14,10 +14,12 @@ public class AudioManager : MonoBehaviour
 
 	private Music currentMusic;
 	private Coroutine beatChecker;
+	private bool isCurrentlyPlaying;
 
 	private void Awake()
 	{
 		Instance = this;
+		isCurrentlyPlaying = false;
 	}
 
 	public void InitializeBattle(Music fightMusic)
@@ -29,6 +31,7 @@ public class AudioManager : MonoBehaviour
 		musicAudioSource.Stop();
 		musicAudioSource.loop = currentMusic.loop;
 		musicAudioSource.clip = currentMusic.audioClip;
+		isCurrentlyPlaying = true;
 	}
 
 	public void StartPlaying()
@@ -41,10 +44,20 @@ public class AudioManager : MonoBehaviour
 
 	public void StopBeat()
 	{
-		StopCoroutine(beatChecker);
-		PlayerInput.Instance.acceptor.BeatIsValid = false;
-		PlayerInput.Instance.acceptor.ReceivedInputThisTimeFrame = false;
-		PlayerInput.Instance.acceptor.WaitingForPlayerInput = false;
+		if (isCurrentlyPlaying)
+		{
+			musicAudioSource.Stop();
+			GameUI.Instance.beatController.StopPlaying();
+			if (beatChecker != null)
+			{
+				StopCoroutine(beatChecker);
+			}
+
+			PlayerInput.Instance.acceptor.BeatIsValid = false;
+			PlayerInput.Instance.acceptor.ReceivedInputThisTimeFrame = false;
+			PlayerInput.Instance.acceptor.WaitingForPlayerInput = false;
+			isCurrentlyPlaying = false;
+		}
 	}
 
 	private IEnumerator BeatChecker()

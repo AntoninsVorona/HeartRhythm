@@ -1,20 +1,16 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BeatController : MonoBehaviour
 {
-	private static readonly int APPEAR_TRIGGER = Animator.StringToHash("Appear");
-	private static readonly int DISAPPEAR_TRIGGER = Animator.StringToHash("Disappear");
 	private static readonly int PULSE_TRIGGER = Animator.StringToHash("Pulse");
 
 	[HideInInspector]
 	public float distancePerSecond;
 
 	[SerializeField]
-	private Animator animator;
-
-	[SerializeField]
-	private RectTransform beatHolder;
+	private BeatHolder beatHolder;
 
 	[SerializeField]
 	private Beat beatPrefab;
@@ -32,7 +28,7 @@ public class BeatController : MonoBehaviour
 
 	public void StartBeat(Music music)
 	{
-		var beatHolderRect = beatHolder.rect;
+		var beatHolderRect = beatHolder.beatHolder.rect;
 		var middlePoint = beatHolderRect.center;
 		leftSpawnPoint = new Vector2(beatHolderRect.xMin, middlePoint.y);
 		rightSpawnPoint = new Vector2(beatHolderRect.xMax, middlePoint.y);
@@ -46,18 +42,30 @@ public class BeatController : MonoBehaviour
 	public void StopPlaying()
 	{
 		Disappear();
-		StopCoroutine(beatGenerator);
-		StopCoroutine(pulse);
+		if (beatGenerator != null)
+		{
+			StopCoroutine(beatGenerator);
+		}
+
+		if (pulse != null)
+		{
+			StopCoroutine(pulse);
+		}
 	}
 
 	private void Appear()
 	{
-		animator.SetTrigger(APPEAR_TRIGGER);
+		beatHolder.Appear();
 	}
 
 	private void Disappear()
 	{
-		animator.SetTrigger(DISAPPEAR_TRIGGER);
+		beatHolder.Disappear();
+	}
+
+	public void Deactivate()
+	{
+		beatHolder.Deactivate();
 	}
 
 	private IEnumerator BeatGenerator()
@@ -69,10 +77,12 @@ public class BeatController : MonoBehaviour
 		{
 			if (t >= AudioManager.Instance.beatDelay - Time.deltaTime / 2)
 			{
-				var beat = Instantiate(beatPrefab, beatHolder);
+				var beat = Instantiate(beatPrefab, beatHolder.beatHolder);
 				beat.Initialize(leftSpawnPoint, xDifference, true);
-				beat = Instantiate(beatPrefab, beatHolder);
+				beatHolder.beats.Add(beat);
+				beat = Instantiate(beatPrefab, beatHolder.beatHolder);
 				beat.Initialize(rightSpawnPoint, xDifference, false);
+				beatHolder.beats.Add(beat);
 				t -= AudioManager.Instance.beatDelay;
 			}
 
@@ -83,7 +93,7 @@ public class BeatController : MonoBehaviour
 
 	public void BeatPlayed(Beat beat)
 	{
-		Destroy(beat.gameObject);
+		beatHolder.RemoveBeat(beat);
 		if (firstBeatPlayed)
 		{
 			return;
@@ -107,8 +117,6 @@ public class BeatController : MonoBehaviour
 
 			yield return null;
 			t += Time.deltaTime;
-
-//			yield return new WaitForSeconds(beatDelay);
 		}
 	}
 }

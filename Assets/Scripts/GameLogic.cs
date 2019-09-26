@@ -35,7 +35,8 @@ public class GameLogic : MonoBehaviour
 	private void Start()
 	{
 		fightMusic = testMusic;
-		CurrentGameState = GameState.Fight;
+		CurrentGameState = GameState.Peace;
+		GameStateChanged();
 	}
 
 	private void GameStateChanged()
@@ -43,6 +44,7 @@ public class GameLogic : MonoBehaviour
 		switch (CurrentGameState)
 		{
 			case GameState.Peace:
+				AudioManager.Instance.StopBeat();
 				break;
 			case GameState.Fight:
 				AudioManager.Instance.InitializeBattle(fightMusic);
@@ -52,12 +54,28 @@ public class GameLogic : MonoBehaviour
 		}
 		PlayerInput.Instance.GameStateChanged(CurrentGameState);
 		Player.Instance.GameStateChanged(CurrentGameState);
+		GameUI.Instance.GameStateChanged(CurrentGameState);
 	}
 
 	public void BeginFight(Enemy enemy)
 	{
 		fightMusic = enemy.fightMusic;
 		CurrentGameState = GameState.Fight;
+	}
+
+	public void ToggleMode()
+	{
+		switch (CurrentGameState)
+		{
+			case GameState.Peace:
+				CurrentGameState = GameState.Fight;
+				break;
+			case GameState.Fight:
+				CurrentGameState = GameState.Peace;
+				break;
+			default:
+				throw new ArgumentOutOfRangeException();
+		}
 	}
 	
 	public static GameLogic Instance { get; private set; }
