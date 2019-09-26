@@ -25,7 +25,6 @@ public class BeatController : MonoBehaviour
 	private bool firstBeatPlayed;
 	private Coroutine beatGenerator;
 	private Coroutine pulse;
-	private float beatDelay;
 
 	private Vector2 leftSpawnPoint;
 	private Vector2 rightSpawnPoint;
@@ -38,9 +37,8 @@ public class BeatController : MonoBehaviour
 		leftSpawnPoint = new Vector2(beatHolderRect.xMin, middlePoint.y);
 		rightSpawnPoint = new Vector2(beatHolderRect.xMax, middlePoint.y);
 		xDifference = middlePoint.x - beatHolderRect.xMin;
-		beatDelay = 60 / (float) music.bpm;
 		const int beatsOnScreen = 5;
-		distancePerSecond = xDifference / beatsOnScreen / beatDelay;
+		distancePerSecond = xDifference / beatsOnScreen / AudioManager.Instance.beatDelay;
 		firstBeatPlayed = false;
 		beatGenerator = StartCoroutine(BeatGenerator());
 	}
@@ -66,16 +64,16 @@ public class BeatController : MonoBehaviour
 	{
 		Appear();
 		yield return new WaitForSeconds(1);
-		var t = beatDelay;
+		var t = AudioManager.Instance.beatDelay;
 		while (true)
 		{
-			if (t >= beatDelay - Time.deltaTime / 2)
+			if (t >= AudioManager.Instance.beatDelay - Time.deltaTime / 2)
 			{
 				var beat = Instantiate(beatPrefab, beatHolder);
 				beat.Initialize(leftSpawnPoint, xDifference, true);
 				beat = Instantiate(beatPrefab, beatHolder);
 				beat.Initialize(rightSpawnPoint, xDifference, false);
-				t -= beatDelay;
+				t -= AudioManager.Instance.beatDelay;
 			}
 
 			yield return null;
@@ -98,13 +96,13 @@ public class BeatController : MonoBehaviour
 
 	private IEnumerator StartPulsing()
 	{
-		var t = beatDelay;
+		var t = AudioManager.Instance.beatDelay;
 		while (true)
 		{
-			if (t >= beatDelay - Time.deltaTime / 2)
+			if (t >= AudioManager.Instance.beatDelay - Time.deltaTime / 2)
 			{
 				pulsingObject.SetTrigger(PULSE_TRIGGER);
-				t -= beatDelay;
+				t -= AudioManager.Instance.beatDelay;
 			}
 
 			yield return null;

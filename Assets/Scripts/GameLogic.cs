@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameLogic : MonoBehaviour
 {
@@ -35,9 +34,8 @@ public class GameLogic : MonoBehaviour
 
 	private void Start()
 	{
-		CurrentGameState = GameState.Peace;
-		GameStateChanged();
-		AudioManager.Instance.InitializeBattle(testMusic);
+		fightMusic = testMusic;
+		CurrentGameState = GameState.Fight;
 	}
 
 	private void GameStateChanged()
@@ -52,6 +50,8 @@ public class GameLogic : MonoBehaviour
 			default:
 				throw new ArgumentOutOfRangeException();
 		}
+		PlayerInput.Instance.GameStateChanged(CurrentGameState);
+		Player.Instance.GameStateChanged(CurrentGameState);
 	}
 
 	public void BeginFight(Enemy enemy)

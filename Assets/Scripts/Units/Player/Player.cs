@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class Player : Unit
 {
+	private float defaultMovementSpeed;
+	
 	private void Awake()
 	{
 		Instance = this;
+		defaultMovementSpeed = movementSpeed;
 	}
 	
 	public void ReceiveInput(int horizontal, int vertical)
@@ -41,6 +45,21 @@ public class Player : Unit
 		if (updateCamera)
 		{
 			GameCamera.Instance.ChangeTargetPosition(transform.position);
+		}
+	}
+
+	public void GameStateChanged(GameLogic.GameState newGameState)
+	{
+		switch (newGameState)
+		{
+			case GameLogic.GameState.Peace:
+				movementSpeed = defaultMovementSpeed;
+				break;
+			case GameLogic.GameState.Fight:
+				movementSpeed = 3 + 0.03f * AudioManager.Instance.bpm;
+				break;
+			default:
+				throw new ArgumentOutOfRangeException(nameof(newGameState), newGameState, null);
 		}
 	}
 
