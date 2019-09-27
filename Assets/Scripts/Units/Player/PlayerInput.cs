@@ -70,14 +70,14 @@ public class PlayerInput : MonoBehaviour
 				vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
 				break;
 			case GameLogic.GameState.Fight:
-				horizontal = Input.GetButtonUp("Left")
+				horizontal = Input.GetButtonDown("Left")
 					? -1
-					: Input.GetButtonUp("Right")
+					: Input.GetButtonDown("Right")
 						? 1
 						: 0;
-				vertical = Input.GetButtonUp("Down")
+				vertical = Input.GetButtonDown("Down")
 					? -1
-					: Input.GetButtonUp("Up")
+					: Input.GetButtonDown("Up")
 						? 1
 						: 0;
 				break;
