@@ -101,6 +101,7 @@ public class PlayerInput : MonoBehaviour
 						throw new ArgumentOutOfRangeException();
 				}
 
+				Debug.Log($"Time: {AudioManager.Instance.time} | Music: {AudioManager.Instance.musicAudioSource.time}");
 				Player.Instance.ReceiveInput(horizontal, vertical);
 			}
 			else

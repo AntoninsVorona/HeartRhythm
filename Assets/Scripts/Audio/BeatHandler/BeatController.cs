@@ -1,9 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BeatController : MonoBehaviour
 {
+	public const int BEATS_ON_SCREEN = 5;
 	private static readonly int PULSE_TRIGGER = Animator.StringToHash("Pulse");
 
 	[HideInInspector]
@@ -33,8 +33,7 @@ public class BeatController : MonoBehaviour
 		leftSpawnPoint = new Vector2(beatHolderRect.xMin, middlePoint.y);
 		rightSpawnPoint = new Vector2(beatHolderRect.xMax, middlePoint.y);
 		xDifference = middlePoint.x - beatHolderRect.xMin;
-		const int beatsOnScreen = 5;
-		distancePerSecond = xDifference / beatsOnScreen / AudioManager.Instance.beatDelay;
+		distancePerSecond = xDifference / BEATS_ON_SCREEN / AudioManager.Instance.beatDelay;
 		firstBeatPlayed = false;
 		beatGenerator = StartCoroutine(BeatGenerator());
 	}
@@ -111,6 +110,7 @@ public class BeatController : MonoBehaviour
 		{
 			if (t >= AudioManager.Instance.beatDelay - Time.deltaTime / 2)
 			{
+				Debug.LogError($"Time: {AudioManager.Instance.time} | Music: {AudioManager.Instance.musicAudioSource.time}");
 				pulsingObject.SetTrigger(PULSE_TRIGGER);
 				t -= AudioManager.Instance.beatDelay;
 			}

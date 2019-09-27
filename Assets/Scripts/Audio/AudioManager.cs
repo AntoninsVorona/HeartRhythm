@@ -4,7 +4,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
 	[SerializeField]
-	private AudioSource musicAudioSource;
+	public AudioSource musicAudioSource;
 
 	[HideInNormalInspector]
 	public float beatDelay;
@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
 	private Music currentMusic;
 	private Coroutine beatChecker;
 	private bool isCurrentlyPlaying;
+	public float time;
 
 	private void Awake()
 	{
@@ -32,6 +33,7 @@ public class AudioManager : MonoBehaviour
 		musicAudioSource.loop = currentMusic.loop;
 		musicAudioSource.clip = currentMusic.audioClip;
 		isCurrentlyPlaying = true;
+//		musicAudioSource.PlayScheduled(AudioSettings.dspTime + (BeatController.BEATS_ON_SCREEN + 1) * beatDelay - 0.2);
 	}
 
 	public void StartPlaying()
@@ -97,6 +99,7 @@ public class AudioManager : MonoBehaviour
 
 			yield return null;
 			t += Time.deltaTime;
+			time = t;
 		}
 
 		bool IsTimeValid()
