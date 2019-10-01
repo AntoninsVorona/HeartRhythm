@@ -8,14 +8,15 @@ public class AudioManager : MonoBehaviour
 
 	[HideInNormalInspector]
 	public float beatDelay;
-	
+
 	[HideInNormalInspector]
 	public float bpm;
 
+	[HideInNormalInspector]
+	public float time;
 	private Music currentMusic;
 	private Coroutine beatChecker;
 	private bool isCurrentlyPlaying;
-	public float time;
 
 	private void Awake()
 	{
@@ -27,21 +28,24 @@ public class AudioManager : MonoBehaviour
 	{
 		bpm = fightMusic.bpm;
 		beatDelay = 60 / (float) fightMusic.bpm;
-		GameUI.Instance.beatController.StartBeat(fightMusic);
+		GameUI.Instance.beatController.StartBeat();
 		currentMusic = fightMusic;
 		musicAudioSource.Stop();
 		musicAudioSource.loop = currentMusic.loop;
 		musicAudioSource.clip = currentMusic.audioClip;
 		isCurrentlyPlaying = true;
-//		musicAudioSource.PlayScheduled(AudioSettings.dspTime + (BeatController.BEATS_ON_SCREEN + 1) * beatDelay - 0.2);
 	}
 
 	public void StartPlaying()
 	{
-		musicAudioSource.Play();
 		PlayerInput.Instance.acceptor.WaitingForPlayerInput = true;
 		PlayerInput.Instance.acceptor.FirstBattleInputDone = false;
 		beatChecker = StartCoroutine(BeatChecker());
+	}
+
+	public void SchedulePlay()
+	{
+		musicAudioSource.PlayScheduled(AudioSettings.dspTime + BeatController.BEATS_ON_SCREEN * beatDelay);
 	}
 
 	public void StopBeat()
@@ -64,11 +68,11 @@ public class AudioManager : MonoBehaviour
 
 	private IEnumerator BeatChecker()
 	{
-		const float lowerAccuracy = 0.15f;
-		const float upperAccuracy = 0.3f;
+		const float lowerAccuracy = 0.1f;
+		const float upperAccuracy = 0.1f;
 		var lowerThreshold = beatDelay * lowerAccuracy;
 		var upperThreshold = beatDelay * upperAccuracy;
-		float t = 0;
+		time = 0;
 		var timeWasValidAFrameAgo = false;
 		var timeInLowerBounds = false;
 		while (true)
@@ -88,7 +92,7 @@ public class AudioManager : MonoBehaviour
 					PlayerInput.Instance.acceptor.ReceivedInputThisTimeFrame = false;
 				}
 				else if (PlayerInput.Instance.acceptor.FirstBattleInputDone &&
-				         PlayerInput.Instance.acceptor.WaitingForPlayerInput && 
+				         PlayerInput.Instance.acceptor.WaitingForPlayerInput &&
 				         timeWasValidAFrameAgo)
 				{
 					PlayerInput.Instance.MissedBeat();
@@ -98,13 +102,12 @@ public class AudioManager : MonoBehaviour
 			}
 
 			yield return null;
-			t += Time.deltaTime;
-			time = t;
+			time += Time.deltaTime;
 		}
 
 		bool IsTimeValid()
 		{
-			var currentTime = t % beatDelay;
+			var currentTime = time % beatDelay;
 			var timeIsValid = false;
 			if (timeInLowerBounds)
 			{

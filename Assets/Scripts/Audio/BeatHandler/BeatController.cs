@@ -26,7 +26,7 @@ public class BeatController : MonoBehaviour
 	private Vector2 rightSpawnPoint;
 	private float xDifference;
 
-	public void StartBeat(Music music)
+	public void StartBeat()
 	{
 		var beatHolderRect = beatHolder.beatHolder.rect;
 		var middlePoint = beatHolderRect.center;
@@ -71,23 +71,30 @@ public class BeatController : MonoBehaviour
 	{
 		Appear();
 		yield return new WaitForSeconds(1);
-		var t = AudioManager.Instance.beatDelay;
+		AudioManager.Instance.SchedulePlay();
+		CreateBeats();
+		float t = 0;
 		while (true)
 		{
 			if (t >= AudioManager.Instance.beatDelay - Time.deltaTime / 2)
 			{
-				var beat = Instantiate(beatPrefab, beatHolder.beatHolder);
-				beat.Initialize(leftSpawnPoint, xDifference, true);
-				beatHolder.beats.Add(beat);
-				beat = Instantiate(beatPrefab, beatHolder.beatHolder);
-				beat.Initialize(rightSpawnPoint, xDifference, false);
-				beatHolder.beats.Add(beat);
+				CreateBeats();
 				t -= AudioManager.Instance.beatDelay;
 			}
 
 			yield return null;
 			t += Time.deltaTime;
 		}
+	}
+
+	private void CreateBeats()
+	{
+		var beat = Instantiate(beatPrefab, beatHolder.beatHolder);
+		beat.Initialize(leftSpawnPoint, xDifference, true);
+		beatHolder.beats.Add(beat);
+		beat = Instantiate(beatPrefab, beatHolder.beatHolder);
+		beat.Initialize(rightSpawnPoint, xDifference, false);
+		beatHolder.beats.Add(beat);
 	}
 
 	public void BeatPlayed(Beat beat)
@@ -105,12 +112,14 @@ public class BeatController : MonoBehaviour
 
 	private IEnumerator StartPulsing()
 	{
-		var t = AudioManager.Instance.beatDelay;
+//		Debug.LogError($"Time: {AudioManager.Instance.time} | Music: {AudioManager.Instance.musicAudioSource.time}");
+		pulsingObject.SetTrigger(PULSE_TRIGGER);
+		float t = 0;
 		while (true)
 		{
 			if (t >= AudioManager.Instance.beatDelay - Time.deltaTime / 2)
 			{
-				Debug.LogError($"Time: {AudioManager.Instance.time} | Music: {AudioManager.Instance.musicAudioSource.time}");
+//				Debug.LogError($"Time: {AudioManager.Instance.time} | Music: {AudioManager.Instance.musicAudioSource.time}");
 				pulsingObject.SetTrigger(PULSE_TRIGGER);
 				t -= AudioManager.Instance.beatDelay;
 			}
