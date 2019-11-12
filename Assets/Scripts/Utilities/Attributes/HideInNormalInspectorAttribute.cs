@@ -1,3 +1,5 @@
 using UnityEngine;
 
-public class HideInNormalInspectorAttribute : PropertyAttribute {}
+public class HideInNormalInspectorAttribute : PropertyAttribute
+{
+}

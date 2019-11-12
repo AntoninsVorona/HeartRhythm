@@ -2,78 +2,94 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class World : MonoBehaviour
 {
-	[Serializable]
-	public class GameTiles : SerializableDictionary<Vector3Int, GameTile>
-	{
-	}
+    [Serializable]
+    public class GameTiles : SerializableDictionary<Vector3Int, GameTile>
+    {
+    }
 
-	[HideInNormalInspector]
-	public Grid grid;
+    private Grid grid;
 
-	[SerializeField]
-	private Vector3Int spawnPoint;
+    private GameTiles gameTiles;
 
-	private GameTiles gameTiles;
+    private void Awake()
+    {
+        Instance = this;
+        grid = GetComponent<Grid>();
+        Debug.Break();
+        InitializeWorld();
+    }
 
-	private void Awake()
-	{
-		Instance = this;
-		grid = GetComponent<Grid>();
-	}
+    private void InitializeWorld()
+    {
+        var obstacles = new Dictionary<Vector3Int, List<Obstacle>>();
+        var allObstacles = GetComponentsInChildren<Obstacle>();
+        foreach (var obstacle in allObstacles)
+        {
+            var position = Vector3Int.FloorToInt(obstacle.transform.position);
+            if (!obstacles.ContainsKey(position))
+            {
+                obstacles.Add(position, new List<Obstacle>());
+            }
 
-	private void Start()
-	{
-		StartCoroutine(InitializeWorldAfterAFrame());
-	}
+            obstacles[position].Add(obstacle);
+        }
 
-	private IEnumerator InitializeWorldAfterAFrame()
-	{
-		yield return null;
-		InitializeWorld();
-		Player.Instance.Move(spawnPoint, true);
-	}
+        gameTiles = new GameTiles();
+        var allTiles = GetComponentsInChildren<GameTile>();
 
-	private void InitializeWorld()
-	{
-		var obstacles = new Dictionary<Vector3Int, List<Obstacle>>();
-		var allObstacles = GetComponentsInChildren<Obstacle>();
-		foreach (var obstacle in allObstacles)
-		{
-			var position = Vector3Int.FloorToInt(obstacle.transform.position);
-			if (!obstacles.ContainsKey(position))
-			{
-				obstacles.Add(position, new List<Obstacle>());
-			}
+        foreach (var tile in allTiles)
+        {
+            var position = Vector3Int.FloorToInt(tile.transform.position);
+            gameTiles.Add(position, tile);
+            tile.Initialize(obstacles.ContainsKey(position) ? obstacles[position] : new List<Obstacle>());
+        }
+    }
 
-			obstacles[position].Add(obstacle);
-		}
+    public (GameTile.CantMoveReason, Obstacle, Unit) CanWalk(Vector3Int position)
+    {
+        return !gameTiles.ContainsKey(position)
+            ? (GameTile.CantMoveReason.NonWalkable, null, null)
+            : gameTiles[position].CanWalk();
+    }
 
-		gameTiles = new GameTiles();
-		var allTiles = GetComponentsInChildren<GameTile>();
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawCube(new Vector3(0.5f, 0.5f, 0), new Vector3(1, 1, 0.2f));
+    }
 
-		foreach (var tile in allTiles)
-		{
-			var position = Vector3Int.FloorToInt(tile.transform.position);
-			gameTiles.Add(position, tile);
-			tile.Initialize(obstacles.ContainsKey(position) ? obstacles[position] : new List<Obstacle>());
-		}
-	}
+    public Vector3 GetCellCenterWorld(Vector3Int position)
+    {
+        return grid.GetCellCenterWorld(position);
+    }
 
-	public bool CanWalk(Vector3Int position)
-	{
-		return gameTiles.ContainsKey(position) && gameTiles[position].CanWalk();
-	}
+    public void OccupyTargetTile(Vector3Int currentPosition, Unit unit)
+    {
+        if (gameTiles.ContainsKey(currentPosition))
+        {
+            gameTiles[currentPosition].BecomeOccupied(unit);
+        }
+        else
+        {
+            Debug.LogError($"Can't occupy. No such tile exist: {currentPosition}");
+        }
+    }
 
-	private void OnDrawGizmos()
-	{
-		Gizmos.color = Color.yellow;
-		Gizmos.DrawCube(new Vector3(0.5f, 0.5f, 0), new Vector3(1, 1, 0.2f));
-		Gizmos.color = Color.green;
-		Gizmos.DrawCube(spawnPoint + new Vector3(0.5f, 0.5f, 0), new Vector3(1, 1, 0.2f));
-	}
+    public void UnoccupyTargetTile(Vector3Int currentPosition)
+    {
+        if (gameTiles.ContainsKey(currentPosition))
+        {
+            gameTiles[currentPosition].Unoccupied();
+        }
+        else
+        {
+            Debug.LogError($"Can't unoccupy. No such tile exist: {currentPosition}");
+        }
+    }
 
-	public static World Instance { get; private set; }
+    public static World Instance { get; private set; }
 }

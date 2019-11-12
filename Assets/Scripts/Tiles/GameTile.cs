@@ -4,31 +4,65 @@ using UnityEngine;
 
 public class GameTile : MonoBehaviour
 {
-	public bool walkable = true;
-	private List<Obstacle> obstaclesOnTile;
+    public enum CantMoveReason
+    {
+        None = 0,
+        NonWalkable = 1,
+        Obstacles = 2,
+        Unit = 3
+    }
 
-	public void Initialize(List<Obstacle> obstaclesOnTile)
-	{
-		this.obstaclesOnTile = obstaclesOnTile;
-	}
+    public bool walkable = true;
+    private List<Obstacle> obstaclesOnTile;
+    private Unit occupyingUnit = null;
 
-	public bool CanWalk()
-	{
-		return walkable && obstaclesOnTile.Count == 0;
-	}
+    public void Initialize(List<Obstacle> obstaclesOnTile)
+    {
+        this.obstaclesOnTile = obstaclesOnTile;
+    }
 
-	public void AddObstacleOnTop(Obstacle newObstacle)
-	{
-		obstaclesOnTile.Add(newObstacle);
-	}
+    public (CantMoveReason, Obstacle, Unit) CanWalk()
+    {
+        if (!walkable)
+        {
+            return (CantMoveReason.NonWalkable, null, null);
+        }
 
-	public void DestroyFirstObstacle()
-	{
-		if (obstaclesOnTile.Count > 0)
-		{
-			var obstacle = obstaclesOnTile.First();
-			obstaclesOnTile.Remove(obstacle);
-			obstacle.GetDestroyed();
-		}
-	}
+        if (obstaclesOnTile.Count > 0)
+        {
+            return (CantMoveReason.Obstacles, obstaclesOnTile.First(), null);
+        }
+
+        if (occupyingUnit)
+        {
+            return (CantMoveReason.Unit, null, occupyingUnit);
+        }
+
+        return (CantMoveReason.None, null, null);
+    }
+
+    public void AddObstacleOnTop(Obstacle newObstacle)
+    {
+        obstaclesOnTile.Add(newObstacle);
+    }
+
+    public void DestroyFirstObstacle()
+    {
+        if (obstaclesOnTile.Count > 0)
+        {
+            var obstacle = obstaclesOnTile.First();
+            obstaclesOnTile.Remove(obstacle);
+            obstacle.GetDestroyed();
+        }
+    }
+
+    public void BecomeOccupied(Unit unit)
+    {
+        occupyingUnit = unit;
+    }
+
+    public void Unoccupied()
+    {
+        occupyingUnit = null;
+    }
 }

@@ -3,143 +3,149 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-	[SerializeField]
-	public AudioSource musicAudioSource;
+    [SerializeField]
+    public AudioSource musicAudioSource;
 
-	[HideInNormalInspector]
-	public float beatDelay;
+    [HideInNormalInspector]
+    public float beatDelay;
 
-	[HideInNormalInspector]
-	public float bpm;
+    [HideInNormalInspector]
+    public float bpm;
 
-	[HideInNormalInspector]
-	public float time;
-	private Music currentMusic;
-	private Coroutine beatChecker;
-	private bool isCurrentlyPlaying;
+    [HideInNormalInspector]
+    public float time;
 
-	private void Awake()
-	{
-		Instance = this;
-		isCurrentlyPlaying = false;
-	}
+    private Music currentMusic;
+    private Coroutine beatChecker;
+    private bool isCurrentlyPlaying;
 
-	public void InitializeBattle(Music fightMusic)
-	{
-		bpm = fightMusic.bpm;
-		beatDelay = 60 / (float) fightMusic.bpm;
-		GameUI.Instance.beatController.StartBeat();
-		currentMusic = fightMusic;
-		musicAudioSource.Stop();
-		musicAudioSource.loop = currentMusic.loop;
-		musicAudioSource.clip = currentMusic.audioClip;
-		isCurrentlyPlaying = true;
-	}
+    private void Awake()
+    {
+        Instance = this;
+        isCurrentlyPlaying = false;
+    }
 
-	public void StartPlaying()
-	{
-		PlayerInput.Instance.acceptor.WaitingForPlayerInput = true;
-		PlayerInput.Instance.acceptor.FirstBattleInputDone = false;
-		beatChecker = StartCoroutine(BeatChecker());
-	}
+    public void InitializeBattle(Music fightMusic)
+    {
+        bpm = fightMusic.bpm;
+        beatDelay = 60 / (float) fightMusic.bpm;
+        GameUI.Instance.beatController.StartBeat();
+        currentMusic = fightMusic;
+        musicAudioSource.Stop();
+        musicAudioSource.loop = currentMusic.loop;
+        musicAudioSource.clip = currentMusic.audioClip;
+        isCurrentlyPlaying = true;
+    }
 
-	public void SchedulePlay()
-	{
-		musicAudioSource.PlayScheduled(AudioSettings.dspTime + BeatController.BEATS_ON_SCREEN * beatDelay);
-	}
+    public void StartPlaying()
+    {
+        PlayerInput.Instance.acceptor.WaitingForPlayerInput = true;
+        PlayerInput.Instance.acceptor.FirstBattleInputDone = false;
+        beatChecker = StartCoroutine(BeatChecker());
+    }
 
-	public void StopBeat()
-	{
-		if (isCurrentlyPlaying)
-		{
-			musicAudioSource.Stop();
-			GameUI.Instance.beatController.StopPlaying();
-			if (beatChecker != null)
-			{
-				StopCoroutine(beatChecker);
-			}
+    public void SchedulePlay()
+    {
+        musicAudioSource.PlayScheduled(AudioSettings.dspTime + BeatController.BEATS_ON_SCREEN * beatDelay);
+    }
 
-			PlayerInput.Instance.acceptor.BeatIsValid = false;
-			PlayerInput.Instance.acceptor.ReceivedInputThisTimeFrame = false;
-			PlayerInput.Instance.acceptor.WaitingForPlayerInput = false;
-			isCurrentlyPlaying = false;
-		}
-	}
+    public void StopBeat()
+    {
+        if (isCurrentlyPlaying)
+        {
+            musicAudioSource.Stop();
+            GameUI.Instance.beatController.StopPlaying();
+            if (beatChecker != null)
+            {
+                StopCoroutine(beatChecker);
+            }
 
-	private IEnumerator BeatChecker()
-	{
-		const float lowerAccuracy = 0.1f;
-		const float upperAccuracy = 0.1f;
-		var lowerThreshold = beatDelay * lowerAccuracy;
-		var upperThreshold = beatDelay * upperAccuracy;
-		time = 0;
-		var timeWasValidAFrameAgo = false;
-		var timeInLowerBounds = false;
-		while (true)
-		{
-			var timeIsValid = IsTimeValid();
+            PlayerInput.Instance.acceptor.BeatIsValid = false;
+            PlayerInput.Instance.acceptor.ReceivedInputThisTimeFrame = false;
+            PlayerInput.Instance.acceptor.WaitingForPlayerInput = false;
+            isCurrentlyPlaying = false;
+        }
+    }
 
-			if (timeIsValid)
-			{
-				timeWasValidAFrameAgo = true;
-				PlayerInput.Instance.acceptor.BeatIsValid = true;
-			}
-			else
-			{
-				PlayerInput.Instance.acceptor.BeatIsValid = false;
-				if (PlayerInput.Instance.acceptor.ReceivedInputThisTimeFrame)
-				{
-					PlayerInput.Instance.acceptor.ReceivedInputThisTimeFrame = false;
-				}
-				else if (PlayerInput.Instance.acceptor.FirstBattleInputDone &&
-				         PlayerInput.Instance.acceptor.WaitingForPlayerInput &&
-				         timeWasValidAFrameAgo)
-				{
-					PlayerInput.Instance.MissedBeat();
-				}
+    private IEnumerator BeatChecker()
+    {
+        const float lowerAccuracy = 0.1f;
+        const float upperAccuracy = 0.1f;
+        var lowerThreshold = beatDelay * lowerAccuracy;
+        var upperThreshold = beatDelay * upperAccuracy;
+        time = 0;
+        var timeWasValidAFrameAgo = false;
+        var timeInLowerBounds = false;
+        while (true)
+        {
+            var timeIsValid = IsTimeValid();
 
-				timeWasValidAFrameAgo = false;
-			}
+            if (timeIsValid)
+            {
+                timeWasValidAFrameAgo = true;
+                PlayerInput.Instance.acceptor.BeatIsValid = true;
+            }
+            else
+            {
+                PlayerInput.Instance.acceptor.BeatIsValid = false;
+                if (PlayerInput.Instance.acceptor.ReceivedInputThisTimeFrame)
+                {
+                    PlayerInput.Instance.acceptor.ReceivedInputThisTimeFrame = false;
+                }
+                else if (PlayerInput.Instance.acceptor.FirstBattleInputDone &&
+                         PlayerInput.Instance.acceptor.WaitingForPlayerInput &&
+                         timeWasValidAFrameAgo)
+                {
+                    PlayerInput.Instance.MissedBeat();
+                    ApplyBeat();
+                }
 
-			yield return null;
-			time += Time.deltaTime;
-		}
+                timeWasValidAFrameAgo = false;
+            }
 
-		bool IsTimeValid()
-		{
-			var currentTime = time % beatDelay;
-			var timeIsValid = false;
-			if (timeInLowerBounds)
-			{
-				if (currentTime > beatDelay - lowerThreshold)
-				{
-					timeIsValid = true;
-				}
-				else
-				{
-					if (currentTime < upperThreshold)
-					{
-						timeIsValid = true;
-					}
-					else
-					{
-						timeInLowerBounds = false;
-					}
-				}
-			}
-			else
-			{
-				timeInLowerBounds = currentTime > beatDelay - lowerThreshold;
-				if (timeInLowerBounds)
-				{
-					timeIsValid = true;
-				}
-			}
+            yield return null;
+            time += Time.deltaTime;
+        }
 
-			return timeIsValid;
-		}
-	}
+        bool IsTimeValid()
+        {
+            var currentTime = time % beatDelay;
+            var timeIsValid = false;
+            if (timeInLowerBounds)
+            {
+                if (currentTime > beatDelay - lowerThreshold)
+                {
+                    timeIsValid = true;
+                }
+                else
+                {
+                    if (currentTime < upperThreshold)
+                    {
+                        timeIsValid = true;
+                    }
+                    else
+                    {
+                        timeInLowerBounds = false;
+                    }
+                }
+            }
+            else
+            {
+                timeInLowerBounds = currentTime > beatDelay - lowerThreshold;
+                if (timeInLowerBounds)
+                {
+                    timeIsValid = true;
+                }
+            }
 
+            return timeIsValid;
+        }
+    }
 
-	public static AudioManager Instance { get; private set; }
+    public void ApplyBeat()
+    {
+        MobController.Instance.MakeMobsActions();
+    }
+
+    public static AudioManager Instance { get; private set; }
 }
