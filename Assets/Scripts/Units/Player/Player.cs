@@ -51,22 +51,6 @@ public class Player : Unit
         }
     }
 
-    protected override void GameStateChanged()
-    {
-        var newGameState = GameLogic.Instance.CurrentGameState;
-        switch (newGameState)
-        {
-            case GameLogic.GameState.Peace:
-                movementSpeed = defaultMovementSpeed;
-                break;
-            case GameLogic.GameState.Fight:
-                movementSpeed = 3 + 0.03f * AudioManager.Instance.bpm;
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(newGameState), newGameState, null);
-        }
-    }
-
     protected override void Die()
     {
         //TODO Lose Game

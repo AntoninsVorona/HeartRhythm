@@ -16,8 +16,10 @@ public class Mob : Unit
 	public class MovementSettings
 	{
 		public TypeOfMovement typeOfMovement;
+		[DrawIf("typeOfMovement", TypeOfMovement.Constant)]
 		public MovementDirectionUtilities.MovementDirection movementDirection;
 		public bool moveDuringPeaceMode = true;
+		[DrawIf("moveDuringPeaceMode", true)]
 		public float peaceModeMovementDelay = 1;
 	}
 
@@ -84,30 +86,22 @@ public class Mob : Unit
 	{
 	}
 
-	protected override void GameStateChanged()
+	protected override void PeaceState()
 	{
-		var newGameState = GameLogic.Instance.CurrentGameState;
-		switch (newGameState)
+		base.PeaceState();
+		if (movementSettings.moveDuringPeaceMode && peaceModeMovementCoroutine == null)
 		{
-			case GameLogic.GameState.Peace:
-				movementSpeed = defaultMovementSpeed;
-				if (movementSettings.moveDuringPeaceMode && peaceModeMovementCoroutine == null)
-				{
-					peaceModeMovementCoroutine = StartCoroutine(PeaceModeMovement());
-				}
+			peaceModeMovementCoroutine = StartCoroutine(PeaceModeMovement());
+		}
+	}
 
-				break;
-			case GameLogic.GameState.Fight:
-				movementSpeed = 3 + 0.03f * AudioManager.Instance.bpm;
-				if (peaceModeMovementCoroutine != null)
-				{
-					StopCoroutine(peaceModeMovementCoroutine);
-					peaceModeMovementCoroutine = null;
-				}
-
-				break;
-			default:
-				throw new ArgumentOutOfRangeException(nameof(newGameState), newGameState, null);
+	protected override void FightState()
+	{
+		base.FightState();
+		if (peaceModeMovementCoroutine != null)
+		{
+			StopCoroutine(peaceModeMovementCoroutine);
+			peaceModeMovementCoroutine = null;
 		}
 	}
 

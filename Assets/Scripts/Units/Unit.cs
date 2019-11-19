@@ -187,7 +187,31 @@ public abstract class Unit : MonoBehaviour
         return World.Instance.GetCellCenterWorld(position);
     }
 
-    protected abstract void GameStateChanged();
+    protected void GameStateChanged()
+    {
+        var newGameState = GameLogic.Instance.CurrentGameState;
+        switch (newGameState)
+        {
+            case GameLogic.GameState.Peace:
+                PeaceState();
+                break;
+            case GameLogic.GameState.Fight:
+                FightState();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(newGameState), newGameState, null);
+        }
+    }
+
+    protected virtual void PeaceState()
+    {
+        movementSpeed = defaultMovementSpeed;
+    }
+    
+    protected virtual void FightState()
+    {
+        movementSpeed = defaultMovementSpeed * 0.6f + 0.03f * AudioManager.Instance.bpm;
+    }
     
     protected abstract void Die();
 }
