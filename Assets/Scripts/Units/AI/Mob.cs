@@ -22,11 +22,6 @@ public class Mob : Unit
 		public MovementDirectionUtilities.MovementDirection GetMovementDirectionWithinArea(Vector2Int currentPosition)
 		{
 			var suitableDirection = FindSuitableDirections(currentPosition);
-			foreach (var suitableLocation in suitableDirection)
-			{
-				Debug.Log(suitableLocation);
-			}
-
 			return suitableDirection.Count > 0
 				? suitableDirection.OrderBy(s => Guid.NewGuid()).First()
 				: MovementDirectionUtilities.MovementDirection.None;

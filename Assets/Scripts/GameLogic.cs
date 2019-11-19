@@ -45,6 +45,19 @@ public class GameLogic : MonoBehaviour
         GameStateChanged();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            GameCamera.Instance.ZoomOut();
+        }
+        
+        if (Input.GetKeyUp(KeyCode.Y))
+        {
+            GameCamera.Instance.DanceMoveZoomIn();
+        }
+    }
+
     private void GameStateChanged()
     {
         switch (CurrentGameState)
