@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
-using UnityEditor;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Unit
 {
+	private Unit interactingWithUnit;
+	
 	private void Awake()
 	{
 		Instance = this;
@@ -22,9 +24,38 @@ public class Player : Unit
 		GameCamera.Instance.ChangeTargetPosition(transform.position, true);
 	}
 
-	public void ReceiveInput(MovementDirectionUtilities.MovementDirection movementDirection)
+	public void ReceiveInput(MovementDirectionUtilities.MovementDirection movementDirection, bool spaceClicked)
 	{
-		Move(movementDirection);
+		switch (GameLogic.Instance.playState)
+		{
+			case GameLogic.PlayState.Basic:
+				Move(movementDirection);
+				break;
+			case GameLogic.PlayState.DanceMove:
+				if (spaceClicked)
+				{
+					EndDanceMove();
+				}
+				else
+				{
+					ReceiveDanceMove(movementDirection);
+				}
+				break;
+			default:
+				throw new ArgumentOutOfRangeException();
+		}
+	}
+
+	private void ReceiveDanceMove(MovementDirectionUtilities.MovementDirection movementDirection)
+	{
+		//TODO Play Animation
+		PlayerInput.Instance.acceptor.danceMoveSet.Add(movementDirection);
+	}
+
+	private void EndDanceMove()
+	{
+		//TODO Play Animation
+		GameLogic.Instance.FinishDanceMove();
 	}
 
 	protected override IEnumerator MovementSequence(Vector2Int newPosition)
@@ -56,12 +87,19 @@ public class Player : Unit
 		//TODO Lose Game
 	}
 
-	protected override void InteractWithObject(Obstacle obstacle)
-	{
-	}
-
 	protected override void InteractWithObject(Unit unit)
 	{
+		interactingWithUnit = unit;
+		GameLogic.Instance.StartDanceMove();
+	}
+
+	public void ApplyDanceMoveSet(List<MovementDirectionUtilities.MovementDirection> acceptorDanceMoveSet)
+	{
+		var interaction = interactingWithUnit.InteractionMatches(acceptorDanceMoveSet);
+		if (interaction != null)
+		{
+			//TODO Interaction
+		}
 	}
 
 	private void OnDrawGizmos()

@@ -1,8 +1,17 @@
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class Obstacle : Unit
 {
-    public virtual void GetDestroyed()
+    public void GetDestroyed()
+    {
+        Die();
+    }
+
+    protected override void InteractWithObject(Unit unit)
+    {
+    }
+
+    protected override void Die()
     {
         Destroy(gameObject);
     }

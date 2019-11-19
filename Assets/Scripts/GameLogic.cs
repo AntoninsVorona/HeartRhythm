@@ -4,97 +4,108 @@ using UnityEngine;
 
 public class GameLogic : MonoBehaviour
 {
-    public enum GameState
-    {
-        Peace = 0,
-        Fight = 1
-    }
+	public enum GameState
+	{
+		Peace = 0,
+		Fight = 1
+	}
 
-    public GameState CurrentGameState
-    {
-        get => gameState;
-        private set
-        {
-            if (value != gameState)
-            {
-                gameState = value;
-                GameStateChanged();
-            }
-        }
-    }
+	public enum PlayState
+	{
+		Basic = 0,
+		DanceMove = 1
+	}
 
-    private GameState gameState;
-    private Music fightMusic;
-    
-    [HideInInspector]
-    public List<Observer> gameStateObservers = new List<Observer>();
+	public GameState CurrentGameState
+	{
+		get => gameState;
+		private set
+		{
+			if (value != gameState)
+			{
+				gameState = value;
+				GameStateChanged();
+			}
+		}
+	}
 
-    [Header("Debug")]
-    public Music testMusic;
-    public bool inputDebugEnabled;
+	private GameState gameState;
+	private Music fightMusic;
 
-    private void Awake()
-    {
-        Instance = this;
-    }
+	[HideInInspector]
+	public List<Observer> gameStateObservers = new List<Observer>();
 
-    private void Start()
-    {
-        fightMusic = testMusic;
-        CurrentGameState = GameState.Peace;
-        GameStateChanged();
-    }
+	[HideInInspector]
+	public PlayState playState = PlayState.Basic;
+	
+	[Header("Debug")]
+	public Music testMusic;
 
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            GameCamera.Instance.ZoomOut();
-        }
-        
-        if (Input.GetKeyUp(KeyCode.Y))
-        {
-            GameCamera.Instance.DanceMoveZoomIn();
-        }
-    }
+	public bool inputDebugEnabled;
 
-    private void GameStateChanged()
-    {
-        switch (CurrentGameState)
-        {
-            case GameState.Peace:
-                AudioManager.Instance.StopBeat();
-                break;
-            case GameState.Fight:
-                AudioManager.Instance.InitializeBattle(fightMusic);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-        
-        gameStateObservers.ForEach(o => o.Notify());
-    }
+	private void Awake()
+	{
+		Instance = this;
+	}
 
-    public void BeginFight(Enemy enemy)
-    {
-        fightMusic = enemy.fightMusic;
-        CurrentGameState = GameState.Fight;
-    }
+	private void Start()
+	{
+		fightMusic = testMusic;
+		CurrentGameState = GameState.Peace;
+		GameStateChanged();
+	}
 
-    public void ToggleMode()
-    {
-        switch (CurrentGameState)
-        {
-            case GameState.Peace:
-                CurrentGameState = GameState.Fight;
-                break;
-            case GameState.Fight:
-                CurrentGameState = GameState.Peace;
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-    }
+	private void GameStateChanged()
+	{
+		switch (CurrentGameState)
+		{
+			case GameState.Peace:
+				AudioManager.Instance.StopBeat();
+				break;
+			case GameState.Fight:
+				AudioManager.Instance.InitializeBattle(fightMusic);
+				break;
+			default:
+				throw new ArgumentOutOfRangeException();
+		}
 
-    public static GameLogic Instance { get; private set; }
+		gameStateObservers.ForEach(o => o?.NotifyBegin());
+	}
+
+	public void BeginFight(Enemy enemy)
+	{
+		fightMusic = enemy.fightMusic;
+		CurrentGameState = GameState.Fight;
+	}
+
+	public void ToggleMode()
+	{
+		switch (CurrentGameState)
+		{
+			case GameState.Peace:
+				CurrentGameState = GameState.Fight;
+				break;
+			case GameState.Fight:
+				CurrentGameState = GameState.Peace;
+				break;
+			default:
+				throw new ArgumentOutOfRangeException();
+		}
+	}
+
+	public void StartDanceMove()
+	{
+		playState = PlayState.DanceMove;
+		GameCamera.Instance.DanceMoveZoomIn();
+		PlayerInput.Instance.DanceMoveStarted();
+	}
+
+	public void FinishDanceMove()
+	{
+		GameCamera.Instance.ZoomOut();
+		PlayerInput.Instance.DanceMoveFinished();
+		playState = PlayState.Basic;
+	}
+
+	public static GameLogic Instance { get; private set; }
 }

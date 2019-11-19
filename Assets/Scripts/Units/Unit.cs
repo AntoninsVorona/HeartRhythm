@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
@@ -23,6 +25,10 @@ public abstract class Unit : MonoBehaviour
     protected Vector2Int spawnPoint;
 
     protected Vector2Int currentPosition;
+
+    [Header("Interaction")]
+    [SerializeField]
+    private List<Interaction> interactions;
 
     protected virtual void Start()
     {
@@ -56,7 +62,7 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void Move(Vector2Int newPosition, bool force = false)
     {
-        var (cantMoveReason, obstacle, unit) = World.Instance.CanWalk(newPosition);
+        var (cantMoveReason, unit) = World.Instance.CanWalk(newPosition);
         if (cantMoveReason == GameTile.CantMoveReason.None)
         {
             World.Instance.UnoccupyTargetTile(currentPosition);
@@ -80,8 +86,6 @@ public abstract class Unit : MonoBehaviour
                 case GameTile.CantMoveReason.NonWalkable:
                     break;
                 case GameTile.CantMoveReason.Obstacles:
-                    InteractWithObject(obstacle);
-                    break;
                 case GameTile.CantMoveReason.Unit:
                     InteractWithObject(unit);
                     break;
@@ -90,8 +94,6 @@ public abstract class Unit : MonoBehaviour
             }
         }
     }
-
-    protected abstract void InteractWithObject(Obstacle obstacle);
 
     protected abstract void InteractWithObject(Unit unit);
 
@@ -211,6 +213,11 @@ public abstract class Unit : MonoBehaviour
     protected virtual void FightState()
     {
         movementSpeed = defaultMovementSpeed * 0.6f + 0.03f * AudioManager.Instance.bpm;
+    }
+
+    public Interaction InteractionMatches(List<MovementDirectionUtilities.MovementDirection> acceptorDanceMoveSet)
+    {
+        return interactions.FirstOrDefault(interaction => interaction.DanceMoveEquals(acceptorDanceMoveSet));
     }
     
     protected abstract void Die();

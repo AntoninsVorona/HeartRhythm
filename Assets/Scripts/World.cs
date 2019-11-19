@@ -30,7 +30,7 @@ public class World : MonoBehaviour
     {
         yield return null;
         InitializeWorld();
-        tileMapObservers.ForEach(o => o.Notify());
+        tileMapObservers.ForEach(o => o.NotifyBegin());
     }
 
     private void InitializeWorld()
@@ -61,10 +61,10 @@ public class World : MonoBehaviour
         tileMapInitialized = true;
     }
 
-    public (GameTile.CantMoveReason, Obstacle, Unit) CanWalk(Vector2Int position)
+    public (GameTile.CantMoveReason, Unit) CanWalk(Vector2Int position)
     {
         return !gameTiles.ContainsKey(position)
-            ? (GameTile.CantMoveReason.NonWalkable, null, null)
+            ? (GameTile.CantMoveReason.NonWalkable, null)
             : gameTiles[position].CanWalk();
     }
 

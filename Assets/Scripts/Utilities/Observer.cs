@@ -3,15 +3,27 @@ using System;
 [Serializable]
 public class Observer
 {
-	public Action action;
-
+	public Action actionBegin;
+	public Action actionEnd;
+	
 	public Observer(Action action)
 	{
-		this.action = action;
+		actionBegin = action;
+	}
+	
+	public Observer(Action actionBegin, Action actionEnd)
+	{
+		this.actionBegin = actionBegin;
+		this.actionEnd = actionEnd;
 	}
 
-	public void Notify()
+	public void NotifyBegin()
 	{
-		action();
+		actionBegin();
+	}
+	
+	public void NotifyEnd()
+	{
+		actionEnd();
 	}
 }

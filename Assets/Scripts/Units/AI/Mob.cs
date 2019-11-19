@@ -135,10 +135,6 @@ public class Mob : Unit
 		MobController.Instance.RemoveMob(this);
 	}
 
-	protected override void InteractWithObject(Obstacle obstacle)
-	{
-	}
-
 	protected override void InteractWithObject(Unit unit)
 	{
 	}
@@ -167,7 +163,10 @@ public class Mob : Unit
 		while (true)
 		{
 			yield return new WaitForSeconds(movementSettings.peaceModeMovementDelay);
-			MakeAction();
+			if (GameLogic.Instance.playState == GameLogic.PlayState.Basic)
+			{
+				MakeAction();
+			}
 		}
 	}
 
@@ -181,7 +180,7 @@ public class Mob : Unit
 			Gizmos.color = Color.magenta;
 			foreach (var location in movementSettings.definedArea.locations)
 			{
-				Gizmos.DrawCube( CubeLocation(location), size);
+				Gizmos.DrawCube(CubeLocation(location), size);
 			}
 		}
 

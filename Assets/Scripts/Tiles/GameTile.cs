@@ -21,24 +21,24 @@ public class GameTile : MonoBehaviour
         this.obstaclesOnTile = obstaclesOnTile;
     }
 
-    public (CantMoveReason, Obstacle, Unit) CanWalk()
+    public (CantMoveReason, Unit) CanWalk()
     {
         if (!walkable)
         {
-            return (CantMoveReason.NonWalkable, null, null);
+            return (CantMoveReason.NonWalkable, null);
         }
 
         if (obstaclesOnTile.Count > 0)
         {
-            return (CantMoveReason.Obstacles, obstaclesOnTile.First(), null);
+            return (CantMoveReason.Obstacles, obstaclesOnTile.First());
         }
 
         if (occupyingUnit)
         {
-            return (CantMoveReason.Unit, null, occupyingUnit);
+            return (CantMoveReason.Unit, occupyingUnit);
         }
 
-        return (CantMoveReason.None, null, null);
+        return (CantMoveReason.None, null);
     }
 
     public void AddObstacleOnTop(Obstacle newObstacle)

@@ -144,7 +144,10 @@ public class AudioManager : MonoBehaviour
 
     public void ApplyBeat()
     {
-        MobController.Instance.MakeMobsActions();
+        if (GameLogic.Instance.playState == GameLogic.PlayState.Basic)
+        {
+            MobController.Instance.MakeMobsActions();
+        }
     }
 
     public static AudioManager Instance { get; private set; }

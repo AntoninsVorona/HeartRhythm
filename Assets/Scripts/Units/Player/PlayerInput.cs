@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,6 +19,7 @@ public class PlayerInput : MonoBehaviour
 		public bool WaitingForPlayerInput { get; set; }
 		public bool FirstBattleInputDone { get; set; }
 		public WrongInputType lastWrongInput;
+		public List<MovementDirectionUtilities.MovementDirection> danceMoveSet;
 
 		public bool AcceptInput()
 		{
@@ -69,10 +71,11 @@ public class PlayerInput : MonoBehaviour
 		int vertical;
 		switch (GameLogic.Instance.CurrentGameState)
 		{
-			case GameLogic.GameState.Peace:
+			case GameLogic.GameState.Peace when GameLogic.Instance.playState == GameLogic.PlayState.Basic:
 				horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
 				vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
 				break;
+			case GameLogic.GameState.Peace when GameLogic.Instance.playState == GameLogic.PlayState.DanceMove:
 			case GameLogic.GameState.Fight:
 				horizontal = Input.GetButtonDown("Left")
 					? -1
@@ -90,7 +93,8 @@ public class PlayerInput : MonoBehaviour
 		}
 
 		var movementDirection = MovementDirectionUtilities.DirectionFromInput(horizontal, vertical);
-		if (movementDirection != MovementDirectionUtilities.MovementDirection.None)
+		var spaceClicked = Input.GetKeyDown(KeyCode.Space);
+		if (movementDirection != MovementDirectionUtilities.MovementDirection.None || spaceClicked)
 		{
 			if (acceptor.AcceptInput())
 			{
@@ -101,7 +105,7 @@ public class PlayerInput : MonoBehaviour
 					);
 				}
 
-				Player.Instance.ReceiveInput(movementDirection);
+				Player.Instance.ReceiveInput(movementDirection, spaceClicked);
 
 				switch (GameLogic.Instance.CurrentGameState)
 				{
@@ -161,8 +165,26 @@ public class PlayerInput : MonoBehaviour
 		}
 	}
 
+	public void DanceMoveStarted()
+	{
+		acceptor.danceMoveSet = new List<MovementDirectionUtilities.MovementDirection>();
+	}
+
+	public void DanceMoveFinished()
+	{
+		foreach (var direction in acceptor.danceMoveSet)
+		{
+			Debug.Log(direction);
+		}
+		Player.Instance.ApplyDanceMoveSet(acceptor.danceMoveSet);
+	}
+
 	public void MissedBeat()
 	{
+		if (GameLogic.Instance.playState == GameLogic.PlayState.DanceMove)
+		{
+			Player.Instance.ReceiveInput(MovementDirectionUtilities.MovementDirection.None, false);
+		}
 		Debug.LogError("Missed the Beat!");
 	}
 
