@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 public class World : MonoBehaviour
 {
     [Serializable]
-    public class GameTiles : SerializableDictionary<Vector3Int, GameTile>
+    public class GameTiles : SerializableDictionary<Vector2Int, GameTile>
     {
     }
 
@@ -35,11 +35,11 @@ public class World : MonoBehaviour
 
     private void InitializeWorld()
     {
-        var obstacles = new Dictionary<Vector3Int, List<Obstacle>>();
+        var obstacles = new Dictionary<Vector2Int, List<Obstacle>>();
         var allObstacles = GetComponentsInChildren<Obstacle>();
         foreach (var obstacle in allObstacles)
         {
-            var position = Vector3Int.FloorToInt(obstacle.transform.position);
+            var position = Vector2Int.FloorToInt(obstacle.transform.position);
             if (!obstacles.ContainsKey(position))
             {
                 obstacles.Add(position, new List<Obstacle>());
@@ -53,7 +53,7 @@ public class World : MonoBehaviour
 
         foreach (var tile in allTiles)
         {
-            var position = Vector3Int.FloorToInt(tile.transform.position);
+            var position = Vector2Int.FloorToInt(tile.transform.position);
             gameTiles.Add(position, tile);
             tile.Initialize(obstacles.ContainsKey(position) ? obstacles[position] : new List<Obstacle>());
         }
@@ -61,7 +61,7 @@ public class World : MonoBehaviour
         tileMapInitialized = true;
     }
 
-    public (GameTile.CantMoveReason, Obstacle, Unit) CanWalk(Vector3Int position)
+    public (GameTile.CantMoveReason, Obstacle, Unit) CanWalk(Vector2Int position)
     {
         return !gameTiles.ContainsKey(position)
             ? (GameTile.CantMoveReason.NonWalkable, null, null)
@@ -74,12 +74,12 @@ public class World : MonoBehaviour
         Gizmos.DrawCube(new Vector3(0.5f, 0.5f, 0), new Vector3(1, 1, 0.2f));
     }
 
-    public Vector3 GetCellCenterWorld(Vector3Int position)
+    public Vector3 GetCellCenterWorld(Vector2Int position)
     {
-        return grid.GetCellCenterWorld(position);
+        return grid.GetCellCenterWorld((Vector3Int) position);
     }
 
-    public void OccupyTargetTile(Vector3Int currentPosition, Unit unit)
+    public void OccupyTargetTile(Vector2Int currentPosition, Unit unit)
     {
         if (gameTiles.ContainsKey(currentPosition))
         {
@@ -91,7 +91,7 @@ public class World : MonoBehaviour
         }
     }
 
-    public void UnoccupyTargetTile(Vector3Int currentPosition)
+    public void UnoccupyTargetTile(Vector2Int currentPosition)
     {
         if (gameTiles.ContainsKey(currentPosition))
         {

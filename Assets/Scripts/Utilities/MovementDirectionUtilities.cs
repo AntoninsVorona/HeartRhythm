@@ -27,20 +27,20 @@ public static class MovementDirectionUtilities
         return MovementDirection.None;
     }
 
-    public static Vector3Int VectorFromDirection(MovementDirection movementDirection)
+    public static Vector2Int VectorFromDirection(MovementDirection movementDirection)
     {
         switch (movementDirection)
         {
             case MovementDirection.None:
-                return Vector3Int.zero;
+                return Vector2Int.zero;
             case MovementDirection.Left:
-                return Vector3Int.left;
+                return Vector2Int.left;
             case MovementDirection.Right:
-                return Vector3Int.right;
+                return Vector2Int.right;
             case MovementDirection.Up:
-                return Vector3Int.up;
+                return Vector2Int.up;
             case MovementDirection.Down:
-                return Vector3Int.down;
+                return Vector2Int.down;
             default:
                 throw new ArgumentOutOfRangeException(nameof(movementDirection), movementDirection, null);
         }

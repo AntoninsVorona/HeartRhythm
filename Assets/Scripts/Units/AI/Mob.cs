@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Mob : Unit
@@ -9,18 +11,73 @@ public class Mob : Unit
 		None = 0,
 		Constant = 1,
 		Random = 2,
-		FollowPlayer = 3
+		DefinedArea = 3
+	}
+
+	[Serializable]
+	public class DefinedArea
+	{
+		public List<Vector2Int> locations;
+
+		public MovementDirectionUtilities.MovementDirection GetMovementDirectionWithinArea(Vector2Int currentPosition)
+		{
+			var suitableDirection = FindSuitableDirections(currentPosition);
+			foreach (var suitableLocation in suitableDirection)
+			{
+				Debug.Log(suitableLocation);
+			}
+
+			return suitableDirection.Count > 0
+				? suitableDirection.OrderBy(s => Guid.NewGuid()).First()
+				: MovementDirectionUtilities.MovementDirection.None;
+		}
+
+		private List<MovementDirectionUtilities.MovementDirection> FindSuitableDirections(
+			Vector2Int position)
+		{
+			var movementDirections = EnumUtilities.GetValues<MovementDirectionUtilities.MovementDirection>();
+			movementDirections.Remove(MovementDirectionUtilities.MovementDirection.None);
+			var suitableDirections = new List<MovementDirectionUtilities.MovementDirection>();
+			foreach (var diff in locations.Select(l => l - position))
+			{
+				foreach (var movementDirection in from movementDirection in movementDirections
+					where !suitableDirections.Contains(movementDirection)
+					let possible = CheckLocation(diff, movementDirection)
+					where possible
+					select movementDirection)
+				{
+					suitableDirections.Add(movementDirection);
+					if (suitableDirections.Count == 4)
+					{
+						return suitableDirections;
+					}
+				}
+			}
+
+			return suitableDirections;
+
+			bool CheckLocation(Vector2Int difference, MovementDirectionUtilities.MovementDirection movementDirection)
+			{
+				return difference == MovementDirectionUtilities.VectorFromDirection(movementDirection);
+			}
+		}
 	}
 
 	[Serializable]
 	public class MovementSettings
 	{
 		public TypeOfMovement typeOfMovement;
+
 		[DrawIf("typeOfMovement", TypeOfMovement.Constant)]
 		public MovementDirectionUtilities.MovementDirection movementDirection;
+
 		public bool moveDuringPeaceMode = true;
+
 		[DrawIf("moveDuringPeaceMode", true)]
 		public float peaceModeMovementDelay = 1;
+
+		[DrawIf("typeOfMovement", TypeOfMovement.DefinedArea)]
+		public DefinedArea definedArea;
 	}
 
 	public MovementSettings movementSettings;
@@ -37,7 +94,7 @@ public class Mob : Unit
 		}
 	}
 
-	public override void Initialize(Vector3Int location)
+	public override void Initialize(Vector2Int location)
 	{
 		base.Initialize(location);
 		if (GameLogic.Instance.CurrentGameState == GameLogic.GameState.Peace
@@ -58,8 +115,12 @@ public class Mob : Unit
 				Move(movementSettings.movementDirection);
 				break;
 			case TypeOfMovement.Random:
-			case TypeOfMovement.FollowPlayer:
 				AssignRandomDirection();
+				Move(movementSettings.movementDirection);
+				break;
+			case TypeOfMovement.DefinedArea:
+				movementSettings.movementDirection =
+					movementSettings.definedArea.GetMovementDirectionWithinArea(currentPosition);
 				Move(movementSettings.movementDirection);
 				break;
 			default:
@@ -114,9 +175,23 @@ public class Mob : Unit
 		}
 	}
 
-	private void OnDrawGizmos()
+	private void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.red;
-		Gizmos.DrawCube(spawnPoint + new Vector3(0.5f, 0.5f, 0), new Vector3(1, 1, 0.2f));
+		var size = new Vector3(1, 1, 0.2f);
+		Gizmos.DrawCube(CubeLocation(spawnPoint), size);
+		if (movementSettings.typeOfMovement == TypeOfMovement.DefinedArea)
+		{
+			Gizmos.color = Color.magenta;
+			foreach (var location in movementSettings.definedArea.locations)
+			{
+				Gizmos.DrawCube( CubeLocation(location), size);
+			}
+		}
+
+		Vector3 CubeLocation(Vector2Int point)
+		{
+			return (Vector3Int) point + new Vector3(0.5f, 0.5f, 0);
+		}
 	}
 }

@@ -20,16 +20,16 @@ public abstract class Unit : MonoBehaviour
     protected AnimationCurve movementDisplaceCurve;
 
     [SerializeField]
-    protected Vector3Int spawnPoint;
+    protected Vector2Int spawnPoint;
 
-    protected Vector3Int currentPosition;
+    protected Vector2Int currentPosition;
 
     protected virtual void Start()
     {
         GameLogic.Instance.gameStateObservers.Add(new Observer(GameStateChanged));
     }
 
-    public virtual void Initialize(Vector3Int location)
+    public virtual void Initialize(Vector2Int location)
     {
         if (World.Instance.tileMapInitialized)
         {
@@ -54,7 +54,7 @@ public abstract class Unit : MonoBehaviour
         Move(currentPosition + MovementDirectionUtilities.VectorFromDirection(movementDirection), force);
     }
 
-    public virtual void Move(Vector3Int newPosition, bool force = false)
+    public virtual void Move(Vector2Int newPosition, bool force = false)
     {
         var (cantMoveReason, obstacle, unit) = World.Instance.CanWalk(newPosition);
         if (cantMoveReason == GameTile.CantMoveReason.None)
@@ -100,7 +100,7 @@ public abstract class Unit : MonoBehaviour
         transform.position = GetCurrentPosition();
     }
 
-    protected virtual IEnumerator MovementSequence(Vector3Int newPosition)
+    protected virtual IEnumerator MovementSequence(Vector2Int newPosition)
     {
         var start = transform.position;
         var end = GetPosition(newPosition);
@@ -122,7 +122,7 @@ public abstract class Unit : MonoBehaviour
         CharacterMovement(1, 1, start, end, true, jumpStart, false);
     }
 
-    protected virtual IEnumerator CantMoveSequence(Vector3Int newPosition, bool isHorizontal)
+    protected virtual IEnumerator CantMoveSequence(Vector2Int newPosition, bool isHorizontal)
     {
         var start = transform.position;
         var end = GetPosition(newPosition);
@@ -182,7 +182,7 @@ public abstract class Unit : MonoBehaviour
         return World.Instance.GetCellCenterWorld(currentPosition);
     }
 
-    protected Vector3 GetPosition(Vector3Int position)
+    protected Vector3 GetPosition(Vector2Int position)
     {
         return World.Instance.GetCellCenterWorld(position);
     }

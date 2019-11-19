@@ -15,7 +15,7 @@ public class MobController : MonoBehaviour
         allMobs.ForEach(m => m.MakeAction());
     }
 
-    public void InitializeMob(Mob mob, Vector3Int location, Mob.MovementSettings movementSettings = null)
+    public void InitializeMob(Mob mob, Vector2Int location, Mob.MovementSettings movementSettings = null)
     {
         if (movementSettings != null)
         {

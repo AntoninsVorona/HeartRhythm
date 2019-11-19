@@ -244,6 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameStateObservers: []
   testMusic: {fileID: 11400000, guid: 60eaf042f444f644ba3113a34593d82f, type: 2}
+  inputDebugEnabled: 0
 --- !u!4 &38901603
 Transform:
   m_ObjectHideFlags: 0
@@ -442,12 +443,17 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  spawnPoint: {x: 0, y: 3, z: 0}
+  spawnPoint: {x: 0, y: 3}
   movementSettings:
-    typeOfMovement: 1
+    typeOfMovement: 3
     movementDirection: 1
     moveDuringPeaceMode: 1
     peaceModeMovementDelay: 1
+    definedArea:
+      locations:
+      - {x: 0, y: 3}
+      - {x: 1, y: 3}
+      - {x: 1, y: 2}
   initializeSelf: 1
 --- !u!1 &227190673
 GameObject:
@@ -1791,7 +1797,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  spawnPoint: {x: 0, y: 0, z: 0}
+  spawnPoint: {x: 0, y: 0}
 --- !u!4 &1978974716
 Transform:
   m_ObjectHideFlags: 0
