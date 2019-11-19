@@ -26,8 +26,22 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void Initialize(Vector3Int location)
     {
-        Move(location, true);
+        if (World.Instance.tileMapInitialized)
+        {
+            Move(location, true);
+        }
+        else
+        {
+            spawnPoint = location;
+            World.Instance.tileMapObservers.Add(new World.Observer(ForceInitializePosition));
+        }
+
         defaultMovementSpeed = movementSpeed;
+    }
+
+    protected void ForceInitializePosition()
+    {
+        Move(spawnPoint, true);
     }
 
     protected void Move(MovementDirectionUtilities.MovementDirection movementDirection, bool force = false)

@@ -8,10 +8,6 @@ public class Player : Unit
     private void Awake()
     {
         Instance = this;
-    }
-
-    private void Start()
-    {
         Initialize(spawnPoint);
     }
 

@@ -10,7 +10,26 @@ public class World : MonoBehaviour
     public class GameTiles : SerializableDictionary<Vector3Int, GameTile>
     {
     }
+    
+    [Serializable]
+    public class Observer
+    {
+        public Action action;
+        public Observer(Action action)
+        {
+            this.action = action;
+        }
+        public void Notify()
+        {
+            action();
+        }
+    }
 
+    [HideInInspector]
+    public List<Observer> tileMapObservers = new List<Observer>();
+
+    [HideInInspector]
+    public bool tileMapInitialized = false;
     private Grid grid;
 
     private GameTiles gameTiles;
@@ -19,8 +38,13 @@ public class World : MonoBehaviour
     {
         Instance = this;
         grid = GetComponent<Grid>();
-        Debug.Break();
+    }
+
+    private IEnumerator Start()
+    {
+        yield return null;
         InitializeWorld();
+        tileMapObservers.ForEach(o => o.Notify());
     }
 
     private void InitializeWorld()
@@ -47,6 +71,8 @@ public class World : MonoBehaviour
             gameTiles.Add(position, tile);
             tile.Initialize(obstacles.ContainsKey(position) ? obstacles[position] : new List<Obstacle>());
         }
+
+        tileMapInitialized = true;
     }
 
     public (GameTile.CantMoveReason, Obstacle, Unit) CanWalk(Vector3Int position)

@@ -19,7 +19,7 @@ public class Mob : Unit
     public MovementSettings movementSettings;
     public bool initializeSelf = true;
 
-    private void Start()
+    private void Awake()
     {
         if (initializeSelf)
         {
