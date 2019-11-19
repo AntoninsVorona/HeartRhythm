@@ -13,10 +13,16 @@ public class GameUI : MonoBehaviour
         beatController.Deactivate();
     }
 
+    private void Start()
+    {
+        GameLogic.Instance.gameStateObservers.Add(new Observer(GameStateChanged));
+    }
+
     public static GameUI Instance { get; private set; }
 
-    public void GameStateChanged(GameLogic.GameState currentGameState)
+    private void GameStateChanged()
     {
+        var currentGameState = GameLogic.Instance.CurrentGameState;
         modeToggler.text = $"{currentGameState} Mode";
         switch (currentGameState)
         {

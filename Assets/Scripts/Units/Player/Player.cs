@@ -8,6 +8,11 @@ public class Player : Unit
     private void Awake()
     {
         Instance = this;
+    }
+
+    protected override void Start()
+    {
+        base.Start();
         Initialize(spawnPoint);
     }
 
@@ -46,8 +51,9 @@ public class Player : Unit
         }
     }
 
-    public void GameStateChanged(GameLogic.GameState newGameState)
+    protected override void GameStateChanged()
     {
+        var newGameState = GameLogic.Instance.CurrentGameState;
         switch (newGameState)
         {
             case GameLogic.GameState.Peace:
@@ -76,8 +82,6 @@ public class Player : Unit
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawCube(new Vector3(0.5f, 0.5f, 0), new Vector3(1, 1, 0.2f));
         Gizmos.color = Color.green;
         Gizmos.DrawCube(spawnPoint + new Vector3(0.5f, 0.5f, 0), new Vector3(1, 1, 0.2f));
     }

@@ -53,6 +53,11 @@ public class PlayerInput : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        GameLogic.Instance.gameStateObservers.Add(new Observer(GameStateChanged));
+    }
+
     private void Update()
     {
         if (Input.GetKey(KeyCode.R))
@@ -89,6 +94,9 @@ public class PlayerInput : MonoBehaviour
         {
             if (acceptor.AcceptInput())
             {
+                Debug.Log($"Time: {AudioManager.Instance.time} | Music: {AudioManager.Instance.musicAudioSource.time}");
+                Player.Instance.ReceiveInput(movementDirection);
+                
                 switch (GameLogic.Instance.CurrentGameState)
                 {
                     case GameLogic.GameState.Peace:
@@ -96,14 +104,11 @@ public class PlayerInput : MonoBehaviour
                     case GameLogic.GameState.Fight:
                         acceptor.ReceivedInputThisTimeFrame = true;
                         acceptor.FirstBattleInputDone = true;
+                        AudioManager.Instance.ApplyBeat();
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
-
-                Debug.Log($"Time: {AudioManager.Instance.time} | Music: {AudioManager.Instance.musicAudioSource.time}");
-                Player.Instance.ReceiveInput(movementDirection);
-                AudioManager.Instance.ApplyBeat();
             }
             else
             {
@@ -132,8 +137,9 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    public void GameStateChanged(GameLogic.GameState newGameState)
+    private void GameStateChanged()
     {
+        var newGameState = GameLogic.Instance.CurrentGameState;
         switch (newGameState)
         {
             case GameLogic.GameState.Peace:

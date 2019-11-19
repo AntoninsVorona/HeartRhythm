@@ -24,6 +24,11 @@ public abstract class Unit : MonoBehaviour
 
     protected Vector3Int currentPosition;
 
+    protected virtual void Start()
+    {
+        GameLogic.Instance.gameStateObservers.Add(new Observer(GameStateChanged));
+    }
+
     public virtual void Initialize(Vector3Int location)
     {
         if (World.Instance.tileMapInitialized)
@@ -33,7 +38,7 @@ public abstract class Unit : MonoBehaviour
         else
         {
             spawnPoint = location;
-            World.Instance.tileMapObservers.Add(new World.Observer(ForceInitializePosition));
+            World.Instance.tileMapObservers.Add(new Observer(ForceInitializePosition));
         }
 
         defaultMovementSpeed = movementSpeed;
@@ -182,5 +187,7 @@ public abstract class Unit : MonoBehaviour
         return World.Instance.GetCellCenterWorld(position);
     }
 
+    protected abstract void GameStateChanged();
+    
     protected abstract void Die();
 }

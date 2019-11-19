@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameLogic : MonoBehaviour
@@ -24,6 +25,9 @@ public class GameLogic : MonoBehaviour
 
     private GameState gameState;
     private Music fightMusic;
+    
+    [HideInInspector]
+    public List<Observer> gameStateObservers = new List<Observer>();
 
     public Music testMusic;
 
@@ -52,10 +56,8 @@ public class GameLogic : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
-
-        PlayerInput.Instance.GameStateChanged(CurrentGameState);
-        Player.Instance.GameStateChanged(CurrentGameState);
-        GameUI.Instance.GameStateChanged(CurrentGameState);
+        
+        gameStateObservers.ForEach(o => o.Notify());
     }
 
     public void BeginFight(Enemy enemy)

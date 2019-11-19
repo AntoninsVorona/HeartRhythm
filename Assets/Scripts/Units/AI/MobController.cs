@@ -17,12 +17,12 @@ public class MobController : MonoBehaviour
 
     public void InitializeMob(Mob mob, Vector3Int location, Mob.MovementSettings movementSettings = null)
     {
-        mob.Initialize(location);
         if (movementSettings != null)
         {
             mob.movementSettings = movementSettings;
         }
 
+        mob.Initialize(location);
         allMobs.Add(mob);
     }
 
