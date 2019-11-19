@@ -71,13 +71,14 @@ public class Mob : Unit
 		[DrawIf("typeOfMovement", TypeOfMovement.Constant)]
 		public MovementDirectionUtilities.MovementDirection movementDirection;
 
+		[DrawIf("typeOfMovement", TypeOfMovement.DefinedArea)]
+		public DefinedArea definedArea;
+
+		[Header("Peace Mode")]
 		public bool moveDuringPeaceMode = true;
 
 		[DrawIf("moveDuringPeaceMode", true)]
 		public float peaceModeMovementDelay = 1;
-
-		[DrawIf("typeOfMovement", TypeOfMovement.DefinedArea)]
-		public DefinedArea definedArea;
 	}
 
 	public MovementSettings movementSettings;
