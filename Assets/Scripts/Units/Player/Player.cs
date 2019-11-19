@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class Player : Unit
 {
+	private static readonly int FINISH_DANCE_MOVE_TRIGGER = Animator.StringToHash("FinishDanceMove");
 	private Unit interactingWithUnit;
-	
+	private Animator animator;
+
 	private void Awake()
 	{
 		Instance = this;
+		animator = GetComponent<Animator>();
 	}
 
 	protected override void Start()
@@ -24,7 +27,7 @@ public class Player : Unit
 		GameCamera.Instance.ChangeTargetPosition(transform.position, true);
 	}
 
-	public void ReceiveInput(MovementDirectionUtilities.MovementDirection movementDirection, bool spaceClicked)
+	public void ReceiveInput(MovementDirectionUtilities.MovementDirection movementDirection)
 	{
 		switch (GameLogic.Instance.playState)
 		{
@@ -32,14 +35,7 @@ public class Player : Unit
 				Move(movementDirection);
 				break;
 			case GameLogic.PlayState.DanceMove:
-				if (spaceClicked)
-				{
-					EndDanceMove();
-				}
-				else
-				{
-					ReceiveDanceMove(movementDirection);
-				}
+				ReceiveDanceMove(movementDirection);
 				break;
 			default:
 				throw new ArgumentOutOfRangeException();
@@ -48,13 +44,13 @@ public class Player : Unit
 
 	private void ReceiveDanceMove(MovementDirectionUtilities.MovementDirection movementDirection)
 	{
-		//TODO Play Animation
+		animator.SetTrigger(movementDirection.ToString());
 		PlayerInput.Instance.acceptor.danceMoveSet.Add(movementDirection);
 	}
 
-	private void EndDanceMove()
+	public void EndDanceMove()
 	{
-		//TODO Play Animation
+		animator.SetTrigger(FINISH_DANCE_MOVE_TRIGGER);
 		GameLogic.Instance.FinishDanceMove();
 	}
 
@@ -99,6 +95,10 @@ public class Player : Unit
 		if (interaction != null)
 		{
 			//TODO Interaction
+		}
+		else
+		{
+			PlayerInput.Instance.acceptor.IgnoreInput = false;
 		}
 	}
 

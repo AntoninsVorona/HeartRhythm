@@ -75,7 +75,7 @@ public class AudioManager : MonoBehaviour
         var upperThreshold = beatDelay * upperAccuracy;
         time = 0;
         var timeWasValidAFrameAgo = false;
-        var timeInLowerBounds = false;
+        var timeInLowerBounds = true;
         while (true)
         {
             var timeIsValid = IsTimeValid();

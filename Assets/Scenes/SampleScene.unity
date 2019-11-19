@@ -243,6 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStateObservers: []
+  playState: 0
   testMusic: {fileID: 11400000, guid: 60eaf042f444f644ba3113a34593d82f, type: 2}
   inputDebugEnabled: 0
 --- !u!4 &38901603
@@ -444,6 +445,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   spawnPoint: {x: 0, y: 3}
+  interactions: []
   movementSettings:
     typeOfMovement: 3
     movementDirection: 1
@@ -1768,6 +1770,7 @@ GameObject:
   - component: {fileID: 1978974716}
   - component: {fileID: 1978974715}
   - component: {fileID: 1978974717}
+  - component: {fileID: 1978974718}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1847,6 +1850,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   spawnPoint: {x: 0, y: 0}
+  interactions: []
 --- !u!4 &1978974716
 Transform:
   m_ObjectHideFlags: 0
@@ -1875,6 +1879,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edfaa2d9745e46d0bad7da1e58a0c23f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1978974718
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978974714}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 54008d6a63455944d9bf022015b62dce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1990389414
 GameObject:
   m_ObjectHideFlags: 0

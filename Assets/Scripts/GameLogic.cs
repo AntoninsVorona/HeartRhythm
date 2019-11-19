@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -102,7 +103,15 @@ public class GameLogic : MonoBehaviour
 
 	public void FinishDanceMove()
 	{
+		StartCoroutine(FinishDanceMoveSequence());
+	}
+
+	private IEnumerator FinishDanceMoveSequence()
+	{
+		PlayerInput.Instance.acceptor.IgnoreInput = true;
+		yield return new WaitForSeconds(0.5f);
 		GameCamera.Instance.ZoomOut();
+		yield return new WaitForSeconds(0.5f);
 		PlayerInput.Instance.DanceMoveFinished();
 		playState = PlayState.Basic;
 	}
