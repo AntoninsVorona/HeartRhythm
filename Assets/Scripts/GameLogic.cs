@@ -29,7 +29,9 @@ public class GameLogic : MonoBehaviour
     [HideInInspector]
     public List<Observer> gameStateObservers = new List<Observer>();
 
+    [Header("Debug")]
     public Music testMusic;
+    public bool inputDebugEnabled;
 
     private void Awake()
     {
