@@ -15,8 +15,8 @@ public class GameCamera : MonoBehaviour
 	[Header("Zoom")]
 	public AnimationCurve defaultZoomCurve;
 
-	public float danceMoveZoomIn = 1;
 	public AnimationCurve danceMoveZoonInCurve;
+	private float danceMoveZoomIn;
 	private float defaultZoom;
 	private Coroutine zoomCoroutine;
 
@@ -32,6 +32,7 @@ public class GameCamera : MonoBehaviour
 		yield return null;
 		yield return null;
 		defaultZoom = camera.orthographicSize;
+		danceMoveZoomIn = defaultZoom / 3;
 	}
 
 	private void LateUpdate()
