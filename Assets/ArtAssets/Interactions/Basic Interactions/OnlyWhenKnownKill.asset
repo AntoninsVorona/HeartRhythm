@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0c17a0e896a4fd383b6906f00c816ca, type: 3}
-  m_Name: KillInteraction
+  m_Name: OnlyWhenKnownKill
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  interactionName: Kill
+  interactionName: Only When Known Kill
   visibleOnUI: 1
   danceMovesSetToApply:
   - lockedState:
       locked: 0
       lockedType: 0
-    danceMove: 3
+    danceMove: 2
   - lockedState:
-      locked: 0
-      lockedType: 0
-    danceMove: 3
+      locked: 1
+      lockedType: 1
+    danceMove: 2

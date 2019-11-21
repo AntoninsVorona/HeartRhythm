@@ -94,10 +94,10 @@ public class GameLogic : MonoBehaviour
 		}
 	}
 
-	public void StartDanceMove()
+	public void StartDanceMove(Unit interactingWith)
 	{
 		playState = PlayState.DanceMove;
-		GameUI.Instance.symbolHolder.Initialize();
+		GameUI.Instance.danceMoveUI.Initialize(interactingWith);
 		GameCamera.Instance.DanceMoveZoomIn();
 		PlayerInput.Instance.DanceMoveStarted();
 	}
@@ -112,7 +112,7 @@ public class GameLogic : MonoBehaviour
 		PlayerInput.Instance.acceptor.IgnoreInput = true;
 		PlayerInput.Instance.acceptor.FirstBattleInputDone = false;
 		yield return new WaitForSeconds(1f);
-		GameUI.Instance.symbolHolder.Deactivate();
+		GameUI.Instance.danceMoveUI.Deactivate();
 		if (backToIdle)
 		{
 			Player.Instance.BackToIdleAnimation();

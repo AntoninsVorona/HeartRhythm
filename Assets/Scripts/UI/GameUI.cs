@@ -5,14 +5,14 @@ using UnityEngine.UI;
 public class GameUI : MonoBehaviour
 {
     public BeatController beatController;
-    public SymbolHolder symbolHolder;
+    public DanceMoveUI danceMoveUI;
     public Text modeToggler;
 
     private void Awake()
     {
         Instance = this;
         beatController.Deactivate();
-        symbolHolder.Deactivate();
+        danceMoveUI.Deactivate();
     }
 
     private void Start()

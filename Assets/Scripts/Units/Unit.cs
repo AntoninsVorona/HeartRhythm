@@ -27,8 +27,7 @@ public abstract class Unit : MonoBehaviour
     protected Vector2Int currentPosition;
 
     [Header("Interaction")]
-    [SerializeField]
-    private List<Interaction> interactions;
+    public List<Interaction> interactions;
 
     protected virtual void Start()
     {
@@ -230,7 +229,7 @@ public abstract class Unit : MonoBehaviour
 
     public Interaction InteractionMatches(List<MovementDirectionUtilities.MovementDirection> acceptorDanceMoveSet)
     {
-        return interactions.FirstOrDefault(interaction => interaction.DanceMoveEquals(acceptorDanceMoveSet));
+        return interactions.FirstOrDefault(interaction => interaction.DanceMoveCanBeApplied(acceptorDanceMoveSet));
     }
 
     public abstract void Die();

@@ -201,12 +201,13 @@ public class PlayerInput : MonoBehaviour
 
 	public void DanceMoveStarted()
 	{
+		acceptor.FirstBattleInputDone = false;
 		acceptor.danceMoveSet = new List<MovementDirectionUtilities.MovementDirection>();
 	}
 
 	public void AddDanceMoveSymbol(MovementDirectionUtilities.MovementDirection movementDirection)
 	{
-		GameUI.Instance.symbolHolder.AddSymbol(movementDirection, acceptor.danceMoveSet.Count);
+		GameUI.Instance.danceMoveUI.AddSymbol(movementDirection, acceptor.danceMoveSet.Count);
 		acceptor.danceMoveSet.Add(movementDirection);
 		if (acceptor.danceMoveSet.Count == maxDanceMoveSymbols)
 		{
