@@ -46,13 +46,11 @@ public class GameTile : MonoBehaviour
         obstaclesOnTile.Add(newObstacle);
     }
 
-    public void DestroyFirstObstacle()
+    public void RemoveObstacle(Obstacle obstacle)
     {
-        if (obstaclesOnTile.Count > 0)
+        if (obstaclesOnTile.Contains(obstacle))
         {
-            var obstacle = obstaclesOnTile.First();
             obstaclesOnTile.Remove(obstacle);
-            obstacle.GetDestroyed();
         }
     }
 

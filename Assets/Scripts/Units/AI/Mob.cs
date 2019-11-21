@@ -130,9 +130,11 @@ public class Mob : Unit
 			EnumUtilities.RandomEnumValue<MovementDirectionUtilities.MovementDirection>();
 	}
 
-	protected override void Die()
+	public override void Die()
 	{
+		World.Instance.UnoccupyTargetTile(currentPosition);
 		MobController.Instance.RemoveMob(this);
+		gameObject.SetActive(false);
 	}
 
 	protected override void InteractWithObject(Unit unit)

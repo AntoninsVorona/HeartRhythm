@@ -102,6 +102,18 @@ public class World : MonoBehaviour
             Debug.LogError($"Can't unoccupy. No such tile exist: {currentPosition}");
         }
     }
+    
+    public void RemoveTargetObstacle(Vector2Int currentPosition, Obstacle obstacle)
+    {
+        if (gameTiles.ContainsKey(currentPosition))
+        {
+            gameTiles[currentPosition].RemoveObstacle(obstacle);
+        }
+        else
+        {
+            Debug.LogError($"Can't remove target obstacle. No such tile exist: {currentPosition}");
+        }
+    }
 
     public static World Instance { get; private set; }
 }

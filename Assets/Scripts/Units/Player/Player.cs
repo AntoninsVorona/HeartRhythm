@@ -83,7 +83,7 @@ public class Player : Unit
 		}
 	}
 
-	protected override void Die()
+	public override void Die()
 	{
 		//TODO Lose Game
 	}
@@ -97,14 +97,13 @@ public class Player : Unit
 	public void ApplyDanceMoveSet(List<MovementDirectionUtilities.MovementDirection> acceptorDanceMoveSet)
 	{
 		var interaction = interactingWithUnit.InteractionMatches(acceptorDanceMoveSet);
+		var restoreInput = true;
 		if (interaction != null)
 		{
-			//TODO Interaction
+			restoreInput = interaction.ApplyInteraction();
 		}
-		else
-		{
-			PlayerInput.Instance.acceptor.IgnoreInput = false;
-		}
+		
+		PlayerInput.Instance.acceptor.IgnoreInput = !restoreInput;
 	}
 
 	private void OnDrawGizmos()
@@ -115,7 +114,7 @@ public class Player : Unit
 
 	public void BackToIdleAnimation()
 	{
-		animator.SetTrigger(IDLE_TRIGGER);	
+		animator.SetTrigger(IDLE_TRIGGER);
 	}
 
 	public static Player Instance { get; private set; }

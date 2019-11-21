@@ -445,7 +445,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   spawnPoint: {x: 0, y: 3}
-  interactions: []
+  interactions:
+  - {fileID: 11400000, guid: 5e24a96638d314343ace65d05e00628a, type: 2}
   movementSettings:
     typeOfMovement: 3
     movementDirection: 1

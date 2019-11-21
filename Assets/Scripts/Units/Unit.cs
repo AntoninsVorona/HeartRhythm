@@ -48,6 +48,19 @@ public abstract class Unit : MonoBehaviour
         }
 
         defaultMovementSpeed = movementSpeed;
+        InitializeInteractions();
+    }
+
+    protected void InitializeInteractions()
+    {
+        var inter = new List<Interaction>();
+        foreach (var initializedInteraction in interactions.Where(i => i).Select(Instantiate))
+        {
+            initializedInteraction.Initialize(this);
+            inter.Add(initializedInteraction);
+        }
+
+        interactions = inter;
     }
 
     protected void ForceInitializePosition()
@@ -209,7 +222,7 @@ public abstract class Unit : MonoBehaviour
     {
         movementSpeed = defaultMovementSpeed;
     }
-    
+
     protected virtual void FightState()
     {
         movementSpeed = defaultMovementSpeed * 0.6f + 0.03f * AudioManager.Instance.bpm;
@@ -219,6 +232,6 @@ public abstract class Unit : MonoBehaviour
     {
         return interactions.FirstOrDefault(interaction => interaction.DanceMoveEquals(acceptorDanceMoveSet));
     }
-    
-    protected abstract void Die();
+
+    public abstract void Die();
 }
