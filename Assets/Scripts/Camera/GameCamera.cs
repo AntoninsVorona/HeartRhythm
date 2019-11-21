@@ -52,6 +52,7 @@ public class GameCamera : MonoBehaviour
 	public void DanceMoveZoomIn()
 	{
 		pixelPerfectCamera.enabled = false;
+		camera.orthographicSize = defaultZoom;
 		ChangeZoom(danceMoveZoomIn, 0.5f, danceMoveZoonInCurve);
 	}
 
