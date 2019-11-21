@@ -97,19 +97,26 @@ public class GameLogic : MonoBehaviour
 	public void StartDanceMove()
 	{
 		playState = PlayState.DanceMove;
+		GameUI.Instance.symbolHolder.Initialize();
 		GameCamera.Instance.DanceMoveZoomIn();
 		PlayerInput.Instance.DanceMoveStarted();
 	}
 
-	public void FinishDanceMove()
+	public void FinishDanceMove(bool backToIdle)
 	{
-		StartCoroutine(FinishDanceMoveSequence());
+		StartCoroutine(FinishDanceMoveSequence(backToIdle));
 	}
 
-	private IEnumerator FinishDanceMoveSequence()
+	private IEnumerator FinishDanceMoveSequence(bool backToIdle)
 	{
 		PlayerInput.Instance.acceptor.IgnoreInput = true;
-		yield return new WaitForSeconds(0.5f);
+		PlayerInput.Instance.acceptor.FirstBattleInputDone = false;
+		yield return new WaitForSeconds(1f);
+		GameUI.Instance.symbolHolder.Deactivate();
+		if (backToIdle)
+		{
+			Player.Instance.BackToIdleAnimation();
+		}
 		GameCamera.Instance.ZoomOut();
 		yield return new WaitForSeconds(0.5f);
 		PlayerInput.Instance.DanceMoveFinished();

@@ -899,7 +899,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  danceMoveZoomIn: 1
+  danceMoveZoomIn: 1.5
   danceMoveZoonInCurve:
     serializedVersion: 2
     m_Curve:
@@ -951,7 +951,7 @@ Camera:
   far clip plane: 1000
   field of view: 45
   orthographic: 1
-  orthographic size: 3.125
+  orthographic size: 1.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1336,6 +1336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beatController: {fileID: 1510226926}
+  symbolHolder: {fileID: 1724636426}
   modeToggler: {fileID: 933532364}
 --- !u!1 &1510226924
 GameObject:
@@ -1391,6 +1392,106 @@ MonoBehaviour:
   beatPrefab: {fileID: 2386111927479335987, guid: f065bf98cb74e654997bb1e198fe0c4a,
     type: 3}
   pulsingObject: {fileID: 4423302}
+--- !u!1 &1724636422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1724636423}
+  - component: {fileID: 1724636425}
+  - component: {fileID: 1724636424}
+  - component: {fileID: 1724636426}
+  m_Layer: 0
+  m_Name: SymbolHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1724636423
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724636422}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1782849374}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 40}
+  m_SizeDelta: {x: 0, y: 35}
+  m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &1724636424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724636422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 5
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+--- !u!114 &1724636425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724636422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 0
+--- !u!114 &1724636426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724636422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 388c0dc720ca4a4581ec86faef8a6514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  symbolPrefab: {fileID: -1494950474094032279, guid: 0379905d2cfd90047b38ab213e503a15,
+    type: 3}
+  arrows:
+    m_keys: 0100000002000000030000000400000000000000
+    m_values:
+    - {fileID: 21300000, guid: ab30ef118c5062648abceafdcddaa9de, type: 3}
+    - {fileID: 21300000, guid: 06bd9cb4732559a478b63ac55e267814, type: 3}
+    - {fileID: 21300000, guid: eb68a0c198d5db24089b399e4feff0b8, type: 3}
+    - {fileID: 21300000, guid: 59c8832841e0bb74ea55fb80c8c05d1c, type: 3}
+    - {fileID: 21300000, guid: eecf778f07e7b554fb13b35cd8c46a8e, type: 3}
+  waitingForInput: {fileID: 21300000, guid: 37ba2c0d964abed47bbca7ec77cea504, type: 3}
 --- !u!1 &1780663422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1496,6 +1597,7 @@ RectTransform:
   m_Children:
   - {fileID: 1510226925}
   - {fileID: 1117839378}
+  - {fileID: 1724636423}
   m_Father: {fileID: 1174689102}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1879,6 +1981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edfaa2d9745e46d0bad7da1e58a0c23f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxDanceMoveSymbols: 2
 --- !u!95 &1978974718
 Animator:
   serializedVersion: 3

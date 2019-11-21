@@ -5,20 +5,20 @@ using UnityEngine.UI;
 public class GameUI : MonoBehaviour
 {
     public BeatController beatController;
+    public SymbolHolder symbolHolder;
     public Text modeToggler;
 
     private void Awake()
     {
         Instance = this;
         beatController.Deactivate();
+        symbolHolder.Deactivate();
     }
 
     private void Start()
     {
         GameLogic.Instance.gameStateObservers.Add(new Observer(GameStateChanged));
     }
-
-    public static GameUI Instance { get; private set; }
 
     private void GameStateChanged()
     {
@@ -34,4 +34,6 @@ public class GameUI : MonoBehaviour
                 throw new ArgumentOutOfRangeException(nameof(currentGameState), currentGameState, null);
         }
     }
+
+    public static GameUI Instance { get; private set; }
 }

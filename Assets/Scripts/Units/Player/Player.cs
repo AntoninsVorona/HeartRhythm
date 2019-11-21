@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player : Unit
 {
 	private static readonly int FINISH_DANCE_MOVE_TRIGGER = Animator.StringToHash("FinishDanceMove");
+	private static readonly int IDLE_TRIGGER = Animator.StringToHash("Idle");
 	private Unit interactingWithUnit;
 	private Animator animator;
 
@@ -45,13 +46,17 @@ public class Player : Unit
 	private void ReceiveDanceMove(MovementDirectionUtilities.MovementDirection movementDirection)
 	{
 		animator.SetTrigger(movementDirection.ToString());
-		PlayerInput.Instance.acceptor.danceMoveSet.Add(movementDirection);
+		PlayerInput.Instance.AddDanceMoveSymbol(movementDirection);
 	}
 
-	public void EndDanceMove()
+	public void EndDanceMove(bool withAnimation)
 	{
-		animator.SetTrigger(FINISH_DANCE_MOVE_TRIGGER);
-		GameLogic.Instance.FinishDanceMove();
+		if (withAnimation)
+		{
+			animator.SetTrigger(FINISH_DANCE_MOVE_TRIGGER);
+		}
+
+		GameLogic.Instance.FinishDanceMove(!withAnimation);
 	}
 
 	protected override IEnumerator MovementSequence(Vector2Int newPosition)
@@ -106,6 +111,11 @@ public class Player : Unit
 	{
 		Gizmos.color = Color.green;
 		Gizmos.DrawCube((Vector3Int) spawnPoint + new Vector3(0.5f, 0.5f, 0), new Vector3(1, 1, 0.2f));
+	}
+
+	public void BackToIdleAnimation()
+	{
+		animator.SetTrigger(IDLE_TRIGGER);	
 	}
 
 	public static Player Instance { get; private set; }

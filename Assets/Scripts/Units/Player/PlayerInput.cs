@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -53,6 +54,7 @@ public class PlayerInput : MonoBehaviour
 		}
 	}
 
+	public int maxDanceMoveSymbols = 2;
 	[HideInNormalInspector]
 	public Acceptor acceptor;
 
@@ -109,9 +111,7 @@ public class PlayerInput : MonoBehaviour
 						$"Time: {AudioManager.Instance.time} | Music: {AudioManager.Instance.musicAudioSource.time}"
 					);
 				}
-
-				Player.Instance.ReceiveInput(movementDirection);
-
+				
 				switch (GameLogic.Instance.CurrentGameState)
 				{
 					case GameLogic.GameState.Peace:
@@ -119,6 +119,18 @@ public class PlayerInput : MonoBehaviour
 					case GameLogic.GameState.Fight:
 						acceptor.ReceivedInputThisTimeFrame = true;
 						acceptor.FirstBattleInputDone = true;
+						break;
+					default:
+						throw new ArgumentOutOfRangeException();
+				}
+				
+				Player.Instance.ReceiveInput(movementDirection);
+
+				switch (GameLogic.Instance.CurrentGameState)
+				{
+					case GameLogic.GameState.Peace:
+						break;
+					case GameLogic.GameState.Fight:
 						AudioManager.Instance.ApplyBeat();
 						break;
 					default:
@@ -163,7 +175,7 @@ public class PlayerInput : MonoBehaviour
 
 				if (GameLogic.Instance.playState == GameLogic.PlayState.DanceMove)
 				{
-					Player.Instance.EndDanceMove();
+					Player.Instance.EndDanceMove(true);
 				}
 			}
 		}
@@ -192,6 +204,16 @@ public class PlayerInput : MonoBehaviour
 		acceptor.danceMoveSet = new List<MovementDirectionUtilities.MovementDirection>();
 	}
 
+	public void AddDanceMoveSymbol(MovementDirectionUtilities.MovementDirection movementDirection)
+	{
+		GameUI.Instance.symbolHolder.AddSymbol(movementDirection, acceptor.danceMoveSet.Count);
+		acceptor.danceMoveSet.Add(movementDirection);
+		if (acceptor.danceMoveSet.Count == maxDanceMoveSymbols)
+		{
+			Player.Instance.EndDanceMove(false);
+		}
+	}
+
 	public void DanceMoveFinished()
 	{
 		Player.Instance.ApplyDanceMoveSet(acceptor.danceMoveSet);
@@ -199,11 +221,11 @@ public class PlayerInput : MonoBehaviour
 
 	public void MissedBeat()
 	{
-		if (GameLogic.Instance.playState == GameLogic.PlayState.DanceMove)
+		Debug.LogError("Missed the Beat!");
+		if (GameLogic.Instance.playState == GameLogic.PlayState.DanceMove && acceptor.FirstBattleInputDone)
 		{
 			Player.Instance.ReceiveInput(MovementDirectionUtilities.MovementDirection.None);
 		}
-		Debug.LogError("Missed the Beat!");
 	}
 
 	public static PlayerInput Instance { get; private set; }
