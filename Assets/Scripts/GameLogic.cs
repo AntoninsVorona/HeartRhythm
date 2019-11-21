@@ -111,7 +111,7 @@ public class GameLogic : MonoBehaviour
 	{
 		PlayerInput.Instance.acceptor.IgnoreInput = true;
 		PlayerInput.Instance.acceptor.FirstBattleInputDone = false;
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(0.5f);
 		GameUI.Instance.danceMoveUI.Deactivate();
 		if (backToIdle)
 		{
