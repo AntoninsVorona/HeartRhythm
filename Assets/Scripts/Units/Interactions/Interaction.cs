@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class Interaction : ScriptableObject
@@ -26,11 +27,21 @@ public abstract class Interaction : ScriptableObject
 		public MovementDirectionUtilities.MovementDirection danceMove;
 	}
 
+	[Serializable]
+	public class Visibility
+	{
+		public bool visibleOnUI = true;
+
+		[DrawIf("visibleOnUI", false)]
+		public bool canBeUsedIfInvisible = true;
+	}
+
 	[HideInNormalInspector]
 	public Unit owner;
 
+	public Sprite interactionSymbol;
 	public string interactionName;
-	public bool visibleOnUI = true;
+	public Visibility visibility;
 	public List<DanceMoveXVisibility> danceMovesSetToApply;
 
 	public void Initialize(Unit owner)
@@ -45,17 +56,22 @@ public abstract class Interaction : ScriptableObject
 			return false;
 		}
 
+		if (!visibility.visibleOnUI && !visibility.canBeUsedIfInvisible)
+		{
+			return false;
+		}
+
+		if (danceMovesSetToApply.Any(d => d.lockedState.locked &&
+		                                  d.lockedState.lockedType == LockedType.OnlyWhenKnown))
+		{
+			return false;
+		}
+
 		for (var i = 0; i < danceMoveSet.Count; i++)
 		{
 			var danceMoveValue = danceMoveSet[i];
 			var danceMoveCheck = danceMovesSetToApply[i];
 			if (danceMoveValue != danceMoveCheck.danceMove)
-			{
-				return false;
-			}
-
-			if (danceMoveCheck.lockedState.locked &&
-			    danceMoveCheck.lockedState.lockedType == LockedType.OnlyWhenKnown)
 			{
 				return false;
 			}

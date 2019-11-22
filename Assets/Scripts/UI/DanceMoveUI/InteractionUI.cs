@@ -1,14 +1,17 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InteractionUI : MonoBehaviour
 {
+	public Image interactionSymbol;
 	public TextMeshProUGUI interactionName;
 	public SymbolHolder symbolHolder;
 
-	public void Initialize(string name, int symbolCount)
+	public void Initialize(Sprite symbol, string name, int symbolCount)
 	{
-		interactionName.text = $"{name}:";
+		interactionSymbol.sprite = symbol;
+		interactionName.text = name;
 		symbolHolder.Initialize(symbolCount);
 	}
 
