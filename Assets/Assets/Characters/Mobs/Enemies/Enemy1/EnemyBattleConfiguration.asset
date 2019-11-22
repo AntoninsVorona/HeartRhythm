@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb508d1a6c5844ada457ade13ed7cdab, type: 3}
+  m_Name: EnemyBattleConfiguration
+  m_EditorClassIdentifier: 
+  customGrid: {fileID: 1503893512459512492, guid: b16beec829bb61d418c25996f3b378c5,
+    type: 3}
+  mobController: {fileID: 4717967992082239081, guid: b8d0ef56c489fd241a6b9640e382f950,
+    type: 3}
+  playerSpawnPoint: {x: 0, y: 0}

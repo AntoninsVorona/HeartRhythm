@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameLogic : MonoBehaviour
 {
@@ -31,29 +32,52 @@ public class GameLogic : MonoBehaviour
 	}
 
 	private GameState gameState;
+	private Scene realWorldScene;
+	private Vector2Int previousPlayerPosition;
+	private Scene battleScene;
 	private Music fightMusic;
+
+	[HideInNormalInspector]
+	public SceneObjects currentSceneObjects;
+
+	[HideInNormalInspector]
+	public Enemy fightingWith;
 
 	[HideInInspector]
 	public List<Observer> gameStateObservers = new List<Observer>();
 
 	[HideInInspector]
 	public PlayState playState = PlayState.Basic;
-	
+
 	[Header("Debug")]
-	public Music testMusic;
+	public Music testFightMusic;
 
 	public bool inputDebugEnabled;
 
 	private void Awake()
 	{
-		Instance = this;
+		if (Instance == null)
+		{
+			Instance = this;
+			DontDestroyOnLoad(this);
+		}
+		else if (Instance != this)
+		{
+			Destroy(gameObject);
+			return;
+		}
+
+		FindRequiredComponents(SceneManager.GetActiveScene());
+		currentSceneObjects.Activate();
 	}
 
-	private void Start()
+	private IEnumerator Start()
 	{
-		fightMusic = testMusic;
 		CurrentGameState = GameState.Peace;
 		GameStateChanged();
+		yield return null;
+		currentSceneObjects.currentWorld.InitializeWorld();
+		GameUI.Instance.StopLoading();
 	}
 
 	private void GameStateChanged()
@@ -73,10 +97,99 @@ public class GameLogic : MonoBehaviour
 		gameStateObservers.ForEach(o => o?.NotifyBegin());
 	}
 
-	public void BeginFight(Enemy enemy)
+	public void BeginFightMode(Music fightMusic)
 	{
-		fightMusic = enemy.fightMusic;
+		this.fightMusic = fightMusic;
 		CurrentGameState = GameState.Fight;
+	}
+
+	public IEnumerator GoToEnemyRealm(Enemy enemy)
+	{
+		fightingWith = enemy;
+		PreLoadSequence();
+		realWorldScene = SceneManager.GetActiveScene();
+		previousPlayerPosition = Player.Instance.CurrentPosition;
+		currentSceneObjects.currentWorld.UnoccupyTargetTile(previousPlayerPosition);
+		if (!battleScene.isLoaded)
+		{
+			yield return LoadBattleScene();
+		}
+
+		ActivateSceneAndGetComponents(battleScene);
+		if (currentSceneObjects.currentMobController)
+		{
+			Destroy(currentSceneObjects.currentMobController.gameObject);
+		}
+
+		yield return currentSceneObjects.currentWorld.InitializeWorld(enemy.battleConfiguration);
+		var mobController = Instantiate(enemy.battleConfiguration.mobController, currentSceneObjects.transform);
+		currentSceneObjects.currentMobController = mobController;
+		Player.Instance.Initialize(enemy.battleConfiguration.playerSpawnPoint);
+		PostLoadSequence();
+	}
+
+	public void BackToRealWorld()
+	{
+		PreLoadSequence();
+		ActivateSceneAndGetComponents(realWorldScene);
+		currentSceneObjects.currentMobController.ResumeAllMobs();
+		Player.Instance.Initialize(previousPlayerPosition);
+		PostLoadSequence();
+	}
+
+	private void PreLoadSequence()
+	{
+		PlayerInput.Instance.acceptor.DontReceiveAnyInput = true;
+		PlayerInput.Instance.acceptor.FirstBattleInputDone = false;
+		GameUI.Instance.StartLoading();
+		currentSceneObjects.currentMobController.StopAllActionsBeforeLoading();
+		currentSceneObjects.Deactivate();
+	}
+
+	private void ActivateSceneAndGetComponents(Scene scene)
+	{
+		SceneManager.SetActiveScene(scene);
+		FindRequiredComponents(scene);
+		currentSceneObjects.Activate();
+	}
+
+	private static void PostLoadSequence()
+	{
+		PlayerInput.Instance.acceptor.DontReceiveAnyInput = false;
+		GameUI.Instance.StopLoading();
+	}
+
+	private IEnumerator LoadBattleScene()
+	{
+		var sceneAsync = SceneManager.LoadSceneAsync("BattleScene", LoadSceneMode.Additive);
+		yield return new WaitUntil(() => sceneAsync.isDone);
+		battleScene = SceneManager.GetSceneByName("BattleScene");
+		var rootGameObjects = battleScene.GetRootGameObjects();
+		foreach (var rootGameObject in rootGameObjects)
+		{
+			if (rootGameObject.gameObject.name == "SceneObjects")
+			{
+				rootGameObject.GetComponent<SceneObjects>().Deactivate();
+				break;
+			}
+		}
+	}
+
+	private void FindRequiredComponents(Scene activeScene)
+	{
+		currentSceneObjects = FindObjectOfType<SceneObjects>();
+		if (!currentSceneObjects)
+		{
+			var rootGameObjects = activeScene.GetRootGameObjects();
+			foreach (var rootGameObject in rootGameObjects)
+			{
+				if (rootGameObject.gameObject.name == "SceneObjects")
+				{
+					currentSceneObjects = rootGameObject.GetComponent<SceneObjects>();
+					break;
+				}
+			}
+		}
 	}
 
 	public void ToggleMode()
@@ -84,7 +197,7 @@ public class GameLogic : MonoBehaviour
 		switch (CurrentGameState)
 		{
 			case GameState.Peace:
-				CurrentGameState = GameState.Fight;
+				BeginFightMode(testFightMusic);
 				break;
 			case GameState.Fight:
 				CurrentGameState = GameState.Peace;
@@ -117,6 +230,7 @@ public class GameLogic : MonoBehaviour
 		{
 			Player.Instance.BackToIdleAnimation();
 		}
+
 		GameCamera.Instance.ZoomOut();
 		yield return new WaitForSeconds(0.5f);
 		PlayerInput.Instance.DanceMoveFinished();

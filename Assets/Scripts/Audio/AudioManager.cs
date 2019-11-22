@@ -21,7 +21,16 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         isCurrentlyPlaying = false;
     }
 
@@ -146,7 +155,7 @@ public class AudioManager : MonoBehaviour
     {
         if (GameLogic.Instance.playState == GameLogic.PlayState.Basic)
         {
-            MobController.Instance.MakeMobsActions();
+            GameLogic.Instance.currentSceneObjects.currentMobController.MakeMobsActions();
         }
     }
 

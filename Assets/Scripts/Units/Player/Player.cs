@@ -12,7 +12,17 @@ public class Player : Unit
 
 	private void Awake()
 	{
-		Instance = this;
+		if (Instance == null)
+		{
+			Instance = this;
+			DontDestroyOnLoad(this);
+		}
+		else if (Instance != this)
+		{
+			Destroy(gameObject);
+			return;
+		}
+
 		animator = GetComponent<Animator>();
 	}
 
@@ -102,7 +112,7 @@ public class Player : Unit
 		{
 			restoreInput = interaction.ApplyInteraction();
 		}
-		
+
 		PlayerInput.Instance.acceptor.IgnoreInput = !restoreInput;
 	}
 
@@ -115,6 +125,11 @@ public class Player : Unit
 	public void BackToIdleAnimation()
 	{
 		animator.SetTrigger(IDLE_TRIGGER);
+	}
+
+	protected override MonoBehaviour CoroutineStarter()
+	{
+		return this;
 	}
 
 	public static Player Instance { get; private set; }

@@ -6,7 +6,7 @@ public class Obstacle : Unit
 
 	public override void Die()
 	{
-		World.Instance.UnoccupyTargetTile(currentPosition);
+		GameLogic.Instance.currentSceneObjects.currentWorld.UnoccupyTargetTile(currentPosition);
 		Destroy(gameObject);
 	}
 }

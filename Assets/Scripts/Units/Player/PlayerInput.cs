@@ -20,16 +20,18 @@ public class PlayerInput : MonoBehaviour
 		public bool WaitingForPlayerInput { get; set; }
 		public bool FirstBattleInputDone { get; set; }
 		public bool IgnoreInput { get; set; }
+		public bool DontReceiveAnyInput { get; set; }
+
 		public WrongInputType lastWrongInput;
 		public List<MovementDirectionUtilities.MovementDirection> danceMoveSet;
 
 		public bool AcceptInput()
 		{
-			if (IgnoreInput)
+			if (IgnoreInput || DontReceiveAnyInput)
 			{
 				return false;
 			}
-			
+
 			switch (GameLogic.Instance.CurrentGameState)
 			{
 				case GameLogic.GameState.Peace:
@@ -55,12 +57,22 @@ public class PlayerInput : MonoBehaviour
 	}
 
 	public int maxDanceMoveSymbols = 2;
+
 	[HideInNormalInspector]
 	public Acceptor acceptor;
 
 	private void Awake()
 	{
-		Instance = this;
+		if (Instance == null)
+		{
+			Instance = this;
+			DontDestroyOnLoad(this);
+		}
+		else if (Instance != this)
+		{
+			Destroy(gameObject);
+			return;
+		}
 	}
 
 	private void Start()
@@ -70,112 +82,115 @@ public class PlayerInput : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetKey(KeyCode.R))
+		if (!acceptor.DontReceiveAnyInput)
 		{
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-		}
-
-		int horizontal;
-		int vertical;
-		switch (GameLogic.Instance.CurrentGameState)
-		{
-			case GameLogic.GameState.Peace when GameLogic.Instance.playState == GameLogic.PlayState.Basic:
-				horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
-				vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
-				break;
-			case GameLogic.GameState.Peace when GameLogic.Instance.playState == GameLogic.PlayState.DanceMove:
-			case GameLogic.GameState.Fight:
-				horizontal = Input.GetButtonDown("Left")
-					? -1
-					: Input.GetButtonDown("Right")
-						? 1
-						: 0;
-				vertical = Input.GetButtonDown("Down")
-					? -1
-					: Input.GetButtonDown("Up")
-						? 1
-						: 0;
-				break;
-			default:
-				throw new ArgumentOutOfRangeException();
-		}
-
-		var movementDirection = MovementDirectionUtilities.DirectionFromInput(horizontal, vertical);
-		if (movementDirection != MovementDirectionUtilities.MovementDirection.None)
-		{
-			if (acceptor.AcceptInput())
+			if (Input.GetKey(KeyCode.R))
 			{
-				if (GameLogic.Instance.inputDebugEnabled)
-				{
-					Debug.Log(
-						$"Time: {AudioManager.Instance.time} | Music: {AudioManager.Instance.musicAudioSource.time}"
-					);
-				}
-				
-				switch (GameLogic.Instance.CurrentGameState)
-				{
-					case GameLogic.GameState.Peace:
-						break;
-					case GameLogic.GameState.Fight:
-						acceptor.ReceivedInputThisTimeFrame = true;
-						acceptor.FirstBattleInputDone = true;
-						break;
-					default:
-						throw new ArgumentOutOfRangeException();
-				}
-				
-				Player.Instance.ReceiveInput(movementDirection);
+				SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+			}
 
-				switch (GameLogic.Instance.CurrentGameState)
+			int horizontal;
+			int vertical;
+			switch (GameLogic.Instance.CurrentGameState)
+			{
+				case GameLogic.GameState.Peace when GameLogic.Instance.playState == GameLogic.PlayState.Basic:
+					horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
+					vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
+					break;
+				case GameLogic.GameState.Peace when GameLogic.Instance.playState == GameLogic.PlayState.DanceMove:
+				case GameLogic.GameState.Fight:
+					horizontal = Input.GetButtonDown("Left")
+						? -1
+						: Input.GetButtonDown("Right")
+							? 1
+							: 0;
+					vertical = Input.GetButtonDown("Down")
+						? -1
+						: Input.GetButtonDown("Up")
+							? 1
+							: 0;
+					break;
+				default:
+					throw new ArgumentOutOfRangeException();
+			}
+
+			var movementDirection = MovementDirectionUtilities.DirectionFromInput(horizontal, vertical);
+			if (movementDirection != MovementDirectionUtilities.MovementDirection.None)
+			{
+				if (acceptor.AcceptInput())
 				{
-					case GameLogic.GameState.Peace:
-						break;
-					case GameLogic.GameState.Fight:
-						AudioManager.Instance.ApplyBeat();
-						break;
-					default:
-						throw new ArgumentOutOfRangeException();
+					if (GameLogic.Instance.inputDebugEnabled)
+					{
+						Debug.Log(
+							$"Time: {AudioManager.Instance.time} | Music: {AudioManager.Instance.musicAudioSource.time}"
+						);
+					}
+
+					switch (GameLogic.Instance.CurrentGameState)
+					{
+						case GameLogic.GameState.Peace:
+							break;
+						case GameLogic.GameState.Fight:
+							acceptor.ReceivedInputThisTimeFrame = true;
+							acceptor.FirstBattleInputDone = true;
+							break;
+						default:
+							throw new ArgumentOutOfRangeException();
+					}
+
+					Player.Instance.ReceiveInput(movementDirection);
+
+					switch (GameLogic.Instance.CurrentGameState)
+					{
+						case GameLogic.GameState.Peace:
+							break;
+						case GameLogic.GameState.Fight:
+							AudioManager.Instance.ApplyBeat();
+							break;
+						default:
+							throw new ArgumentOutOfRangeException();
+					}
+				}
+				else
+				{
+					switch (GameLogic.Instance.CurrentGameState)
+					{
+						case GameLogic.GameState.Peace:
+							break;
+						case GameLogic.GameState.Fight:
+							switch (acceptor.lastWrongInput)
+							{
+								case WrongInputType.InvalidInputTime:
+									Debug.LogError("Invalid Input Time!");
+									break;
+								case WrongInputType.AlreadyReceivedAnInput:
+									Debug.LogError("Already Received an Input during this Beat!");
+									break;
+								default:
+									throw new ArgumentOutOfRangeException();
+							}
+
+							break;
+						default:
+							throw new ArgumentOutOfRangeException();
+					}
 				}
 			}
-			else
+			else if (Input.GetKeyDown(KeyCode.Space))
 			{
-				switch (GameLogic.Instance.CurrentGameState)
+				if (acceptor.AcceptInput())
 				{
-					case GameLogic.GameState.Peace:
-						break;
-					case GameLogic.GameState.Fight:
-						switch (acceptor.lastWrongInput)
-						{
-							case WrongInputType.InvalidInputTime:
-								Debug.LogError("Invalid Input Time!");
-								break;
-							case WrongInputType.AlreadyReceivedAnInput:
-								Debug.LogError("Already Received an Input during this Beat!");
-								break;
-							default:
-								throw new ArgumentOutOfRangeException();
-						}
+					if (GameLogic.Instance.inputDebugEnabled)
+					{
+						Debug.Log(
+							$"Time: {AudioManager.Instance.time} | Music: {AudioManager.Instance.musicAudioSource.time}"
+						);
+					}
 
-						break;
-					default:
-						throw new ArgumentOutOfRangeException();
-				}
-			}
-		}
-		else if (Input.GetKeyDown(KeyCode.Space))
-		{
-			if (acceptor.AcceptInput())
-			{
-				if (GameLogic.Instance.inputDebugEnabled)
-				{
-					Debug.Log(
-						$"Time: {AudioManager.Instance.time} | Music: {AudioManager.Instance.musicAudioSource.time}"
-					);
-				}
-
-				if (GameLogic.Instance.playState == GameLogic.PlayState.DanceMove)
-				{
-					Player.Instance.EndDanceMove(true);
+					if (GameLogic.Instance.playState == GameLogic.PlayState.DanceMove)
+					{
+						Player.Instance.EndDanceMove(true);
+					}
 				}
 			}
 		}

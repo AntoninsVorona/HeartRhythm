@@ -22,7 +22,16 @@ public class GameCamera : MonoBehaviour
 
 	private void Awake()
 	{
-		Instance = this;
+		if (Instance == null)
+		{
+			Instance = this;
+			DontDestroyOnLoad(this);
+		}
+		else if (Instance != this)
+		{
+			Destroy(gameObject);
+			return;
+		}
 		camera = GetComponent<Camera>();
 		pixelPerfectCamera = GetComponent<PixelPerfectCamera>();
 	}

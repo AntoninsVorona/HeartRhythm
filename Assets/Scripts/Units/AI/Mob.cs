@@ -79,14 +79,15 @@ public class Mob : Unit
 	public MovementSettings movementSettings;
 	public bool initializeSelf = true;
 	private float lastMovementDuringPeaceMode;
-	private Coroutine peaceModeMovementCoroutine;
+	[HideInInspector]
+	public Coroutine peaceModeMovementCoroutine;
 
 	protected override void Start()
 	{
 		base.Start();
 		if (initializeSelf)
 		{
-			MobController.Instance.InitializeMob(this, spawnPoint);
+			GameLogic.Instance.currentSceneObjects.currentMobController.InitializeMob(this, spawnPoint);
 		}
 	}
 
@@ -97,7 +98,7 @@ public class Mob : Unit
 		    && movementSettings.moveDuringPeaceMode
 		    && peaceModeMovementCoroutine == null)
 		{
-			peaceModeMovementCoroutine = StartCoroutine(PeaceModeMovement());
+			peaceModeMovementCoroutine = CoroutineStarter().StartCoroutine(PeaceModeMovement());
 		}
 	}
 
@@ -132,8 +133,8 @@ public class Mob : Unit
 
 	public override void Die()
 	{
-		World.Instance.UnoccupyTargetTile(currentPosition);
-		MobController.Instance.RemoveMob(this);
+		GameLogic.Instance.currentSceneObjects.currentWorld.UnoccupyTargetTile(currentPosition);
+		GameLogic.Instance.currentSceneObjects.currentMobController.RemoveMob(this);
 		gameObject.SetActive(false);
 	}
 
@@ -146,7 +147,7 @@ public class Mob : Unit
 		base.PeaceState();
 		if (movementSettings.moveDuringPeaceMode && peaceModeMovementCoroutine == null)
 		{
-			peaceModeMovementCoroutine = StartCoroutine(PeaceModeMovement());
+			peaceModeMovementCoroutine = CoroutineStarter().StartCoroutine(PeaceModeMovement());
 		}
 	}
 

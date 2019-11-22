@@ -5,11 +5,6 @@ public class MobController : MonoBehaviour
 {
     private readonly List<Mob> allMobs = new List<Mob>();
 
-    private void Awake()
-    {
-        Instance = this;
-    }
-
     public void MakeMobsActions()
     {
         allMobs.ForEach(m => m.MakeAction());
@@ -26,10 +21,29 @@ public class MobController : MonoBehaviour
         allMobs.Add(mob);
     }
 
+    public void ResumeAllMobs()
+    {
+        allMobs.ForEach(m => m.Initialize(m.CurrentPosition));
+    }
+
+    public void StopAllActionsBeforeLoading()
+    {
+        StopAllCoroutines();
+        var mobs = new List<Mob>(allMobs);
+        foreach (var mob in mobs)
+        {
+            if (!mob)
+            {
+                allMobs.Remove(mob);
+                continue;
+            }
+
+            mob.peaceModeMovementCoroutine = null;
+        }
+    }
+
     public void RemoveMob(Mob mob)
     {
         allMobs.Remove(mob);
     }
-
-    public static MobController Instance { get; private set; }
 }
