@@ -135,6 +135,11 @@ public class Mob : Unit
 	{
 		GameLogic.Instance.currentSceneObjects.currentWorld.UnoccupyTargetTile(currentPosition);
 		GameLogic.Instance.currentSceneObjects.currentMobController.RemoveMob(this);
+		if (peaceModeMovementCoroutine != null)
+		{
+			CoroutineStarter().StopCoroutine(peaceModeMovementCoroutine);
+			peaceModeMovementCoroutine = null;
+		}
 		gameObject.SetActive(false);
 	}
 
