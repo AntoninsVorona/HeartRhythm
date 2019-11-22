@@ -153,26 +153,29 @@ public class PlayerInput : MonoBehaviour
 				}
 				else
 				{
-					switch (GameLogic.Instance.CurrentGameState)
+					if (GameLogic.Instance.inputDebugEnabled)
 					{
-						case GameLogic.GameState.Peace:
-							break;
-						case GameLogic.GameState.Fight:
-							switch (acceptor.lastWrongInput)
-							{
-								case WrongInputType.InvalidInputTime:
-									Debug.LogError("Invalid Input Time!");
-									break;
-								case WrongInputType.AlreadyReceivedAnInput:
-									Debug.LogError("Already Received an Input during this Beat!");
-									break;
-								default:
-									throw new ArgumentOutOfRangeException();
-							}
+						switch (GameLogic.Instance.CurrentGameState)
+						{
+							case GameLogic.GameState.Peace:
+								break;
+							case GameLogic.GameState.Fight:
+								switch (acceptor.lastWrongInput)
+								{
+									case WrongInputType.InvalidInputTime:
+										Debug.LogError("Invalid Input Time!");
+										break;
+									case WrongInputType.AlreadyReceivedAnInput:
+										Debug.LogError("Already Received an Input during this Beat!");
+										break;
+									default:
+										throw new ArgumentOutOfRangeException();
+								}
 
-							break;
-						default:
-							throw new ArgumentOutOfRangeException();
+								break;
+							default:
+								throw new ArgumentOutOfRangeException();
+						}
 					}
 				}
 			}
@@ -237,7 +240,11 @@ public class PlayerInput : MonoBehaviour
 
 	public void MissedBeat()
 	{
-		Debug.LogError("Missed the Beat!");
+		if (GameLogic.Instance.inputDebugEnabled)
+		{
+			Debug.LogError("Missed the Beat!");
+		}
+
 		if (GameLogic.Instance.playState == GameLogic.PlayState.DanceMove && acceptor.FirstBattleInputDone)
 		{
 			Player.Instance.ReceiveInput(MovementDirectionUtilities.MovementDirection.None);
