@@ -1,36 +1,30 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class Beat : MonoBehaviour
 {
-    private Vector2 startPosition;
-    private float distanceToTravel;
-    private float distanceTraveled;
-    private bool goingRight;
+	public void Initialize(Vector2 startPosition, Vector2 endPosition, double startTime, double endTime)
+	{
+		StartCoroutine(Move(startPosition, endPosition, startTime, endTime));
+	}
 
-    public void Initialize(Vector2 startPosition, float distanceToTravel, bool goingRight)
-    {
-        this.startPosition = startPosition;
-        ((RectTransform) transform).anchoredPosition = this.startPosition;
-        this.distanceToTravel = distanceToTravel;
-        this.goingRight = goingRight;
-    }
+	private IEnumerator Move(Vector2 startPosition, Vector2 endPosition, double startTime, double endTime)
+	{
+		((RectTransform) transform).anchoredPosition = startPosition;
+		float t = 0;
+		while (t < 1)
+		{
+			t = Mathf.InverseLerp((float) startTime, (float) endTime, (float) AudioSettings.dspTime);
 
-    private void Update()
-    {
-        var delta = GameUI.Instance.beatController.distancePerSecond * Time.deltaTime;
-        distanceTraveled += delta;
-        if (goingRight)
-        {
-            ((RectTransform) transform).anchoredPosition += new Vector2(delta, 0);
-        }
-        else
-        {
-            ((RectTransform) transform).anchoredPosition -= new Vector2(delta, 0);
-        }
+			((RectTransform) transform).anchoredPosition = Vector3.Lerp(startPosition, endPosition, t);
+			if (t >= 1)
+			{
+				GameUI.Instance.beatController.BeatPlayed(this);
+				yield break;
+			}
 
-        if (distanceTraveled >= distanceToTravel)
-        {
-            GameUI.Instance.beatController.BeatPlayed(this);
-        }
-    }
+			yield return null;
+		}
+	}
 }

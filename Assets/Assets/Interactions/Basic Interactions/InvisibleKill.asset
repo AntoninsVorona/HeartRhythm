@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: InvisibleKill
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
+  interactionSymbol: {fileID: 0}
   interactionName: Invisible Kill
-  visibleOnUI: 0
+  visibility:
+    visibleOnUI: 0
+    canBeUsedIfInvisible: 1
   danceMovesSetToApply:
   - lockedState:
       locked: 0

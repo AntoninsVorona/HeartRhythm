@@ -17,7 +17,6 @@ public class PlayerInput : MonoBehaviour
 		public bool PlayerReadyForInput { get; set; }
 		public bool BeatIsValid { get; set; }
 		public bool ReceivedInputThisTimeFrame { get; set; }
-		public bool WaitingForPlayerInput { get; set; }
 		public bool FirstBattleInputDone { get; set; }
 		public bool IgnoreInput { get; set; }
 		public bool DontReceiveAnyInput { get; set; }
@@ -122,7 +121,7 @@ public class PlayerInput : MonoBehaviour
 					if (GameLogic.Instance.inputDebugEnabled)
 					{
 						Debug.Log(
-							$"Time: {AudioManager.Instance.time} | Music: {AudioManager.Instance.musicAudioSource.time}"
+							$"Music: {AudioManager.Instance.musicAudioSource.time}"
 						);
 					}
 
@@ -186,7 +185,7 @@ public class PlayerInput : MonoBehaviour
 					if (GameLogic.Instance.inputDebugEnabled)
 					{
 						Debug.Log(
-							$"Time: {AudioManager.Instance.time} | Music: {AudioManager.Instance.musicAudioSource.time}"
+							$"Music: {AudioManager.Instance.musicAudioSource.time}"
 						);
 					}
 
@@ -210,7 +209,7 @@ public class PlayerInput : MonoBehaviour
 			case GameLogic.GameState.Fight:
 				acceptor.BeatIsValid = false;
 				acceptor.ReceivedInputThisTimeFrame = false;
-				acceptor.WaitingForPlayerInput = false;
+				acceptor.FirstBattleInputDone = false;
 				break;
 			default:
 				throw new ArgumentOutOfRangeException(nameof(newGameState), newGameState, null);

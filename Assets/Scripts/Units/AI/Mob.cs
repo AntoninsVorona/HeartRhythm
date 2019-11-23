@@ -161,7 +161,7 @@ public class Mob : Unit
 		base.FightState();
 		if (peaceModeMovementCoroutine != null)
 		{
-			StopCoroutine(peaceModeMovementCoroutine);
+			CoroutineStarter().StopCoroutine(peaceModeMovementCoroutine);
 			peaceModeMovementCoroutine = null;
 		}
 	}
