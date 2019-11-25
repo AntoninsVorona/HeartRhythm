@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6817434154386870604}
   - component: {fileID: 6054631082356023041}
   - component: {fileID: 4674359352553226870}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ItemSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 8217195485255609300}
   - component: {fileID: 7682396869456103692}
   - component: {fileID: 4334847699687657167}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 3724634613984205350}
   - component: {fileID: 7050595602508687217}
   - component: {fileID: 8145599756585449983}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ItemCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

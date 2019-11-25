@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -48,5 +49,18 @@ public abstract class InventorySlot : MonoBehaviour
 		{
 			itemAmount.gameObject.SetActive(false);
 		}
+	}
+
+	public void EnableIcon()
+	{
+		if (itemInside)
+		{
+			spriteIcon.gameObject.SetActive(true);
+		}
+	}
+
+	public void DisableIcon()
+	{
+		spriteIcon.gameObject.SetActive(false);
 	}
 }

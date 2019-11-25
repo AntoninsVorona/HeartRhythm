@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 65456495729599158}
   - component: {fileID: 65456495729599159}
   - component: {fileID: 65456495729599157}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SymbolHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 65456496329889124}
   - component: {fileID: 65456496329889123}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InteractionsHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 65456496450006903}
   - component: {fileID: 65456496450006902}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DanceMoveUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 65456497340701993}
   - component: {fileID: 65456497340701991}
   - component: {fileID: 65456497340701992}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InteractionsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 65456497637027343}
   - component: {fileID: 65456497637027341}
   - component: {fileID: 65456497637027342}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: VisibleInteractions
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -7,9 +7,10 @@ public class Player : Unit
 {
 	private static readonly int FINISH_DANCE_MOVE_TRIGGER = Animator.StringToHash("FinishDanceMove");
 	private static readonly int IDLE_TRIGGER = Animator.StringToHash("Idle");
+	[HideInNormalInspector]
+	public Inventory inventory;
 	private Unit interactingWithUnit;
 	private Animator animator;
-	private Inventory inventory;
 
 	private void Awake()
 	{

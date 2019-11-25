@@ -46,7 +46,78 @@ public class Inventory : MonoBehaviour
 	private void LoadItemInformation()
 	{
 		itemInformation = new List<ItemInformation>();
-		itemInformation.Add(new ItemInformation(ItemManager.Instance.GetItemByName("Sword"),
-			new List<SlotItemInformation> {new SlotItemInformation(0, 2)}));
+		AddItem("Sword", 0, 2);
+		AddItem("Sword", 1, 5555);
+	}
+
+	private void AddItem(string itemName, int slotId, int itemCount)
+	{
+		AddItem(ItemManager.Instance.GetItemByName(itemName), slotId, itemCount);
+	}
+
+	private void AddItem(Item item, int slotId, int itemCount)
+	{
+		var itemExists = itemInformation.FirstOrDefault(i => i.item == item);
+		if (itemExists == null)
+		{
+			itemInformation.Add(new ItemInformation(item,
+				new List<SlotItemInformation> {new SlotItemInformation(slotId, itemCount)}));
+			GameUI.Instance.uiInventory.AddNewItem(item, slotId, itemCount);
+		}
+		else
+		{
+			var slotItemInformationExists = itemExists.slotItemInformation.FirstOrDefault(si => si.slotId == slotId);
+			if (slotItemInformationExists != null)
+			{
+				slotItemInformationExists.itemCount += itemCount;
+				GameUI.Instance.uiInventory.UpdateItemCount(slotId, slotItemInformationExists.itemCount);
+			}
+			else
+			{
+				itemExists.slotItemInformation.Add(new SlotItemInformation(slotId, itemCount));
+				GameUI.Instance.uiInventory.AddNewItem(item, slotId, itemCount);
+			}
+		}
+	}
+
+	public void ChangeSlots(InventorySlot draggedInventorySlot, InventorySlot slotToExchangeWith)
+	{
+		var oldSlotId = draggedInventorySlot.slotId;
+		var newSlotId = slotToExchangeWith.slotId;
+		var draggedItem = draggedInventorySlot.itemInside;
+		var draggedSlotInformation = GetSlotItemInformation(GetItemInformation(draggedItem), oldSlotId);
+		var draggedItemCount = draggedSlotInformation.itemCount;
+		var slotToExchangeItem = slotToExchangeWith.itemInside;
+		if (slotToExchangeItem)
+		{
+			var slotToExchangeInformation = GetSlotItemInformation(GetItemInformation(slotToExchangeItem), newSlotId);
+			var slotToExchangeItemCount = slotToExchangeInformation.itemCount;
+			slotToExchangeInformation.slotId = oldSlotId;
+			draggedInventorySlot.Initialize(slotToExchangeItem, slotToExchangeItemCount);
+		}
+		else
+		{
+			draggedInventorySlot.Initialize();
+		}
+
+		draggedSlotInformation.slotId = newSlotId;
+		slotToExchangeWith.Initialize(draggedItem, draggedItemCount);
+	}
+
+	private SlotItemInformation GetSlotItemInformation(Item item, int slotId)
+	{
+		var information = GetItemInformation(item);
+		return GetSlotItemInformation(information, slotId);
+	}
+
+	private SlotItemInformation GetSlotItemInformation(ItemInformation information, int slotId)
+	{
+		var slotItemInformation = information.slotItemInformation.FirstOrDefault(si => si.slotId == slotId);
+		return slotItemInformation;
+	}
+
+	private ItemInformation GetItemInformation(Item item)
+	{
+		return itemInformation.FirstOrDefault(i => i.item == item);
 	}
 }

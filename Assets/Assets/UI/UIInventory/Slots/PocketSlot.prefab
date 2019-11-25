@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4223815806908702143}
   - component: {fileID: 8651030799786542969}
   - component: {fileID: 2952610813310579617}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PocketSlotHeader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,17 +281,17 @@ PrefabInstance:
     - target: {fileID: 8145599756585449983, guid: f65016a00c68cdc4ab0e119296e4040c,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 8145599756585449983, guid: f65016a00c68cdc4ab0e119296e4040c,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8145599756585449983, guid: f65016a00c68cdc4ab0e119296e4040c,
         type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8145599756585449983, guid: f65016a00c68cdc4ab0e119296e4040c,
+        type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8145599756585449983, guid: f65016a00c68cdc4ab0e119296e4040c,
         type: 3}

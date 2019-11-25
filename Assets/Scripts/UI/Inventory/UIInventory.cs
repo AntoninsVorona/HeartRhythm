@@ -7,11 +7,13 @@ public class UIInventory : MonoBehaviour
 {
 	[HideInNormalInspector]
 	public bool open;
+
 	[SerializeField]
 	private List<InventorySlot> inventorySlots;
 
 	[SerializeField]
 	private Transform backpackSlotHolder;
+
 	[SerializeField]
 	private GameObject backpackSlotsObject;
 
@@ -19,7 +21,7 @@ public class UIInventory : MonoBehaviour
 	[Header("Prefabs")]
 	[SerializeField]
 	private BackpackSlot backpackSlotPrefab;
-	
+
 	public void InitializeSlots(Backpack currentBackpack)
 	{
 		if (currentBackpack.amountOfItems > 0)
@@ -58,13 +60,9 @@ public class UIInventory : MonoBehaviour
 
 	public BackpackSlot AddBackpackSlot()
 	{
-		return Instantiate(backpackSlotPrefab, backpackSlotHolder.transform);
-	}
-
-	public void RemoveSlot(BackpackSlot slot)
-	{
-		inventorySlots.Remove(slot);
-		Destroy(slot.gameObject);
+		var backpackSlot = Instantiate(backpackSlotPrefab, backpackSlotHolder.transform);
+		inventorySlots.Add(backpackSlot);
+		return backpackSlot;
 	}
 
 	public void Toggle()
@@ -78,16 +76,31 @@ public class UIInventory : MonoBehaviour
 			Open();
 		}
 	}
-	
+
 	public void Open()
 	{
 		gameObject.SetActive(true);
 		open = true;
 	}
-	
+
 	public void Close()
 	{
 		gameObject.SetActive(false);
 		open = false;
+	}
+
+	public void AddNewItem(Item item, int slotId, int itemCount)
+	{
+		GetSlotById(slotId).Initialize(item, itemCount);
+	}
+
+	public void UpdateItemCount(int slotId, int itemCount)
+	{
+		GetSlotById(slotId).UpdateItemAmount(itemCount);
+	}
+
+	public InventorySlot GetSlotById(int slotId)
+	{
+		return inventorySlots.FirstOrDefault(i => i.slotId == slotId);
 	}
 }

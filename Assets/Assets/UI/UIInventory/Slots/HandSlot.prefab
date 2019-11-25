@@ -1,21 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &3169690126395783201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1483814658586813647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11cd22b63e8a43f2bc747808b1575bde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slotId: 0
-  itemInside: {fileID: 0}
-  spriteIcon: {fileID: 3695508998519163952}
-  itemAmount: {fileID: 188384928835303353}
 --- !u!1 &2487588165634353073
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,7 +11,7 @@ GameObject:
   - component: {fileID: 4414002511734290868}
   - component: {fileID: 7679229996698258546}
   - component: {fileID: 6176662321286397372}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HandSlotHeader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,6 +155,22 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3169690126395783201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483814658586813647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11cd22b63e8a43f2bc747808b1575bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotId: 0
+  itemInside: {fileID: 0}
+  spriteIcon: {fileID: 3695508998519163952}
+  itemAmount: {fileID: 188384928835303353}
 --- !u!1001 &8329333613653610054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -281,22 +281,22 @@ PrefabInstance:
     - target: {fileID: 8145599756585449983, guid: f65016a00c68cdc4ab0e119296e4040c,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 8145599756585449983, guid: f65016a00c68cdc4ab0e119296e4040c,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8145599756585449983, guid: f65016a00c68cdc4ab0e119296e4040c,
         type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8145599756585449983, guid: f65016a00c68cdc4ab0e119296e4040c,
+        type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8145599756585449983, guid: f65016a00c68cdc4ab0e119296e4040c,
         type: 3}
       propertyPath: m_firstOverflowCharacterIndex
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8145599756585449983, guid: f65016a00c68cdc4ab0e119296e4040c,
         type: 3}
