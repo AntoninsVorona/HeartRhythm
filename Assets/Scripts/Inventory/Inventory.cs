@@ -147,7 +147,7 @@ public class Inventory : MonoBehaviour
 		var oldSlotId = draggedInventorySlot.slotId;
 		var newSlotId = slotToExchangeWith.slotId;
 		var draggedItem = draggedInventorySlot.itemInside;
-		var draggedSlotInformation = GetSlotItemInformation(GetItemInformation(draggedItem), oldSlotId);
+		var draggedSlotInformation = GetSlotItemInformation(draggedItem, oldSlotId);
 		var draggedItemCount = draggedSlotInformation.itemCount;
 		var slotToExchangeItem = slotToExchangeWith.itemInside;
 		if (slotToExchangeItem)
