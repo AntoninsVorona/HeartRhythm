@@ -38,16 +38,78 @@ public class Inventory : MonoBehaviour
 
 	public void Initialize()
 	{
-		LoadItemInformation();
 		GameUI.Instance.uiInventory.InitializeSlots(currentBackpack);
+		LoadItemInformation();
 		GameUI.Instance.uiInventory.InitializeItems(itemInformation);
 	}
 
 	private void LoadItemInformation()
 	{
 		itemInformation = new List<ItemInformation>();
-		AddItem("Sword", 0, 2);
-		AddItem("Sword", 1, 5555);
+//		AddItem("Sword", 0, 1);
+//		AddItem("Sword", 1, 5555);
+	}
+
+	public (bool pickedUpAll, int amountLeft) PickUpItem(Item item, int amount)
+	{
+		var (pickedUpAll, amountCanBePicked) = CanPickUpItem(item, amount);
+
+		AddItem(item, amountCanBePicked);
+
+		return (pickedUpAll, amount - amountCanBePicked);
+	}
+
+	private (bool canPickUpAll, int amount) CanPickUpItem(Item item, int amount)
+	{
+		var information = GetItemInformation(item);
+		var canAdd = 0;
+		if (information != null)
+		{
+			var canAddToExisting = information.slotItemInformation.Sum(slotItemInformation =>
+				item.maxStackCount - slotItemInformation.itemCount);
+			if (canAddToExisting >= amount)
+			{
+				return (true, amount);
+			}
+
+			canAdd = canAddToExisting;
+		}
+
+		canAdd += FreeSlotsAmount() * item.maxStackCount;
+		return canAdd >= amount ? (true, amount) : (false, canAdd);
+	}
+
+	private void AddItem(Item item, int itemCount)
+	{
+		var information = GetItemInformation(item);
+		if (information != null)
+		{
+			foreach (var slotItemInformation in information.slotItemInformation)
+			{
+				var canAdd = item.maxStackCount - slotItemInformation.itemCount;
+				if (canAdd >= itemCount)
+				{
+					AddItem(item, slotItemInformation.slotId, itemCount);
+					return;
+				}
+
+				AddItem(item, slotItemInformation.slotId, canAdd);
+				itemCount -= canAdd;
+			}
+		}
+
+		while (itemCount > 0)
+		{
+			var freeSlot = GameUI.Instance.uiInventory.GetFreeSlot();
+			if (!freeSlot)
+			{
+				Debug.LogError($"Something is wrong. Not enough space to add item {item.itemName}!");
+				return;
+			}
+
+			AddItem(item, freeSlot.slotId, itemCount - item.maxStackCount > 0 ? item.maxStackCount : itemCount);
+			itemCount -= item.maxStackCount;
+		}
 	}
 
 	private void AddItem(string itemName, int slotId, int itemCount)
@@ -119,5 +181,10 @@ public class Inventory : MonoBehaviour
 	private ItemInformation GetItemInformation(Item item)
 	{
 		return itemInformation.FirstOrDefault(i => i.item == item);
+	}
+
+	private int FreeSlotsAmount()
+	{
+		return GameUI.Instance.uiInventory.FreeSlotsAmount();
 	}
 }

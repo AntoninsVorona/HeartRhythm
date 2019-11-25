@@ -131,6 +131,12 @@ public class Player : Unit
 		animator.SetTrigger(IDLE_TRIGGER);
 	}
 
+	public (bool pickedUpAll, int amountLeft) PickUpItem(Item item, int amount)
+	{
+		//TODO Display cant pick up
+		return inventory.PickUpItem(item, amount);
+	}
+
 	protected override MonoBehaviour CoroutineStarter()
 	{
 		return this;

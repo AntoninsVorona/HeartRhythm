@@ -87,7 +87,7 @@ public class Mob : Unit
 		base.Start();
 		if (initializeSelf)
 		{
-			GameLogic.Instance.currentSceneObjects.currentMobController.InitializeMob(this, spawnPoint);
+			GameLogic.Instance.currentSceneObjects.currentMobManager.InitializeMob(this, spawnPoint);
 		}
 	}
 
@@ -133,8 +133,8 @@ public class Mob : Unit
 
 	public override void Die()
 	{
-		GameLogic.Instance.currentSceneObjects.currentWorld.UnoccupyTargetTile(currentPosition);
-		GameLogic.Instance.currentSceneObjects.currentMobController.RemoveMob(this);
+		UnoccupyTile();
+		GameLogic.Instance.currentSceneObjects.currentMobManager.RemoveMob(this);
 		if (peaceModeMovementCoroutine != null)
 		{
 			CoroutineStarter().StopCoroutine(peaceModeMovementCoroutine);

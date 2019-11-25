@@ -143,7 +143,7 @@ public class AudioManager : MonoBehaviour
 	{
 		if (GameLogic.Instance.playState == GameLogic.PlayState.Basic)
 		{
-			GameLogic.Instance.currentSceneObjects.currentMobController.MakeMobsActions();
+			GameLogic.Instance.currentSceneObjects.currentMobManager.MakeMobsActions();
 		}
 	}
 

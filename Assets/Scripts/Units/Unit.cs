@@ -86,7 +86,7 @@ public abstract class Unit : MonoBehaviour
 		var (cantMoveReason, unit) = GameLogic.Instance.currentSceneObjects.currentWorld.CanWalk(newPosition);
 		if (cantMoveReason == GameTile.CantMoveReason.None || force)
 		{
-			GameLogic.Instance.currentSceneObjects.currentWorld.UnoccupyTargetTile(currentPosition);
+			UnoccupyTile();
 			currentPosition = newPosition;
 			if (force)
 			{
@@ -97,7 +97,7 @@ public abstract class Unit : MonoBehaviour
 				CoroutineStarter().StartCoroutine(MovementSequence(newPosition));
 			}
 
-			GameLogic.Instance.currentSceneObjects.currentWorld.OccupyTargetTile(currentPosition, this);
+			OccupyTile();
 		}
 		else
 		{
@@ -114,6 +114,16 @@ public abstract class Unit : MonoBehaviour
 					throw new ArgumentOutOfRangeException();
 			}
 		}
+	}
+
+	protected virtual void OccupyTile()
+	{
+		GameLogic.Instance.currentSceneObjects.currentWorld.OccupyTargetTile(currentPosition, this);
+	}
+
+	protected virtual  void UnoccupyTile()
+	{
+		GameLogic.Instance.currentSceneObjects.currentWorld.UnoccupyTargetTile(currentPosition);
 	}
 
 	protected abstract void InteractWithObject(Unit unit);
@@ -243,7 +253,7 @@ public abstract class Unit : MonoBehaviour
 
 	protected virtual MonoBehaviour CoroutineStarter()
 	{
-		return GameLogic.Instance.currentSceneObjects.currentMobController;
+		return GameLogic.Instance.currentSceneObjects.currentMobManager;
 	}
 
 	public abstract void Die();

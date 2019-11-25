@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class MobController : MonoBehaviour
+public class MobManager : MonoBehaviour
 {
     private readonly List<Mob> allMobs = new List<Mob>();
 

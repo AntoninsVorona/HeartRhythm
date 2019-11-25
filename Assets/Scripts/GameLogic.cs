@@ -116,14 +116,14 @@ public class GameLogic : MonoBehaviour
 		}
 
 		ActivateSceneAndGetComponents(battleScene);
-		if (currentSceneObjects.currentMobController)
+		if (currentSceneObjects.currentMobManager)
 		{
-			Destroy(currentSceneObjects.currentMobController.gameObject);
+			Destroy(currentSceneObjects.currentMobManager.gameObject);
 		}
 
 		yield return currentSceneObjects.currentWorld.InitializeWorld(enemy.battleConfiguration);
-		var mobController = Instantiate(enemy.battleConfiguration.mobController, currentSceneObjects.transform);
-		currentSceneObjects.currentMobController = mobController;
+		var mobController = Instantiate(enemy.battleConfiguration.mobManager, currentSceneObjects.transform);
+		currentSceneObjects.currentMobManager = mobController;
 		Player.Instance.Initialize(enemy.battleConfiguration.playerSpawnPoint);
 		PostLoadSequence();
 	}
@@ -132,7 +132,7 @@ public class GameLogic : MonoBehaviour
 	{
 		PreLoadSequence();
 		ActivateSceneAndGetComponents(realWorldScene);
-		currentSceneObjects.currentMobController.ResumeAllMobs();
+		currentSceneObjects.currentMobManager.ResumeAllMobs();
 		Player.Instance.Initialize(previousPlayerPosition);
 		PostLoadSequence();
 	}
@@ -142,7 +142,7 @@ public class GameLogic : MonoBehaviour
 		PlayerInput.Instance.acceptor.DontReceiveAnyInput = true;
 		PlayerInput.Instance.acceptor.FirstBattleInputDone = false;
 		GameUI.Instance.StartLoading();
-		currentSceneObjects.currentMobController.StopAllActionsBeforeLoading();
+		currentSceneObjects.currentMobManager.StopAllActionsBeforeLoading();
 		currentSceneObjects.Deactivate();
 	}
 

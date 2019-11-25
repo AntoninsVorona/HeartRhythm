@@ -103,4 +103,33 @@ public class UIInventory : MonoBehaviour
 	{
 		return inventorySlots.FirstOrDefault(i => i.slotId == slotId);
 	}
+
+	public int FreeSlotsAmount()
+	{
+		return inventorySlots.Count(i => !i.itemInside);
+	}
+
+	public InventorySlot GetFreeSlot()
+	{
+		var freeSlots = inventorySlots.Where(i => !i.itemInside).ToList();
+		if (freeSlots.Count == 0)
+		{
+			return null;
+		}
+
+		var backpackSlots = freeSlots.Where(i => i is BackpackSlot).OrderBy(i => i.slotId).ToList();
+		if (backpackSlots.Count > 0)
+		{
+			return backpackSlots.First();
+		}
+
+		var pocketSlots = freeSlots.Where(i => i is PocketSlot).OrderBy(i => i.slotId).ToList();
+		if (pocketSlots.Count > 0)
+		{
+			return pocketSlots.First();
+		}
+
+		var handSlots = freeSlots.Where(i => i is HandSlot).OrderBy(i => i.slotId).ToList();
+		return handSlots.First();
+	}
 }

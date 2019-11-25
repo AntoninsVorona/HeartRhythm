@@ -4,63 +4,61 @@ using UnityEngine;
 
 public class GameTile : MonoBehaviour
 {
-    public enum CantMoveReason
-    {
-        None = 0,
-        NonWalkable = 1,
-        Obstacles = 2,
-        Unit = 3
-    }
+	public enum CantMoveReason
+	{
+		None = 0,
+		NonWalkable = 1,
+		Obstacles = 2,
+		Unit = 3
+	}
 
-    public bool walkable = true;
-    private List<Obstacle> obstaclesOnTile;
-    private Unit occupyingUnit = null;
+	public bool walkable = true;
+	private Obstacle obstacleOnTile;
+	public Obstacle ObstacleOnTile => obstacleOnTile;
+	private Unit occupyingUnit = null;
 
-    public void Initialize(List<Obstacle> obstaclesOnTile)
-    {
-        this.obstaclesOnTile = obstaclesOnTile;
-    }
+	public void Initialize(Obstacle obstacleOnTile)
+	{
+		this.obstacleOnTile = obstacleOnTile;
+	}
 
-    public (CantMoveReason, Unit) CanWalk()
-    {
-        if (!walkable)
-        {
-            return (CantMoveReason.NonWalkable, null);
-        }
+	public (CantMoveReason, Unit) CanWalk()
+	{
+		if (!walkable)
+		{
+			return (CantMoveReason.NonWalkable, null);
+		}
 
-        if (obstaclesOnTile.Count > 0)
-        {
-            return (CantMoveReason.Obstacles, obstaclesOnTile.First());
-        }
+		if (obstacleOnTile)
+		{
+			return (CantMoveReason.Obstacles, obstacleOnTile);
+		}
 
-        if (occupyingUnit)
-        {
-            return (CantMoveReason.Unit, occupyingUnit);
-        }
+		if (occupyingUnit)
+		{
+			return (CantMoveReason.Unit, occupyingUnit);
+		}
 
-        return (CantMoveReason.None, null);
-    }
+		return (CantMoveReason.None, null);
+	}
 
-    public void AddObstacleOnTop(Obstacle newObstacle)
-    {
-        obstaclesOnTile.Add(newObstacle);
-    }
+	public void BecomeOccupied(Unit unit)
+	{
+		occupyingUnit = unit;
+	}
 
-    public void RemoveObstacle(Obstacle obstacle)
-    {
-        if (obstaclesOnTile.Contains(obstacle))
-        {
-            obstaclesOnTile.Remove(obstacle);
-        }
-    }
+	public void Unoccupied()
+	{
+		occupyingUnit = null;
+	}
 
-    public void BecomeOccupied(Unit unit)
-    {
-        occupyingUnit = unit;
-    }
+	public void AddObstacle(Obstacle obstacle)
+	{
+		obstacleOnTile = obstacle;
+	}
 
-    public void Unoccupied()
-    {
-        occupyingUnit = null;
-    }
+	public void RemoveObstacle()
+	{
+		obstacleOnTile = null;
+	}
 }

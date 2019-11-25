@@ -40,17 +40,20 @@ public class World : MonoBehaviour
 
 	private void InitializeTileMap()
 	{
-		var obstacles = new Dictionary<Vector2Int, List<Obstacle>>();
+		var obstacles = new Dictionary<Vector2Int, Obstacle>();
 		var allObstacles = GetComponentsInChildren<Obstacle>();
 		foreach (var obstacle in allObstacles)
 		{
 			var position = Vector2Int.FloorToInt(obstacle.transform.position);
 			if (!obstacles.ContainsKey(position))
 			{
-				obstacles.Add(position, new List<Obstacle>());
+				obstacles.Add(position, obstacle);
 			}
-
-			obstacles[position].Add(obstacle);
+			else
+			{
+				Debug.LogError(
+					$"Obstacle {obstacle.name} cannot be placed on position {position}! This position already contains an obstacle!");
+			}
 		}
 
 		gameTiles = new GameTiles();
@@ -60,7 +63,7 @@ public class World : MonoBehaviour
 		{
 			var position = Vector2Int.FloorToInt(tile.transform.position);
 			gameTiles.Add(position, tile);
-			tile.Initialize(obstacles.ContainsKey(position) ? obstacles[position] : new List<Obstacle>());
+			tile.Initialize(obstacles.ContainsKey(position) ? obstacles[position] : null);
 		}
 
 		tileMapInitialized = true;
@@ -109,15 +112,35 @@ public class World : MonoBehaviour
 		}
 	}
 
-	public void RemoveTargetObstacle(Vector2Int currentPosition, Obstacle obstacle)
+	public void AddObstacle(Vector2Int currentPosition, Obstacle obstacle)
 	{
 		if (gameTiles.ContainsKey(currentPosition))
 		{
-			gameTiles[currentPosition].RemoveObstacle(obstacle);
+			if (gameTiles[currentPosition].ObstacleOnTile)
+			{
+				Debug.LogError(
+					$"Obstacle {obstacle.name} cannot be placed on position {currentPosition}! This position already contains an obstacle!");
+			}
+			else
+			{
+				gameTiles[currentPosition].AddObstacle(obstacle);
+			}
 		}
 		else
 		{
-			Debug.LogError($"Can't remove target obstacle. No such tile exist: {currentPosition}");
+			Debug.LogWarning($"Can't place target obstacle. No such tile exist: {currentPosition}");
+		}
+	}
+
+	public void RemoveObstacle(Vector2Int currentPosition)
+	{
+		if (gameTiles.ContainsKey(currentPosition))
+		{
+			gameTiles[currentPosition].RemoveObstacle();
+		}
+		else
+		{
+			Debug.LogWarning($"Can't remove target obstacle. No such tile exist: {currentPosition}");
 		}
 	}
 }

@@ -6,6 +6,6 @@ using UnityEngine;
 public class BattleConfiguration : ScriptableObject
 {
 	public Grid customGrid;
-	public MobController mobController;
+	public MobManager mobManager;
 	public Vector2Int playerSpawnPoint;
 }

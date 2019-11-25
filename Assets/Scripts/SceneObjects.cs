@@ -3,7 +3,8 @@
 public class SceneObjects : MonoBehaviour
 {
 	public World currentWorld;
-	public MobController currentMobController;
+	public MobManager currentMobManager;
+	public ObstacleManager currentObstacleManager;
 
 	public void Activate()
 	{
