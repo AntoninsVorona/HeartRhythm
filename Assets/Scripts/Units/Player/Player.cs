@@ -9,6 +9,7 @@ public class Player : Unit
 	private static readonly int IDLE_TRIGGER = Animator.StringToHash("Idle");
 	private Unit interactingWithUnit;
 	private Animator animator;
+	private Inventory inventory;
 
 	private void Awake()
 	{
@@ -30,6 +31,8 @@ public class Player : Unit
 	{
 		base.Start();
 		Initialize(spawnPoint);
+		inventory = GetComponent<Inventory>();
+		inventory.Initialize();
 	}
 
 	protected override void ForceMove()

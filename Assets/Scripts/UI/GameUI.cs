@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
+	public UIInventory uiInventory;
 	public BeatController beatController;
 	public GameObject loading;
 	public DanceMoveUI danceMoveUI;
@@ -24,6 +25,7 @@ public class GameUI : MonoBehaviour
 
 		beatController.Deactivate();
 		danceMoveUI.Deactivate();
+		uiInventory.Close();
 	}
 
 	private void Start()
@@ -54,6 +56,11 @@ public class GameUI : MonoBehaviour
 	public void StopLoading()
 	{
 		loading.SetActive(false);
+	}
+
+	public void ToggleInventory()
+	{
+		uiInventory.Toggle();
 	}
 
 	public static GameUI Instance { get; private set; }

@@ -83,9 +83,9 @@ public class PlayerInput : MonoBehaviour
 	{
 		if (!acceptor.DontReceiveAnyInput)
 		{
-			if (Input.GetKey(KeyCode.R))
+			if (Input.GetButtonUp("Inventory"))
 			{
-				SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+				GameUI.Instance.ToggleInventory();
 			}
 
 			int horizontal;

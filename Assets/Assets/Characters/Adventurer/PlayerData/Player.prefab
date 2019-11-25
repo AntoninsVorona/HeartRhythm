@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 7766726581833781658}
   - component: {fileID: 7766726581833781661}
   - component: {fileID: 7766726581833781659}
+  - component: {fileID: 4711959353734150832}
   - component: {fileID: 7766726581833781656}
   m_Layer: 0
   m_Name: Player
@@ -201,6 +202,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDanceMoveSymbols: 3
+--- !u!114 &4711959353734150832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7766726581833781660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac9eda42b9c4bc2b0d89f0ec2ceca23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentBackpack: {fileID: 11400000, guid: 91ba9ec25fd5b704ea924ff0a8f729c2, type: 2}
 --- !u!95 &7766726581833781656
 Animator:
   serializedVersion: 3

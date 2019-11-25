@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3710416115441813073}
   - component: {fileID: 3710416115441813072}
+  - component: {fileID: 8470184119793174323}
   m_Layer: 0
   m_Name: GameLogic
   m_TagString: Untagged
@@ -43,7 +44,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22599035bd794d729a83e5623ca3a675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSceneObjects: {fileID: 0}
+  fightingWith: {fileID: 0}
   gameStateObservers: []
   playState: 0
   testFightMusic: {fileID: 11400000, guid: 60eaf042f444f644ba3113a34593d82f, type: 2}
   inputDebugEnabled: 0
+--- !u!114 &8470184119793174323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3710416115441813075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ac2f7de6d647659d5826fd07de259d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
