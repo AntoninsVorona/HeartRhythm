@@ -78,6 +78,25 @@ public class UIInventory : MonoBehaviour
 
 	private void Update()
 	{
+		if (itemActionsUI.dropInProgress)
+		{
+			if (Input.GetButtonDown("Cancel"))
+			{
+				itemActionsUI.DropCancel();
+			}
+			else if (Input.GetButtonDown("Submit"))
+			{
+				itemActionsUI.DropInputDone();
+			}
+		}
+		else
+		{
+			if (Input.GetButtonDown("Cancel"))
+			{
+				Close();
+			}
+		}
+		
 		if (Input.GetMouseButtonDown(0))
 		{
 			var slotHit = GetSlotHit();

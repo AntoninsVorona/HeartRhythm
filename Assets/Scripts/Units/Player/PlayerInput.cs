@@ -26,7 +26,7 @@ public class PlayerInput : MonoBehaviour
 
 		public bool AcceptInput()
 		{
-			if (IgnoreInput || DontReceiveAnyInput)
+			if (IgnoreInput || DontReceiveAnyInput || GameUI.Instance.uiInventory.open)
 			{
 				return false;
 			}
