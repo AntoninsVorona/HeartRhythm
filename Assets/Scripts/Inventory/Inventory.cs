@@ -46,17 +46,39 @@ public class Inventory : MonoBehaviour
 	private void LoadItemInformation()
 	{
 		itemInformation = new List<ItemInformation>();
-//		AddItem("Sword", 0, 1);
+		AddItem("Sword", 0, 1);
 //		AddItem("Sword", 1, 5555);
 	}
 
 	public (bool pickedUpAll, int amountLeft) PickUpItem(Item item, int amount)
 	{
+		if (amount <= 0)
+		{
+			Debug.LogError("Can't pickup less than or equals to 0 items!");
+			return (false, 0);
+		}
+
 		var (pickedUpAll, amountCanBePicked) = CanPickUpItem(item, amount);
 
 		AddItem(item, amountCanBePicked);
 
 		return (pickedUpAll, amount - amountCanBePicked);
+	}
+
+	public bool DropItem(InventorySlot slot, int amount)
+	{
+		return DropItem(slot.itemInside, slot.slotId, amount);
+	}
+	
+	public bool DropItem(Item item, int slotId, int amount)
+	{
+		if (amount <= 0)
+		{
+			Debug.LogError("Can't drop less than or equals to 0 items!");
+			return false;
+		}
+
+		return RemoveItem(item, slotId, amount);
 	}
 
 	private (bool canPickUpAll, int amount) CanPickUpItem(Item item, int amount)
@@ -142,6 +164,41 @@ public class Inventory : MonoBehaviour
 		}
 	}
 
+	private bool RemoveItem(string itemName, int slotId, int itemCount)
+	{
+		return RemoveItem(ItemManager.Instance.GetItemByName(itemName), slotId, itemCount);
+	}
+
+	private bool RemoveItem(Item item, int slotId, int itemCount)
+	{
+		var itemExists = itemInformation.FirstOrDefault(i => i.item == item);
+		if (itemExists != null)
+		{
+			var slotItemInformationExists = itemExists.slotItemInformation.FirstOrDefault(si => si.slotId == slotId);
+			if (slotItemInformationExists != null)
+			{
+				slotItemInformationExists.itemCount -= itemCount;
+				if (slotItemInformationExists.itemCount > 0)
+				{
+					GameUI.Instance.uiInventory.UpdateItemCount(slotId, slotItemInformationExists.itemCount);
+					return false;
+				}
+
+				itemExists.slotItemInformation.Remove(slotItemInformationExists);
+				GameUI.Instance.uiInventory.RemoveItem(slotId);
+				return true;
+			}
+
+			Debug.LogError($"Can't remove {item.name} from slot {slotId} because it doesn't exist there!");
+		}
+		else
+		{
+			Debug.LogError($"Can't remove {item.name} because it doesn't exist in the inventory!");
+		}
+
+		return false;
+	}
+
 	public void ChangeSlots(InventorySlot draggedInventorySlot, InventorySlot slotToExchangeWith)
 	{
 		var oldSlotId = draggedInventorySlot.slotId;
@@ -186,5 +243,10 @@ public class Inventory : MonoBehaviour
 	private int FreeSlotsAmount()
 	{
 		return GameUI.Instance.uiInventory.FreeSlotsAmount();
+	}
+
+	public int ItemsInSlot(InventorySlot slot)
+	{
+		return GetSlotItemInformation(slot.itemInside, slot.slotId).itemCount;
 	}
 }

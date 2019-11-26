@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   itemName: Sword
-  maxStackCount: 1
+  maxStackCount: 2
   spriteIcon: {fileID: -68751727340038015, guid: 5d754b855d99c2c4b918fe9c40b8c0e6,
     type: 3}
+  accessibleActions: 000000000100000002000000

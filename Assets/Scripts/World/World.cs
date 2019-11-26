@@ -70,11 +70,30 @@ public class World : MonoBehaviour
 		tileMapObservers.ForEach(o => o?.NotifyBegin());
 	}
 
+	public GameTile GetTile(Vector2Int position)
+	{
+		return gameTiles.ContainsKey(position)
+			? gameTiles[position]
+			: null;
+	}
+
+	public GameTile GetTileInDirection(Vector2Int position, MovementDirectionUtilities.MovementDirection direction)
+	{
+		var vectorFromDirection = MovementDirectionUtilities.VectorFromDirection(direction);
+		return GameLogic.Instance.currentSceneObjects.currentWorld.GetTile(position + vectorFromDirection);
+	}
+
 	public (GameTile.CantMoveReason, Unit) CanWalk(Vector2Int position)
 	{
 		return !gameTiles.ContainsKey(position)
 			? (GameTile.CantMoveReason.NonWalkable, null)
 			: gameTiles[position].CanWalk();
+	}
+	
+	public (GameTile.CantMoveReason, Unit) CanWalkOnTileInDirection(Vector2Int position, MovementDirectionUtilities.MovementDirection direction)
+	{
+		var endPosition = position + MovementDirectionUtilities.VectorFromDirection(direction);
+		return CanWalk(endPosition);
 	}
 
 	private void OnDrawGizmos()

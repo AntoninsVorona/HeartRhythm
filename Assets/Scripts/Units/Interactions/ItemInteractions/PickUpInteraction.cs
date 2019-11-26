@@ -10,8 +10,6 @@ public class PickUpInteraction : Interaction
 	{
 		var itemOnGround = (ItemOnGround) owner;
 		var (pickedUpAll, amountLeft) = Player.Instance.PickUpItem(itemOnGround.item, itemOnGround.amount);
-		Debug.Log(pickedUpAll);
-		Debug.Log(amountLeft);
 		if (pickedUpAll)
 		{
 			itemOnGround.Die();

@@ -7,8 +7,7 @@ public class Player : Unit
 {
 	private static readonly int FINISH_DANCE_MOVE_TRIGGER = Animator.StringToHash("FinishDanceMove");
 	private static readonly int IDLE_TRIGGER = Animator.StringToHash("Idle");
-	[HideInNormalInspector]
-	public Inventory inventory;
+	private Inventory inventory;
 	private Unit interactingWithUnit;
 	private Animator animator;
 
@@ -134,12 +133,53 @@ public class Player : Unit
 	public (bool pickedUpAll, int amountLeft) PickUpItem(Item item, int amount)
 	{
 		//TODO Display cant pick up
-		return inventory.PickUpItem(item, amount);
+		if (amount > 0)
+		{
+			return inventory.PickUpItem(item, amount);
+		}
+
+		Debug.LogError("Can't pick up less than or equals to 0 items!");
+		
+		return (false, 0);
+	}
+
+	public bool DropItem(InventorySlot selectedInventorySlot, int amount)
+	{
+		if (amount > 0)
+		{
+			var (canSpawn, movementDirection) = GameLogic.Instance.currentSceneObjects.currentObstacleManager.CanSpawnAroundLocation(currentPosition);
+			if (canSpawn)
+			{
+				var item = selectedInventorySlot.itemInside;
+				var droppedAll = inventory.DropItem(selectedInventorySlot, amount);
+				var location = currentPosition + MovementDirectionUtilities.VectorFromDirection(movementDirection);
+				GameLogic.Instance.currentSceneObjects.currentObstacleManager.SpawnItemOnGround(item, amount, location);
+				return droppedAll;
+			}
+
+			//TODO Display cant drop
+			Debug.LogError("No Drop Location!");
+			return false;
+		}
+
+		Debug.LogError("Can't drop less than or equals to 0 items!");
+
+		return false;
 	}
 
 	protected override MonoBehaviour CoroutineStarter()
 	{
 		return this;
+	}
+
+	public void ChangeSlots(InventorySlot draggedInventorySlot, InventorySlot slotHit)
+	{
+		inventory.ChangeSlots(draggedInventorySlot, slotHit);
+	}
+
+	public int ItemsInSlot(InventorySlot slot)
+	{
+		return inventory.ItemsInSlot(slot);
 	}
 
 	public static Player Instance { get; private set; }
