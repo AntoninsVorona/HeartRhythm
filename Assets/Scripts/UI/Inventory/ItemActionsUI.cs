@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,12 +8,12 @@ using UnityEngine.UI;
 public class ItemActionsUI : MonoBehaviour
 {
 	private const string DROP_AMOUNT_TEXT = "Drop: {0}";
-	
+
 	public enum ItemActionType
 	{
-		Drop = 0,
+		Move = 0,
 		Use = 1,
-		Move = 2
+		Drop = 2
 	}
 
 	[Serializable]
@@ -37,6 +38,10 @@ public class ItemActionsUI : MonoBehaviour
 
 	[HideInNormalInspector]
 	public bool dropInProgress;
+
+	[HideInNormalInspector]
+	public bool menuActive;
+
 	private int maxDropCount;
 
 	public void Close()
@@ -44,19 +49,35 @@ public class ItemActionsUI : MonoBehaviour
 		actionHolder.gameObject.SetActive(false);
 		inputSliderHolder.SetActive(false);
 		dropInProgress = false;
+		menuActive = false;
 	}
 
 	public void OpenActionsFor(InventorySlot slot)
 	{
 		var item = slot.itemInside;
 		maxDropCount = Player.Instance.ItemsInSlot(slot);
+		Button first = null;
 		foreach (var button in actionXButtons)
 		{
-			button.Value.gameObject.SetActive(item.accessibleActions.Contains(button.Key));
+			var contains = item.accessibleActions.Contains(button.Key);
+			if (contains)
+			{
+				button.Value.gameObject.SetActive(true);
+				if (!first)
+				{
+					first = button.Value;
+				}
+			}
+			else
+			{
+				button.Value.gameObject.SetActive(false);
+			}
 		}
 
 		actionHolder.position = slot.transform.position;
 		actionHolder.gameObject.SetActive(true);
+		menuActive = true;
+		EventSystem.current.SetSelectedGameObject(first.gameObject);
 	}
 
 	public void MovePressed()
@@ -72,6 +93,7 @@ public class ItemActionsUI : MonoBehaviour
 	public void DropPressed()
 	{
 		actionHolder.gameObject.SetActive(false);
+		menuActive = false;
 		inputSliderHolder.SetActive(true);
 		inputSlider.maxValue = maxDropCount;
 		inputSlider.value = maxDropCount;

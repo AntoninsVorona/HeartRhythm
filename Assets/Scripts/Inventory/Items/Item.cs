@@ -9,11 +9,11 @@ public class Item : ScriptableObject
 	public string itemName;
 	public int maxStackCount = 1;
 	public Sprite spriteIcon;
-	
+
 	public List<ItemActionsUI.ItemActionType> accessibleActions = new List<ItemActionsUI.ItemActionType>
 	{
-		ItemActionsUI.ItemActionType.Drop,
+		ItemActionsUI.ItemActionType.Move,
 		ItemActionsUI.ItemActionType.Use,
-		ItemActionsUI.ItemActionType.Move
+		ItemActionsUI.ItemActionType.Drop
 	};
 }

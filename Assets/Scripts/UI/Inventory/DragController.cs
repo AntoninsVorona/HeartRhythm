@@ -30,20 +30,18 @@ public class DragController : MonoBehaviour
 		draggedItemTransform.position = Input.mousePosition;
 	}
 
-	public bool OnEndDrag()
+	public InventorySlot OnEndDrag()
 	{
-		var swappedPlaced = false;
 		var slotHit = UIInventory.GetSlotHit();
 		if (slotHit)
 		{
 			DraggedIntoSlot(slotHit);
-			swappedPlaced = true;
 		}
 
 		draggedInventorySlot.EnableIcon();
 		draggedInventorySlot = null;
 		draggedItemTransform.gameObject.SetActive(false);
-		return swappedPlaced;
+		return slotHit;
 	}
 
 	public void StopDrag()

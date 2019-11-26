@@ -242,13 +242,15 @@ MonoBehaviour:
   actionXButtons:
     m_keys: 000000000100000002000000
     m_values:
-    - {fileID: 1234825040030708435}
-    - {fileID: 309797877314027135}
     - {fileID: 6734400241467093209}
+    - {fileID: 309797877314027135}
+    - {fileID: 1234825040030708435}
   actionHolder: {fileID: 3106737022898974022}
   inputSliderHolder: {fileID: 2268356444332882456}
   inputSlider: {fileID: 3618166114631046750}
   dropAmount: {fileID: 5476633288194766936}
+  dropInProgress: 0
+  menuActive: 0
 --- !u!1 &1980520859640036065
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,7 +1062,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.5188679, g: 0.34525523, b: 0.11503203, a: 1}
     m_HighlightedColor: {r: 0.7735849, g: 0.49767905, b: 0.12771447, a: 1}
     m_PressedColor: {r: 0.990566, g: 0.5933597, b: 0.06074228, a: 1}
-    m_SelectedColor: {r: 0.5188679, g: 0.34525523, b: 0.11503203, a: 1}
+    m_SelectedColor: {r: 0.7735849, g: 0.49767905, b: 0.12771447, a: 1}
     m_DisabledColor: {r: 0.3584906, g: 0.2855316, b: 0.18770026, a: 0.23137255}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1189,7 +1191,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.5188679, g: 0.34525523, b: 0.11503203, a: 1}
     m_HighlightedColor: {r: 0.7735849, g: 0.49767905, b: 0.12771447, a: 1}
     m_PressedColor: {r: 0.990566, g: 0.5933597, b: 0.06074228, a: 1}
-    m_SelectedColor: {r: 0.5188679, g: 0.34525523, b: 0.11503203, a: 1}
+    m_SelectedColor: {r: 0.7735849, g: 0.49767905, b: 0.12771447, a: 1}
     m_DisabledColor: {r: 0.3584906, g: 0.2855316, b: 0.18770026, a: 0.23137255}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1318,7 +1320,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.5188679, g: 0.34525523, b: 0.11503203, a: 1}
     m_HighlightedColor: {r: 0.7735849, g: 0.49767905, b: 0.12771447, a: 1}
     m_PressedColor: {r: 0.990566, g: 0.5933597, b: 0.06074228, a: 1}
-    m_SelectedColor: {r: 0.5188679, g: 0.34525523, b: 0.11503203, a: 1}
+    m_SelectedColor: {r: 0.7735849, g: 0.49767905, b: 0.12771447, a: 1}
     m_DisabledColor: {r: 0.3584906, g: 0.2855316, b: 0.18770026, a: 0.23137255}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1

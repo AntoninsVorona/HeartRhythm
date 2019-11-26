@@ -89,77 +89,92 @@ public class UIInventory : MonoBehaviour
 				itemActionsUI.DropInputDone();
 			}
 		}
-		else
+		else if (itemActionsUI.menuActive)
 		{
 			if (Input.GetButtonDown("Cancel"))
 			{
-				Close();
-			}
-		}
-		
-		if (Input.GetMouseButtonDown(0))
-		{
-			var slotHit = GetSlotHit();
-			if (slotHit && slotHit.itemInside)
-			{
 				itemActionsUI.Close();
-				SelectInventorySlot(slotHit);
-				dragTime = Time.time + TIME_HOLD_TO_DRAG;
-			}
-			else
-			{
-				dragTime = float.MaxValue;
-				if (!ItemActionsHit())
-				{
-					itemActionsUI.Close();
-					DeselectInventorySlot();
-				}
 			}
 		}
 		else
 		{
-			if (Input.GetMouseButton(0))
-			{
-				if (Time.time >= dragTime)
-				{
-					if (dragController.draggedInventorySlot)
-					{
-						dragController.OnDrag();
-					}
-					else
-					{
-						itemActionsUI.Close();
-						dragController.BeginDrag(selectedInventorySlot);
-					}
-				}
-			}
-			else if (Input.GetMouseButtonUp(0))
-			{
-				if (dragController.draggedInventorySlot)
-				{
-					var swappedPlaces = dragController.OnEndDrag();
-					if (swappedPlaces)
-					{
-						DeselectInventorySlot();
-					}
-				}
-			}
-		}
-
-		if (Input.GetMouseButtonDown(1))
-		{
-			if (dragController.draggedInventorySlot)
-			{
-				dragController.StopDrag();
-				dragTime = float.MaxValue;
-			}
-			else
+			if (Input.GetMouseButtonDown(0))
 			{
 				var slotHit = GetSlotHit();
 				if (slotHit && slotHit.itemInside)
 				{
+					itemActionsUI.Close();
 					SelectInventorySlot(slotHit);
-					itemActionsUI.OpenActionsFor(slotHit);
+					dragTime = Time.time + TIME_HOLD_TO_DRAG;
+				}
+				else
+				{
+					dragTime = float.MaxValue;
+					if (!ItemActionsHit())
+					{
+						itemActionsUI.Close();
+						DeselectInventorySlot();
+					}
+				}
+			}
+			else
+			{
+				if (Input.GetMouseButton(0))
+				{
+					if (Time.time >= dragTime)
+					{
+						if (dragController.draggedInventorySlot)
+						{
+							dragController.OnDrag();
+						}
+						else
+						{
+							itemActionsUI.Close();
+							dragController.BeginDrag(selectedInventorySlot);
+						}
+					}
+				}
+				else if (Input.GetMouseButtonUp(0))
+				{
+					if (dragController.draggedInventorySlot)
+					{
+						var newSlot = dragController.OnEndDrag();
+						if (newSlot)
+						{
+							SelectInventorySlot(newSlot);
+						}
+					}
+				}
+			}
+
+			if (Input.GetMouseButtonDown(1))
+			{
+				if (dragController.draggedInventorySlot)
+				{
+					dragController.StopDrag();
+					dragTime = float.MaxValue;
+				}
+				else
+				{
+					var slotHit = GetSlotHit();
+					if (slotHit && slotHit.itemInside)
+					{
+						SelectInventorySlot(slotHit);
+						itemActionsUI.OpenActionsFor(slotHit);
+					}
+				}
+			}
+
+			if (Input.GetButtonDown("Cancel"))
+			{
+				Close();
+			}
+			else if (Input.GetButtonDown("Submit"))
+			{
+				if (selectedInventorySlot)
+				{
+					Debug.LogError("Open");
+					itemActionsUI.OpenActionsFor(selectedInventorySlot);
 				}
 			}
 		}
