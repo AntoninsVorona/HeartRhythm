@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: MoreSymbolsKill
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  interactionName: More Symbols Kill
-  visibleOnUI: 1
+  interactionDescription: 3 Symbols Kill
+  interactionSymbol: {fileID: 0}
+  visibility:
+    visibleOnUI: 1
+    canBeUsedIfInvisible: 1
   danceMovesSetToApply:
   - lockedState:
       locked: 0

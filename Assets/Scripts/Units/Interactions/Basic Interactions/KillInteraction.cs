@@ -10,4 +10,9 @@ public class KillInteraction : Interaction
         owner.Die();
         return true;
     }
+    
+    protected override object[] GetDescriptionParams()
+    {
+        return new object[0];
+    }
 }

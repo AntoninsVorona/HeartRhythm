@@ -71,7 +71,7 @@ public class DanceMoveUI : MonoBehaviour
 	public void InitializeInteractionUI(InteractionUI interactionUI, Interaction interaction)
 	{
 		var symbolCount = interaction.danceMovesSetToApply.Count;
-		interactionUI.Initialize(interaction.interactionSymbol, interaction.interactionName, symbolCount);
+		interactionUI.Initialize(interaction.interactionSymbol, interaction.GetDescription(), symbolCount);
 		if (!interaction.visibility.visibleOnUI)
 		{
 			interactionUI.gameObject.SetActive(false);

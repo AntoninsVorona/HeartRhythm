@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: FightInteraction
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
+  interactionDescription: Fight
   interactionSymbol: {fileID: 0}
-  interactionName: Fight
   visibility:
     visibleOnUI: 1
     canBeUsedIfInvisible: 1

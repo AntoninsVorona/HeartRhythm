@@ -10,10 +10,12 @@ public class Item : ScriptableObject
 	public int maxStackCount = 1;
 	public Sprite spriteIcon;
 
-	public List<ItemActionsUI.ItemActionType> accessibleActions = new List<ItemActionsUI.ItemActionType>
+	public virtual List<ItemActionsUI.ItemActionType> AccessibleActions()
 	{
-		ItemActionsUI.ItemActionType.Move,
-		ItemActionsUI.ItemActionType.Use,
-		ItemActionsUI.ItemActionType.Drop
-	};
+		return new List<ItemActionsUI.ItemActionType>
+		{
+			ItemActionsUI.ItemActionType.Move,
+			ItemActionsUI.ItemActionType.Drop
+		};
+	}
 }

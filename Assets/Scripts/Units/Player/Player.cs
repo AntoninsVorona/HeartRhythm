@@ -167,6 +167,24 @@ public class Player : Unit
 		return false;
 	}
 
+	public bool UseItem(InventorySlot slot)
+	{
+		var consumable = (Consumable) slot.itemInside;
+		var usedLast = inventory.UseItem(slot);
+		UseItem(consumable);
+		return usedLast;
+	}
+	
+	public void UseItem(Consumable item)
+	{
+		ApplyItemEffect(item);
+	}
+
+	private void ApplyItemEffect(Consumable item)
+	{
+		item.ApplyEffect();
+	}
+
 	protected override MonoBehaviour CoroutineStarter()
 	{
 		return this;
@@ -175,6 +193,11 @@ public class Player : Unit
 	public void ChangeSlots(InventorySlot draggedInventorySlot, InventorySlot slotHit)
 	{
 		inventory.ChangeSlots(draggedInventorySlot, slotHit);
+	}
+
+	public void SplitItem(InventorySlot draggedFrom, InventorySlot draggedTo, int amount)
+	{
+		inventory.SplitItem(draggedFrom, draggedTo, amount);
 	}
 
 	public int ItemsInSlot(InventorySlot slot)

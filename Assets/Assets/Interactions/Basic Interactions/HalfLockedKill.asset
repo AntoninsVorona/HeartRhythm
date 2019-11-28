@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: HalfLockedKill
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  interactionName: Half Locked Kill
-  visibleOnUI: 1
+  interactionDescription: Basic Locked Kill
+  interactionSymbol: {fileID: 0}
+  visibility:
+    visibleOnUI: 1
+    canBeUsedIfInvisible: 1
   danceMovesSetToApply:
   - lockedState:
       locked: 1

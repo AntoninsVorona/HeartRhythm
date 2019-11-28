@@ -57,6 +57,6 @@ public class DragController : MonoBehaviour
 
 	private void DraggedIntoSlot(InventorySlot slotHit)
 	{
-		Player.Instance.ChangeSlots(draggedInventorySlot, slotHit);
+		GameUI.Instance.uiInventory.DraggedIntoSlot(draggedInventorySlot, slotHit, Input.GetKey(KeyCode.LeftShift));
 	}
 }

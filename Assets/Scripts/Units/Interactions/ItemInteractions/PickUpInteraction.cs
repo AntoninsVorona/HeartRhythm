@@ -21,4 +21,10 @@ public class PickUpInteraction : Interaction
 
 		return true;
 	}
+
+	protected override object[] GetDescriptionParams()
+	{
+		var itemOnGround = (ItemOnGround) owner;
+		return new object[] { itemOnGround.amount };
+	}
 }

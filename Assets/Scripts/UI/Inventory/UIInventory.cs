@@ -26,13 +26,13 @@ public class UIInventory : MonoBehaviour
 	[SerializeField]
 	private GameObject backpackSlotsObject;
 
-	private InventorySlot selectedInventorySlot;
+	[SerializeField]
+	private SplitController splitController;
 
+	private InventorySlot selectedInventorySlot;
 	private float dragTime;
 
-	[FormerlySerializedAs("backPackSlotPrefab")]
-	[Header("Prefabs")]
-	[SerializeField]
+	[Header("Prefabs")] [SerializeField]
 	private BackpackSlot backpackSlotPrefab;
 
 	public void InitializeSlots(Backpack currentBackpack)
@@ -78,7 +78,18 @@ public class UIInventory : MonoBehaviour
 
 	private void Update()
 	{
-		if (itemActionsUI.dropInProgress)
+		if (splitController.splitInProgress)
+		{
+			if (Input.GetButtonDown("Cancel"))
+			{
+				splitController.CancelSplit();
+			}
+			else if (Input.GetButtonDown("Submit"))
+			{
+				splitController.ApplyInput();
+			}
+		}
+		else if (itemActionsUI.dropInProgress)
 		{
 			if (Input.GetButtonDown("Cancel"))
 			{
@@ -169,14 +180,15 @@ public class UIInventory : MonoBehaviour
 			{
 				Close();
 			}
-			else if (Input.GetButtonDown("Submit"))
-			{
-				if (selectedInventorySlot)
-				{
-					Debug.LogError("Open");
-					itemActionsUI.OpenActionsFor(selectedInventorySlot);
-				}
-			}
+
+//			else if (Input.GetButtonDown("Submit"))
+//			{
+//				if (selectedInventorySlot)
+//				{
+//					Debug.LogError("Open");
+//					itemActionsUI.OpenActionsFor(selectedInventorySlot);
+//				}
+//			}
 		}
 	}
 
@@ -201,6 +213,7 @@ public class UIInventory : MonoBehaviour
 
 	public void Open()
 	{
+		splitController.Close();
 		itemActionsUI.Close();
 		gameObject.SetActive(true);
 		DeselectInventorySlot();
@@ -209,6 +222,7 @@ public class UIInventory : MonoBehaviour
 
 	public void Close()
 	{
+		splitController.Close();
 		itemActionsUI.Close();
 		dragController.StopDrag();
 		gameObject.SetActive(false);
@@ -323,5 +337,50 @@ public class UIInventory : MonoBehaviour
 		{
 			Debug.LogError("No Selected Slot!");
 		}
+	}
+
+	public void UseActionPressed()
+	{
+		if (selectedInventorySlot)
+		{
+			var usedLast = Player.Instance.UseItem(selectedInventorySlot);
+			if (usedLast)
+			{
+				DeselectInventorySlot();
+			}
+		}
+		else
+		{
+			Debug.LogError("No Selected Slot!");
+		}
+	}
+
+	public void DraggedIntoSlot(InventorySlot draggedInventorySlot, InventorySlot slotHit, bool shiftHeld)
+	{
+		if (slotHit.itemInside)
+		{
+			ChangeSlot(draggedInventorySlot, slotHit);
+		}
+		else
+		{
+			if (shiftHeld && Player.Instance.ItemsInSlot(draggedInventorySlot) > 1)
+			{
+				splitController.Show(draggedInventorySlot, slotHit);
+			}
+			else
+			{
+				ChangeSlot(draggedInventorySlot, slotHit);
+			}
+		}
+	}
+
+	public void SplitItem(InventorySlot splitFrom, InventorySlot splitTo, int amount)
+	{
+		Player.Instance.SplitItem(splitFrom, splitTo, amount);
+	}
+
+	private void ChangeSlot(InventorySlot draggedInventorySlot, InventorySlot slotHit)
+	{
+		Player.Instance.ChangeSlots(draggedInventorySlot, slotHit);
 	}
 }

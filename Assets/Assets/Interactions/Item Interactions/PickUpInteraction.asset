@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PickUpInteraction
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
+  interactionDescription: Pick Up ({0})
   interactionSymbol: {fileID: 0}
-  interactionName: Pick Up
   visibility:
     visibleOnUI: 1
     canBeUsedIfInvisible: 1

@@ -10,4 +10,9 @@ public class BackToNormalWorldInteraction : Interaction
 		GameLogic.Instance.BackToRealWorld();
 		return true;
 	}
+	
+	protected override object[] GetDescriptionParams()
+	{
+		return new object[0];
+	}
 }

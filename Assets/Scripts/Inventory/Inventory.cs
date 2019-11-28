@@ -69,7 +69,7 @@ public class Inventory : MonoBehaviour
 	{
 		return DropItem(slot.itemInside, slot.slotId, amount);
 	}
-	
+
 	public bool DropItem(Item item, int slotId, int amount)
 	{
 		if (amount <= 0)
@@ -79,6 +79,11 @@ public class Inventory : MonoBehaviour
 		}
 
 		return RemoveItem(item, slotId, amount);
+	}
+
+	public bool UseItem(InventorySlot slot)
+	{
+		return RemoveItem(slot.itemInside, slot.slotId, 1);
 	}
 
 	private (bool canPickUpAll, int amount) CanPickUpItem(Item item, int amount)
@@ -209,18 +214,52 @@ public class Inventory : MonoBehaviour
 		var slotToExchangeItem = slotToExchangeWith.itemInside;
 		if (slotToExchangeItem)
 		{
-			var slotToExchangeInformation = GetSlotItemInformation(GetItemInformation(slotToExchangeItem), newSlotId);
-			var slotToExchangeItemCount = slotToExchangeInformation.itemCount;
-			slotToExchangeInformation.slotId = oldSlotId;
-			draggedInventorySlot.Initialize(slotToExchangeItem, slotToExchangeItemCount);
+			var slotToExchangeInformation =
+				GetSlotItemInformation(GetItemInformation(slotToExchangeItem), newSlotId);
+
+			if (draggedItem == slotToExchangeItem)
+			{
+				var canAdd = draggedItem.maxStackCount - slotToExchangeInformation.itemCount;
+				if (canAdd >= draggedItemCount)
+				{
+					var information = GetItemInformation(draggedItem);
+					information.slotItemInformation.Remove(draggedSlotInformation);
+					slotToExchangeInformation.itemCount += draggedItemCount;
+					draggedInventorySlot.Initialize();
+				}
+				else
+				{
+					draggedSlotInformation.itemCount -= canAdd;
+					slotToExchangeInformation.itemCount = draggedItem.maxStackCount;
+					draggedInventorySlot.UpdateItemAmount(draggedSlotInformation.itemCount);
+				}
+
+				slotToExchangeWith.UpdateItemAmount(slotToExchangeInformation.itemCount);
+			}
+			else
+			{
+				var slotToExchangeItemCount = slotToExchangeInformation.itemCount;
+				slotToExchangeInformation.slotId = oldSlotId;
+				draggedInventorySlot.Initialize(slotToExchangeItem, slotToExchangeItemCount);
+				draggedSlotInformation.slotId = newSlotId;
+				slotToExchangeWith.Initialize(draggedItem, draggedItemCount);
+			}
 		}
 		else
 		{
 			draggedInventorySlot.Initialize();
+			draggedSlotInformation.slotId = newSlotId;
+			slotToExchangeWith.Initialize(draggedItem, draggedItemCount);
 		}
+	}
 
-		draggedSlotInformation.slotId = newSlotId;
-		slotToExchangeWith.Initialize(draggedItem, draggedItemCount);
+	public void SplitItem(InventorySlot slotFrom, InventorySlot slotTo, int amount)
+	{
+		var item = slotFrom.itemInside;
+		var slotFromInformation = GetSlotItemInformation(item, slotFrom.slotId);
+		slotFromInformation.itemCount -= amount;
+		slotFrom.Initialize(item, slotFromInformation.itemCount);
+		AddItem(item, slotTo.slotId, amount);
 	}
 
 	private SlotItemInformation GetSlotItemInformation(Item item, int slotId)

@@ -59,7 +59,7 @@ public class ItemActionsUI : MonoBehaviour
 		Button first = null;
 		foreach (var button in actionXButtons)
 		{
-			var contains = item.accessibleActions.Contains(button.Key);
+			var contains = item.AccessibleActions().Contains(button.Key);
 			if (contains)
 			{
 				button.Value.gameObject.SetActive(true);
@@ -87,6 +87,7 @@ public class ItemActionsUI : MonoBehaviour
 
 	public void UsePressed()
 	{
+		GameUI.Instance.uiInventory.UseActionPressed();
 		Close();
 	}
 

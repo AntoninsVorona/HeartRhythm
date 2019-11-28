@@ -39,8 +39,10 @@ public abstract class Interaction : ScriptableObject
 	[HideInNormalInspector]
 	public Unit owner;
 
+	[SerializeField]
+	private string interactionDescription;
+
 	public Sprite interactionSymbol;
-	public string interactionName;
 	public Visibility visibility;
 	public List<DanceMoveXVisibility> danceMovesSetToApply;
 
@@ -77,9 +79,15 @@ public abstract class Interaction : ScriptableObject
 			}
 		}
 
-		Debug.Log(interactionName);
+		Debug.Log(interactionDescription);
 		return true;
 	}
 
+	public string GetDescription()
+	{
+		return string.Format(interactionDescription, GetDescriptionParams());
+	}
+
+	protected abstract object[] GetDescriptionParams();
 	public abstract bool ApplyInteraction();
 }

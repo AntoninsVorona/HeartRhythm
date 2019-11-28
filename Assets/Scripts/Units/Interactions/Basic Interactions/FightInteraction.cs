@@ -10,4 +10,9 @@ public class FightInteraction : Interaction
 		GameLogic.Instance.StartCoroutine(GameLogic.Instance.GoToEnemyRealm((Enemy) owner));
 		return true;
 	}
+	
+	protected override object[] GetDescriptionParams()
+	{
+		return new object[0];
+	}
 }
