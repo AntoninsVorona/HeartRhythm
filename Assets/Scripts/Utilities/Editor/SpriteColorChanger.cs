@@ -48,7 +48,8 @@ public class SpriteColorChanger : EditorWindow
 			EditorGUI.DrawPreviewTexture(new Rect(25, 325, width * 5, height * 5), replacedTexture);
 			if (GUI.Button(new Rect(5, 650, position.width - 10, 20), "Save"))
 			{
-				var path = EditorUtility.SaveFilePanel("Save Changed Sprite", $"{Application.dataPath}/Assets/ChangedColorPNGs", "changed.png", "png");
+				var path = EditorUtility.SaveFilePanel("Save Changed Sprite",
+					$"{Application.dataPath}/Assets/ChangedColorPNGs", "changed.png", "png");
 				if (!string.IsNullOrEmpty(path))
 				{
 					var pngData = replacedTexture.EncodeToPNG();
@@ -123,8 +124,11 @@ public class SpriteColorChanger : EditorWindow
 
 	private float ColorDiff(Color c1, Color c2)
 	{
-		return Mathf.Sqrt((c1.r - c2.r) * (c1.r - c2.r)
-		                  + (c1.g - c2.g) * (c1.g - c2.g)
-		                  + (c1.b - c2.b) * (c1.b - c2.b));
+		var red = c1.r - c2.r;
+		var green = c1.g - c2.g;
+		var blue = c1.b - c2.b;
+		return Mathf.Sqrt(red * red
+		                  + green * green
+		                  + blue * blue);
 	}
 }
