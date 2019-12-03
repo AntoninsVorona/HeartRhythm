@@ -68,6 +68,7 @@ public class PaletteCreator : EditorWindow
 					if (pngData != null)
 					{
 						File.WriteAllBytes(path, pngData);
+						AssetDatabase.Refresh();
 					}
 				}
 			}

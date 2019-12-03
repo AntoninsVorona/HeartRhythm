@@ -15,7 +15,7 @@ public class AudioManager : MonoBehaviour
 	private Music currentMusic;
 	private Coroutine beatChecker;
 	private bool isCurrentlyPlaying;
-	public double currentTime;
+	private double currentTime;
 
 	private void Awake()
 	{

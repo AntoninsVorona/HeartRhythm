@@ -7,14 +7,14 @@ using UnityEngine;
 
 public class SpriteColorChanger : EditorWindow
 {
-	private static Sprite changeColorsSprite;
+	private static Texture2D changeColorsSprite;
 	private static Texture2D colorPalette;
 	private static Texture2D replacedTexture;
-	private bool replaced;
-	private List<Color> colors;
-	private Dictionary<Color, Color> cachedColors;
-	private int height;
-	private int width;
+	private static List<Color> colors;
+	private static bool replaced;
+	private static Dictionary<Color, Color> cachedColors;
+	private static int height;
+	private static int width;
 
 	[MenuItem("Window/bubucha/Sprite Color Changer")]
 	private static void Init()
@@ -25,10 +25,10 @@ public class SpriteColorChanger : EditorWindow
 
 	void OnGUI()
 	{
-		changeColorsSprite = (Sprite) EditorGUI.ObjectField(new Rect(3, 3, 250, 250),
+		changeColorsSprite = (Texture2D) EditorGUI.ObjectField(new Rect(3, 3, 250, 250),
 			"Sprite or Sheet: ",
 			changeColorsSprite,
-			typeof(Sprite), false);
+			typeof(Texture2D), false);
 		colorPalette = (Texture2D) EditorGUI.ObjectField(new Rect(3, 153, 250, 250),
 			"Color Pallete: ",
 			colorPalette,
@@ -56,6 +56,7 @@ public class SpriteColorChanger : EditorWindow
 					if (pngData != null)
 					{
 						File.WriteAllBytes(path, pngData);
+						AssetDatabase.Refresh();
 					}
 				}
 			}
@@ -64,23 +65,20 @@ public class SpriteColorChanger : EditorWindow
 
 	private void ReplaceTexture()
 	{
-		var texture2D = changeColorsSprite.texture;
+		cachedColors = new Dictionary<Color, Color>();
+		height = changeColorsSprite.height;
+		width = changeColorsSprite.width;
 		CalculateColorPalette();
-		cachedColors = new Dictionary<Color, Color>
-		{
-			{Color.clear, Color.clear}
-		};
-		height = texture2D.height;
-		width = texture2D.width;
 		replacedTexture = new Texture2D(width,
 			height,
-			texture2D.format,
+			changeColorsSprite.format,
 			false, true) {filterMode = FilterMode.Point, wrapMode = TextureWrapMode.Clamp};
 		for (var y = 0; y < height; y++)
 		{
 			for (var x = 0; x < width; x++)
 			{
-				var newColor = FindClosestColor(texture2D.GetPixel(x, y));
+				var pixel = changeColorsSprite.GetPixel(x, y);
+				var newColor = Mathf.Approximately(pixel.a, 0) ? Color.clear : FindClosestColor(pixel);
 				replacedTexture.SetPixel(x, y, newColor);
 			}
 		}
@@ -90,18 +88,15 @@ public class SpriteColorChanger : EditorWindow
 
 	private void CalculateColorPalette()
 	{
-		colors = new List<Color>
+		colors = new List<Color>();
+		for (var y = 0; y < height; y++)
 		{
-			Color.clear
-		};
-		for (var m = 0; m < colorPalette.mipmapCount; m++)
-		{
-			var c = colorPalette.GetPixels(m);
-			foreach (var color in c)
+			for (var x = 0; x < width; x++)
 			{
-				if (!colors.Contains(color))
+				var c = colorPalette.GetPixel(x, y);
+				if (!colors.Contains(c))
 				{
-					colors.Add(color);
+					colors.Add(c);
 				}
 			}
 		}
