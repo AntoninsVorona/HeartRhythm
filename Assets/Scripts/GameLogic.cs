@@ -52,6 +52,8 @@ public class GameLogic : MonoBehaviour
 	public PlayState playState = PlayState.Basic;
 
 	[Header("Debug")]
+	public LevelData debugLevelToLoad;
+
 	public Music testFightMusic;
 
 	public bool inputDebugEnabled;
@@ -69,7 +71,8 @@ public class GameLogic : MonoBehaviour
 			return;
 		}
 
-		currentLevelData = LevelManager.Instance.GetLevelData("TestLevel");
+		currentLevelData = debugLevelToLoad ? debugLevelToLoad : LevelManager.Instance.GetLevelData("TestLevel");
+
 		currentSceneObjects = Instantiate(currentLevelData.sceneObjects);
 		currentSceneObjects.Activate();
 	}
