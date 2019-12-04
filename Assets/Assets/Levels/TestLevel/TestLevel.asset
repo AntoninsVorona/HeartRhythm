@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb508d1a6c5844ada457ade13ed7cdab, type: 3}
-  m_Name: EnemyBattleConfiguration
+  m_Script: {fileID: 11500000, guid: 676823425e4e43a48af22318d5ceb28d, type: 3}
+  m_Name: TestLevel
   m_EditorClassIdentifier: 
-  sceneObjects: {fileID: 6433844155181704700, guid: 01422935c3014c2448ea0b581bd977d4,
+  sceneObjects: {fileID: 2955217442324748583, guid: bd1952feeaceb5d40a85930dc1a1f2ae,
     type: 3}
-  playerSpawnPoint: {x: 0, y: 0}

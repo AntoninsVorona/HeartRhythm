@@ -21,19 +21,8 @@ public class World : MonoBehaviour
 
 	private GameTiles gameTiles;
 
-	public void InitializeWorld()
+	public IEnumerator InitializeWorld()
 	{
-		InitializeTileMap();
-	}
-
-	public IEnumerator InitializeWorld(BattleConfiguration battleConfiguration)
-	{
-		if (grid)
-		{
-			Destroy(grid.gameObject);
-		}
-
-		grid = Instantiate(battleConfiguration.customGrid, transform);
 		yield return null;
 		InitializeTileMap();
 	}
@@ -96,7 +85,7 @@ public class World : MonoBehaviour
 		return CanWalk(endPosition);
 	}
 
-	private void OnDrawGizmos()
+	private void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.yellow;
 		Gizmos.DrawCube(new Vector3(0.5f, 0.5f, 0), new Vector3(1, 1, 0.2f));

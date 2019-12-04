@@ -30,7 +30,6 @@ public class Player : Unit
 	protected override void Start()
 	{
 		base.Start();
-		Initialize(spawnPoint);
 		inventory = GetComponent<Inventory>();
 		inventory.Initialize();
 	}
@@ -117,12 +116,6 @@ public class Player : Unit
 		}
 
 		PlayerInput.Instance.acceptor.IgnoreInput = !restoreInput;
-	}
-
-	private void OnDrawGizmosSelected()
-	{
-		Gizmos.color = Color.green;
-		Gizmos.DrawCube((Vector3Int) spawnPoint + new Vector3(0.5f, 0.5f, 0), new Vector3(1, 1, 0.2f));
 	}
 
 	public void BackToIdleAnimation()

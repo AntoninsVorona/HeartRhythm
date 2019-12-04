@@ -31,8 +31,10 @@ public class GameLogic : MonoBehaviour
 		}
 	}
 
+	private LevelData currentLevelData;
 	private GameState gameState;
 	private Scene realWorldScene;
+	private SceneObjects realWorldSceneObjects;
 	private Vector2Int previousPlayerPosition;
 	private Scene battleScene;
 	private Music fightMusic;
@@ -67,16 +69,17 @@ public class GameLogic : MonoBehaviour
 			return;
 		}
 
-		FindRequiredComponents(SceneManager.GetActiveScene());
+		currentLevelData = LevelManager.Instance.GetLevelData("TestLevel");
+		currentSceneObjects = Instantiate(currentLevelData.sceneObjects);
 		currentSceneObjects.Activate();
 	}
 
 	private IEnumerator Start()
 	{
+		yield return currentSceneObjects.currentWorld.InitializeWorld();
+		Player.Instance.Initialize(new Vector2Int(0, 0)); //TODO Load
 		CurrentGameState = GameState.Peace;
 		GameStateChanged();
-		yield return null;
-		currentSceneObjects.currentWorld.InitializeWorld();
 		GameUI.Instance.StopLoading();
 	}
 
@@ -110,20 +113,17 @@ public class GameLogic : MonoBehaviour
 		realWorldScene = SceneManager.GetActiveScene();
 		previousPlayerPosition = Player.Instance.CurrentPosition;
 		currentSceneObjects.currentWorld.UnoccupyTargetTile(previousPlayerPosition);
+		realWorldSceneObjects = currentSceneObjects;
 		if (!battleScene.isLoaded)
 		{
 			yield return LoadBattleScene();
 		}
 
-		ActivateSceneAndGetComponents(battleScene);
-		if (currentSceneObjects.currentMobManager)
-		{
-			Destroy(currentSceneObjects.currentMobManager.gameObject);
-		}
+		SceneManager.SetActiveScene(battleScene);
+		currentSceneObjects = Instantiate(enemy.battleConfiguration.sceneObjects);
+		currentSceneObjects.Activate();
 
-		yield return currentSceneObjects.currentWorld.InitializeWorld(enemy.battleConfiguration);
-		var mobController = Instantiate(enemy.battleConfiguration.mobManager, currentSceneObjects.transform);
-		currentSceneObjects.currentMobManager = mobController;
+		yield return currentSceneObjects.currentWorld.InitializeWorld();
 		Player.Instance.Initialize(enemy.battleConfiguration.playerSpawnPoint);
 		PostLoadSequence();
 	}
@@ -131,7 +131,14 @@ public class GameLogic : MonoBehaviour
 	public void BackToRealWorld()
 	{
 		PreLoadSequence();
-		ActivateSceneAndGetComponents(realWorldScene);
+		if (currentSceneObjects)
+		{
+			Destroy(currentSceneObjects.gameObject);
+		}
+
+		currentSceneObjects = realWorldSceneObjects;
+		SceneManager.SetActiveScene(realWorldScene);
+		currentSceneObjects.Activate();
 		currentSceneObjects.currentMobManager.ResumeAllMobs();
 		Player.Instance.Initialize(previousPlayerPosition);
 		PostLoadSequence();
@@ -146,13 +153,6 @@ public class GameLogic : MonoBehaviour
 		currentSceneObjects.Deactivate();
 	}
 
-	private void ActivateSceneAndGetComponents(Scene scene)
-	{
-		SceneManager.SetActiveScene(scene);
-		FindRequiredComponents(scene);
-		currentSceneObjects.Activate();
-	}
-
 	private static void PostLoadSequence()
 	{
 		PlayerInput.Instance.acceptor.DontReceiveAnyInput = false;
@@ -161,35 +161,10 @@ public class GameLogic : MonoBehaviour
 
 	private IEnumerator LoadBattleScene()
 	{
-		var sceneAsync = SceneManager.LoadSceneAsync("BattleScene", LoadSceneMode.Additive);
+		const string sceneName = "BattleScene";
+		var sceneAsync = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 		yield return new WaitUntil(() => sceneAsync.isDone);
-		battleScene = SceneManager.GetSceneByName("BattleScene");
-		var rootGameObjects = battleScene.GetRootGameObjects();
-		foreach (var rootGameObject in rootGameObjects)
-		{
-			if (rootGameObject.gameObject.name == "SceneObjects")
-			{
-				rootGameObject.GetComponent<SceneObjects>().Deactivate();
-				break;
-			}
-		}
-	}
-
-	private void FindRequiredComponents(Scene activeScene)
-	{
-		currentSceneObjects = FindObjectOfType<SceneObjects>();
-		if (!currentSceneObjects)
-		{
-			var rootGameObjects = activeScene.GetRootGameObjects();
-			foreach (var rootGameObject in rootGameObjects)
-			{
-				if (rootGameObject.gameObject.name == "SceneObjects")
-				{
-					currentSceneObjects = rootGameObject.GetComponent<SceneObjects>();
-					break;
-				}
-			}
-		}
+		battleScene = SceneManager.GetSceneByName(sceneName);
 	}
 
 	public void ToggleMode()

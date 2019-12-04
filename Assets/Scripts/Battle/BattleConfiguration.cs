@@ -2,10 +2,8 @@
 using UnityEngine;
 
 [Serializable]
-[CreateAssetMenu(menuName = "Battle/Battle Configuration", fileName = "BattleConfiguration")]
-public class BattleConfiguration : ScriptableObject
+[CreateAssetMenu(menuName = "Level/Battle Configuration", fileName = "BattleConfiguration")]
+public class BattleConfiguration : LevelData
 {
-	public Grid customGrid;
-	public MobManager mobManager;
 	public Vector2Int playerSpawnPoint;
 }
