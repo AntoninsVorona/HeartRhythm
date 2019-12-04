@@ -119,7 +119,7 @@ public class Player : Unit
 		PlayerInput.Instance.acceptor.IgnoreInput = !restoreInput;
 	}
 
-	private void OnDrawGizmos()
+	private void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.green;
 		Gizmos.DrawCube((Vector3Int) spawnPoint + new Vector3(0.5f, 0.5f, 0), new Vector3(1, 1, 0.2f));
