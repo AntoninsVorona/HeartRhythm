@@ -49,7 +49,7 @@ MonoBehaviour:
   fightingWith: {fileID: 0}
   gameStateObservers: []
   playState: 0
-  debugLevelToLoad: {fileID: 11400000, guid: 99a07495904e26f40a8c45a72e03e220, type: 2}
+  debugLevelToLoad: {fileID: 11400000, guid: 8cb7e2661381a2a45ad52952d0b00858, type: 2}
   testFightMusic: {fileID: 11400000, guid: 60eaf042f444f644ba3113a34593d82f, type: 2}
   inputDebugEnabled: 0
 --- !u!114 &8470184119793174323
@@ -78,3 +78,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - {fileID: 11400000, guid: 99a07495904e26f40a8c45a72e03e220, type: 2}
+  - {fileID: 11400000, guid: 8cb7e2661381a2a45ad52952d0b00858, type: 2}
