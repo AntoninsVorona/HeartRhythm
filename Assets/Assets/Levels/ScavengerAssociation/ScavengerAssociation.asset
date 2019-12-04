@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 676823425e4e43a48af22318d5ceb28d, type: 3}
   m_Name: ScavengerAssociation
   m_EditorClassIdentifier: 
-  sceneObjects: {fileID: 7253394126609879047, guid: 1a3961cd0623a5449b4b14e0a8902b23,
+  sceneObjects: {fileID: 4860110664540961652, guid: 039daaae318966c4493157d204d4d098,
     type: 3}
