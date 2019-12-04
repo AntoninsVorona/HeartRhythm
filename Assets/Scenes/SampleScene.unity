@@ -245,6 +245,21 @@ PrefabInstance:
       propertyPath: spawnPoint.y
       value: -4
       objectReference: {fileID: 0}
+    - target: {fileID: 2864007337793151382, guid: 2c3a5cae949a0124a96806313ae4805d,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864007337793151382, guid: 2c3a5cae949a0124a96806313ae4805d,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864007337793151382, guid: 2c3a5cae949a0124a96806313ae4805d,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c3a5cae949a0124a96806313ae4805d, type: 3}
 --- !u!4 &1256624150 stripped
@@ -3644,6 +3659,16 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4868706155158505249, guid: 8f18fb76ac5bae84cbe06be47abce977,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4025873691390160347, guid: 8f18fb76ac5bae84cbe06be47abce977,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f18fb76ac5bae84cbe06be47abce977, type: 3}
 --- !u!1001 &7766726582680260710
@@ -3677,6 +3702,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7766726582572975702, guid: a8f397eef70e6a24bb09af57fb206bd2,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7766726582572975702, guid: a8f397eef70e6a24bb09af57fb206bd2,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7766726582572975702, guid: a8f397eef70e6a24bb09af57fb206bd2,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8f397eef70e6a24bb09af57fb206bd2, type: 3}
@@ -3740,6 +3780,21 @@ PrefabInstance:
     - target: {fileID: 4357056037616222578, guid: 1ef49bb6613b5cf469787ced14b1c63b,
         type: 3}
       propertyPath: movementSettings.moveDuringPeaceMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648701647523371077, guid: 1ef49bb6613b5cf469787ced14b1c63b,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648701647523371077, guid: 1ef49bb6613b5cf469787ced14b1c63b,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648701647523371077, guid: 1ef49bb6613b5cf469787ced14b1c63b,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
