@@ -74,7 +74,7 @@ public class AudioManager : MonoBehaviour
 		const double upperAccuracy = 0.1;
 		var startTime = AudioSettings.dspTime + travelTime;
 		var timeWasValidAFrameAgo = false;
-		var timeInLowerBounds = true;
+		var timeInLowerBounds = false;
 		while (true)
 		{
 			var timeIsValid = IsTimeValid();

@@ -3732,5 +3732,15 @@ PrefabInstance:
       propertyPath: spawnPoint.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4357056037616222578, guid: 1ef49bb6613b5cf469787ced14b1c63b,
+        type: 3}
+      propertyPath: movementSettings.typeOfMovement
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357056037616222578, guid: 1ef49bb6613b5cf469787ced14b1c63b,
+        type: 3}
+      propertyPath: movementSettings.moveDuringPeaceMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ef49bb6613b5cf469787ced14b1c63b, type: 3}
