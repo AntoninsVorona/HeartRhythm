@@ -31,6 +31,7 @@ public class SplitController : MonoBehaviour
 		inputSlider.maxValue = maxSplit;
 		inputSlider.value = Mathf.RoundToInt(((float) maxSplit + 1) / 2);
 		inputSliderHolder.gameObject.SetActive(true);
+		splitAmount.text = string.Format(SPLIT_AMOUNT_TEXT, maxSplit);
 		EventSystem.current.SetSelectedGameObject(inputSlider.gameObject);
 	}
 

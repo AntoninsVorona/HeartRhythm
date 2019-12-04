@@ -357,30 +357,39 @@ public class UIInventory : MonoBehaviour
 
 	public void DraggedIntoSlot(InventorySlot draggedInventorySlot, InventorySlot slotHit, bool shiftHeld)
 	{
-		if (slotHit.itemInside)
+		if (draggedInventorySlot != slotHit)
 		{
-			ChangeSlot(draggedInventorySlot, slotHit);
-		}
-		else
-		{
-			if (shiftHeld && Player.Instance.ItemsInSlot(draggedInventorySlot) > 1)
+			if (slotHit.itemInside)
 			{
-				splitController.Show(draggedInventorySlot, slotHit);
+				ChangeSlot(draggedInventorySlot, slotHit);
 			}
 			else
 			{
-				ChangeSlot(draggedInventorySlot, slotHit);
+				if (shiftHeld && Player.Instance.ItemsInSlot(draggedInventorySlot) > 1)
+				{
+					splitController.Show(draggedInventorySlot, slotHit);
+				}
+				else
+				{
+					ChangeSlot(draggedInventorySlot, slotHit);
+				}
 			}
 		}
 	}
 
 	public void SplitItem(InventorySlot splitFrom, InventorySlot splitTo, int amount)
 	{
-		Player.Instance.SplitItem(splitFrom, splitTo, amount);
+		if (splitFrom != splitTo)
+		{
+			Player.Instance.SplitItem(splitFrom, splitTo, amount);
+		}
 	}
 
 	private void ChangeSlot(InventorySlot draggedInventorySlot, InventorySlot slotHit)
 	{
-		Player.Instance.ChangeSlots(draggedInventorySlot, slotHit);
+		if (draggedInventorySlot != slotHit)
+		{
+			Player.Instance.ChangeSlots(draggedInventorySlot, slotHit);
+		}
 	}
 }
