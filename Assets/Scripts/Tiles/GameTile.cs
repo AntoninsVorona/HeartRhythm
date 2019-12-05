@@ -17,26 +17,21 @@ public class GameTile : MonoBehaviour
 	public Obstacle ObstacleOnTile => obstacleOnTile;
 	private Unit occupyingUnit = null;
 
-	public void Initialize(Obstacle obstacleOnTile)
-	{
-		this.obstacleOnTile = obstacleOnTile;
-	}
-
 	public (CantMoveReason, Unit) CanWalk()
 	{
-		if (!walkable)
-		{
-			return (CantMoveReason.NonWalkable, null);
-		}
-
 		if (obstacleOnTile)
 		{
 			return (CantMoveReason.Obstacles, obstacleOnTile);
 		}
-
+		
 		if (occupyingUnit)
 		{
 			return (CantMoveReason.Unit, occupyingUnit);
+		}
+		
+		if (!walkable)
+		{
+			return (CantMoveReason.NonWalkable, null);
 		}
 
 		return (CantMoveReason.None, null);

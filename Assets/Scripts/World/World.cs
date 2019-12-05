@@ -33,6 +33,11 @@ public class World : MonoBehaviour
 		var allObstacles = GetComponentsInChildren<Obstacle>();
 		foreach (var obstacle in allObstacles)
 		{
+			if (obstacle.initializeSelf)
+			{
+				continue;
+			}
+
 			var position = Vector2Int.FloorToInt(obstacle.transform.position);
 			if (!obstacles.ContainsKey(position))
 			{
@@ -52,7 +57,10 @@ public class World : MonoBehaviour
 		{
 			var position = Vector2Int.FloorToInt(tile.transform.position);
 			gameTiles.Add(position, tile);
-			tile.Initialize(obstacles.ContainsKey(position) ? obstacles[position] : null);
+			if (obstacles.ContainsKey(position))
+			{
+				tile.AddObstacle(obstacles[position]);
+			}
 		}
 
 		tileMapInitialized = true;
@@ -78,8 +86,9 @@ public class World : MonoBehaviour
 			? (GameTile.CantMoveReason.NonWalkable, null)
 			: gameTiles[position].CanWalk();
 	}
-	
-	public (GameTile.CantMoveReason, Unit) CanWalkOnTileInDirection(Vector2Int position, MovementDirectionUtilities.MovementDirection direction)
+
+	public (GameTile.CantMoveReason, Unit) CanWalkOnTileInDirection(Vector2Int position,
+		MovementDirectionUtilities.MovementDirection direction)
 	{
 		var endPosition = position + MovementDirectionUtilities.VectorFromDirection(direction);
 		return CanWalk(endPosition);

@@ -71,19 +71,35 @@ public class GameLogic : MonoBehaviour
 			return;
 		}
 
-		currentLevelData = debugLevelToLoad ? debugLevelToLoad : LevelManager.Instance.GetLevelData("TestLevel");
-
-		currentSceneObjects = Instantiate(currentLevelData.sceneObjects);
-		currentSceneObjects.Activate();
+		currentLevelData = debugLevelToLoad ? debugLevelToLoad : LevelManager.Instance.GetLevelData("TestLevel"); //TODO Load
 	}
 
 	private IEnumerator Start()
 	{
+		yield return LoadLevelCoroutine(new Vector2Int(0, 0)); //TODO Load
+	}
+
+	public void LoadLevel(LevelData levelToEnter)
+	{
+		currentLevelData = levelToEnter;
+		StartCoroutine(LoadLevelCoroutine(currentLevelData.playerSpawnPoint));
+	}
+
+	private IEnumerator LoadLevelCoroutine(Vector2Int spawnPoint)
+	{
+		PreLoadSequence();
+		if (currentSceneObjects)
+		{
+			Destroy(currentSceneObjects.gameObject);
+		}
+
+		currentSceneObjects = Instantiate(currentLevelData.sceneObjects);
+		currentSceneObjects.Activate();
 		yield return currentSceneObjects.currentWorld.InitializeWorld();
-		Player.Instance.Initialize(new Vector2Int(0, 0)); //TODO Load
+		Player.Instance.Initialize(spawnPoint);
 		CurrentGameState = GameState.Peace;
 		GameStateChanged();
-		GameUI.Instance.StopLoading();
+		PostLoadSequence();
 	}
 
 	private void GameStateChanged()
@@ -100,6 +116,7 @@ public class GameLogic : MonoBehaviour
 				throw new ArgumentOutOfRangeException();
 		}
 
+		gameStateObservers.RemoveAll(o => o == null);
 		gameStateObservers.ForEach(o => o?.NotifyBegin());
 	}
 
@@ -152,8 +169,11 @@ public class GameLogic : MonoBehaviour
 		PlayerInput.Instance.acceptor.DontReceiveAnyInput = true;
 		PlayerInput.Instance.acceptor.FirstBattleInputDone = false;
 		GameUI.Instance.StartLoading();
-		currentSceneObjects.currentMobManager.StopAllActionsBeforeLoading();
-		currentSceneObjects.Deactivate();
+		if (currentSceneObjects)
+		{
+			currentSceneObjects.currentMobManager.StopAllActionsBeforeLoading();
+			currentSceneObjects.Deactivate();
+		}
 	}
 
 	private static void PostLoadSequence()

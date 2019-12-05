@@ -102,8 +102,11 @@ public class Player : Unit
 
 	protected override void InteractWithObject(Unit unit)
 	{
-		interactingWithUnit = unit;
-		GameLogic.Instance.StartDanceMove(unit);
+		if (unit.interactions.Count > 0)
+		{
+			interactingWithUnit = unit;
+			GameLogic.Instance.StartDanceMove(unit);
+		}
 	}
 
 	public void ApplyDanceMoveSet(List<MovementDirectionUtilities.MovementDirection> acceptorDanceMoveSet)

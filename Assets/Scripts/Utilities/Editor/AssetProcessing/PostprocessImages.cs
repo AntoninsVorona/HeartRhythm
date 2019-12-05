@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PostprocessImages : AssetPostprocessor
 {
-	void OnPostprocessTexture(Texture2D texture)
+	void OnPreprocessTexture()
 	{
 		TextureImporter textureImporter = (TextureImporter) assetImporter;
 		textureImporter.filterMode = FilterMode.Point;
