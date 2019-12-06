@@ -221,7 +221,7 @@ public class Mob : Unit
 	{
 		talkUI.canvasGroup.alpha = 1;
 		talkUI.canvas.gameObject.SetActive(true);
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(2f);
 		float t = 1;
 		while (t > 0)
 		{

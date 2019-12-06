@@ -79,10 +79,10 @@ public class GameLogic : MonoBehaviour
 		yield return LoadLevelCoroutine(new Vector2Int(0, 0)); //TODO Load
 	}
 
-	public void LoadLevel(LevelData levelToEnter)
+	public void LoadLevel(LevelData levelToEnter, int entranceId)
 	{
 		currentLevelData = levelToEnter;
-		StartCoroutine(LoadLevelCoroutine(currentLevelData.playerSpawnPoint));
+		StartCoroutine(LoadLevelCoroutine(currentLevelData.GetSpawnPoint(entranceId)));
 	}
 
 	private IEnumerator LoadLevelCoroutine(Vector2Int spawnPoint)
@@ -144,7 +144,7 @@ public class GameLogic : MonoBehaviour
 		currentSceneObjects.Activate();
 
 		yield return currentSceneObjects.currentWorld.InitializeWorld();
-		Player.Instance.Initialize(enemy.battleConfiguration.playerSpawnPoint);
+		Player.Instance.Initialize(enemy.battleConfiguration.GetSpawnPoint(0));
 		PostLoadSequence();
 	}
 

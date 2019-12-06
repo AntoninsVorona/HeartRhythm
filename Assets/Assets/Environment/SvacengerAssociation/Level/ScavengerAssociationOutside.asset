@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 676823425e4e43a48af22318d5ceb28d, type: 3}
   m_Name: ScavengerAssociationOutside
   m_EditorClassIdentifier: 
-  playerSpawnPoint: {x: 0, y: 0}
-  sceneObjects: {fileID: 1202109264807621163, guid: 69b8a7777191f754f8088d58cc6024d8,
+  sceneObjects: {fileID: 4550899716278326085, guid: ef0ff43ebd03d2946a8c362699297d65,
     type: 3}
+  playerSpawnPoints:
+    m_keys: 00000000
+    m_values:
+    - {x: 0, y: 0}

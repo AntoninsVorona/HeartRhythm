@@ -6,10 +6,11 @@ using UnityEngine;
 public class EnterLevelInteraction : Interaction
 {
 	public LevelData levelToEnter;
+	public int entranceId;
 	
 	public override bool ApplyInteraction()
 	{
-		GameLogic.Instance.LoadLevel(levelToEnter);
+		GameLogic.Instance.LoadLevel(levelToEnter, entranceId);
 		return true;
 	}
 	
