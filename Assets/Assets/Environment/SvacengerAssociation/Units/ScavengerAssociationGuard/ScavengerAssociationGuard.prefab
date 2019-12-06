@@ -283,6 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7233437517088410854}
   - component: {fileID: 6324874088676031073}
+  - component: {fileID: 3927627785724731387}
   m_Layer: 0
   m_Name: ScavengerAssociationGuard
   m_TagString: Untagged
@@ -393,6 +394,25 @@ MonoBehaviour:
     canvas: {fileID: 1321599299586812471}
     displayText: {fileID: 8526947802995846194}
     canvasGroup: {fileID: 3896303199126232067}
+--- !u!95 &3927627785724731387
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7233437517088410841}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5095305dcc1396e49bc632d9ed899c7e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8315369088972484668
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,7 +504,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 29.25
+  m_fontSize: 23
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -530,7 +550,7 @@ MonoBehaviour:
     spaceCount: 5
     wordCount: 6
     linkCount: 0
-    lineCount: 3
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0

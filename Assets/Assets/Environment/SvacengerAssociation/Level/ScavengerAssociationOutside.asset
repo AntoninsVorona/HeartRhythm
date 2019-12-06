@@ -17,4 +17,4 @@ MonoBehaviour:
   playerSpawnPoints:
     m_keys: 00000000
     m_values:
-    - {x: 0, y: 0}
+    - {x: -5, y: 22}

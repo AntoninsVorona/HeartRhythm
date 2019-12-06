@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c08f0e0555bf4f6d833c9423a645777c, type: 3}
-  m_Name: EnterLevelInteraction
+  m_Name: ScavengerAssociationLeaveBuildingInteraction
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  interactionDescription: Enter Building
+  interactionDescription: Leave Building
   interactionSymbol: {fileID: 0}
   visibility:
     visibleOnUI: 1
@@ -27,4 +27,5 @@ MonoBehaviour:
       locked: 0
       lockedType: 0
     danceMove: 3
-  levelToEnter: {fileID: 11400000, guid: 26f74a81b25f2774f9413f70211a1fe7, type: 2}
+  levelToEnter: {fileID: 11400000, guid: 8cb7e2661381a2a45ad52952d0b00858, type: 2}
+  entranceId: 0
