@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 676823425e4e43a48af22318d5ceb28d, type: 3}
-  m_Name: ScavengerAssociationInside
+  m_Name: ScavengerAssociationOutside
   m_EditorClassIdentifier: 
-  playerSpawnPoint: {x: -25, y: 18}
-  sceneObjects: {fileID: 3689512058693009793, guid: 220f3711165666447bce23cd20eb7365,
+  playerSpawnPoint: {x: 0, y: 0}
+  sceneObjects: {fileID: 1202109264807621163, guid: 69b8a7777191f754f8088d58cc6024d8,
     type: 3}

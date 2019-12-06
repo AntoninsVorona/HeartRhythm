@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class Mob : Unit
@@ -76,11 +77,27 @@ public class Mob : Unit
 		public float peaceModeMovementDelay = 1;
 	}
 
+	[Serializable]
+	public class TalkUI
+	{
+		public Canvas canvas;
+		public TextMeshProUGUI displayText;
+		public CanvasGroup canvasGroup;
+	}
+
 	public MovementSettings movementSettings;
 	public bool initializeSelf = true;
+	public bool talksWhenInteractedWith;
+
+	[SerializeField]
+	[DrawIf("talksWhenInteractedWith", true)]
+	private TalkUI talkUI;
+
 	private float lastMovementDuringPeaceMode;
+
 	[HideInInspector]
 	public Coroutine peaceModeMovementCoroutine;
+	private Coroutine talkCoroutine;
 
 	protected override void Start()
 	{
@@ -88,6 +105,12 @@ public class Mob : Unit
 		if (initializeSelf)
 		{
 			GameLogic.Instance.currentSceneObjects.currentMobManager.InitializeMob(this, spawnPoint);
+		}
+
+		if (talkUI.canvas)
+		{
+			talkUI.canvas.worldCamera = GameCamera.Instance.camera;
+			talkUI.canvas.gameObject.SetActive(false);
 		}
 	}
 
@@ -140,6 +163,7 @@ public class Mob : Unit
 			CoroutineStarter().StopCoroutine(peaceModeMovementCoroutine);
 			peaceModeMovementCoroutine = null;
 		}
+
 		gameObject.SetActive(false);
 	}
 
@@ -176,6 +200,37 @@ public class Mob : Unit
 				MakeAction();
 			}
 		}
+	}
+
+	public void Talk()
+	{
+		StopTalk();
+		talkCoroutine = CoroutineStarter().StartCoroutine(TalkCoroutine());
+	}
+
+	public void StopTalk()
+	{
+		if (talkCoroutine != null)
+		{
+			CoroutineStarter().StopCoroutine(talkCoroutine);
+			talkCoroutine = null;
+		}
+	}
+
+	private IEnumerator TalkCoroutine()
+	{
+		talkUI.canvasGroup.alpha = 1;
+		talkUI.canvas.gameObject.SetActive(true);
+		yield return new WaitForSeconds(1f);
+		float t = 1;
+		while (t > 0)
+		{
+			yield return null;
+			t -= Time.deltaTime;
+			talkUI.canvasGroup.alpha = t;
+		}
+
+		talkUI.canvas.gameObject.SetActive(false);
 	}
 
 	private void OnDrawGizmosSelected()

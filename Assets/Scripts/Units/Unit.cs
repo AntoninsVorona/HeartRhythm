@@ -44,7 +44,8 @@ public abstract class Unit : MonoBehaviour
 		else
 		{
 			spawnPoint = location;
-			GameLogic.Instance.currentSceneObjects.currentWorld.tileMapObservers.Add(new Observer(ForceInitializePosition));
+			GameLogic.Instance.currentSceneObjects.currentWorld.tileMapObservers.Add(
+				new Observer(ForceInitializePosition));
 		}
 
 		defaultMovementSpeed = movementSpeed;
@@ -121,7 +122,7 @@ public abstract class Unit : MonoBehaviour
 		GameLogic.Instance.currentSceneObjects.currentWorld.OccupyTargetTile(currentPosition, this);
 	}
 
-	protected virtual  void UnoccupyTile()
+	protected virtual void UnoccupyTile()
 	{
 		GameLogic.Instance.currentSceneObjects.currentWorld.UnoccupyTargetTile(currentPosition);
 	}

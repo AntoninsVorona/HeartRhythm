@@ -9,7 +9,8 @@ public class GameCamera : MonoBehaviour
 	private Vector3 offset;
 
 	private Vector3 targetPosition;
-	private new Camera camera;
+	[HideInNormalInspector]
+	public new Camera camera;
 	private PixelPerfectCamera pixelPerfectCamera;
 
 	[Header("Zoom")]
@@ -104,7 +105,6 @@ public class GameCamera : MonoBehaviour
 			callback?.Invoke();
 		}
 	}
-
-
+	
 	public static GameCamera Instance { get; private set; }
 }

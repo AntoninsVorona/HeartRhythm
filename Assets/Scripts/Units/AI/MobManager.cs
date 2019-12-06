@@ -39,6 +39,7 @@ public class MobManager : MonoBehaviour
             }
 
             mob.peaceModeMovementCoroutine = null;
+            mob.StopTalk();
         }
     }
 

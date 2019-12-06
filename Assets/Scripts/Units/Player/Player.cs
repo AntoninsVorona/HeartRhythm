@@ -102,6 +102,15 @@ public class Player : Unit
 
 	protected override void InteractWithObject(Unit unit)
 	{
+		if (unit is Mob mob)
+		{
+			if (mob.talksWhenInteractedWith)
+			{
+				mob.Talk();
+				return;
+			}
+		}
+		
 		if (unit.interactions.Count > 0)
 		{
 			interactingWithUnit = unit;
@@ -135,7 +144,7 @@ public class Player : Unit
 		}
 
 		Debug.LogError("Can't pick up less than or equals to 0 items!");
-		
+
 		return (false, 0);
 	}
 
@@ -143,7 +152,8 @@ public class Player : Unit
 	{
 		if (amount > 0)
 		{
-			var (canSpawn, movementDirection) = GameLogic.Instance.currentSceneObjects.currentObstacleManager.CanSpawnAroundLocation(currentPosition);
+			var (canSpawn, movementDirection) =
+				GameLogic.Instance.currentSceneObjects.currentObstacleManager.CanSpawnAroundLocation(currentPosition);
 			if (canSpawn)
 			{
 				var item = selectedInventorySlot.itemInside;
@@ -170,7 +180,7 @@ public class Player : Unit
 		UseItem(consumable);
 		return usedLast;
 	}
-	
+
 	public void UseItem(Consumable item)
 	{
 		ApplyItemEffect(item);
