@@ -46,7 +46,7 @@ public class Inventory : MonoBehaviour
 	private void LoadItemInformation()
 	{
 		itemInformation = new List<ItemInformation>();
-		AddItem("Sword", 0, 1);
+//		AddItem("Sword", 0, 1);
 //		AddItem("Sword", 1, 5555);
 	}
 
@@ -86,7 +86,7 @@ public class Inventory : MonoBehaviour
 		return RemoveItem(slot.itemInside, slot.slotId, 1);
 	}
 
-	private (bool canPickUpAll, int amount) CanPickUpItem(Item item, int amount)
+	public (bool canPickUpAll, int amount) CanPickUpItem(Item item, int amount)
 	{
 		var information = GetItemInformation(item);
 		var canAdd = 0;

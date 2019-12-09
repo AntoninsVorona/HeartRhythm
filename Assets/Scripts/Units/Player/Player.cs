@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PixelCrushers.DialogueSystem;
 using UnityEngine;
 
 public class Player : Unit
@@ -32,6 +33,7 @@ public class Player : Unit
 		base.Start();
 		inventory = GetComponent<Inventory>();
 		inventory.Initialize();
+		RegisterFunctions();
 	}
 
 	protected override void ForceMove()
@@ -209,6 +211,16 @@ public class Player : Unit
 	public int ItemsInSlot(InventorySlot slot)
 	{
 		return inventory.ItemsInSlot(slot);
+	}
+	
+	public bool CanPickUp(string itemName, double amount)
+	{
+		return inventory.CanPickUpItem(ItemManager.Instance.GetItemByName(itemName), (int) amount).canPickUpAll;
+	}
+
+	public void RegisterFunctions()
+	{
+		Lua.RegisterFunction("CanPickUp", this, typeof(Player).GetMethod("CanPickUp"));
 	}
 
 	public static Player Instance { get; private set; }
