@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PixelCrushers.DialogueSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -122,6 +123,10 @@ public class GameLogic : MonoBehaviour
 
 	public void BeginFightMode(Music fightMusic)
 	{
+		if (GameUI.Instance.uiInventory.open)
+		{
+			GameUI.Instance.uiInventory.Toggle();
+		}
 		this.fightMusic = fightMusic;
 		CurrentGameState = GameState.Fight;
 	}
@@ -233,6 +238,22 @@ public class GameLogic : MonoBehaviour
 		yield return new WaitForSeconds(0.5f);
 		PlayerInput.Instance.DanceMoveFinished();
 		playState = PlayState.Basic;
+	}
+
+	public void StartConversation(string conversationTitle, Unit conversationWith)
+	{
+		if (GameUI.Instance.uiInventory.open)
+		{
+			GameUI.Instance.uiInventory.Toggle();
+		}
+		PlayerInput.Instance.ConversationStarted();
+		DialogueManager.instance.StartConversation(conversationTitle, Player.Instance.transform, conversationWith.transform);
+	}
+
+	public void EndConversation()
+	{
+		Debug.Log("End");
+		PlayerInput.Instance.ConversationFinished();
 	}
 
 	public static GameLogic Instance { get; private set; }

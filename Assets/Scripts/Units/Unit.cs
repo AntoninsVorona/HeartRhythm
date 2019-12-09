@@ -203,22 +203,26 @@ public abstract class Unit : MonoBehaviour
 		var speed = movementSpeedCurve.Evaluate(movementT);
 		var x = Mathf.Lerp(start.x, end.x, speed);
 		var y = Mathf.Lerp(start.y, end.y, speed);
-		transform.position = new Vector3(x, y, end.z);
+		transform.position = new Vector3(x, y, y);
 		if (jump)
 		{
 			var spriteJump = jumpStart.y + movementDisplaceCurve.Evaluate(characterDisplaceT);
-			sprite.transform.localPosition = new Vector3(jumpStart.x, spriteJump, jumpStart.z);
+			sprite.transform.localPosition = new Vector3(jumpStart.x, spriteJump, 0);
 		}
 	}
 
 	protected Vector3 GetCurrentPosition()
 	{
-		return GameLogic.Instance.currentSceneObjects.currentWorld.GetCellCenterWorld(currentPosition);
+		var cellCenterWorld = GameLogic.Instance.currentSceneObjects.currentWorld.GetCellCenterWorld(currentPosition);
+		cellCenterWorld.z = cellCenterWorld.y;
+		return cellCenterWorld;
 	}
 
 	protected Vector3 GetPosition(Vector2Int position)
 	{
-		return GameLogic.Instance.currentSceneObjects.currentWorld.GetCellCenterWorld(position);
+		var cellCenterWorld = GameLogic.Instance.currentSceneObjects.currentWorld.GetCellCenterWorld(position);
+		cellCenterWorld.z = cellCenterWorld.y;
+		return cellCenterWorld;
 	}
 
 	protected void GameStateChanged()

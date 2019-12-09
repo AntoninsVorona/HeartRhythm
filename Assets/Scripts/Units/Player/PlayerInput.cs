@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -18,6 +16,7 @@ public class PlayerInput : MonoBehaviour
 		public bool BeatIsValid { get; set; }
 		public bool ReceivedInputThisTimeFrame { get; set; }
 		public bool FirstBattleInputDone { get; set; }
+		public bool ConversationInProgress { get; set; }
 		public bool IgnoreInput { get; set; }
 		public bool DontReceiveAnyInput { get; set; }
 
@@ -26,7 +25,7 @@ public class PlayerInput : MonoBehaviour
 
 		public bool AcceptInput()
 		{
-			if (IgnoreInput || DontReceiveAnyInput || GameUI.Instance.uiInventory.open)
+			if (IgnoreInput || DontReceiveAnyInput || ConversationInProgress || GameUI.Instance.uiInventory.open)
 			{
 				return false;
 			}
@@ -52,6 +51,16 @@ public class PlayerInput : MonoBehaviour
 				default:
 					throw new ArgumentOutOfRangeException();
 			}
+		}
+
+		public bool CanToggleInventory()
+		{
+			if (ConversationInProgress || GameLogic.Instance.CurrentGameState == GameLogic.GameState.Fight)
+			{
+				return false;
+			}
+
+			return true;
 		}
 	}
 
@@ -83,9 +92,12 @@ public class PlayerInput : MonoBehaviour
 	{
 		if (!acceptor.DontReceiveAnyInput)
 		{
-			if (Input.GetButtonUp("Inventory"))
+			if (acceptor.CanToggleInventory())
 			{
-				GameUI.Instance.ToggleInventory();
+				if (Input.GetButtonUp("Inventory"))
+				{
+					GameUI.Instance.ToggleInventory();
+				}
 			}
 
 			int horizontal;
@@ -248,6 +260,16 @@ public class PlayerInput : MonoBehaviour
 		{
 			Player.Instance.ReceiveInput(MovementDirectionUtilities.MovementDirection.None);
 		}
+	}
+
+	public void ConversationStarted()
+	{
+		acceptor.ConversationInProgress = true;
+	}
+
+	public void ConversationFinished()
+	{
+		acceptor.ConversationInProgress = false;
 	}
 
 	public static PlayerInput Instance { get; private set; }

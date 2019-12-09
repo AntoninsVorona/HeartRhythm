@@ -47,8 +47,10 @@ public class GameCamera : MonoBehaviour
 
 	private void LateUpdate()
 	{
-		transform.position = Vector3.Lerp(transform.position, targetPosition,
+		var newPosition = Vector3.Lerp(transform.position, targetPosition,
 			20 * Time.deltaTime);
+		newPosition.z = offset.z;
+		transform.position = newPosition;
 	}
 
 	public void ChangeTargetPosition(Vector3 targetPosition, bool force = false)
