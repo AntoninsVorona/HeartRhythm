@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 676823425e4e43a48af22318d5ceb28d, type: 3}
-  m_Name: ScavengerAssociationInside
+  m_Script: {fileID: 11500000, guid: fb508d1a6c5844ada457ade13ed7cdab, type: 3}
+  m_Name: GuardDuelBattleConfiguration
   m_EditorClassIdentifier: 
-  sceneObjects: {fileID: 7357043137479388389, guid: 12a05bb07e59c074887147f41249b8a1,
+  sceneObjects: {fileID: 8981519576598219680, guid: 775f98fa3d79fb742a6562bbe1f463dd,
     type: 3}
+  dialogueRegistrator: {fileID: 0}
   playerSpawnPoints:
     m_keys: 00000000
     m_values:
-    - {x: 1, y: 0}
+    - {x: 0, y: 0}
+  battleMusic: {fileID: 11400000, guid: 60eaf042f444f644ba3113a34593d82f, type: 2}

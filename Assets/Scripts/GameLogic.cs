@@ -43,9 +43,6 @@ public class GameLogic : MonoBehaviour
 	[HideInNormalInspector]
 	public SceneObjects currentSceneObjects;
 
-	[HideInNormalInspector]
-	public Enemy fightingWith;
-
 	[HideInInspector]
 	public List<Observer> gameStateObservers = new List<Observer>();
 
@@ -158,9 +155,13 @@ public class GameLogic : MonoBehaviour
 		CurrentGameState = GameState.Fight;
 	}
 
-	public IEnumerator GoToEnemyRealm(Enemy enemy)
+	public void FightAnEnemy(BattleConfiguration battleConfiguration)
 	{
-		fightingWith = enemy;
+		StartCoroutine(GoToEnemyRealm(battleConfiguration));
+	}
+
+	private IEnumerator GoToEnemyRealm(BattleConfiguration battleConfiguration)
+	{
 		PreLoadSequence();
 		realWorldScene = SceneManager.GetActiveScene();
 		previousPlayerPosition = Player.Instance.CurrentPosition;
@@ -172,15 +173,20 @@ public class GameLogic : MonoBehaviour
 		}
 
 		SceneManager.SetActiveScene(battleScene);
-		currentSceneObjects = Instantiate(enemy.battleConfiguration.sceneObjects);
+		currentSceneObjects = Instantiate(battleConfiguration.sceneObjects);
 		currentSceneObjects.Activate();
 
 		yield return currentSceneObjects.currentWorld.InitializeWorld();
-		Player.Instance.Initialize(enemy.battleConfiguration.GetSpawnPoint(0));
+		Player.Instance.Initialize(battleConfiguration.GetSpawnPoint(0));
+		if (CurrentGameState != GameState.Fight)
+		{
+			BeginFightMode(battleConfiguration.battleMusic);
+		}
+
 		PostLoadSequence();
 	}
 
-	public void BackToRealWorld()
+	public void BackToRealWorld(bool enablePieceMode)
 	{
 		PreLoadSequence();
 		if (currentSceneObjects)
@@ -193,6 +199,11 @@ public class GameLogic : MonoBehaviour
 		currentSceneObjects.Activate();
 		currentSceneObjects.currentMobManager.ResumeAllMobs();
 		Player.Instance.Initialize(previousPlayerPosition);
+		if (enablePieceMode)
+		{
+			CurrentGameState = GameState.Peace;
+		}
+
 		PostLoadSequence();
 	}
 
@@ -281,7 +292,6 @@ public class GameLogic : MonoBehaviour
 
 	public void EndConversation()
 	{
-		Debug.Log("End");
 		PlayerInput.Instance.ConversationFinished();
 	}
 

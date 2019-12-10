@@ -8,14 +8,14 @@ public class LevelData : ScriptableObject
 {
 	public SceneObjects sceneObjects;
 	public DialogueRegistrator dialogueRegistrator;
-	
+
 	[Serializable]
 	public class EntranceSpawnPoint : SerializableDictionary<int, Vector2Int>
 	{
 	}
 
 	[SerializeField]
-	private EntranceSpawnPoint playerSpawnPoints;
+	private EntranceSpawnPoint playerSpawnPoints = new EntranceSpawnPoint {{0, Vector2Int.zero}};
 
 	public Vector2Int GetSpawnPoint(int entranceId)
 	{
