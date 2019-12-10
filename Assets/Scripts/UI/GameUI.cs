@@ -1,14 +1,18 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
+	private static readonly int SHOW_TRIGGER = Animator.StringToHash("Show");
+	private static readonly int HIDE_TRIGGER = Animator.StringToHash("Hide");
 	public UIInventory uiInventory;
 	public BeatController beatController;
 	public GameObject loading;
 	public DanceMoveUI danceMoveUI;
 	public Text modeToggler;
+	public Animator cutSceneLines;
 
 	private void Awake()
 	{
@@ -61,6 +65,24 @@ public class GameUI : MonoBehaviour
 	public void ToggleInventory()
 	{
 		uiInventory.Toggle();
+	}
+
+	public void CutSceneStarted()
+	{
+		cutSceneLines.gameObject.SetActive(true);
+		cutSceneLines.SetTrigger(SHOW_TRIGGER);
+	}
+	
+	public void CutSceneFinished()
+	{
+		StartCoroutine(CutSceneFinishedSequence());
+	}
+
+	private IEnumerator CutSceneFinishedSequence()
+	{
+		cutSceneLines.SetTrigger(HIDE_TRIGGER);
+		yield return new WaitForSeconds(1);
+		cutSceneLines.gameObject.SetActive(false);	
 	}
 
 	public static GameUI Instance { get; private set; }

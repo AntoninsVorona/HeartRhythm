@@ -69,21 +69,24 @@ public abstract class Unit : MonoBehaviour
 		Move(spawnPoint, true);
 	}
 
-	protected void Move(MovementDirectionUtilities.MovementDirection movementDirection, bool force = false)
+	protected Coroutine Move(MovementDirectionUtilities.MovementDirection movementDirection, bool force = false)
 	{
 		if (movementDirection != MovementDirectionUtilities.MovementDirection.None)
 		{
-			Move(currentPosition + MovementDirectionUtilities.VectorFromDirection(movementDirection), force);
+			return Move(currentPosition + MovementDirectionUtilities.VectorFromDirection(movementDirection), force);
 		}
+
+		return null;
 	}
 
-	public virtual void Move(Vector2Int newPosition, bool force = false)
+	public Coroutine Move(Vector2Int newPosition, bool force = false)
 	{
 		if (newPosition == currentPosition)
 		{
-			return;
+			return null;
 		}
 
+		Coroutine coroutine = null;
 		var (cantMoveReason, unit) = GameLogic.Instance.currentSceneObjects.currentWorld.CanWalk(newPosition);
 		if (cantMoveReason == GameTile.CantMoveReason.None || force)
 		{
@@ -95,14 +98,14 @@ public abstract class Unit : MonoBehaviour
 			}
 			else
 			{
-				CoroutineStarter().StartCoroutine(MovementSequence(newPosition));
+				coroutine = CoroutineStarter().StartCoroutine(MovementSequence(newPosition));
 			}
 
 			OccupyTile();
 		}
 		else
 		{
-			CoroutineStarter().StartCoroutine(CantMoveSequence(newPosition, currentPosition.x != newPosition.x));
+			coroutine = CoroutineStarter().StartCoroutine(CantMoveSequence(newPosition, currentPosition.x != newPosition.x));
 			switch (cantMoveReason)
 			{
 				case GameTile.CantMoveReason.NonWalkable:
@@ -115,6 +118,8 @@ public abstract class Unit : MonoBehaviour
 					throw new ArgumentOutOfRangeException();
 			}
 		}
+
+		return coroutine;
 	}
 
 	protected virtual void OccupyTile()

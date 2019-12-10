@@ -39,6 +39,7 @@ public class GameLogic : MonoBehaviour
 	private Vector2Int previousPlayerPosition;
 	private Scene battleScene;
 	private Music fightMusic;
+	private CutScene currentCutScene;
 
 	[HideInNormalInspector]
 	public SceneObjects currentSceneObjects;
@@ -51,6 +52,8 @@ public class GameLogic : MonoBehaviour
 
 	[Header("Debug")]
 	public LevelData debugLevelToLoad;
+
+	public CutScene debugCutScene;
 
 	public Music testFightMusic;
 
@@ -119,6 +122,10 @@ public class GameLogic : MonoBehaviour
 		}
 
 		PostLoadSequence();
+		if (debugCutScene)
+		{
+			PlayCutScene(debugCutScene);
+		}
 	}
 
 	private void GameStateChanged()
@@ -278,7 +285,20 @@ public class GameLogic : MonoBehaviour
 		playState = PlayState.Basic;
 	}
 
+	public void StartConversation(string conversationTitle)
+	{
+		PreConversationStart();
+		DialogueManager.instance.StartConversation(conversationTitle, Player.Instance.transform);
+	}
+
 	public void StartConversation(string conversationTitle, Unit conversationWith)
+	{
+		PreConversationStart();
+		DialogueManager.instance.StartConversation(conversationTitle, Player.Instance.transform,
+			conversationWith.transform);
+	}
+
+	private static void PreConversationStart()
 	{
 		if (GameUI.Instance.uiInventory.open)
 		{
@@ -286,13 +306,37 @@ public class GameLogic : MonoBehaviour
 		}
 
 		PlayerInput.Instance.ConversationStarted();
-		DialogueManager.instance.StartConversation(conversationTitle, Player.Instance.transform,
-			conversationWith.transform);
 	}
 
 	public void EndConversation()
 	{
 		PlayerInput.Instance.ConversationFinished();
+		if (currentCutScene != null)
+		{
+			currentCutScene.dialogueFinished = true;
+		}
+	}
+
+	private void PlayCutScene(CutScene cutScene)
+	{
+		currentCutScene = Instantiate(cutScene);
+		PlayerInput.Instance.acceptor.DontReceiveAnyInput = true;
+		PlayerInput.Instance.acceptor.FirstBattleInputDone = false;
+		GameUI.Instance.CutSceneStarted();
+		currentCutScene.StartCutScene();
+	}
+
+	public void CutSceneFinished()
+	{
+		currentCutScene = null;
+		StartCoroutine(CutSceneFinishedSequence());
+	}
+
+	private IEnumerator CutSceneFinishedSequence()
+	{
+		GameUI.Instance.CutSceneFinished();
+		yield return new WaitForSeconds(1);
+		PlayerInput.Instance.acceptor.DontReceiveAnyInput = false;
 	}
 
 	public static GameLogic Instance { get; private set; }

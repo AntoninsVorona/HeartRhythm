@@ -278,7 +278,13 @@ PrefabInstance:
         type: 3}
       propertyPath: debugLevelToLoad
       value: 
-      objectReference: {fileID: 11400000, guid: 26f74a81b25f2774f9413f70211a1fe7,
+      objectReference: {fileID: 11400000, guid: 8cb7e2661381a2a45ad52952d0b00858,
+        type: 2}
+    - target: {fileID: 3710416115441813072, guid: 1c9a7e5307868d64d8d9402aeb6aff8d,
+        type: 3}
+      propertyPath: debugCutScene
+      value: 
+      objectReference: {fileID: 11400000, guid: c29f3d220df64334c877d33567d75431,
         type: 2}
     - target: {fileID: 3710416115441813073, guid: 1c9a7e5307868d64d8d9402aeb6aff8d,
         type: 3}
@@ -1803,16 +1809,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6344778240942143814, guid: a8f397eef70e6a24bb09af57fb206bd2,
-        type: 3}
-      propertyPath: conversationEvents.onConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 38901602}
     - target: {fileID: 7766726581833781660, guid: a8f397eef70e6a24bb09af57fb206bd2,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6344778240942143814, guid: a8f397eef70e6a24bb09af57fb206bd2,
+        type: 3}
+      propertyPath: conversationEvents.onConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 38901602}
     - target: {fileID: 7766726581833781658, guid: a8f397eef70e6a24bb09af57fb206bd2,
         type: 3}
       propertyPath: m_RootOrder

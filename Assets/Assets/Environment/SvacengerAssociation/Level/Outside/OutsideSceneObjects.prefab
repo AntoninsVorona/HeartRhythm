@@ -647,6 +647,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2472129327441455851}
   - component: {fileID: 4550899716278326085}
+  - component: {fileID: 4423998260344878475}
   m_Layer: 0
   m_Name: OutsideSceneObjects
   m_TagString: Untagged
@@ -686,6 +687,19 @@ MonoBehaviour:
   currentWorld: {fileID: 3054612852431562025}
   currentMobManager: {fileID: 1684955714039418234}
   currentObstacleManager: {fileID: 8315420127647901893}
+--- !u!114 &4423998260344878475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2472129327441455850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac713ef713854e1faa6c4f65115dad29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: -5, y: 15}
 --- !u!1 &2577263734370649072
 GameObject:
   m_ObjectHideFlags: 0
@@ -4844,7 +4858,7 @@ PrefabInstance:
     - target: {fileID: 6324874088676031073, guid: 125507802bc466445b6ecaa860cef952,
         type: 3}
       propertyPath: spawnPoint.y
-      value: 21
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 8526947802995846194, guid: 125507802bc466445b6ecaa860cef952,
         type: 3}
