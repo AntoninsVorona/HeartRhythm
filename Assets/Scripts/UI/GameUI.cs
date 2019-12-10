@@ -27,6 +27,7 @@ public class GameUI : MonoBehaviour
 			return;
 		}
 
+		cutSceneLines.gameObject.SetActive(false);
 		beatController.Deactivate();
 		danceMoveUI.Deactivate();
 		uiInventory.Close();

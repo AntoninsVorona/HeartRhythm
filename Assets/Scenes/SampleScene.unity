@@ -278,14 +278,13 @@ PrefabInstance:
         type: 3}
       propertyPath: debugLevelToLoad
       value: 
-      objectReference: {fileID: 11400000, guid: 8cb7e2661381a2a45ad52952d0b00858,
+      objectReference: {fileID: 11400000, guid: 26f74a81b25f2774f9413f70211a1fe7,
         type: 2}
     - target: {fileID: 3710416115441813072, guid: 1c9a7e5307868d64d8d9402aeb6aff8d,
         type: 3}
       propertyPath: debugCutScene
       value: 
-      objectReference: {fileID: 11400000, guid: c29f3d220df64334c877d33567d75431,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 3710416115441813073, guid: 1c9a7e5307868d64d8d9402aeb6aff8d,
         type: 3}
       propertyPath: m_RootOrder
