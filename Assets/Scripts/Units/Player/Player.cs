@@ -33,7 +33,6 @@ public class Player : Unit
 		base.Start();
 		inventory = GetComponent<Inventory>();
 		inventory.Initialize();
-		RegisterFunctions();
 	}
 
 	protected override void ForceMove()
@@ -212,15 +211,10 @@ public class Player : Unit
 	{
 		return inventory.ItemsInSlot(slot);
 	}
-	
-	public bool CanPickUp(string itemName, double amount)
-	{
-		return inventory.CanPickUpItem(ItemManager.Instance.GetItemByName(itemName), (int) amount).canPickUpAll;
-	}
 
-	public void RegisterFunctions()
+	public (bool canPickUpAll, int amount) CanPickUp(Item item, int amount)
 	{
-		Lua.RegisterFunction("CanPickUp", this, typeof(Player).GetMethod("CanPickUp"));
+		return inventory.CanPickUpItem(item, amount);
 	}
 
 	public static Player Instance { get; private set; }

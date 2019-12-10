@@ -71,17 +71,25 @@ public class GameLogic : MonoBehaviour
 			Destroy(gameObject);
 			return;
 		}
-
-		currentLevelData = debugLevelToLoad ? debugLevelToLoad : LevelManager.Instance.GetLevelData("TestLevel"); //TODO Load
 	}
 
 	private IEnumerator Start()
 	{
+		currentLevelData =
+			debugLevelToLoad ? debugLevelToLoad : LevelManager.Instance.GetLevelData("TestLevel"); //TODO Load
 		yield return LoadLevelCoroutine(new Vector2Int(0, 0)); //TODO Load
 	}
 
 	public void LoadLevel(LevelData levelToEnter, int entranceId)
 	{
+		if (currentLevelData)
+		{
+			if (currentLevelData.dialogueRegistrator)
+			{
+				currentLevelData.dialogueRegistrator.UnregisterDialogueFunctions();
+			}
+		}
+
 		currentLevelData = levelToEnter;
 		StartCoroutine(LoadLevelCoroutine(currentLevelData.GetSpawnPoint(entranceId)));
 	}
@@ -89,6 +97,11 @@ public class GameLogic : MonoBehaviour
 	private IEnumerator LoadLevelCoroutine(Vector2Int spawnPoint)
 	{
 		PreLoadSequence();
+		if (currentLevelData.dialogueRegistrator)
+		{
+			currentLevelData.dialogueRegistrator.RegisterDialogueFunctions();
+		}
+
 		if (currentSceneObjects)
 		{
 			Destroy(currentSceneObjects.gameObject);
@@ -98,8 +111,16 @@ public class GameLogic : MonoBehaviour
 		currentSceneObjects.Activate();
 		yield return currentSceneObjects.currentWorld.InitializeWorld();
 		Player.Instance.Initialize(spawnPoint);
-		CurrentGameState = GameState.Peace;
-		GameStateChanged();
+		if (currentLevelData is BattleArea battleArea)
+		{
+			BeginFightMode(battleArea.battleMusic);
+		}
+		else
+		{
+			CurrentGameState = GameState.Peace;
+			GameStateChanged();
+		}
+
 		PostLoadSequence();
 	}
 
@@ -123,10 +144,16 @@ public class GameLogic : MonoBehaviour
 
 	public void BeginFightMode(Music fightMusic)
 	{
+		if (CurrentGameState == GameState.Fight)
+		{
+			return;
+		}
+
 		if (GameUI.Instance.uiInventory.open)
 		{
 			GameUI.Instance.uiInventory.Toggle();
 		}
+
 		this.fightMusic = fightMusic;
 		CurrentGameState = GameState.Fight;
 	}
@@ -246,8 +273,10 @@ public class GameLogic : MonoBehaviour
 		{
 			GameUI.Instance.uiInventory.Toggle();
 		}
+
 		PlayerInput.Instance.ConversationStarted();
-		DialogueManager.instance.StartConversation(conversationTitle, Player.Instance.transform, conversationWith.transform);
+		DialogueManager.instance.StartConversation(conversationTitle, Player.Instance.transform,
+			conversationWith.transform);
 	}
 
 	public void EndConversation()

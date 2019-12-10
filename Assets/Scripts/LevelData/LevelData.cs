@@ -7,7 +7,8 @@ using UnityEngine;
 public class LevelData : ScriptableObject
 {
 	public SceneObjects sceneObjects;
-
+	public DialogueRegistrator dialogueRegistrator;
+	
 	[Serializable]
 	public class EntranceSpawnPoint : SerializableDictionary<int, Vector2Int>
 	{
