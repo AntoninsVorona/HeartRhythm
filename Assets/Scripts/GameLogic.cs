@@ -212,6 +212,7 @@ public class GameLogic : MonoBehaviour
 		{
 			CurrentGameState = GameState.Peace;
 		}
+
 		GameUI.Instance.BackToRealWorld();
 		PostLoadSequence();
 	}

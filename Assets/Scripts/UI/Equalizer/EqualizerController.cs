@@ -21,6 +21,8 @@ public class EqualizerController : MonoBehaviour
 
 	[SerializeField]
 	private Image equalizerCurrentHp;
+	[SerializeField]
+	private Image damagedEqualizerBackground;
 
 	[Header("Equalizer Lines")]
 	[SerializeField]
@@ -128,7 +130,7 @@ public class EqualizerController : MonoBehaviour
 	public void UpdateCurrentHp(int currentHp, int maxHp)
 	{
 		equalizerCurrentHp.fillAmount = (float) currentHp / maxHp;
-		currentMaxValue = (float) Player.Instance.combatData.CurrentHp / Player.Instance.combatData.maxHp;
+		currentMaxValue = (float) Player.Instance.GetCurrentHp() / Player.Instance.GetMaxHp();
 		var prevMaxPoint = currentMaxPoint;
 		currentMaxPoint = Mathf.RoundToInt(currentMaxValue * (MAX_POINT + 1)) - 1;
 		if (currentMaxPoint < 0)
@@ -152,6 +154,8 @@ public class EqualizerController : MonoBehaviour
 				line.fillAmount = MIN_FILL;
 			}
 		}
+
+		damagedEqualizerBackground.fillAmount = (float) (MAX_POINT - currentMaxPoint) / (MAX_POINT + 1);
 	}
 
 	private static Vector2 GetLinePosition(int equalizerPoint)

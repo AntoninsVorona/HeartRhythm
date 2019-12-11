@@ -23,11 +23,34 @@ public class Player : Unit
 				GameUI.Instance.equalizerController.UpdateCurrentHp(currentHp, maxHp);
 			}
 		}
+
+		public void Heal(int heal)
+		{
+			var canHeal = maxHp - CurrentHp;
+			if (heal > canHeal)
+			{
+				heal = canHeal;
+			}
+
+			CurrentHp += heal;
+		}
+
+		public void TakeDamage(int damage)
+		{
+			var leftOverHp = CurrentHp - damage;
+			if (leftOverHp < 0)
+			{
+				damage = CurrentHp;
+			}
+
+			CurrentHp -= damage;
+		}
 	}
 	
 	private static readonly int FINISH_DANCE_MOVE_TRIGGER = Animator.StringToHash("FinishDanceMove");
 	private static readonly int IDLE_TRIGGER = Animator.StringToHash("Idle");
-	public CombatData combatData;
+	[SerializeField]
+	private CombatData combatData;
 	private Inventory inventory;
 	private Unit interactingWithUnit;
 	private Animator animator;
@@ -119,6 +142,7 @@ public class Player : Unit
 	public override void Die()
 	{
 		//TODO Lose Game
+		//TODO Get Kicked out
 	}
 
 	protected override void InteractWithObject(Unit unit)
@@ -240,6 +264,30 @@ public class Player : Unit
 	public void InitializeFightWithEnemyCombatData()
 	{
 		combatData.CurrentHp = combatData.startHp;
+	}
+
+	public int GetMaxHp()
+	{
+		return combatData.maxHp;
+	}
+
+	public float GetCurrentHp()
+	{
+		return combatData.CurrentHp;
+	}
+
+	public void Heal(int heal)
+	{
+		combatData.Heal(heal);
+	}
+
+	public void TakeDamage(int damage)
+	{
+		combatData.TakeDamage(damage);
+		if (combatData.CurrentHp == 0)
+		{
+			Die();
+		}
 	}
 
 	public static Player Instance { get; private set; }

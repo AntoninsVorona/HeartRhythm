@@ -2135,6 +2135,8 @@ MonoBehaviour:
   spawnPoint: {x: 4, y: 2}
   interactions:
   - {fileID: 11400000, guid: c5c87494c14fd114fa12063787c87a4a, type: 2}
+  - {fileID: 11400000, guid: 98d401e28d16eb345aa067eaa3470a20, type: 2}
+  - {fileID: 11400000, guid: a5f32aa04eb95d94794bd9c20db24645, type: 2}
   movementSettings:
     typeOfMovement: 2
     movementDirection: 0
@@ -2149,7 +2151,6 @@ MonoBehaviour:
     displayText: {fileID: 0}
     canvasGroup: {fileID: 0}
   battleConfiguration: {fileID: 0}
-  battleMusic: {fileID: 0}
 --- !u!1 &7044205757464031731
 GameObject:
   m_ObjectHideFlags: 0
