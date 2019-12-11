@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class EqualizerController : MonoBehaviour
 {
@@ -11,7 +13,8 @@ public class EqualizerController : MonoBehaviour
 	private const int EQUALIZER_MAX_DOTS = 10;
 	private const int MIN_POINT = 0;
 	private const int MAX_POINT = 19;
-	private const float MIN_FILL = 1f / EQUALIZER_MAX_DOTS;
+	private const float MIN_FILL = 0; // 1f / EQUALIZER_MAX_DOTS;
+	private const float FILL_MODIFIER = 1f / EQUALIZER_MAX_DOTS;
 
 	[HideInNormalInspector]
 	public bool active;
@@ -103,11 +106,16 @@ public class EqualizerController : MonoBehaviour
 	{
 		var nextPoint = startPoint + modifier;
 		var fillModifier = GetFillAmount(1);
-		while (nextPoint >= MIN_POINT && nextPoint <= currentMaxPoint && fillModifier > MIN_FILL)
+		while (nextPoint >= MIN_POINT && nextPoint <= currentMaxPoint)
 		{
 			var line = equalizerLines[nextPoint];
 			line.fillAmount = fillModifier;
 			fillModifier = GetFillAmount(fillModifier);
+			if (fillModifier == MIN_FILL)
+			{
+				fillModifier = GetMinFillAmount();
+			}
+
 			nextPoint += modifier;
 		}
 	}
@@ -153,20 +161,19 @@ public class EqualizerController : MonoBehaviour
 
 	private float GetFillAmount(float start)
 	{
-		const float range = 1f / EQUALIZER_MAX_DOTS;
 		float modifier = 0;
 		switch (Random.Range(0, 5))
 		{
 			case 0:
 			case 1:
-				modifier = range;
+				modifier = FILL_MODIFIER;
 				break;
 			case 2:
 			case 3:
-				modifier = range * 2;
+				modifier = FILL_MODIFIER * 2;
 				break;
 			case 4:
-				modifier = range * 3;
+				modifier = FILL_MODIFIER * 3;
 				break;
 		}
 
@@ -177,6 +184,19 @@ public class EqualizerController : MonoBehaviour
 		}
 
 		return fillAmount;
+	}
+
+	private float GetMinFillAmount()
+	{
+		switch (Random.Range(0, 3))
+		{
+			case 1:
+				return FILL_MODIFIER * 3;
+			case 2:
+				return FILL_MODIFIER * 4;
+			default:
+				return FILL_MODIFIER * 2;
+		}
 	}
 
 	private void InitLinesBeyondMaxPoint()
