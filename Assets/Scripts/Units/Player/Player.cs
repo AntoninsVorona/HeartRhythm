@@ -6,8 +6,28 @@ using UnityEngine;
 
 public class Player : Unit
 {
+	[Serializable]
+	public class CombatData
+	{
+		public int startHp = 50;
+		public int maxHp = 100;
+
+		private int currentHp;
+
+		public int CurrentHp
+		{
+			get => currentHp;
+			set
+			{
+				currentHp = value;
+				GameUI.Instance.equalizerController.UpdateCurrentHp(currentHp, maxHp);
+			}
+		}
+	}
+	
 	private static readonly int FINISH_DANCE_MOVE_TRIGGER = Animator.StringToHash("FinishDanceMove");
 	private static readonly int IDLE_TRIGGER = Animator.StringToHash("Idle");
+	public CombatData combatData;
 	private Inventory inventory;
 	private Unit interactingWithUnit;
 	private Animator animator;
@@ -215,6 +235,11 @@ public class Player : Unit
 	public (bool canPickUpAll, int amount) CanPickUp(Item item, int amount)
 	{
 		return inventory.CanPickUpItem(item, amount);
+	}
+
+	public void InitializeFightWithEnemyCombatData()
+	{
+		combatData.CurrentHp = combatData.startHp;
 	}
 
 	public static Player Instance { get; private set; }

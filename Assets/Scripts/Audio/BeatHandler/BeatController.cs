@@ -99,12 +99,18 @@ public class BeatController : MonoBehaviour
     {
         var startTime = AudioSettings.dspTime + travelTime - AudioManager.Instance.beatDelay;
         AudioManager.Instance.SchedulePlay(travelTime);
+        var equalizerController = GameUI.Instance.equalizerController;
         while (true)
         {
             if (AudioSettings.dspTime - startTime >= AudioManager.Instance.beatDelay - TOLERANCE)
             {
 //				Debug.LogError($"PULSE: Time: {AudioManager.Instance.currentTime} | Music: {AudioManager.Instance.musicAudioSource.time}");
                 pulsingObject.SetTrigger(PULSE_TRIGGER);
+                if (equalizerController.active)
+                {
+                    equalizerController.CreateBump();
+                }
+
                 startTime += AudioManager.Instance.beatDelay;
             }
             

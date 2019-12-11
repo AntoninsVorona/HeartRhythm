@@ -13,6 +13,7 @@ public class GameUI : MonoBehaviour
 	public DanceMoveUI danceMoveUI;
 	public Text modeToggler;
 	public Animator cutSceneLines;
+	public EqualizerController equalizerController;
 
 	private void Awake()
 	{
@@ -27,6 +28,7 @@ public class GameUI : MonoBehaviour
 			return;
 		}
 
+		equalizerController.Initialize();
 		cutSceneLines.gameObject.SetActive(false);
 		beatController.Deactivate();
 		danceMoveUI.Deactivate();
@@ -84,6 +86,16 @@ public class GameUI : MonoBehaviour
 		cutSceneLines.SetTrigger(HIDE_TRIGGER);
 		yield return new WaitForSeconds(1);
 		cutSceneLines.gameObject.SetActive(false);	
+	}
+
+	public void FightAnEnemy()
+	{
+		equalizerController.InitializeEqualizerInBattle();
+	}
+
+	public void BackToRealWorld()
+	{
+		equalizerController.Deactivate();
 	}
 
 	public static GameUI Instance { get; private set; }

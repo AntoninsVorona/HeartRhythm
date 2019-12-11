@@ -185,11 +185,13 @@ public class GameLogic : MonoBehaviour
 
 		yield return currentSceneObjects.currentWorld.InitializeWorld();
 		Player.Instance.Initialize(battleConfiguration.GetSpawnPoint(0));
+		Player.Instance.InitializeFightWithEnemyCombatData();
 		if (CurrentGameState != GameState.Fight)
 		{
 			BeginFightMode(battleConfiguration.battleMusic);
 		}
 
+		GameUI.Instance.FightAnEnemy();
 		PostLoadSequence();
 	}
 
@@ -210,7 +212,7 @@ public class GameLogic : MonoBehaviour
 		{
 			CurrentGameState = GameState.Peace;
 		}
-
+		GameUI.Instance.BackToRealWorld();
 		PostLoadSequence();
 	}
 
