@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
-	private static readonly int SHOW_TRIGGER = Animator.StringToHash("Show");
-	private static readonly int HIDE_TRIGGER = Animator.StringToHash("Hide");
 	public UIInventory uiInventory;
 	public BeatController beatController;
 	public GameObject loading;
@@ -73,7 +71,7 @@ public class GameUI : MonoBehaviour
 	public void CutSceneStarted()
 	{
 		cutSceneLines.gameObject.SetActive(true);
-		cutSceneLines.SetTrigger(SHOW_TRIGGER);
+		cutSceneLines.SetTrigger(AnimatorUtilities.SHOW_TRIGGER);
 	}
 	
 	public void CutSceneFinished()
@@ -83,7 +81,7 @@ public class GameUI : MonoBehaviour
 
 	private IEnumerator CutSceneFinishedSequence()
 	{
-		cutSceneLines.SetTrigger(HIDE_TRIGGER);
+		cutSceneLines.SetTrigger(AnimatorUtilities.HIDE_TRIGGER);
 		yield return new WaitForSeconds(1);
 		cutSceneLines.gameObject.SetActive(false);	
 	}

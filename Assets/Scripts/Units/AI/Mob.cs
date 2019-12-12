@@ -81,8 +81,10 @@ public class Mob : Unit
 	public class TalkUI
 	{
 		public Canvas canvas;
+		public Animator drawingBoardAnimator;
 		public TextMeshProUGUI displayText;
-		public CanvasGroup canvasGroup;
+		[HideInInspector]
+		public float talkTimer;
 	}
 
 	public MovementSettings movementSettings;
@@ -204,33 +206,53 @@ public class Mob : Unit
 
 	public void Talk()
 	{
-		StopTalk();
-		talkCoroutine = CoroutineStarter().StartCoroutine(TalkCoroutine());
-	}
-
-	public void StopTalk()
-	{
 		if (talkCoroutine != null)
 		{
-			CoroutineStarter().StopCoroutine(talkCoroutine);
-			talkCoroutine = null;
+			UpdateTalkTimer();
+		}
+		else
+		{
+			talkCoroutine = CoroutineStarter().StartCoroutine(TalkCoroutine());
+		}
+	}
+
+	public void StopTalk(bool force)
+	{
+		if (force)
+		{
+			talkUI.canvas.gameObject.SetActive(false);
+			if (talkCoroutine != null)
+			{
+				CoroutineStarter().StopCoroutine(talkCoroutine);
+			}
+		}
+		else
+		{
+			if (talkCoroutine != null)
+			{
+				talkUI.talkTimer = 0;
+			}
 		}
 	}
 
 	private IEnumerator TalkCoroutine()
 	{
-		talkUI.canvasGroup.alpha = 1;
 		talkUI.canvas.gameObject.SetActive(true);
-		yield return new WaitForSeconds(2f);
-		float t = 1;
-		while (t > 0)
-		{
-			yield return null;
-			t -= Time.deltaTime;
-			talkUI.canvasGroup.alpha = t;
-		}
-
+		talkUI.drawingBoardAnimator.SetTrigger(AnimatorUtilities.SHOW_TRIGGER);
+		yield return new WaitForSeconds(0.6f);
+		talkUI.displayText.gameObject.SetActive(true);
+		UpdateTalkTimer();
+		yield return new WaitUntil(() => Time.time > talkUI.talkTimer);
+		talkUI.displayText.gameObject.SetActive(false);
+		talkUI.drawingBoardAnimator.SetTrigger(AnimatorUtilities.HIDE_TRIGGER);
+		yield return new WaitForSeconds(0.6f);
 		talkUI.canvas.gameObject.SetActive(false);
+		talkCoroutine = null;
+	}
+
+	private void UpdateTalkTimer()
+	{
+		talkUI.talkTimer = Time.time + 3;
 	}
 
 	private void OnDrawGizmosSelected()

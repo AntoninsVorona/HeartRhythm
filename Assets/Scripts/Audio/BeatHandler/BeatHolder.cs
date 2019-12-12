@@ -11,7 +11,7 @@ public class BeatHolder : MonoBehaviour
     [HideInNormalInspector]
     public Animator animator;
 
-    [HideInNormalInspector]
+    [HideInInspector]
     public List<Beat> beats = new List<Beat>();
 
     public void Appear()
