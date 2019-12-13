@@ -220,7 +220,11 @@ public class Mob : Unit
 	{
 		if (force)
 		{
-			talkUI.canvas.gameObject.SetActive(false);
+			if (talkUI.canvas)
+			{
+				talkUI.canvas.gameObject.SetActive(false);
+			}
+
 			if (talkCoroutine != null)
 			{
 				CoroutineStarter().StopCoroutine(talkCoroutine);
