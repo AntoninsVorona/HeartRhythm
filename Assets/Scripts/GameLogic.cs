@@ -77,7 +77,7 @@ public class GameLogic : MonoBehaviour
 	{
 		currentLevelData =
 			debugLevelToLoad ? debugLevelToLoad : LevelManager.Instance.GetLevelData("TestLevel"); //TODO Load
-		yield return LoadLevelCoroutine(new Vector2Int(0, 0)); //TODO Load
+		yield return LoadLevelCoroutine(debugLevelToLoad.GetSpawnPoint(0)); //TODO Load
 	}
 
 	public void LoadLevel(LevelData levelToEnter, int entranceId)

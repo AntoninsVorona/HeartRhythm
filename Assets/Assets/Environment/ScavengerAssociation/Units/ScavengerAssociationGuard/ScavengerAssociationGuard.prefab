@@ -68,7 +68,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 32766
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 9b2dd873382b3f04fa001bacba80e000, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.6666667}
   m_FlipX: 0
@@ -148,7 +148,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 32767
+  m_SortingOrder: 100
   m_Sprite: {fileID: 5665697985723416187, guid: c38117f833459cb438e25049979fdb31,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -268,7 +268,16 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   spawnPoint: {x: -7, y: 22}
+  initializeSelf: 1
   interactions: []
+  talksWhenInteractedWith: 1
+  talkUI:
+    canvas: {fileID: 1321599299586812471}
+    drawingBoardAnimator: {fileID: 8617007469028807962}
+    texts:
+    - Stop right there you criminal scum!
+    displayText: {fileID: 8526947802995846194}
+    talkTimer: 0
   movementSettings:
     typeOfMovement: 0
     movementDirection: 0
@@ -276,13 +285,6 @@ MonoBehaviour:
       locations: []
     moveDuringPeaceMode: 1
     peaceModeMovementDelay: 1
-  initializeSelf: 1
-  talksWhenInteractedWith: 1
-  talkUI:
-    canvas: {fileID: 1321599299586812471}
-    drawingBoardAnimator: {fileID: 8617007469028807962}
-    displayText: {fileID: 8526947802995846194}
-    talkTimer: 0
 --- !u!95 &3927627785724731387
 Animator:
   serializedVersion: 3

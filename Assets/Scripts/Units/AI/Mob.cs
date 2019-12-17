@@ -77,29 +77,11 @@ public class Mob : Unit
 		public float peaceModeMovementDelay = 1;
 	}
 
-	[Serializable]
-	public class TalkUI
-	{
-		public Canvas canvas;
-		public Animator drawingBoardAnimator;
-		public TextMeshProUGUI displayText;
-		[HideInInspector]
-		public float talkTimer;
-	}
-
 	public MovementSettings movementSettings;
-	public bool initializeSelf = true;
-	public bool talksWhenInteractedWith;
-
-	[SerializeField]
-	[DrawIf("talksWhenInteractedWith", true)]
-	private TalkUI talkUI;
-
 	private float lastMovementDuringPeaceMode;
 
 	[HideInInspector]
 	public Coroutine peaceModeMovementCoroutine;
-	private Coroutine talkCoroutine;
 
 	protected override void Start()
 	{
@@ -107,12 +89,6 @@ public class Mob : Unit
 		if (initializeSelf)
 		{
 			GameLogic.Instance.currentSceneObjects.currentMobManager.InitializeMob(this, spawnPoint);
-		}
-
-		if (talkUI.canvas)
-		{
-			talkUI.canvas.worldCamera = GameCamera.Instance.camera;
-			talkUI.canvas.gameObject.SetActive(false);
 		}
 	}
 
@@ -204,59 +180,14 @@ public class Mob : Unit
 		}
 	}
 
-	public void Talk()
+	public override void Talk(string text = null)
 	{
-		if (talkCoroutine != null)
-		{
-			UpdateTalkTimer();
-		}
-		else
-		{
-			talkCoroutine = CoroutineStarter().StartCoroutine(TalkCoroutine());
-		}
+		talkUI.Talk(CoroutineStarter(), text);
 	}
 
 	public void StopTalk(bool force)
 	{
-		if (force)
-		{
-			if (talkUI.canvas)
-			{
-				talkUI.canvas.gameObject.SetActive(false);
-			}
-
-			if (talkCoroutine != null)
-			{
-				CoroutineStarter().StopCoroutine(talkCoroutine);
-			}
-		}
-		else
-		{
-			if (talkCoroutine != null)
-			{
-				talkUI.talkTimer = 0;
-			}
-		}
-	}
-
-	private IEnumerator TalkCoroutine()
-	{
-		talkUI.canvas.gameObject.SetActive(true);
-		talkUI.drawingBoardAnimator.SetTrigger(AnimatorUtilities.SHOW_TRIGGER);
-		yield return new WaitForSeconds(0.6f);
-		talkUI.displayText.gameObject.SetActive(true);
-		UpdateTalkTimer();
-		yield return new WaitUntil(() => Time.time > talkUI.talkTimer);
-		talkUI.displayText.gameObject.SetActive(false);
-		talkUI.drawingBoardAnimator.SetTrigger(AnimatorUtilities.HIDE_TRIGGER);
-		yield return new WaitForSeconds(0.6f);
-		talkUI.canvas.gameObject.SetActive(false);
-		talkCoroutine = null;
-	}
-
-	private void UpdateTalkTimer()
-	{
-		talkUI.talkTimer = Time.time + 3;
+		talkUI.StopTalk(CoroutineStarter(), force);
 	}
 
 	private void OnDrawGizmosSelected()

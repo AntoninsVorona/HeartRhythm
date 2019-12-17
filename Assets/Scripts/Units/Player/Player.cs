@@ -46,13 +46,17 @@ public class Player : Unit
 			CurrentHp -= damage;
 		}
 	}
-	
+
 	private static readonly int FINISH_DANCE_MOVE_TRIGGER = Animator.StringToHash("FinishDanceMove");
 	private static readonly int IDLE_TRIGGER = Animator.StringToHash("Idle");
+
 	[SerializeField]
 	private CombatData combatData;
+
 	private Inventory inventory;
+
 	private Unit interactingWithUnit;
+
 	private Animator animator;
 
 	private void Awake()
@@ -147,15 +151,12 @@ public class Player : Unit
 
 	protected override void InteractWithObject(Unit unit)
 	{
-		if (unit is Mob mob)
+		if (unit.talksWhenInteractedWith)
 		{
-			if (mob.talksWhenInteractedWith)
-			{
-				mob.Talk();
-				return;
-			}
+			unit.Talk();
+			return;
 		}
-		
+
 		if (unit.interactions.Count > 0)
 		{
 			interactingWithUnit = unit;
@@ -288,6 +289,11 @@ public class Player : Unit
 		{
 			Die();
 		}
+	}
+
+	public override void Talk(string text = null)
+	{
+		talkUI.Talk(CoroutineStarter(), text);
 	}
 
 	public static Player Instance { get; private set; }

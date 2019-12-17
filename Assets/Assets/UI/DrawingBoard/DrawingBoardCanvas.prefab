@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1201230503508728685}
   - component: {fileID: 3336962721623171217}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: DisplayText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stop right there you criminal scum!
+  m_text: '[Text]'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce23a2532995b50498104c8c1db3a5f8, type: 2}
   m_sharedMaterial: {fileID: -7453625238277296038, guid: ce23a2532995b50498104c8c1db3a5f8,

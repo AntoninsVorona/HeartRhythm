@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Obstacle : Unit
 {
-	public bool initializeSelf = true;
-	
 	protected override void Start()
 	{
 		base.Start();
@@ -33,7 +31,12 @@ public class Obstacle : Unit
 	{
 		GameLogic.Instance.currentSceneObjects.currentWorld.RemoveObstacle(currentPosition);
 	}
-	
+
+	public override void Talk(string text = null)
+	{
+		Player.Instance.Talk(talkUI.GetRandomText());
+	}
+
 	private void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.red;

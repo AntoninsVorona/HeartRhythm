@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676823425e4e43a48af22318d5ceb28d, type: 3}
+  m_Name: ScavengerAssociationInside
+  m_EditorClassIdentifier: 
+  sceneObjects: {fileID: 7357043137479388389, guid: 12a05bb07e59c074887147f41249b8a1,
+    type: 3}
+  dialogueRegistrator: {fileID: 11400000, guid: 746543eeb65d9484681ae76e2cf39f8e,
+    type: 2}
+  playerSpawnPoints:
+    m_keys: 0000000001000000
+    m_values:
+    - {x: 1, y: 0}
+    - {x: 4, y: -4}

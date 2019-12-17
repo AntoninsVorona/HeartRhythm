@@ -2,10 +2,101 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
 {
+	[Serializable]
+	public class TalkUI
+	{
+		public Canvas canvas;
+		public Animator drawingBoardAnimator;
+
+		[Multiline]
+		public List<string> texts = new List<string> {""};
+
+		public TextMeshProUGUI displayText;
+
+		[HideInInspector]
+		public float talkTimer;
+
+		[HideInInspector]
+		public Coroutine talkCoroutine;
+
+		public void Talk(MonoBehaviour coroutineStarter, string text = null)
+		{
+			if (text == null)
+			{
+				text = GetRandomText();
+			}
+
+			if (talkCoroutine != null)
+			{
+				UpdateTalkTimer(text);
+			}
+			else
+			{
+				talkCoroutine = coroutineStarter.StartCoroutine(TalkCoroutine(text));
+			}
+		}
+
+		public void StopTalk(MonoBehaviour coroutineStarter, bool force)
+		{
+			if (force)
+			{
+				if (canvas)
+				{
+					canvas.gameObject.SetActive(false);
+				}
+
+				if (talkCoroutine != null)
+				{
+					coroutineStarter.StopCoroutine(talkCoroutine);
+				}
+			}
+			else
+			{
+				if (talkCoroutine != null)
+				{
+					talkTimer = 0;
+				}
+			}
+		}
+
+		public string GetRandomText()
+		{
+			return texts.OrderBy(t => Guid.NewGuid()).First();
+		}
+
+		private void UpdateTalkTimer(string text = null)
+		{
+			if (text != null)
+			{
+				displayText.text = text;
+			}
+
+			talkTimer = Time.time + 3;
+		}
+
+		private IEnumerator TalkCoroutine(string text)
+		{
+			displayText.text = text;
+			canvas.gameObject.SetActive(true);
+			drawingBoardAnimator.SetTrigger(AnimatorUtilities.SHOW_TRIGGER);
+			yield return new WaitForSeconds(0.6f);
+			displayText.gameObject.SetActive(true);
+			UpdateTalkTimer();
+			yield return new WaitUntil(() => Time.time > talkTimer);
+			displayText.gameObject.SetActive(false);
+			drawingBoardAnimator.SetTrigger(AnimatorUtilities.HIDE_TRIGGER);
+			yield return new WaitForSeconds(0.6f);
+			canvas.gameObject.SetActive(false);
+			talkCoroutine = null;
+		}
+	}
+
+	[Header("Data")]
 	[Tooltip("A value of 5 means traveling will take 0.2 seconds, 1 = 1 second.")]
 	[SerializeField]
 	protected float movementSpeed = 5;
@@ -27,12 +118,27 @@ public abstract class Unit : MonoBehaviour
 	protected Vector2Int currentPosition = new Vector2Int(int.MinValue, int.MaxValue);
 	public Vector2Int CurrentPosition => currentPosition;
 
+	[Header("Initialization")]
+	public bool initializeSelf = true;
+	
 	[Header("Interaction")]
 	public List<Interaction> interactions;
+
+	public bool talksWhenInteractedWith;
+
+	[SerializeField]
+	[DrawIf("talksWhenInteractedWith", true)]
+	protected TalkUI talkUI;
 
 	protected virtual void Start()
 	{
 		GameLogic.Instance.gameStateObservers.Add(new Observer(GameStateChanged));
+
+		if (talkUI.canvas)
+		{
+			talkUI.canvas.worldCamera = GameCamera.Instance.camera;
+			talkUI.canvas.gameObject.SetActive(false);
+		}
 	}
 
 	public virtual void Initialize(Vector2Int location)
@@ -105,7 +211,8 @@ public abstract class Unit : MonoBehaviour
 		}
 		else
 		{
-			coroutine = CoroutineStarter().StartCoroutine(CantMoveSequence(newPosition, currentPosition.x != newPosition.x));
+			coroutine = CoroutineStarter()
+				.StartCoroutine(CantMoveSequence(newPosition, currentPosition.x != newPosition.x));
 			switch (cantMoveReason)
 			{
 				case GameTile.CantMoveReason.NonWalkable:
@@ -264,6 +371,13 @@ public abstract class Unit : MonoBehaviour
 	protected virtual MonoBehaviour CoroutineStarter()
 	{
 		return GameLogic.Instance.currentSceneObjects.currentMobManager;
+	}
+
+	public abstract void Talk(string text = null);
+
+	public void StopTalk(bool force)
+	{
+		talkUI.StopTalk(CoroutineStarter(), force);
 	}
 
 	public abstract void Die();
