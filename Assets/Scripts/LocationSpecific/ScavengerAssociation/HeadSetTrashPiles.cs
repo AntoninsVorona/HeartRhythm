@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class HeadSetTrashPiles : Obstacle
 {
-	private static readonly int NOT_YET_INTERACTED_TRIGGER = Animator.StringToHash("NotYetInteracted");
-	private static readonly int AFTER_INTERACTED_TRIGGER = Animator.StringToHash("AfterInteracted");
-
 	[Header("Additional Data")]
 	[SerializeField]
 	private List<Vector2Int> otherPoints;
@@ -17,12 +14,12 @@ public class HeadSetTrashPiles : Obstacle
 	protected override void Start()
 	{
 		base.Start();
-		animator.SetTrigger(NOT_YET_INTERACTED_TRIGGER); //TODO Load
+		animator.SetTrigger(AnimatorUtilities.START_TRIGGER); //TODO Load
 	}
 
 	public void Interacted()
 	{
-		animator.SetTrigger(AFTER_INTERACTED_TRIGGER);
+		animator.SetTrigger(AnimatorUtilities.STOP_TRIGGER);
 		talksWhenInteractedWith = true;
 	}
 
