@@ -309,7 +309,8 @@ public class GameLogic : MonoBehaviour
 		{
 			GameUI.Instance.uiInventory.Toggle();
 		}
-
+		
+		Player.Instance.StopTalk(true);
 		PlayerInput.Instance.ConversationStarted();
 	}
 
@@ -324,6 +325,7 @@ public class GameLogic : MonoBehaviour
 
 	public void PlayCutScene(CutScene cutScene)
 	{
+		Player.Instance.StopTalk(true);
 		currentCutScene = Instantiate(cutScene);
 		PlayerInput.Instance.acceptor.DontReceiveAnyInput = true;
 		PlayerInput.Instance.acceptor.FirstBattleInputDone = false;

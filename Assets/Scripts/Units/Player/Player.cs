@@ -181,7 +181,7 @@ public class Player : Unit
 		animator.SetTrigger(IDLE_TRIGGER);
 	}
 
-	public (bool pickedUpAll, int amountLeft) PickUpItem(Item item, int amount)
+	public (bool pickedUpAll, int amountLeft) PickUpItem(Item item, int amount = 1)
 	{
 		//TODO Display cant pick up
 		if (amount > 0)
