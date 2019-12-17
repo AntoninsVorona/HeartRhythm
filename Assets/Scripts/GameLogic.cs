@@ -264,7 +264,6 @@ public class GameLogic : MonoBehaviour
 	{
 		playState = PlayState.DanceMove;
 		GameUI.Instance.danceMoveUI.Initialize(interactingWith);
-		GameCamera.Instance.DanceMoveZoomIn();
 		PlayerInput.Instance.DanceMoveStarted();
 	}
 
@@ -284,7 +283,6 @@ public class GameLogic : MonoBehaviour
 			Player.Instance.BackToIdleAnimation();
 		}
 
-		GameCamera.Instance.ZoomOut();
 		yield return new WaitForSeconds(0.5f);
 		PlayerInput.Instance.DanceMoveFinished();
 		playState = PlayState.Basic;
