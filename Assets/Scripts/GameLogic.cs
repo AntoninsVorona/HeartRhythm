@@ -75,8 +75,7 @@ public class GameLogic : MonoBehaviour
 
 	private IEnumerator Start()
 	{
-		currentLevelData =
-			debugLevelToLoad ? debugLevelToLoad : LevelManager.Instance.GetLevelData("TestLevel"); //TODO Load
+		currentLevelData = debugLevelToLoad; //TODO Load
 		yield return LoadLevelCoroutine(debugLevelToLoad.GetSpawnPoint(0)); //TODO Load
 	}
 
@@ -307,7 +306,7 @@ public class GameLogic : MonoBehaviour
 		{
 			GameUI.Instance.uiInventory.Toggle();
 		}
-		
+
 		Player.Instance.StopTalk(true);
 		PlayerInput.Instance.ConversationStarted();
 	}
