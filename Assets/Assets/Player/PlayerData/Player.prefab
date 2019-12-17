@@ -192,7 +192,7 @@ MonoBehaviour:
   spawnPoint: {x: 0, y: 0}
   initializeSelf: 1
   interactions: []
-  talksWhenInteractedWith: 1
+  talksWhenInteractedWith: 0
   talkUI:
     canvas: {fileID: 4271007624124603297}
     drawingBoardAnimator: {fileID: 6811461214807385228}
