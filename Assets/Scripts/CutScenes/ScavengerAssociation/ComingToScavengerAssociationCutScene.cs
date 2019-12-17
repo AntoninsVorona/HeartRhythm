@@ -7,7 +7,6 @@ public class ComingToScavengerAssociationCutScene : CutScene
 	protected override IEnumerator CutSceneSequence()
 	{
 		dialogueFinished = false;
-		Debug.Log("Start");
 		Player.Instance.Move(new Vector2Int(-5, 12), true);
 		yield return new WaitForSeconds(1);
 		yield return Player.Instance.Move(new Vector2Int(-5, 13));
@@ -17,9 +16,7 @@ public class ComingToScavengerAssociationCutScene : CutScene
 		yield return Player.Instance.Move(new Vector2Int(-5, 15));
 		yield return new WaitForSeconds(0.5f);
 		GameLogic.Instance.StartConversation("ComingToScavengerAssociation");
-		Debug.Log(dialogueFinished);
 		yield return new WaitUntil(() => dialogueFinished);
 		GameLogic.Instance.CutSceneFinished();
-		Debug.Log("End");
 	}
 }

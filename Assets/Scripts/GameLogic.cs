@@ -227,6 +227,8 @@ public class GameLogic : MonoBehaviour
 			currentSceneObjects.currentMobManager.StopAllActionsBeforeLoading();
 			currentSceneObjects.Deactivate();
 		}
+
+		Player.Instance.StopTalk(true);
 	}
 
 	private static void PostLoadSequence()
@@ -320,7 +322,7 @@ public class GameLogic : MonoBehaviour
 		}
 	}
 
-	private void PlayCutScene(CutScene cutScene)
+	public void PlayCutScene(CutScene cutScene)
 	{
 		currentCutScene = Instantiate(cutScene);
 		PlayerInput.Instance.acceptor.DontReceiveAnyInput = true;

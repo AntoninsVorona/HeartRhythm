@@ -381,4 +381,16 @@ public abstract class Unit : MonoBehaviour
 	}
 
 	public abstract void Die();
+
+	protected virtual void OnDrawGizmosSelected()
+	{
+		Gizmos.color = Color.red;
+		var size = new Vector3(1, 1, 0.2f);
+		Gizmos.DrawCube(CubeLocation(spawnPoint), size);
+		
+		Vector3 CubeLocation(Vector2Int point)
+		{
+			return (Vector3Int) point + new Vector3(0.5f, 0.5f, 0);
+		}
+	}
 }

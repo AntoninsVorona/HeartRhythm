@@ -185,16 +185,10 @@ public class Mob : Unit
 		talkUI.Talk(CoroutineStarter(), text);
 	}
 
-	public void StopTalk(bool force)
+	protected override void OnDrawGizmosSelected()
 	{
-		talkUI.StopTalk(CoroutineStarter(), force);
-	}
-
-	private void OnDrawGizmosSelected()
-	{
-		Gizmos.color = Color.red;
+		base.OnDrawGizmosSelected();
 		var size = new Vector3(1, 1, 0.2f);
-		Gizmos.DrawCube(CubeLocation(spawnPoint), size);
 		if (movementSettings.typeOfMovement == TypeOfMovement.DefinedArea)
 		{
 			Gizmos.color = Color.magenta;
