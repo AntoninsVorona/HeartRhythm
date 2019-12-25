@@ -106,6 +106,36 @@ public class UIInventory : MonoBehaviour
 			{
 				itemActionsUI.Close();
 			}
+
+			if (Input.GetMouseButtonDown(0))
+			{
+				if (!ItemActionsHit())
+				{
+					itemActionsUI.Close();
+					DeselectInventorySlot();
+				}
+			}
+
+			if (Input.GetMouseButtonDown(1))
+			{
+				if (!ItemActionsHit())
+				{
+					var slotHit = GetSlotHit();
+					if (slotHit && slotHit.itemInside)
+					{
+						if (slotHit != selectedInventorySlot)
+						{
+							SelectInventorySlot(slotHit);
+							itemActionsUI.OpenActionsFor(slotHit);
+						}
+					}
+					else
+					{
+						itemActionsUI.Close();
+						DeselectInventorySlot();
+					}
+				}
+			}
 		}
 		else
 		{
@@ -121,11 +151,6 @@ public class UIInventory : MonoBehaviour
 				else
 				{
 					dragTime = float.MaxValue;
-					if (!ItemActionsHit())
-					{
-						itemActionsUI.Close();
-						DeselectInventorySlot();
-					}
 				}
 			}
 			else

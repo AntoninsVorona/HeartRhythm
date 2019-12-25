@@ -47,7 +47,7 @@ public class Inventory : MonoBehaviour
 	{
 		itemInformation = new List<ItemInformation>();
 //		AddItem("Sword", 0, 1);
-//		AddItem("Sword", 1, 5555);
+//		AddItem("Sword", 1, 1);
 	}
 
 	public (bool pickedUpAll, int amountLeft) PickUpItem(Item item, int amount)
