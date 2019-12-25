@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public abstract class Unit : MonoBehaviour
 {
@@ -120,7 +123,7 @@ public abstract class Unit : MonoBehaviour
 
 	[Header("Initialization")]
 	public bool initializeSelf = true;
-	
+
 	[Header("Interaction")]
 	public List<Interaction> interactions;
 
@@ -387,10 +390,33 @@ public abstract class Unit : MonoBehaviour
 		Gizmos.color = Color.red;
 		var size = new Vector3(1, 1, 0.2f);
 		Gizmos.DrawCube(CubeLocation(spawnPoint), size);
-		
+
 		Vector3 CubeLocation(Vector2Int point)
 		{
 			return (Vector3Int) point + new Vector3(0.5f, 0.5f, 0);
 		}
 	}
+
+#if UNITY_EDITOR
+	[CustomEditor(typeof(Unit), true)]
+	public class UnitCustomInspector : Editor
+	{
+		public override void OnInspectorGUI()
+		{
+			DrawDefaultInspector();
+
+			var unit = (Unit) target;
+			if (GUILayout.Button("Recalculate Position"))
+			{
+				unit.transform.position = (Vector3Int) unit.spawnPoint + new Vector3(0.5f, 0.5f, 0);
+			}
+			
+			if (GUILayout.Button("Recalculate Spawn Point Based on Position"))
+			{
+				var position = Vector2Int.FloorToInt(unit.transform.position);
+				unit.spawnPoint = position;
+			}
+		}
+	}
+#endif
 }

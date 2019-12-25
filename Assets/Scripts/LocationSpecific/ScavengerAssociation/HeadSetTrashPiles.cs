@@ -11,6 +11,9 @@ public class HeadSetTrashPiles : Obstacle
 	[SerializeField]
 	private Animator animator;
 
+	[SerializeField]
+	private HeadSetHidePlacesController headSetHidePlacesController;
+
 	protected override void Start()
 	{
 		base.Start();
@@ -21,6 +24,7 @@ public class HeadSetTrashPiles : Obstacle
 	{
 		animator.SetTrigger(AnimatorUtilities.STOP_TRIGGER);
 		talksWhenInteractedWith = true;
+		headSetHidePlacesController.ActivateHidePlaces();
 	}
 
 	protected override void OccupyTile()
