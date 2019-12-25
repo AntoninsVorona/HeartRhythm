@@ -81,6 +81,33 @@ public class Inventory : MonoBehaviour
 		return RemoveItem(item, slotId, amount);
 	}
 
+	public void LoseItem(Item item, int amount)
+	{
+		var information = GetItemInformation(item);
+		var sum = information.slotItemInformation.Sum(slotItemInformation => slotItemInformation.itemCount);
+		if (sum >= amount)
+		{
+			var toDrop = amount;
+			foreach (var slotItemInformation in information.slotItemInformation)
+			{
+				if (slotItemInformation.itemCount < toDrop)
+				{
+					RemoveItem(item, slotItemInformation.slotId, slotItemInformation.itemCount);
+					toDrop -= slotItemInformation.itemCount;
+				}
+				else
+				{
+					RemoveItem(item, slotItemInformation.slotId, toDrop);
+					break;
+				}
+			}
+		}
+		else
+		{
+			Debug.LogError("Can't lose more than there are!");
+		}
+	}
+
 	public bool UseItem(InventorySlot slot)
 	{
 		return RemoveItem(slot.itemInside, slot.slotId, 1);

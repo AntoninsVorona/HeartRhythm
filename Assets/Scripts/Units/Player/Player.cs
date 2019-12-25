@@ -194,6 +194,11 @@ public class Player : Unit
 		return (false, 0);
 	}
 
+	public (bool canPickUpAll, int amount) CanPickUp(Item item, int amount)
+	{
+		return inventory.CanPickUpItem(item, amount);
+	}
+
 	public bool DropItem(InventorySlot selectedInventorySlot, int amount)
 	{
 		if (amount > 0)
@@ -217,6 +222,18 @@ public class Player : Unit
 		Debug.LogError("Can't drop less than or equals to 0 items!");
 
 		return false;
+	}
+
+	public void LoseItem(Item item, int amount = 1)
+	{
+		if (amount > 0)
+		{
+			inventory.LoseItem(item, amount);
+		}
+		else
+		{
+			Debug.LogError("Can't drop less than or equals to 0 items!");
+		}
 	}
 
 	public bool UseItem(InventorySlot slot)
@@ -255,11 +272,6 @@ public class Player : Unit
 	public int ItemsInSlot(InventorySlot slot)
 	{
 		return inventory.ItemsInSlot(slot);
-	}
-
-	public (bool canPickUpAll, int amount) CanPickUp(Item item, int amount)
-	{
-		return inventory.CanPickUpItem(item, amount);
 	}
 
 	public void InitializeFightWithEnemyCombatData()

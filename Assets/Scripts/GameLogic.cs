@@ -53,8 +53,6 @@ public class GameLogic : MonoBehaviour
 	[Header("Debug")]
 	public LevelData debugLevelToLoad;
 
-	public CutScene debugCutScene;
-
 	public Music testFightMusic;
 
 	public bool inputDebugEnabled;
@@ -79,7 +77,7 @@ public class GameLogic : MonoBehaviour
 		yield return LoadLevelCoroutine(debugLevelToLoad.GetSpawnPoint(0)); //TODO Load
 	}
 
-	public void LoadLevel(LevelData levelToEnter, int entranceId)
+	public Coroutine LoadLevel(LevelData levelToEnter, int entranceId)
 	{
 		if (currentLevelData)
 		{
@@ -90,7 +88,7 @@ public class GameLogic : MonoBehaviour
 		}
 
 		currentLevelData = levelToEnter;
-		StartCoroutine(LoadLevelCoroutine(currentLevelData.GetSpawnPoint(entranceId)));
+		return StartCoroutine(LoadLevelCoroutine(currentLevelData.GetSpawnPoint(entranceId)));
 	}
 
 	private IEnumerator LoadLevelCoroutine(Vector2Int spawnPoint)
@@ -121,10 +119,6 @@ public class GameLogic : MonoBehaviour
 		}
 
 		PostLoadSequence();
-		if (debugCutScene)
-		{
-			PlayCutScene(debugCutScene);
-		}
 	}
 
 	private void GameStateChanged()
@@ -230,9 +224,13 @@ public class GameLogic : MonoBehaviour
 		Player.Instance.StopTalk(true);
 	}
 
-	private static void PostLoadSequence()
+	private void PostLoadSequence()
 	{
-		PlayerInput.Instance.acceptor.DontReceiveAnyInput = false;
+		if (!currentCutScene)
+		{
+			PlayerInput.Instance.acceptor.DontReceiveAnyInput = false;
+		}
+
 		GameUI.Instance.StopLoading();
 	}
 

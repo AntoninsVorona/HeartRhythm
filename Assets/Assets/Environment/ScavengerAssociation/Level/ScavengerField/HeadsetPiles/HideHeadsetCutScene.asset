@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: HideHeadsetCutScene
   m_EditorClassIdentifier: 
   dialogueFinished: 0
+  levelToLoad: {fileID: 11400000, guid: 54f8c481e3e4fe64a84d7ad8b362affc, type: 2}

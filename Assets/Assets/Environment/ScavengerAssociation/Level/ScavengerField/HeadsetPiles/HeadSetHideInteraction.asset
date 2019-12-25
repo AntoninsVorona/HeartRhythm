@@ -13,10 +13,18 @@ MonoBehaviour:
   m_Name: HeadSetHideInteraction
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  interactionDescription: 
+  interactionDescription: Hide Headset
   interactionSymbol: {fileID: 0}
   visibility:
     visibleOnUI: 1
     canBeUsedIfInvisible: 1
-  danceMovesSetToApply: []
-  cutSceneToStart: {fileID: 0}
+  danceMovesSetToApply:
+  - lockedState:
+      locked: 0
+      lockedType: 0
+    danceMove: 3
+  - lockedState:
+      locked: 0
+      lockedType: 0
+    danceMove: 4
+  cutSceneToStart: {fileID: 11400000, guid: 0c1dfa85f12e61d4f99ec7b01814af67, type: 2}
