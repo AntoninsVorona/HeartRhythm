@@ -25,6 +25,7 @@ public class HeadSetTrashPiles : Obstacle
 
 	protected override void OccupyTile()
 	{
+		base.OccupyTile();
 		foreach (var point in otherPoints)
 		{
 			GameLogic.Instance.currentSceneObjects.currentWorld.AddObstacle(point, this);
