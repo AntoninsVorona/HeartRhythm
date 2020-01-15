@@ -65,7 +65,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Left Pocket
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ce23a2532995b50498104c8c1db3a5f8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 82bad8bfdf84ce54aab9803d240cf55b, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -97,10 +97,10 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_textAlignment: 514
   m_characterSpacing: 0
-  m_wordSpacing: 0
+  m_wordSpacing: -30
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -183,31 +183,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PocketSlot
-      objectReference: {fileID: 0}
-    - target: {fileID: 8145599756585449983, guid: f65016a00c68cdc4ab0e119296e4040c,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8145599756585449983, guid: f65016a00c68cdc4ab0e119296e4040c,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8145599756585449983, guid: f65016a00c68cdc4ab0e119296e4040c,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8145599756585449983, guid: f65016a00c68cdc4ab0e119296e4040c,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8145599756585449983, guid: f65016a00c68cdc4ab0e119296e4040c,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8217195485255609300, guid: f65016a00c68cdc4ab0e119296e4040c,
         type: 3}
