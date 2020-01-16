@@ -969,7 +969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac713ef713854e1faa6c4f65115dad29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 4, y: -3}
+  position: {x: 3, y: -2}
 --- !u!1001 &405292871224205882
 PrefabInstance:
   m_ObjectHideFlags: 0

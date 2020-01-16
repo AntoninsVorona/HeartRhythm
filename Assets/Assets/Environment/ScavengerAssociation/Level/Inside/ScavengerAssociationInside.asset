@@ -16,6 +16,8 @@ MonoBehaviour:
     type: 3}
   dialogueRegistrator: {fileID: 11400000, guid: 746543eeb65d9484681ae76e2cf39f8e,
     type: 2}
+  cameraIsStatic: 1
+  focusPosition: {x: 4, y: -2}
   playerSpawnPoints:
     m_keys: 0000000001000000
     m_values:

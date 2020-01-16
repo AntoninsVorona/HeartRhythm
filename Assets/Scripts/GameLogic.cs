@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using PixelCrushers.DialogueSystem;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class GameLogic : MonoBehaviour
 {
@@ -34,10 +34,8 @@ public class GameLogic : MonoBehaviour
 
 	private LevelData currentLevelData;
 	private GameState gameState;
-	private Scene realWorldScene;
 	private SceneObjects realWorldSceneObjects;
 	private Vector2Int previousPlayerPosition;
-	private Scene battleScene;
 	private Music fightMusic;
 	private CutScene currentCutScene;
 
@@ -93,7 +91,7 @@ public class GameLogic : MonoBehaviour
 
 	private IEnumerator LoadLevelCoroutine(Vector2Int spawnPoint)
 	{
-		PreLoadSequence();
+		PreLoadSequence(currentLevelData.cameraIsStatic, currentLevelData.focusPosition);
 		if (currentLevelData.dialogueRegistrator)
 		{
 			currentLevelData.dialogueRegistrator.RegisterDialogueFunctions();
@@ -162,17 +160,10 @@ public class GameLogic : MonoBehaviour
 
 	private IEnumerator GoToEnemyRealm(BattleConfiguration battleConfiguration)
 	{
-		PreLoadSequence();
-		realWorldScene = SceneManager.GetActiveScene();
+		PreLoadSequence(battleConfiguration.cameraIsStatic, battleConfiguration.focusPosition);
 		previousPlayerPosition = Player.Instance.CurrentPosition;
 		currentSceneObjects.currentWorld.UnoccupyTargetTile(previousPlayerPosition);
 		realWorldSceneObjects = currentSceneObjects;
-		if (!battleScene.isLoaded)
-		{
-			yield return LoadBattleScene();
-		}
-
-		SceneManager.SetActiveScene(battleScene);
 		currentSceneObjects = Instantiate(battleConfiguration.sceneObjects);
 		currentSceneObjects.Activate();
 
@@ -190,14 +181,13 @@ public class GameLogic : MonoBehaviour
 
 	public void BackToRealWorld(bool enablePieceMode)
 	{
-		PreLoadSequence();
+		PreLoadSequence(currentLevelData.cameraIsStatic, currentLevelData.focusPosition);
 		if (currentSceneObjects)
 		{
 			Destroy(currentSceneObjects.gameObject);
 		}
 
 		currentSceneObjects = realWorldSceneObjects;
-		SceneManager.SetActiveScene(realWorldScene);
 		currentSceneObjects.Activate();
 		currentSceneObjects.currentMobManager.ResumeAllMobs();
 		Player.Instance.Initialize(previousPlayerPosition);
@@ -210,7 +200,7 @@ public class GameLogic : MonoBehaviour
 		PostLoadSequence();
 	}
 
-	private void PreLoadSequence()
+	private void PreLoadSequence(bool cameraIsStatic, Vector2Int focusPosition)
 	{
 		PlayerInput.Instance.acceptor.DontReceiveAnyInput = true;
 		PlayerInput.Instance.acceptor.FirstBattleInputDone = false;
@@ -222,6 +212,14 @@ public class GameLogic : MonoBehaviour
 		}
 
 		Player.Instance.StopTalk(true);
+
+		GameCamera.Instance.staticView = false;
+		if (cameraIsStatic)
+		{
+			GameCamera.Instance.staticView = false;
+			GameCamera.Instance.ChangeTargetPosition((Vector3Int) focusPosition + new Vector3(0.5f, 0.5f), true);
+			GameCamera.Instance.staticView = true;
+		}
 	}
 
 	private void PostLoadSequence()
@@ -232,14 +230,6 @@ public class GameLogic : MonoBehaviour
 		}
 
 		GameUI.Instance.StopLoading();
-	}
-
-	private IEnumerator LoadBattleScene()
-	{
-		const string sceneName = "BattleScene";
-		var sceneAsync = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-		yield return new WaitUntil(() => sceneAsync.isDone);
-		battleScene = SceneManager.GetSceneByName(sceneName);
 	}
 
 	public void ToggleMode()

@@ -8,6 +8,10 @@ public class LevelData : ScriptableObject
 {
 	public SceneObjects sceneObjects;
 	public DialogueRegistrator dialogueRegistrator;
+	public bool cameraIsStatic;
+
+	[DrawIf("cameraIsStatic", true)]
+	public Vector2Int focusPosition;
 
 	[Serializable]
 	public class EntranceSpawnPoint : SerializableDictionary<int, Vector2Int>

@@ -12,6 +12,9 @@ public class GameCamera : MonoBehaviour
 	[HideInNormalInspector]
 	public new Camera camera;
 
+	[HideInNormalInspector]
+	public bool staticView;
+
 	private void Awake()
 	{
 		if (Instance == null)
@@ -37,10 +40,13 @@ public class GameCamera : MonoBehaviour
 
 	public void ChangeTargetPosition(Vector3 targetPosition, bool force = false)
 	{
-		this.targetPosition = targetPosition + offset;
-		if (force)
+		if (!staticView)
 		{
-			transform.position = this.targetPosition;
+			this.targetPosition = targetPosition + offset;
+			if (force)
+			{
+				transform.position = this.targetPosition;
+			}
 		}
 	}
 	
