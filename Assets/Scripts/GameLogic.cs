@@ -331,5 +331,10 @@ public class GameLogic : MonoBehaviour
 		PlayerInput.Instance.acceptor.DontReceiveAnyInput = false;
 	}
 
+	private void SaveLevelData()
+	{
+		var levelName = currentLevelData.name;
+	}
+
 	public static GameLogic Instance { get; private set; }
 }

@@ -135,7 +135,7 @@ public class Mob : Unit
 	public override void Die()
 	{
 		UnoccupyTile();
-		GameLogic.Instance.currentSceneObjects.currentMobManager.RemoveMob(this);
+		GameLogic.Instance.currentSceneObjects.currentMobManager.RemoveUnit(this);
 		if (peaceModeMovementCoroutine != null)
 		{
 			CoroutineStarter().StopCoroutine(peaceModeMovementCoroutine);

@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class MobManager : MonoBehaviour
+public class MobManager : UnitManager<Mob>
 {
-    private readonly List<Mob> allMobs = new List<Mob>();
-
     public void MakeMobsActions()
     {
-        allMobs.ForEach(m => m.MakeAction());
+        allUnits.ForEach(m => m.MakeAction());
     }
 
     public void InitializeMob(Mob mob, Vector2Int location, Mob.MovementSettings movementSettings = null)
@@ -17,34 +15,28 @@ public class MobManager : MonoBehaviour
             mob.movementSettings = movementSettings;
         }
 
-        mob.Initialize(location);
-        allMobs.Add(mob);
+        InitializeUnit(mob, location);
     }
 
     public void ResumeAllMobs()
     {
-        allMobs.ForEach(m => m.Initialize(m.CurrentPosition));
+        allUnits.ForEach(m => m.Initialize(m.CurrentPosition));
     }
 
     public void StopAllActionsBeforeLoading()
     {
         StopAllCoroutines();
-        var mobs = new List<Mob>(allMobs);
+        var mobs = new List<Mob>(allUnits);
         foreach (var mob in mobs)
         {
             if (!mob)
             {
-                allMobs.Remove(mob);
+                allUnits.Remove(mob);
                 continue;
             }
 
             mob.peaceModeMovementCoroutine = null;
             mob.StopTalk(true);
         }
-    }
-
-    public void RemoveMob(Mob mob)
-    {
-        allMobs.Remove(mob);
     }
 }

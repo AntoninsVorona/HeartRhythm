@@ -11,7 +11,7 @@ public class Obstacle : Unit
 		base.Start();
 		if (initializeSelf)
 		{
-			GameLogic.Instance.currentSceneObjects.currentObstacleManager.InitializeObstacle(this, spawnPoint);
+			GameLogic.Instance.currentSceneObjects.currentObstacleManager.InitializeUnit(this, spawnPoint);
 		}
 	}
 
@@ -22,7 +22,7 @@ public class Obstacle : Unit
 	public override void Die()
 	{
 		UnoccupyTile();
-		GameLogic.Instance.currentSceneObjects.currentObstacleManager.RemoveObstacle(this);
+		GameLogic.Instance.currentSceneObjects.currentObstacleManager.RemoveUnit(this);
 		gameObject.SetActive(false);
 	}
 
