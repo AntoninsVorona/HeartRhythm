@@ -6,10 +6,24 @@ using TMPro;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
+
 #endif
 
 public abstract class Unit : MonoBehaviour
 {
+	[Serializable]
+	public class UnitData
+	{
+		public string identifierName;
+		public Vector2Int currentPosition;
+
+		public UnitData(string identifierName, Vector2Int currentPosition)
+		{
+			this.identifierName = identifierName;
+			this.currentPosition = currentPosition;
+		}
+	}
+
 	[Serializable]
 	public class TalkUI
 	{
@@ -100,6 +114,8 @@ public abstract class Unit : MonoBehaviour
 	}
 
 	[Header("Data")]
+	[SerializeField]
+	protected string identifierName;
 	[Tooltip("A value of 5 means traveling will take 0.2 seconds, 1 = 1 second.")]
 	[SerializeField]
 	protected float movementSpeed = 5;
@@ -385,6 +401,11 @@ public abstract class Unit : MonoBehaviour
 
 	public abstract void Die();
 
+	public UnitData GetUnitData()
+	{
+		return new UnitData(identifierName, currentPosition);
+	}
+
 	protected virtual void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.red;
@@ -410,7 +431,7 @@ public abstract class Unit : MonoBehaviour
 			{
 				unit.transform.position = (Vector3Int) unit.spawnPoint + new Vector3(0.5f, 0.5f, 0);
 			}
-			
+
 			if (GUILayout.Button("Recalculate Spawn Point Based on Position"))
 			{
 				var position = Vector2Int.FloorToInt(unit.transform.position);

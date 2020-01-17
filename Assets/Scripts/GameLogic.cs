@@ -67,6 +67,8 @@ public class GameLogic : MonoBehaviour
 			Destroy(gameObject);
 			return;
 		}
+
+		SaveSystem.LoadData();
 	}
 
 	private IEnumerator Start()
@@ -103,6 +105,7 @@ public class GameLogic : MonoBehaviour
 		}
 
 		currentSceneObjects = Instantiate(currentLevelData.sceneObjects);
+		currentSceneObjects.Initialize(currentLevelData.name);
 		currentSceneObjects.Activate();
 		yield return currentSceneObjects.currentWorld.InitializeWorld();
 		Player.Instance.Initialize(spawnPoint);
@@ -165,6 +168,7 @@ public class GameLogic : MonoBehaviour
 		currentSceneObjects.currentWorld.UnoccupyTargetTile(previousPlayerPosition);
 		realWorldSceneObjects = currentSceneObjects;
 		currentSceneObjects = Instantiate(battleConfiguration.sceneObjects);
+		currentSceneObjects.Initialize(battleConfiguration.name);
 		currentSceneObjects.Activate();
 
 		yield return currentSceneObjects.currentWorld.InitializeWorld();
@@ -331,9 +335,9 @@ public class GameLogic : MonoBehaviour
 		PlayerInput.Instance.acceptor.DontReceiveAnyInput = false;
 	}
 
-	private void SaveLevelData()
+	public SceneObjects.LevelState GetLevelState(bool includeLevelState)
 	{
-		var levelName = currentLevelData.name;
+		return currentSceneObjects.GetLevelState(includeLevelState);
 	}
 
 	public static GameLogic Instance { get; private set; }

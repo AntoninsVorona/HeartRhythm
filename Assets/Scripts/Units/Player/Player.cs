@@ -1,11 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using PixelCrushers.DialogueSystem;
 using UnityEngine;
 
 public class Player : Unit
 {
+	[Serializable]
+	public class PlayerData : UnitData
+	{
+		public PlayerData(string identifierName, Vector2Int currentPosition) : base(identifierName, currentPosition)
+		{
+		}
+
+		//TODO Inventory
+	}
+
 	[Serializable]
 	public class CombatData
 	{
