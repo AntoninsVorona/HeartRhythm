@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using PixelCrushers.DialogueSystem;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class GameLogic : MonoBehaviour
 {
@@ -71,7 +71,21 @@ public class GameLogic : MonoBehaviour
 		SaveSystem.LoadData();
 	}
 
-	private IEnumerator Start()
+	private void Start()
+	{
+		const string mainMenuScene = "MainMenu";
+		const string gameScene = "Game";
+		if (SceneManager.GetActiveScene().name == mainMenuScene)
+		{
+			MainMenuUI.Instance.Show();
+		}
+		else
+		{
+			StartCoroutine(LoadGameWithoutMenu());
+		}
+	}
+
+	private IEnumerator LoadGameWithoutMenu()
 	{
 		currentLevelData = debugLevelToLoad; //TODO Load
 		yield return LoadLevelCoroutine(debugLevelToLoad.GetSpawnPoint(0)); //TODO Load
@@ -130,7 +144,7 @@ public class GameLogic : MonoBehaviour
 				AudioManager.Instance.StopBeat();
 				break;
 			case GameState.Fight:
-				AudioManager.Instance.InitializeBattle(fightMusic);
+				AudioManager.Instance.InitializeMusic(fightMusic, true);
 				break;
 			default:
 				throw new ArgumentOutOfRangeException();

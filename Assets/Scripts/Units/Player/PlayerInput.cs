@@ -74,7 +74,6 @@ public class PlayerInput : MonoBehaviour
 		if (Instance == null)
 		{
 			Instance = this;
-			DontDestroyOnLoad(this);
 		}
 		else if (Instance != this)
 		{

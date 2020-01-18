@@ -1,9 +1,41 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-	[SerializeField]
+	[Serializable]
+	public class PulseEventSubscriber
+	{
+		public Action action;
+		public double startTime;
+
+		public PulseEventSubscriber(Action action, double startDelay)
+		{
+			this.action = action;
+			startTime = PulseTime(startDelay);
+		}
+
+		public PulseEventSubscriber(Action action, double startDelay, double delay)
+		{
+			this.action = action;
+			startTime = PulseTime(startDelay, delay);
+		}
+
+		private double PulseTime(double startDelay, double delay = 0)
+		{
+			return AudioSettings.dspTime + startDelay - Instance.beatDelay - delay;
+		}
+	}
+
+	private const double TOLERANCE = 0.01;
+	private const int BEATS_ON_SCREEN = 5;
+
+	[HideInInspector]
+	public List<PulseEventSubscriber> pulseSubscribers;
+
 	public AudioSource musicAudioSource;
 
 	[HideInNormalInspector]
@@ -12,17 +44,27 @@ public class AudioManager : MonoBehaviour
 	[HideInNormalInspector]
 	public int bpm;
 
+	[HideInNormalInspector]
+	public double beatTravelTime;
+
+	[HideInNormalInspector]
+	public double startingDelay;
+
 	private Music currentMusic;
+
 	private Coroutine beatChecker;
+
 	private bool isCurrentlyPlaying;
+
 	private double currentTime;
+
+	public double CurrentTime => currentTime;
 
 	private void Awake()
 	{
 		if (Instance == null)
 		{
 			Instance = this;
-			DontDestroyOnLoad(this);
 		}
 		else if (Instance != this)
 		{
@@ -33,22 +75,36 @@ public class AudioManager : MonoBehaviour
 		isCurrentlyPlaying = false;
 	}
 
-	public void InitializeBattle(Music fightMusic)
+	public void InitializeMusic(Music music, bool isBattle)
 	{
-		bpm = fightMusic.bpm;
-		beatDelay = 60 / (double) fightMusic.bpm;
-		currentMusic = fightMusic;
+		beatDelay = 60 / (double) music.bpm;
+		beatTravelTime = beatDelay * BEATS_ON_SCREEN;
+		InitializeMusic(music, isBattle, beatTravelTime);
+	}
+
+	public void InitializeMusic(Music music, bool isBattle, double startingDelay)
+	{
+		bpm = music.bpm;
+		beatDelay = 60 / (double) music.bpm;
+		beatTravelTime = beatDelay * BEATS_ON_SCREEN;
+		this.startingDelay = startingDelay;
+		currentMusic = music;
 		musicAudioSource.Stop();
 		musicAudioSource.loop = currentMusic.loop;
 		musicAudioSource.clip = currentMusic.audioClip;
 		isCurrentlyPlaying = true;
-		GameUI.Instance.beatController.StartBeat();
+		pulseSubscribers = new List<PulseEventSubscriber>();
+		SchedulePlay();
+		if (isBattle)
+		{
+			GameUI.Instance.beatController.InitializeBeatController();
+		}
 	}
 
-	public void SchedulePlay(double travelTime)
+	private void SchedulePlay()
 	{
-		musicAudioSource.PlayScheduled(AudioSettings.dspTime + travelTime);
-		beatChecker = StartCoroutine(BeatChecker(travelTime));
+		musicAudioSource.PlayScheduled(AudioSettings.dspTime + startingDelay);
+		beatChecker = StartCoroutine(BeatChecker(startingDelay));
 	}
 
 	public void StopBeat()
@@ -101,6 +157,8 @@ public class AudioManager : MonoBehaviour
 				timeWasValidAFrameAgo = false;
 			}
 
+			CheckPulses();
+
 			yield return null;
 		}
 
@@ -137,6 +195,23 @@ public class AudioManager : MonoBehaviour
 
 			return timeIsValid;
 		}
+	}
+
+	private void CheckPulses()
+	{
+		var time = beatDelay - TOLERANCE;
+		pulseSubscribers.RemoveAll(p => p == null);
+		foreach (var pulseEventSubscriber in pulseSubscribers.Where(pulseEventSubscriber =>
+			AudioSettings.dspTime - pulseEventSubscriber.startTime >= time))
+		{
+			pulseEventSubscriber.action();
+			pulseEventSubscriber.startTime += beatDelay;
+		}
+	}
+
+	public double GetTimeUntilNextPulse()
+	{
+		return AudioSettings.dspTime + currentTime;
 	}
 
 	public void ApplyBeat()

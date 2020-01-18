@@ -73,7 +73,6 @@ public class Player : Unit
 		if (Instance == null)
 		{
 			Instance = this;
-			DontDestroyOnLoad(this);
 		}
 		else if (Instance != this)
 		{

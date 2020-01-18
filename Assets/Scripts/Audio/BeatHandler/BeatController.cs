@@ -3,124 +3,116 @@ using UnityEngine;
 
 public class BeatController : MonoBehaviour
 {
-    public const int BEATS_ON_SCREEN = 5;
-    private const double TOLERANCE = 0.01;
-    private static readonly int PULSE_TRIGGER = Animator.StringToHash("Pulse");
+	private static readonly int PULSE_TRIGGER = Animator.StringToHash("Pulse");
 
-    [SerializeField]
-    private BeatHolder beatHolder;
+	[SerializeField]
+	private BeatHolder beatHolder;
 
-    [SerializeField]
-    private Beat beatPrefab;
+	[SerializeField]
+	private Beat beatPrefab;
 
-    [SerializeField]
-    private Animator pulsingObject;
+	[SerializeField]
+	private Animator pulsingObject;
 
-    private Coroutine beatGenerator;
-    private Coroutine pulse;
+	private Vector2 leftSpawnPoint;
+	private Vector2 rightSpawnPoint;
+	private Vector2 middlePoint;
 
-    private Vector2 leftSpawnPoint;
-    private Vector2 rightSpawnPoint;
-    private Vector2 middlePoint;
-    private double travelTime;
+	public void InitializeBeatController()
+	{
+		var beatHolderRect = beatHolder.beatHolder.rect;
+		middlePoint = beatHolderRect.center;
+		leftSpawnPoint = new Vector2(beatHolderRect.xMin, middlePoint.y);
+		rightSpawnPoint = new Vector2(beatHolderRect.xMax, middlePoint.y);
+		SchedulePulse();
+		ScheduleBeats();
+	}
 
-    public void StartBeat()
-    {
-        var beatHolderRect = beatHolder.beatHolder.rect;
-        middlePoint = beatHolderRect.center;
-        leftSpawnPoint = new Vector2(beatHolderRect.xMin, middlePoint.y);
-        rightSpawnPoint = new Vector2(beatHolderRect.xMax, middlePoint.y);
-        travelTime = AudioManager.Instance.beatDelay * BEATS_ON_SCREEN;
-        beatGenerator = StartCoroutine(BeatGenerator());
-    }
+	public void StopPlaying()
+	{
+		Disappear();
+	}
 
-    public void StopPlaying()
-    {
-        Disappear();
-        if (beatGenerator != null)
-        {
-            StopCoroutine(beatGenerator);
-        }
+	private void Appear()
+	{
+		beatHolder.Appear();
+	}
 
-        if (pulse != null)
-        {
-            StopCoroutine(pulse);
-        }
-    }
+	private void Disappear()
+	{
+		beatHolder.Disappear();
+	}
 
-    private void Appear()
-    {
-        beatHolder.Appear();
-    }
+	public void Deactivate()
+	{
+		beatHolder.Deactivate();
+	}
 
-    private void Disappear()
-    {
-        beatHolder.Disappear();
-    }
+	private void ScheduleBeats()
+	{
+		Appear();
+		var startTime = AudioManager.Instance.beatTravelTime - AudioManager.Instance.startingDelay;
+		while (startTime > 0)
+		{
+			var time = AudioSettings.dspTime - startTime;
+			CreateBeat(leftSpawnPoint, time);
+			CreateBeat(rightSpawnPoint, time);
+			startTime -= AudioManager.Instance.beatDelay;
+		}
+		var leftBeatEvent =
+			new AudioManager.PulseEventSubscriber(CreateLeftBeat, -startTime);
+		var rightBeatEvent =
+			new AudioManager.PulseEventSubscriber(CreateRightBeat, -startTime);
+		AudioManager.Instance.pulseSubscribers.Add(leftBeatEvent);
+		AudioManager.Instance.pulseSubscribers.Add(rightBeatEvent);
+	}
 
-    public void Deactivate()
-    {
-        beatHolder.Deactivate();
-    }
+	private void CreateLeftBeat()
+	{
+		CreateBeat(leftSpawnPoint, AudioSettings.dspTime);
+	}
 
-    private IEnumerator BeatGenerator()
-    {
-        Appear();
-        pulse = StartCoroutine(SchedulePulse());
-        CreateBeat(leftSpawnPoint);
-        CreateBeat(rightSpawnPoint);
-        var startTime = AudioSettings.dspTime;
-        while (true)
-        {
-            if (AudioSettings.dspTime - startTime >= AudioManager.Instance.beatDelay - TOLERANCE)
-            {
-                CreateBeat(leftSpawnPoint);
-                CreateBeat(rightSpawnPoint);
-                startTime += AudioManager.Instance.beatDelay;
-            }
-            
-            yield return null;
-        }
-    }
+	private void CreateRightBeat()
+	{
+		CreateBeat(rightSpawnPoint, AudioSettings.dspTime);
+	}
 
-    private void CreateBeat(Vector2 startPoint)
-    {
-        var beat = Instantiate(beatPrefab, beatHolder.beatHolder);
-        beat.Initialize(startPoint, middlePoint, AudioSettings.dspTime, AudioSettings.dspTime + travelTime);
-        beatHolder.beats.Add(beat);
-    }
+	private void CreateBeat(Vector2 startPoint, double startTime)
+	{
+		var beat = Instantiate(beatPrefab, beatHolder.beatHolder);
+		beat.Initialize(startPoint, middlePoint, startTime,
+			startTime + AudioManager.Instance.beatTravelTime);
+		beatHolder.beats.Add(beat);
+	}
 
-    public void BeatPlayed(Beat beat)
-    {
-        beatHolder.RemoveBeat(beat);
-    }
+	public void BeatPlayed(Beat beat)
+	{
+		beatHolder.RemoveBeat(beat);
+	}
 
-    private IEnumerator SchedulePulse()
-    {
-        var bumpStartTime = AudioSettings.dspTime + travelTime - AudioManager.Instance.beatDelay;
-        var pulseStartTime = bumpStartTime - 0.05f;
-        AudioManager.Instance.SchedulePlay(travelTime);
-        var equalizerController = GameUI.Instance.equalizerController;
-        while (true)
-        {
-            var time = AudioManager.Instance.beatDelay - TOLERANCE;
-            if (AudioSettings.dspTime - pulseStartTime >= time)
-            {
-                pulsingObject.SetTrigger(PULSE_TRIGGER);
-                pulseStartTime += AudioManager.Instance.beatDelay;
-            }
+	private void Pulse()
+	{
+		pulsingObject.SetTrigger(PULSE_TRIGGER);
+		Debug.LogError($"PULSE: Time: {AudioManager.Instance.CurrentTime} | Music: {AudioManager.Instance.musicAudioSource.time}");
+	}
 
-            if (AudioSettings.dspTime - bumpStartTime >= time)
-            {
-//				Debug.LogError($"PULSE: Time: {AudioManager.Instance.currentTime} | Music: {AudioManager.Instance.musicAudioSource.time}");
-                if (equalizerController.active)
-                {
-                    equalizerController.CreateBump();
-                }
-                bumpStartTime += AudioManager.Instance.beatDelay;
-            }
-            
-            yield return null;
-        }
-    }
+	private void EqualizerBump()
+	{ 
+		// Debug.LogError($"PULSE: Time: {AudioManager.Instance.currentTime} | Music: {AudioManager.Instance.musicAudioSource.time}");
+		var equalizerController = GameUI.Instance.equalizerController;
+		if (equalizerController.active)
+		{
+			equalizerController.CreateBump();
+		}
+	}
+
+	private void SchedulePulse()
+	{
+		var bumpEvent =
+			new AudioManager.PulseEventSubscriber(EqualizerBump, AudioManager.Instance.startingDelay);
+		var pulseEvent =
+			new AudioManager.PulseEventSubscriber(Pulse, AudioManager.Instance.startingDelay, 0.05f);
+		AudioManager.Instance.pulseSubscribers.Add(bumpEvent);
+		AudioManager.Instance.pulseSubscribers.Add(pulseEvent);
+	}
 }
