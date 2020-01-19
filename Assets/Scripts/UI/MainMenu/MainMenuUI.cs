@@ -7,7 +7,6 @@ public class MainMenuUI : MonoBehaviour
 	private CanvasGroup globalCanvasGroup;
 	[SerializeField]
 	private Animator heartBeatAnimator;
-
 	[SerializeField]
 	private MainMenuFadeController fadeController;
 	
@@ -35,6 +34,7 @@ public class MainMenuUI : MonoBehaviour
 	{
 		fadeController.Initialize();
 		var stages = fadeController.GetStagesAmount();
+		yield return new WaitForSeconds(0.03f);
 		for (var i = 1; i < stages; i++)
 		{
 			yield return new WaitForSeconds(0.97f);
@@ -42,11 +42,6 @@ public class MainMenuUI : MonoBehaviour
 			yield return new WaitForSeconds(0.03f);
 			fadeController.ChangeStage(i);
 		}
-		yield return new WaitForSeconds(0.97f);
-		heartBeatAnimator.SetTrigger(AnimatorUtilities.START_TRIGGER);
-		yield return new WaitForSeconds(0.03f);
-		fadeController.Crumble();
-		yield return new WaitForSeconds(1f);
 		globalCanvasGroup.interactable = true;
 	}
 	

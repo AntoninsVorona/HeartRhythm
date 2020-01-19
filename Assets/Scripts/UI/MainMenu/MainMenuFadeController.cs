@@ -27,15 +27,21 @@ public class MainMenuFadeController : MonoBehaviour
 
 	public void ChangeStage(int index)
 	{
+		if (index == stages.Count)
+		{
+			Crumble();
+			return;
+		}
+
 		image.sprite = stages[index];
 	}
 
 	public int GetStagesAmount()
 	{
-		return stages.Count;
+		return stages.Count + 1;
 	}
 
-	public void Crumble()
+	private void Crumble()
 	{
 		image.gameObject.SetActive(false);
 		shatterPieceHolder.gameObject.SetActive(true);
@@ -44,6 +50,11 @@ public class MainMenuFadeController : MonoBehaviour
 
 	private IEnumerator CrumbleSequence()
 	{
+		foreach (var shatterPiece in shatterPieces)
+		{
+			shatterPiece.FlyUp();
+		}
+
 		float t = 0;
 		while (t < 3)
 		{
@@ -55,6 +66,7 @@ public class MainMenuFadeController : MonoBehaviour
 				shatterPiece.ApplyVelocity(fixedDeltaTime);
 			}
 		}
+
 		shatterPieceHolder.SetActive(false);
 	}
 }
