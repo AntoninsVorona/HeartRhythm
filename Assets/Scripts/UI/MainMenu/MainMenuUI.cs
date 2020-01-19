@@ -9,7 +9,10 @@ public class MainMenuUI : MonoBehaviour
 	private Animator heartBeatAnimator;
 	[SerializeField]
 	private MainMenuFadeController fadeController;
-	
+
+	[SerializeField]
+	private Animator shaker;
+
 	private void Awake()
 	{
 		if (Instance == null)
@@ -41,9 +44,14 @@ public class MainMenuUI : MonoBehaviour
 			heartBeatAnimator.SetTrigger(AnimatorUtilities.START_TRIGGER);
 			yield return new WaitForSeconds(0.03f);
 			fadeController.ChangeStage(i);
+			if (i + 1 != stages)
+			{
+				shaker.SetTrigger($"Shake{i}");
+			}
 		}
+
 		globalCanvasGroup.interactable = true;
 	}
-	
+
 	public static MainMenuUI Instance { get; private set; }
 }

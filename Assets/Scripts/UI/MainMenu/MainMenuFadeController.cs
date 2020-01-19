@@ -16,7 +16,13 @@ public class MainMenuFadeController : MonoBehaviour
 	private GameObject shatterPieceHolder;
 
 	[SerializeField]
-	private List<ShatterPiece> shatterPieces;
+	private List<ShatterPiece> firstWaveShatterPieces;
+
+	[SerializeField]
+	private List<ShatterPiece> secondWaveShatterPieces;
+
+	[SerializeField]
+	private List<ShatterPiece> thirdWaveShatterPieces;
 
 	public void Initialize()
 	{
@@ -50,18 +56,65 @@ public class MainMenuFadeController : MonoBehaviour
 
 	private IEnumerator CrumbleSequence()
 	{
-		foreach (var shatterPiece in shatterPieces)
+		foreach (var shatterPiece in firstWaveShatterPieces)
 		{
 			shatterPiece.FlyUp();
 		}
 
 		float t = 0;
-		while (t < 3)
+		while (t < 0.125f)
 		{
 			yield return null;
 			var fixedDeltaTime = Time.fixedDeltaTime;
 			t += fixedDeltaTime;
-			foreach (var shatterPiece in shatterPieces)
+			foreach (var shatterPiece in firstWaveShatterPieces)
+			{
+				shatterPiece.ApplyVelocity(fixedDeltaTime);
+			}
+		}
+
+		foreach (var shatterPiece in secondWaveShatterPieces)
+		{
+			shatterPiece.FlyUp();
+		}
+
+		while (t < 0.25f)
+		{
+			yield return null;
+			var fixedDeltaTime = Time.fixedDeltaTime;
+			t += fixedDeltaTime;
+			foreach (var shatterPiece in firstWaveShatterPieces)
+			{
+				shatterPiece.ApplyVelocity(fixedDeltaTime);
+			}
+
+			foreach (var shatterPiece in secondWaveShatterPieces)
+			{
+				shatterPiece.ApplyVelocity(fixedDeltaTime);
+			}
+		}
+
+		foreach (var shatterPiece in thirdWaveShatterPieces)
+		{
+			shatterPiece.FlyUp();
+		}
+
+		while (t < 3f)
+		{
+			yield return null;
+			var fixedDeltaTime = Time.fixedDeltaTime;
+			t += fixedDeltaTime;
+			foreach (var shatterPiece in firstWaveShatterPieces)
+			{
+				shatterPiece.ApplyVelocity(fixedDeltaTime);
+			}
+
+			foreach (var shatterPiece in secondWaveShatterPieces)
+			{
+				shatterPiece.ApplyVelocity(fixedDeltaTime);
+			}
+
+			foreach (var shatterPiece in thirdWaveShatterPieces)
 			{
 				shatterPiece.ApplyVelocity(fixedDeltaTime);
 			}
