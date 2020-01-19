@@ -1,16 +1,25 @@
 fileFormatVersion: 2
-guid: 58f8ae916ab6d934bb2124fc284227dd
+guid: 6071439f719c87c4f98f34a547c3a6eb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -771528879443497177
-    second: Fade_0
+      213: -5673889230623016260
+    second: ShatterPieces_0
   - first:
-      213: 2279756370790496796
-    second: Fade_1
+      213: -22945802578282739
+    second: ShatterPieces_1
   - first:
-      213: -349637028239744430
-    second: Fade_2
+      213: 8000938282333720859
+    second: ShatterPieces_2
+  - first:
+      213: 8800803244424961426
+    second: ShatterPieces_3
+  - first:
+      213: 5002565015305651573
+    second: ShatterPieces_4
+  - first:
+      213: 3957876187676943424
+    second: ShatterPieces_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -95,13 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fade_0
+      name: ShatterPieces_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 144
+        width: 48
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -109,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5fcefd53f45a2bc46bea877f4fd6a3ac
-      internalID: -771528879443497177
+      spriteID: 90f20e8574e043f40847c5e1a4932506
+      internalID: -5673889230623016260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fade_1
+      name: ShatterPieces_1
       rect:
         serializedVersion: 2
-        x: 256
+        x: 48
         y: 0
-        width: 256
-        height: 144
+        width: 48
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +139,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffe30f4cce1c7fa41bd8cb8de7c9c2a8
-      internalID: 2279756370790496796
+      spriteID: cb9f30199e00b7d41a816cbe2d15ce73
+      internalID: -22945802578282739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fade_2
+      name: ShatterPieces_2
       rect:
         serializedVersion: 2
-        x: 512
+        x: 96
         y: 0
-        width: 256
-        height: 144
+        width: 48
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,8 +160,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09de0b518c4078540bec8df0c1313cdf
-      internalID: -349637028239744430
+      spriteID: 5984598a54a7f9144bf3be9f740b078d
+      internalID: 8000938282333720859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShatterPieces_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7b7b5e9e869de243ad58da56d0d166d
+      internalID: 8800803244424961426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShatterPieces_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 48
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d7f6fcada1338d499e2a14c5b40434c
+      internalID: 5002565015305651573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShatterPieces_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 48
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3e1cceda1540ab45ab67f593f0fa447
+      internalID: 3957876187676943424
       vertices: []
       indices: 
       edges: []
