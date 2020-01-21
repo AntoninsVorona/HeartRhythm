@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Fade
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 58f8ae916ab6d934bb2124fc284227dd, type: 3}
+    - {fileID: 2800000, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+    totalSpriteSurfaceArea: 177481
+    bindAsDefault: 1
+    storedHash:
+      serializedVersion: 2
+      Hash: 00000000000000000000000000000000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -771528879443497177, guid: 58f8ae916ab6d934bb2124fc284227dd, type: 3}
+  - {fileID: 2279756370790496796, guid: 58f8ae916ab6d934bb2124fc284227dd, type: 3}
+  - {fileID: -349637028239744430, guid: 58f8ae916ab6d934bb2124fc284227dd, type: 3}
+  - {fileID: -239692730642689659, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: 8991429113307445047, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: -5108590868825457547, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: -6972370694434503342, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: 4682768671478724041, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: -891751771267113824, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: -8176625498390896653, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: 8360691537840806089, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: 7436338357697326613, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: -2599915201370572122, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: 1654427467663925108, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: 370129839309057832, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: 2962435541805044825, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: 7900887918783947427, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: -798832841960324267, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: 8065199579132094976, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: -1371003768313740964, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: 5742536235198920147, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: 6366461360243022289, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: -1713088465795516602, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: 3581288778943229889, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: -3253568672590102588, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: -5936247023358816412, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: 2287895053254829352, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: 4842629350751980220, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: -7630888605928022687, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: -5031949111805439447, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: 7750349277158349096, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  - {fileID: 5537884453174632446, guid: e4f159ad14986184881e23d3ae7cb965, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Fade_0
+  - Fade_1
+  - Fade_2
+  - FadeParts_19
+  - FadeParts_18
+  - FadeParts_13
+  - FadeParts_12
+  - FadeParts_28
+  - FadeParts_11
+  - FadeParts_10
+  - FadeParts_26
+  - FadeParts_8
+  - FadeParts_17
+  - FadeParts_27
+  - FadeParts_9
+  - FadeParts_16
+  - FadeParts_24
+  - FadeParts_15
+  - FadeParts_25
+  - FadeParts_14
+  - FadeParts_22
+  - FadeParts_23
+  - FadeParts_20
+  - FadeParts_21
+  - FadeParts_0
+  - FadeParts_1
+  - FadeParts_2
+  - FadeParts_3
+  - FadeParts_4
+  - FadeParts_5
+  - FadeParts_6
+  - FadeParts_7
+  m_Tag: Fade
+  m_IsVariant: 0

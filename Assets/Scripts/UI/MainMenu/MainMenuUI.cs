@@ -9,6 +9,8 @@ public class MainMenuUI : MonoBehaviour
 	private Animator heartBeatAnimator;
 	[SerializeField]
 	private MainMenuFadeController fadeController;
+	[SerializeField]
+	private LetterController letterController;
 
 	[SerializeField]
 	private Animator shaker;
@@ -50,6 +52,12 @@ public class MainMenuUI : MonoBehaviour
 			}
 		}
 
+		yield return new WaitForSeconds(1f);
+		heartBeatAnimator.SetTrigger(AnimatorUtilities.START_TRIGGER);
+		yield return new WaitForSeconds(1f);
+		heartBeatAnimator.SetTrigger(AnimatorUtilities.START_TRIGGER);
+		
+		yield return letterController.InitiateFlightSequence(heartBeatAnimator.transform.position);
 		globalCanvasGroup.interactable = true;
 	}
 
