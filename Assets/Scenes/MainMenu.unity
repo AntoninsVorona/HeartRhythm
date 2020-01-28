@@ -1170,6 +1170,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingVelocity: {x: 0.5, y: -1}
   rotation: 1
+--- !u!1 &425606890 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7823118643682058073, guid: 2aea7edf49b72e74d988c76192370874,
+    type: 3}
+  m_PrefabInstance: {fileID: 7823118643561603507}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &439666302
 GameObject:
   m_ObjectHideFlags: 0
@@ -4587,6 +4593,7 @@ MonoBehaviour:
   pressAnyKeyText: {fileID: 1030844333391720771}
   shaker: {fileID: 1005724890}
   inputModule: {fileID: 1003430196}
+  separatorGameObject: {fileID: 425606890}
 --- !u!1 &1892391599
 GameObject:
   m_ObjectHideFlags: 0
@@ -4692,7 +4699,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1999047807
 RectTransform:
   m_ObjectHideFlags: 0

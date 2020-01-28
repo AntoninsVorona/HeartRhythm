@@ -43,7 +43,7 @@ public class MainMenuUI : MonoBehaviour
 			this.scale = scale;
 		}
 
-		public static HeartSettings defaultSettings = new HeartSettings(new Vector2(0, 150), 0);
+		public static HeartSettings defaultSettings = new HeartSettings(new Vector2(0, 160), 0);
 	}
 
 	[SerializeField]
@@ -119,9 +119,8 @@ public class MainMenuUI : MonoBehaviour
 					heartButton.Click();
 				}
 			}
-			else if (currentHeartButton && hit.gameObject != separatorGameObject)
+			else if (currentHeartButton && hit != separatorGameObject)
 			{
-				Debug.Log(hit.name);
 				currentHeartButton.Deselect();
 				RepositionHeart(HeartSettings.defaultSettings);
 				currentHeartButton = null;
@@ -180,7 +179,7 @@ public class MainMenuUI : MonoBehaviour
 		pressAnyKeyText.gameObject.SetActive(false);
 		yield return letterController.InitiateFlightSequence(heartBeatAnimator.transform.position);
 		screens.mainScreen.Open();
-		yield return new WaitForSeconds(0.7f);
+		yield return new WaitForSeconds(1.1f);
 		globalCanvasGroup.interactable = true;
 		globalCanvasGroup.blocksRaycasts = true;
 	}

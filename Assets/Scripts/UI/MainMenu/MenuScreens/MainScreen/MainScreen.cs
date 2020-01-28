@@ -49,5 +49,6 @@ public class MainScreen : MenuScreen
 
 	public void QuitClicked()
 	{
+		AppHelper.Quit();
 	}
 }
