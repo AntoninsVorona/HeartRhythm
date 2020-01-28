@@ -148,6 +148,7 @@ public static class SaveSystem
 		public Player.PlayerData playerData;
 		public string currentLevelName;
 		public List<LevelState> levelStates = new List<LevelState>();
+		public GlobalVariables globalVariables;
 
 		protected override SaveData GetSelfData()
 		{
@@ -226,8 +227,9 @@ public static class SaveSystem
 		const string startingLevel = "";
 		currentGameSave = new GameSave
 		{
-			currentLevelName = startingLevel, 
-			playerData = new Player.PlayerData("Player", Vector2Int.zero)
+			currentLevelName = startingLevel,
+			playerData = new Player.PlayerData("Player", Vector2Int.zero),
+			globalVariables = new GlobalVariables(new GlobalVariables.ScavengerAssociationVariables())
 		};
 	}
 
