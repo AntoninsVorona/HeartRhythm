@@ -11,6 +11,7 @@ public class Obstacle : Unit
 		base.Start();
 		if (initializeSelf)
 		{
+			var unitData = GameLogic.Instance.currentLevelState.GetDataByName(identifierName);
 			GameLogic.Instance.currentSceneObjects.currentObstacleManager.InitializeUnit(this, spawnPoint);
 		}
 	}

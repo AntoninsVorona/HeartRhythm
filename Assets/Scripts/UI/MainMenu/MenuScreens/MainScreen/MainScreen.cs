@@ -5,13 +5,26 @@ using UnityEngine;
 public class MainScreen : MenuScreen
 {
 	private bool secretActivated = false;
-	public List<HeartButton> heartButtons;
+	[SerializeField]
+	private List<HeartButton> heartButtons;
+
+	[SerializeField]
+	private HeartButton continueButton;
+
+	[SerializeField]
+	private HeartButton loadButton;
 
 	public override void Open(bool withAnimation = true)
 	{
 		foreach (var heartButton in heartButtons)
 		{
 			heartButton.ResetFill();
+		}
+
+		if (!SaveSystem.HasAnySaves())
+		{
+			continueButton.gameObject.SetActive(false);
+			loadButton.gameObject.SetActive(false);
 		}
 
 		base.Open(withAnimation);
@@ -37,14 +50,22 @@ public class MainScreen : MenuScreen
 
 	public void NewGameClicked()
 	{
+		GameLogic.Instance.NewGame();
 	}
 
 	public void LoadGameClicked()
 	{
 	}
-
+	
 	public void ContinueClicked()
 	{
+		var latestSave = SaveSystem.GetLatestSave();
+		if (string.IsNullOrEmpty(latestSave))
+		{
+			return;
+		}
+
+		GameLogic.Instance.LoadSave(latestSave, true);
 	}
 
 	public void QuitClicked()

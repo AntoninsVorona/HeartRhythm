@@ -7,7 +7,6 @@ public class GameUI : MonoBehaviour
 {
 	public UIInventory uiInventory;
 	public BeatController beatController;
-	public GameObject loading;
 	public DanceMoveUI danceMoveUI;
 	public Text modeToggler;
 	public Animator cutSceneLines;
@@ -50,16 +49,6 @@ public class GameUI : MonoBehaviour
 			default:
 				throw new ArgumentOutOfRangeException(nameof(currentGameState), currentGameState, null);
 		}
-	}
-
-	public void StartLoading()
-	{
-		loading.SetActive(true);
-	}
-
-	public void StopLoading()
-	{
-		loading.SetActive(false);
 	}
 
 	public void ToggleInventory()

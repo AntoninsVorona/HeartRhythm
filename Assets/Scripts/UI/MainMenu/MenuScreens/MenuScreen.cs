@@ -12,6 +12,7 @@ public class MenuScreen : MonoBehaviour
 	
 	public virtual void Open(bool withAnimation = true)
 	{
+	    MainMenuUI.Instance.screens.currentScreen = this;
 		gameObject.SetActive(true);
 		if (withAnimation)
 		{

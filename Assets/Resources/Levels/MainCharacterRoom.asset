@@ -10,7 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 676823425e4e43a48af22318d5ceb28d, type: 3}
-  m_Name: TestLevel
+  m_Name: MainCharacterRoom
   m_EditorClassIdentifier: 
-  sceneObjects: {fileID: 2955217442324748583, guid: bd1952feeaceb5d40a85930dc1a1f2ae,
+  sceneObjects: {fileID: 5904113686362371950, guid: 7d38bd15c52fb1e438559ce8ed0d60d7,
     type: 3}
+  dialogueRegistrator: {fileID: 0}
+  cameraIsStatic: 1
+  levelState:
+    levelName: 
+    unitData: []
+  focusPosition: {x: 4, y: -2}
+  playerSpawnPoints:
+    m_keys: 00000000
+    m_values:
+    - {x: 0, y: 1}

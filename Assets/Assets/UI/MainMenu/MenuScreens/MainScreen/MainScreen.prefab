@@ -112,6 +112,8 @@ MonoBehaviour:
   - {fileID: 7404257924609268872}
   - {fileID: 7404257923399335270}
   - {fileID: 7404257925077294449}
+  continueButton: {fileID: 7404257924609268872}
+  loadButton: {fileID: 7404257925077294449}
 --- !u!1 &7823118643682058073
 GameObject:
   m_ObjectHideFlags: 0

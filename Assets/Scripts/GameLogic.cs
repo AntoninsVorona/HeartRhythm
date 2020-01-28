@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class GameLogic : MonoBehaviour
 {
+	private const string LEVEL_STORAGE_PATH = "Levels/";
+
 	public enum GameState
 	{
 		Peace = 0,
@@ -31,6 +33,9 @@ public class GameLogic : MonoBehaviour
 			}
 		}
 	}
+
+	[HideInInspector]
+	public SceneObjects.LevelState currentLevelState;
 
 	private LevelData currentLevelData;
 	private GameState gameState;
@@ -81,14 +86,10 @@ public class GameLogic : MonoBehaviour
 		}
 		else
 		{
-			StartCoroutine(LoadGameWithoutMenu());
+			SaveSystem.currentGameSave = new SaveSystem.GameSave();
+			currentLevelData = debugLevelToLoad;
+			StartCoroutine(LoadLevelCoroutine(debugLevelToLoad.GetSpawnPoint(0)));
 		}
-	}
-
-	private IEnumerator LoadGameWithoutMenu()
-	{
-		currentLevelData = debugLevelToLoad; //TODO Load
-		yield return LoadLevelCoroutine(debugLevelToLoad.GetSpawnPoint(0)); //TODO Load
 	}
 
 	public Coroutine LoadLevel(LevelData levelToEnter, int entranceId)
@@ -99,9 +100,12 @@ public class GameLogic : MonoBehaviour
 			{
 				currentLevelData.dialogueRegistrator.UnregisterDialogueFunctions();
 			}
+
+			SaveSystem.currentGameSave.UpdateLevelState(false);
 		}
 
 		currentLevelData = levelToEnter;
+		currentLevelState = SaveSystem.currentGameSave.GetLevelState(currentLevelData.name);
 		return StartCoroutine(LoadLevelCoroutine(currentLevelData.GetSpawnPoint(entranceId)));
 	}
 
@@ -123,6 +127,7 @@ public class GameLogic : MonoBehaviour
 		currentSceneObjects.Activate();
 		yield return currentSceneObjects.currentWorld.InitializeWorld();
 		Player.Instance.Initialize(spawnPoint);
+		currentSceneObjects.currentObstacleManager.ApplyItemData(currentLevelState.GetItemData());
 		if (currentLevelData is BattleArea battleArea)
 		{
 			BeginFightMode(battleArea.battleMusic);
@@ -222,7 +227,7 @@ public class GameLogic : MonoBehaviour
 	{
 		PlayerInput.Instance.acceptor.DontReceiveAnyInput = true;
 		PlayerInput.Instance.acceptor.FirstBattleInputDone = false;
-		GameUI.Instance.StartLoading();
+		LoadingUI.Instance.StartLoading();
 		if (currentSceneObjects)
 		{
 			currentSceneObjects.currentMobManager.StopAllActionsBeforeLoading();
@@ -247,7 +252,7 @@ public class GameLogic : MonoBehaviour
 			PlayerInput.Instance.acceptor.DontReceiveAnyInput = false;
 		}
 
-		GameUI.Instance.StopLoading();
+		LoadingUI.Instance.StopLoading();
 	}
 
 	public void ToggleMode()
@@ -349,9 +354,49 @@ public class GameLogic : MonoBehaviour
 		PlayerInput.Instance.acceptor.DontReceiveAnyInput = false;
 	}
 
-	public SceneObjects.LevelState GetLevelState(bool includeLevelState)
+	public SceneObjects.LevelState GetLevelState(bool includeEverything)
 	{
-		return currentSceneObjects.GetLevelState(includeLevelState);
+		return currentSceneObjects.GetLevelState(includeEverything);
+	}
+
+	public void NewGame()
+	{
+		SaveSystem.NewGame();
+		StartCoroutine(LoadGameSequence(true));
+	}
+
+	public void LoadSave(string filePath, bool mainMenu)
+	{
+		SaveSystem.LoadSave(filePath);
+		StartCoroutine(LoadGameSequence(mainMenu));
+	}
+
+	private IEnumerator LoadGameSequence(bool mainMenu)
+	{
+		if (mainMenu)
+		{
+			yield return MainMenuUI.Instance.FadeIntoPlay();
+		}
+
+		currentLevelData = GetLevelByName(SaveSystem.currentGameSave.currentLevelName);
+		yield return LoadLevelCoroutine(SaveSystem.currentGameSave.playerData.currentPosition);
+		Player.Instance.ApplyUnitData(SaveSystem.currentGameSave.playerData);
+	}
+
+	private LevelData GetLevelByName(string currentLevelName)
+	{
+		return Resources.Load<LevelData>($"{LEVEL_STORAGE_PATH}{currentLevelName}");
+	}
+
+	public string CurrentLevelName()
+	{
+		return currentLevelData.name;
+	}
+
+	public void Save()
+	{
+		SaveSystem.currentGameSave.UpdateLevelState(true);
+		SaveSystem.Save();
 	}
 
 	public static GameLogic Instance { get; private set; }

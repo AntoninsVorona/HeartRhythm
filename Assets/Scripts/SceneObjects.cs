@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SceneObjects : MonoBehaviour
@@ -14,6 +15,16 @@ public class SceneObjects : MonoBehaviour
 		{
 			this.levelName = levelName;
 			unitData = new List<Unit.UnitData>();
+		}
+
+		public Unit.UnitData GetDataByName(string identifierName)
+		{
+			return unitData.FirstOrDefault(u => u.identifierName == identifierName);
+		}
+
+		public List<ItemOnGround.ItemOnGroundData> GetItemData()
+		{
+			return unitData.OfType<ItemOnGround.ItemOnGroundData>().ToList();
 		}
 	}
 	

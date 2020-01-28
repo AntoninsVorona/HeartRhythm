@@ -10,13 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 676823425e4e43a48af22318d5ceb28d, type: 3}
-  m_Name: ScavengerAssociationOutside
+  m_Name: ScavengerField
   m_EditorClassIdentifier: 
-  sceneObjects: {fileID: 4550899716278326085, guid: ef0ff43ebd03d2946a8c362699297d65,
+  sceneObjects: {fileID: 5090898556894703962, guid: 0798f894daf722f46ad25fe2001132bd,
     type: 3}
   dialogueRegistrator: {fileID: 0}
+  cameraIsStatic: 0
+  levelState:
+    levelName: 
+    unitData: []
+  focusPosition: {x: 0, y: 0}
   playerSpawnPoints:
-    m_keys: 0000000001000000
+    m_keys: 00000000
     m_values:
-    - {x: -5, y: 22}
-    - {x: -4, y: 11}
+    - {x: 0, y: 1}

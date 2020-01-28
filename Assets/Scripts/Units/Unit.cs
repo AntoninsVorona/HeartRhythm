@@ -152,7 +152,8 @@ public abstract class Unit : MonoBehaviour
 	protected virtual void Start()
 	{
 		GameLogic.Instance.gameStateObservers.Add(new Observer(GameStateChanged));
-
+		ApplyUnitData(GameLogic.Instance.currentLevelState.GetDataByName(identifierName));
+		
 		if (talkUI.canvas)
 		{
 			talkUI.canvas.worldCamera = GameCamera.Instance.camera;
@@ -401,7 +402,15 @@ public abstract class Unit : MonoBehaviour
 
 	public abstract void Die();
 
-	public UnitData GetUnitData()
+	public virtual void ApplyUnitData(UnitData unitData)
+	{
+		if (unitData != null)
+		{
+			spawnPoint = unitData.currentPosition;
+		}
+	}
+	
+	public virtual UnitData GetUnitData()
 	{
 		return new UnitData(identifierName, currentPosition);
 	}

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
-using static Player;
 using static SceneObjects;
 
 public static class SaveSystem
@@ -11,8 +10,14 @@ public static class SaveSystem
 	private const string SAVE_VERSION = "0.1";
 	private static readonly string GAME_SAVE_FOLDER_PATH = Application.persistentDataPath + "/saves";
 	private static readonly GameSettings GAME_SETTINGS = new GameSettings();
-	private static List<GameSave> gameSaves;
+	private static List<UILoadData> uiGameSaves;
 	public static GameSave currentGameSave;
+
+	public struct UILoadData
+	{
+		public string filePath;
+		public DateTime lastChanged;
+	}
 
 	[Serializable]
 	public abstract class SaveData
@@ -140,8 +145,9 @@ public static class SaveSystem
 	public class GameSave : SaveData
 	{
 		public string filePath;
-		public PlayerData playerData;
-		public List<LevelState> levelStates;
+		public Player.PlayerData playerData;
+		public string currentLevelName;
+		public List<LevelState> levelStates = new List<LevelState>();
 
 		protected override SaveData GetSelfData()
 		{
@@ -176,13 +182,22 @@ public static class SaveSystem
 
 			levelStates.Add(levelState);
 		}
+
+		public UILoadData ToUILoadData()
+		{
+			return new UILoadData
+			{
+				filePath = filePath,
+				lastChanged = lastChanged
+			};
+		}
 	}
 
 	public static void LoadData()
 	{
 		GAME_SETTINGS.Load();
 
-		gameSaves = new List<GameSave>();
+		uiGameSaves = new List<UILoadData>();
 		if (Directory.Exists(GAME_SAVE_FOLDER_PATH))
 		{
 			var files = Directory.GetFiles(GAME_SAVE_FOLDER_PATH);
@@ -190,10 +205,8 @@ public static class SaveSystem
 			{
 				var gameSave = new GameSave {filePath = filePath};
 				gameSave.Load();
-				gameSaves.Add(gameSave);
+				AddUISave(gameSave);
 			}
-			
-			//TODO Add entry on UI
 		}
 		else
 		{
@@ -201,9 +214,52 @@ public static class SaveSystem
 		}
 	}
 
-	public static void LoadSave(GameSave gameSave)
+	public static void LoadSave(string filePath)
 	{
-		currentGameSave = gameSave;
+		currentGameSave = new GameSave {filePath = filePath};
+		currentGameSave.Load();
+	}
+
+	public static void NewGame()
+	{
 		//TODO
+		const string startingLevel = "";
+		currentGameSave = new GameSave
+		{
+			currentLevelName = startingLevel, 
+			playerData = new Player.PlayerData("Player", Vector2Int.zero)
+		};
+	}
+
+	public static void Save()
+	{
+		if (!Directory.Exists(GAME_SAVE_FOLDER_PATH))
+		{
+			Directory.CreateDirectory(GAME_SAVE_FOLDER_PATH);
+		}
+
+		var filePath = $@"{DateTime.Now.Ticks}.dat";
+		currentGameSave.filePath = filePath;
+		currentGameSave.currentLevelName = GameLogic.Instance.CurrentLevelName();
+		currentGameSave.playerData = (Player.PlayerData) Player.Instance.GetUnitData();
+		currentGameSave.Save();
+		AddUISave(currentGameSave);
+	}
+
+	public static string GetLatestSave()
+	{
+		var latestSave = uiGameSaves.OrderByDescending(g => g.lastChanged).FirstOrDefault();
+		return latestSave.filePath;
+	}
+
+	public static bool HasAnySaves()
+	{
+		return uiGameSaves.Count > 0;
+	}
+
+	private static void AddUISave(GameSave gameSave)
+	{
+		uiGameSaves.Add(gameSave.ToUILoadData());
+		//TODO Init on UI
 	}
 }

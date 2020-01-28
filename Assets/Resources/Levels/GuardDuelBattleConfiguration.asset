@@ -15,6 +15,11 @@ MonoBehaviour:
   sceneObjects: {fileID: 8981519576598219680, guid: 775f98fa3d79fb742a6562bbe1f463dd,
     type: 3}
   dialogueRegistrator: {fileID: 0}
+  cameraIsStatic: 0
+  levelState:
+    levelName: 
+    unitData: []
+  focusPosition: {x: 0, y: 0}
   playerSpawnPoints:
     m_keys: 00000000
     m_values:

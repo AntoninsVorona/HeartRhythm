@@ -10,6 +10,9 @@ public class LevelData : ScriptableObject
 	public DialogueRegistrator dialogueRegistrator;
 	public bool cameraIsStatic;
 
+	[HideInInspector]
+	public SceneObjects.LevelState levelState;
+
 	[DrawIf("cameraIsStatic", true)]
 	public Vector2Int focusPosition;
 

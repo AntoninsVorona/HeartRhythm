@@ -316,5 +316,17 @@ public class Player : Unit
 		talkUI.Talk(CoroutineStarter(), text);
 	}
 
+	public override void ApplyUnitData(UnitData unitData)
+	{
+		base.ApplyUnitData(unitData);
+		var data = (PlayerData) unitData;
+		//TODO Inventory
+	}
+	
+	public override UnitData GetUnitData()
+	{
+		return new PlayerData(identifierName, currentPosition);
+	}
+
 	public static Player Instance { get; private set; }
 }

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.Experimental.Animations;
 
 public class MainMenuUI : MonoBehaviour
 {
 	[Serializable]
 	public class Screens
 	{
+		[HideInNormalInspector]
+		public MenuScreen currentScreen;
 		public MainScreen mainScreen;
 
 		public void DisableScreens()
@@ -46,8 +46,7 @@ public class MainMenuUI : MonoBehaviour
 		public static HeartSettings defaultSettings = new HeartSettings(new Vector2(0, 160), 0);
 	}
 
-	[SerializeField]
-	private Screens screens;
+	public Screens screens;
 
 	[SerializeField]
 	private CanvasGroup globalCanvasGroup;
@@ -182,6 +181,11 @@ public class MainMenuUI : MonoBehaviour
 		yield return new WaitForSeconds(1.1f);
 		globalCanvasGroup.interactable = true;
 		globalCanvasGroup.blocksRaycasts = true;
+	}
+
+	public IEnumerator FadeIntoPlay()
+	{
+		yield return screens.currentScreen.Close();
 	}
 
 	private IEnumerator MusicLessHeartBeat()
