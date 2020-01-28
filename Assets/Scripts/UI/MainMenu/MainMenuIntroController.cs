@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainMenuFadeController : MonoBehaviour
+public class MainMenuIntroController : MonoBehaviour
 {
 	[SerializeField]
 	private List<Sprite> stages;
