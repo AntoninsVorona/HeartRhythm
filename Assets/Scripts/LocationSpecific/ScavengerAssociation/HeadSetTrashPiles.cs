@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class HeadSetTrashPiles : Obstacle
 {
@@ -6,19 +7,23 @@ public class HeadSetTrashPiles : Obstacle
 	[SerializeField]
 	private Animator animator;
 
-	[SerializeField]
-	private HeadSetHidePlacesController headSetHidePlacesController;
-
-	protected override void Start()
+	public void HeadSetStateChanged(HeadSetHideAndSeekController.HeadSetState newState)
 	{
-		base.Start();
-		animator.SetTrigger(AnimatorUtilities.START_TRIGGER); //TODO Load
+		switch (newState)
+		{
+			case HeadSetHideAndSeekController.HeadSetState.InTrash:
+				talksWhenInteractedWith = false;
+				animator.SetTrigger(AnimatorUtilities.START_TRIGGER); 
+				break;
+			default:
+				talksWhenInteractedWith = true;
+				animator.SetTrigger(AnimatorUtilities.STOP_TRIGGER);
+				break;
+		}
 	}
 
-	public void Interacted()
+	public static void Interacted()
 	{
-		animator.SetTrigger(AnimatorUtilities.STOP_TRIGGER);
-		talksWhenInteractedWith = true;
-		headSetHidePlacesController.ActivateHidePlaces();
+		HeadSetHideAndSeekController.Instance.ChangeHeadSetState(HeadSetHideAndSeekController.HeadSetState.FindSeekPlace);
 	}
 }

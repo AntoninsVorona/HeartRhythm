@@ -86,7 +86,7 @@ public class GameLogic : MonoBehaviour
 		}
 		else
 		{
-			SaveSystem.currentGameSave = new SaveSystem.GameSave();
+			SaveSystem.MakeDefaultStartingGameSave(debugLevelToLoad.name);
 			currentLevelData = debugLevelToLoad;
 			StartCoroutine(LoadLevelCoroutine(debugLevelToLoad.GetSpawnPoint(0)));
 		}

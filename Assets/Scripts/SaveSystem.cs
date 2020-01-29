@@ -225,11 +225,18 @@ public static class SaveSystem
 	{
 		//TODO
 		const string startingLevel = "";
+		MakeDefaultStartingGameSave(startingLevel);
+	}
+
+	public static void MakeDefaultStartingGameSave(string startingLevel)
+	{
 		currentGameSave = new GameSave
 		{
 			currentLevelName = startingLevel,
 			playerData = new Player.PlayerData("Player", Vector2Int.zero, null),
-			globalVariables = new GlobalVariables(new GlobalVariables.ScavengerAssociationVariables())
+			globalVariables =
+				new GlobalVariables(new GlobalVariables.ScavengerAssociationVariables(true,
+					HeadSetHideAndSeekController.HeadSetState.InTrash))
 		};
 	}
 

@@ -8,7 +8,7 @@ public class HeadSetHideInteraction : StartCutSceneInteraction
 {
 	public override bool ApplyInteraction()
 	{
-		((HeadSetHidePlace) owner).Interacted();
+		HeadSetHidePlace.HeadSetHidden();
 		GameLogic.Instance.PlayCutScene(cutSceneToStart);
 		return true;
 	}
