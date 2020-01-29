@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class GameLogic : MonoBehaviour
 {
 	private const string LEVEL_STORAGE_PATH = "Levels/";
+	private const string MAIN_MENU_SCENE = "MainMenu";
+	private const string GAME_SCENE = "Game";
 
 	public enum GameState
 	{
@@ -78,9 +80,7 @@ public class GameLogic : MonoBehaviour
 
 	private void Start()
 	{
-		const string mainMenuScene = "MainMenu";
-		const string gameScene = "Game";
-		if (SceneManager.GetActiveScene().name == mainMenuScene)
+		if (SceneManager.GetActiveScene().name == MAIN_MENU_SCENE)
 		{
 			MainMenuUI.Instance.Show();
 		}
@@ -381,7 +381,7 @@ public class GameLogic : MonoBehaviour
 		}
 
 		currentLevelData = GetLevelByName(SaveSystem.currentGameSave.currentLevelName);
-		//TODO Load Scene
+		yield return SceneManager.LoadSceneAsync(GAME_SCENE);
 		Player.Instance.ApplyUnitData(SaveSystem.currentGameSave.playerData);
 		yield return LoadLevelCoroutine(SaveSystem.currentGameSave.playerData.currentPosition);
 	}

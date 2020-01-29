@@ -186,6 +186,7 @@ public class MainMenuUI : MonoBehaviour
 	public IEnumerator FadeIntoPlay()
 	{
 		yield return screens.currentScreen.Close();
+		//TODO Fade
 	}
 
 	private IEnumerator MusicLessHeartBeat()
