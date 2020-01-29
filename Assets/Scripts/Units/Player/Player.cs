@@ -98,12 +98,6 @@ public class Player : Unit
 		animator = GetComponent<Animator>();
 	}
 
-	protected override void Start()
-	{
-		base.Start();
-		Inventory.Initialize();
-	}
-
 	protected override void ForceMove()
 	{
 		base.ForceMove();
@@ -334,11 +328,17 @@ public class Player : Unit
 	{
 		base.ApplyUnitData(unitData);
 		Inventory.LoadData(((PlayerData) unitData)?.inventoryData);
+		Inventory.Initialize();
 	}
 
 	public override UnitData GetUnitData()
 	{
 		return new PlayerData(identifierName, currentPosition, Inventory.GetData());
+	}
+
+	protected override bool ApplyDataOnStart()
+	{
+		return false;
 	}
 
 	public static Player Instance { get; private set; }

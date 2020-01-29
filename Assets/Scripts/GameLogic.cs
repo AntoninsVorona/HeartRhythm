@@ -88,6 +88,8 @@ public class GameLogic : MonoBehaviour
 		{
 			SaveSystem.MakeDefaultStartingGameSave(debugLevelToLoad.name);
 			currentLevelData = debugLevelToLoad;
+			currentLevelState = SaveSystem.currentGameSave.GetLevelState(currentLevelData.name);
+			Player.Instance.ApplyUnitData(SaveSystem.currentGameSave.playerData);
 			StartCoroutine(LoadLevelCoroutine(debugLevelToLoad.GetSpawnPoint(0)));
 		}
 	}
@@ -379,8 +381,9 @@ public class GameLogic : MonoBehaviour
 		}
 
 		currentLevelData = GetLevelByName(SaveSystem.currentGameSave.currentLevelName);
-		yield return LoadLevelCoroutine(SaveSystem.currentGameSave.playerData.currentPosition);
+		//TODO Load Scene
 		Player.Instance.ApplyUnitData(SaveSystem.currentGameSave.playerData);
+		yield return LoadLevelCoroutine(SaveSystem.currentGameSave.playerData.currentPosition);
 	}
 
 	private LevelData GetLevelByName(string currentLevelName)

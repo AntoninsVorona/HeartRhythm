@@ -472,6 +472,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameLogic
       objectReference: {fileID: 0}
+    - target: {fileID: 3710416115441813072, guid: 1c9a7e5307868d64d8d9402aeb6aff8d,
+        type: 3}
+      propertyPath: debugLevelToLoad
+      value: 
+      objectReference: {fileID: 11400000, guid: 54f8c481e3e4fe64a84d7ad8b362affc,
+        type: 2}
     - target: {fileID: 3710416115441813073, guid: 1c9a7e5307868d64d8d9402aeb6aff8d,
         type: 3}
       propertyPath: m_RootOrder
@@ -492,12 +498,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3710416115441813072, guid: 1c9a7e5307868d64d8d9402aeb6aff8d,
-        type: 3}
-      propertyPath: debugLevelToLoad
-      value: 
-      objectReference: {fileID: 11400000, guid: 54f8c481e3e4fe64a84d7ad8b362affc,
-        type: 2}
     m_RemovedComponents:
     - {fileID: 7597094436958427808, guid: 1c9a7e5307868d64d8d9402aeb6aff8d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1c9a7e5307868d64d8d9402aeb6aff8d, type: 3}

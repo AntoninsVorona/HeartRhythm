@@ -152,15 +152,18 @@ public abstract class Unit : MonoBehaviour
 	protected virtual void Start()
 	{
 		GameLogic.Instance.gameStateObservers.Add(new Observer(GameStateChanged));
-		ApplyUnitData(GameLogic.Instance.currentLevelState.GetDataByName(identifierName));
-		
+		if (ApplyDataOnStart())
+		{
+			ApplyUnitData(GameLogic.Instance.currentLevelState.GetDataByName(identifierName));
+		}
+
 		if (talkUI.canvas)
 		{
 			talkUI.canvas.worldCamera = GameCamera.Instance.camera;
 			talkUI.canvas.gameObject.SetActive(false);
 		}
 	}
-
+	
 	public virtual void Initialize(Vector2Int location)
 	{
 		if (GameLogic.Instance.currentSceneObjects.currentWorld.tileMapInitialized)
@@ -413,6 +416,11 @@ public abstract class Unit : MonoBehaviour
 	public virtual UnitData GetUnitData()
 	{
 		return new UnitData(identifierName, currentPosition);
+	}
+
+	protected virtual bool ApplyDataOnStart()
+	{
+		return true;
 	}
 
 	protected virtual void OnDrawGizmosSelected()

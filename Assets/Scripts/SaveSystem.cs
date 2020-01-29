@@ -233,7 +233,7 @@ public static class SaveSystem
 		currentGameSave = new GameSave
 		{
 			currentLevelName = startingLevel,
-			playerData = new Player.PlayerData("Player", Vector2Int.zero, null),
+			playerData = new Player.PlayerData("Player", Vector2Int.zero, new Inventory.InventoryData("InitialBackpack", null)),
 			globalVariables =
 				new GlobalVariables(new GlobalVariables.ScavengerAssociationVariables(true,
 					HeadSetHideAndSeekController.HeadSetState.InTrash))
