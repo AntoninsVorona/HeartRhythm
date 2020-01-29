@@ -208,6 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3687e43b81f84d889e4dfa51c45442ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identifierName: 
   movementSpeed: 5
   sprite: {fileID: 7233437516225376871}
   movementSpeedCurve:
@@ -275,7 +276,7 @@ MonoBehaviour:
     canvas: {fileID: 1321599299586812471}
     drawingBoardAnimator: {fileID: 8617007469028807962}
     texts:
-    - Stop right there you criminal scum!
+    - '[Text]'
     displayText: {fileID: 8526947802995846194}
     talkTimer: 0
   movementSettings:

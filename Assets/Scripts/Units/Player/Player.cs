@@ -9,7 +9,7 @@ public class Player : Unit
 	public class PlayerData : UnitData
 	{
 		public Inventory.InventoryData inventoryData;
-		
+
 		public PlayerData(string identifierName, Vector2Int currentPosition,
 			Inventory.InventoryData inventoryData) : base(identifierName, currentPosition)
 		{
@@ -66,6 +66,19 @@ public class Player : Unit
 
 	private Inventory inventory;
 
+	private Inventory Inventory
+	{
+		get
+		{
+			if (!inventory)
+			{
+				inventory = GetComponent<Inventory>();
+			}
+
+			return inventory;
+		}
+	}
+
 	private Unit interactingWithUnit;
 
 	private Animator animator;
@@ -88,8 +101,7 @@ public class Player : Unit
 	protected override void Start()
 	{
 		base.Start();
-		inventory = GetComponent<Inventory>();
-		inventory.Initialize();
+		Inventory.Initialize();
 	}
 
 	protected override void ForceMove()
@@ -196,7 +208,7 @@ public class Player : Unit
 		//TODO Display cant pick up
 		if (amount > 0)
 		{
-			return inventory.PickUpItem(item, amount);
+			return Inventory.PickUpItem(item, amount);
 		}
 
 		Debug.LogError("Can't pick up less than or equals to 0 items!");
@@ -206,7 +218,7 @@ public class Player : Unit
 
 	public (bool canPickUpAll, int amount) CanPickUp(Item item, int amount)
 	{
-		return inventory.CanPickUpItem(item, amount);
+		return Inventory.CanPickUpItem(item, amount);
 	}
 
 	public bool DropItem(InventorySlot selectedInventorySlot, int amount)
@@ -238,7 +250,7 @@ public class Player : Unit
 	{
 		if (amount > 0)
 		{
-			inventory.LoseItem(item, amount);
+			Inventory.LoseItem(item, amount);
 		}
 		else
 		{
@@ -249,7 +261,7 @@ public class Player : Unit
 	public bool UseItem(InventorySlot slot)
 	{
 		var consumable = (Consumable) slot.itemInside;
-		var usedLast = inventory.UseItem(slot);
+		var usedLast = Inventory.UseItem(slot);
 		UseItem(consumable);
 		return usedLast;
 	}
@@ -271,17 +283,17 @@ public class Player : Unit
 
 	public void ChangeSlots(InventorySlot draggedInventorySlot, InventorySlot slotHit)
 	{
-		inventory.ChangeSlots(draggedInventorySlot, slotHit);
+		Inventory.ChangeSlots(draggedInventorySlot, slotHit);
 	}
 
 	public void SplitItem(InventorySlot draggedFrom, InventorySlot draggedTo, int amount)
 	{
-		inventory.SplitItem(draggedFrom, draggedTo, amount);
+		Inventory.SplitItem(draggedFrom, draggedTo, amount);
 	}
 
 	public int ItemsInSlot(InventorySlot slot)
 	{
-		return inventory.ItemsInSlot(slot);
+		return Inventory.ItemsInSlot(slot);
 	}
 
 	public void InitializeFightWithEnemyCombatData()
@@ -321,13 +333,12 @@ public class Player : Unit
 	public override void ApplyUnitData(UnitData unitData)
 	{
 		base.ApplyUnitData(unitData);
-		var data = (PlayerData) unitData;
-		inventory.LoadData(data.inventoryData);
+		Inventory.LoadData(((PlayerData) unitData)?.inventoryData);
 	}
 
 	public override UnitData GetUnitData()
 	{
-		return new PlayerData(identifierName, currentPosition, inventory.GetData());
+		return new PlayerData(identifierName, currentPosition, Inventory.GetData());
 	}
 
 	public static Player Instance { get; private set; }

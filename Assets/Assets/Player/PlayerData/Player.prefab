@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e94281c1751e44eaa7ca1505523c64e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identifierName: Player
   movementSpeed: 5
   sprite: {fileID: 7766726582572975702}
   movementSpeedCurve:
@@ -227,7 +228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac9eda42b9c4bc2b0d89f0ec2ceca23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentBackpack: {fileID: 11400000, guid: 91ba9ec25fd5b704ea924ff0a8f729c2, type: 2}
 --- !u!95 &7766726581833781656
 Animator:
   serializedVersion: 3

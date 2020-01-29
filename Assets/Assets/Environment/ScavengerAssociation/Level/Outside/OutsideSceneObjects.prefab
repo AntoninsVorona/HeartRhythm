@@ -14677,6 +14677,11 @@ PrefabInstance:
       propertyPath: spawnPoint.y
       value: 22
       objectReference: {fileID: 0}
+    - target: {fileID: 6324874088676031073, guid: 125507802bc466445b6ecaa860cef952,
+        type: 3}
+      propertyPath: identifierName
+      value: NearHouseGuard
+      objectReference: {fileID: 0}
     - target: {fileID: 8526947802995846194, guid: 125507802bc466445b6ecaa860cef952,
         type: 3}
       propertyPath: m_textInfo.characterCount
