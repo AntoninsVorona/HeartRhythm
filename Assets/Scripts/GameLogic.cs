@@ -93,9 +93,10 @@ public class GameLogic : MonoBehaviour
 		}
 	}
 
+#if UNITY_EDITOR
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.F9) && SceneManager.GetActiveScene().name == GAME_SCENE)
+		if (Input.GetKeyDown(KeyCode.F9) && SceneManager.GetActiveScene().name == GAME_SCENE && currentCutScene == null)
 		{
 			var latestSave = SaveSystem.GetLatestSave();
 			if (!string.IsNullOrEmpty(latestSave))
@@ -104,11 +105,12 @@ public class GameLogic : MonoBehaviour
 			}
 		}
 
-		if (Input.GetKeyDown(KeyCode.F5) && SceneManager.GetActiveScene().name == GAME_SCENE)
+		if (Input.GetKeyDown(KeyCode.F5) && SceneManager.GetActiveScene().name == GAME_SCENE && currentCutScene == null)
 		{
 			Save();
 		}
 	}
+#endif
 
 	public Coroutine LoadLevel(LevelData levelToEnter, int entranceId)
 	{
