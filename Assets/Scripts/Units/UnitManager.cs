@@ -24,6 +24,6 @@ public class UnitManager<T> : MonoBehaviour where T : Unit
 	
 	public List<Unit.UnitData> GetDataOfUnits<U>() where U : Unit
 	{
-		return allUnits.OfType<U>().Select(i => i.GetUnitData()).ToList();
+		return allUnits.OfType<U>().Select(i => i.GetUnitData()).Where(d => !string.IsNullOrEmpty(d.identifierName)).ToList();
 	}
 }

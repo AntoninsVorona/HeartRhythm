@@ -88,9 +88,25 @@ public class GameLogic : MonoBehaviour
 		{
 			SaveSystem.MakeDefaultStartingGameSave(debugLevelToLoad.name);
 			currentLevelData = debugLevelToLoad;
-			currentLevelState = SaveSystem.currentGameSave.GetLevelState(currentLevelData.name);
 			Player.Instance.ApplyUnitData(SaveSystem.currentGameSave.playerData);
 			StartCoroutine(LoadLevelCoroutine(debugLevelToLoad.GetSpawnPoint(0)));
+		}
+	}
+
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.F9) && SceneManager.GetActiveScene().name == GAME_SCENE)
+		{
+			var latestSave = SaveSystem.GetLatestSave();
+			if (!string.IsNullOrEmpty(latestSave))
+			{
+				LoadSave(latestSave, false);
+			}
+		}
+
+		if (Input.GetKeyDown(KeyCode.F5) && SceneManager.GetActiveScene().name == GAME_SCENE)
+		{
+			Save();
 		}
 	}
 
@@ -107,13 +123,13 @@ public class GameLogic : MonoBehaviour
 		}
 
 		currentLevelData = levelToEnter;
-		currentLevelState = SaveSystem.currentGameSave.GetLevelState(currentLevelData.name);
 		return StartCoroutine(LoadLevelCoroutine(currentLevelData.GetSpawnPoint(entranceId)));
 	}
 
 	private IEnumerator LoadLevelCoroutine(Vector2Int spawnPoint)
 	{
 		PreLoadSequence(currentLevelData.cameraIsStatic, currentLevelData.focusPosition);
+		currentLevelState = SaveSystem.currentGameSave.GetLevelState(currentLevelData.name);
 		if (currentLevelData.dialogueRegistrator)
 		{
 			currentLevelData.dialogueRegistrator.RegisterDialogueFunctions();

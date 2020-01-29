@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PixelCrushers.DialogueSystem;
 using UnityEngine;
 
 public class Player : Unit
@@ -327,6 +328,8 @@ public class Player : Unit
 	public override void ApplyUnitData(UnitData unitData)
 	{
 		base.ApplyUnitData(unitData);
+		GetComponent<DialogueSystemEvents>().conversationEvents.onConversationEnd
+			.AddListener(t => GameLogic.Instance.EndConversation());
 		Inventory.LoadData(((PlayerData) unitData)?.inventoryData);
 		Inventory.Initialize();
 	}

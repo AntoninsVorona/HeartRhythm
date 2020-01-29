@@ -20,10 +20,26 @@ public static class SaveSystem
 	}
 
 	[Serializable]
+	public struct JsonDateTime
+	{
+		public long value;
+
+		public static implicit operator DateTime(JsonDateTime jdt)
+		{
+			return DateTime.FromFileTimeUtc(jdt.value);
+		}
+
+		public static implicit operator JsonDateTime(DateTime dt)
+		{
+			return new JsonDateTime {value = dt.ToFileTimeUtc()};
+		}
+	}
+
+	[Serializable]
 	public abstract class SaveData
 	{
 		public string saveVersion;
-		public DateTime lastChanged;
+		public JsonDateTime lastChanged;
 
 		public void Save(bool saveDate = true)
 		{
@@ -55,7 +71,7 @@ public static class SaveSystem
 			var saveData = GetSelfData();
 			if (saveData.saveVersion != SAVE_VERSION)
 			{
-				if (saveData.saveVersion == null)
+				if (string.IsNullOrEmpty(saveData.saveVersion))
 				{
 					saveData.saveVersion = "0";
 				}
@@ -233,7 +249,8 @@ public static class SaveSystem
 		currentGameSave = new GameSave
 		{
 			currentLevelName = startingLevel,
-			playerData = new Player.PlayerData("Player", Vector2Int.zero, new Inventory.InventoryData("InitialBackpack", null)),
+			playerData = new Player.PlayerData("Player", Vector2Int.zero,
+				new Inventory.InventoryData("InitialBackpack", null)),
 			globalVariables =
 				new GlobalVariables(new GlobalVariables.ScavengerAssociationVariables(true,
 					HeadSetHideAndSeekController.HeadSetState.InTrash))
@@ -247,7 +264,7 @@ public static class SaveSystem
 			Directory.CreateDirectory(GAME_SAVE_FOLDER_PATH);
 		}
 
-		var filePath = $@"{DateTime.Now.Ticks}.dat";
+		var filePath = $@"{GAME_SAVE_FOLDER_PATH}/{DateTime.Now.Ticks}.dat";
 		currentGameSave.filePath = filePath;
 		currentGameSave.currentLevelName = GameLogic.Instance.CurrentLevelName();
 		currentGameSave.playerData = (Player.PlayerData) Player.Instance.GetUnitData();

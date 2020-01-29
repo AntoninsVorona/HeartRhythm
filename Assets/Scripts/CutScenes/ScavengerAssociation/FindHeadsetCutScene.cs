@@ -8,9 +8,9 @@ public class FindHeadsetCutScene : CutScene
 	{
 		dialogueFinished = false;
 		//TODO Play Search Animation and Sound
+		Player.Instance.PickUpItem(ItemManager.Instance.GetItemByName("Headset"));
 		GameLogic.Instance.StartConversation("FoundHeadsetFirstTime");
 		yield return new WaitUntil(() => dialogueFinished);
-		Player.Instance.PickUpItem(ItemManager.Instance.GetItemByName("Headset"));
 		GameLogic.Instance.CutSceneFinished();
 	}
 }

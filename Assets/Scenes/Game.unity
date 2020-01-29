@@ -1797,11 +1797,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6344778240942143814, guid: a8f397eef70e6a24bb09af57fb206bd2,
-        type: 3}
-      propertyPath: conversationEvents.onConversationEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 38901602}
     - target: {fileID: 7766726581833781658, guid: a8f397eef70e6a24bb09af57fb206bd2,
         type: 3}
       propertyPath: m_RootOrder
