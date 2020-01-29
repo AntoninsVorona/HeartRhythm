@@ -5,8 +5,6 @@ using UnityEngine;
 public class MainScreen : MenuScreen
 {
 	private bool secretActivated = false;
-	[SerializeField]
-	private List<HeartButton> heartButtons;
 
 	[SerializeField]
 	private HeartButton continueButton;
@@ -16,11 +14,6 @@ public class MainScreen : MenuScreen
 
 	public override void Open(bool withAnimation = true)
 	{
-		foreach (var heartButton in heartButtons)
-		{
-			heartButton.ResetFill();
-		}
-
 		if (!SaveSystem.HasAnySaves())
 		{
 			continueButton.gameObject.SetActive(false);
@@ -34,7 +27,7 @@ public class MainScreen : MenuScreen
 	{
 		if (!secretActivated)
 		{
-			var secretCanBeActivated = heartButtons.All(heartButton => !(heartButton.FillAmount < 0.5f));
+			var secretCanBeActivated = fillingButtons.All(heartButton => !(heartButton.FillAmount < 0.5f));
 			if (secretCanBeActivated)
 			{
 				ActivateSecret();
@@ -55,6 +48,7 @@ public class MainScreen : MenuScreen
 
 	public void LoadGameClicked()
 	{
+		MainMenuUI.Instance.OpenScreen<LoadGameScreen>();
 	}
 	
 	public void ContinueClicked()

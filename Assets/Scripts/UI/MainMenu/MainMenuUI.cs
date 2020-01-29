@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MainMenuUI : MonoBehaviour
@@ -9,25 +11,34 @@ public class MainMenuUI : MonoBehaviour
 	{
 		[HideInNormalInspector]
 		public MenuScreen currentScreen;
+
 		public MainScreen mainScreen;
+		public LoadGameScreen loadGameScreen;
+		private List<MenuScreen> allScreens;
+
+		public void InitScreens()
+		{
+			allScreens = new List<MenuScreen> {mainScreen, loadGameScreen};
+			DisableScreens();
+		}
 
 		public void DisableScreens()
 		{
-			mainScreen.Close(false);
+			allScreens.ForEach(s => s.Close(false));
+		}
+
+		public MenuScreen GetScreen<T>() where T : MenuScreen
+		{
+			return allScreens.First(s => s is T);
 		}
 	}
 
 	[Serializable]
-	public class HeartSettings
+	public struct HeartSettings
 	{
 		public Vector2 position;
 		public float rotation;
 		public float scale;
-
-		public HeartSettings()
-		{
-			scale = 1;
-		}
 
 		public HeartSettings(Vector2 position, float rotation)
 		{
@@ -43,16 +54,20 @@ public class MainMenuUI : MonoBehaviour
 			this.scale = scale;
 		}
 
-		public static HeartSettings defaultSettings = new HeartSettings(new Vector2(0, 160), 0);
+		public static readonly HeartSettings DEFAULT_SETTINGS = new HeartSettings(new Vector2(0, 160), 0);
 	}
 
-	public Screens screens;
+	[SerializeField]
+	private Screens screens;
 
 	[SerializeField]
 	private CanvasGroup globalCanvasGroup;
 
 	[SerializeField]
 	private Animator heartBeatAnimator;
+
+	[SerializeField]
+	private AnimationCurve heartMovementCurve;
 
 	[SerializeField]
 	private MainMenuIntroController introController;
@@ -65,6 +80,7 @@ public class MainMenuUI : MonoBehaviour
 
 	[SerializeField]
 	private Animator shaker;
+
 	[SerializeField]
 	private CustomStandaloneInputModule inputModule;
 
@@ -91,12 +107,12 @@ public class MainMenuUI : MonoBehaviour
 		uiLayerMask = LayerMask.GetMask("UI");
 		globalCanvasGroup.interactable = false;
 		globalCanvasGroup.blocksRaycasts = false;
-		screens.DisableScreens();
+		screens.InitScreens();
 	}
 
 	private void Update()
 	{
-		var hit = inputModule.CurrentHitWithLayer(uiLayerMask);
+		var hit = CurrentUIHit();
 		if (hit)
 		{
 			var heartButton = hit.GetComponentInParent<HeartButton>();
@@ -121,14 +137,14 @@ public class MainMenuUI : MonoBehaviour
 			else if (currentHeartButton && hit != separatorGameObject)
 			{
 				currentHeartButton.Deselect();
-				RepositionHeart(HeartSettings.defaultSettings);
+				RepositionHeart(screens.currentScreen.defaultHeartLocation);
 				currentHeartButton = null;
 			}
 		}
 		else if (currentHeartButton)
 		{
 			currentHeartButton.Deselect();
-			RepositionHeart(HeartSettings.defaultSettings);
+			RepositionHeart(screens.currentScreen.defaultHeartLocation);
 			currentHeartButton = null;
 		}
 	}
@@ -177,10 +193,7 @@ public class MainMenuUI : MonoBehaviour
 
 		pressAnyKeyText.gameObject.SetActive(false);
 		yield return letterController.InitiateFlightSequence(heartBeatAnimator.transform.position);
-		screens.mainScreen.Open();
-		yield return new WaitForSeconds(1.1f);
-		globalCanvasGroup.interactable = true;
-		globalCanvasGroup.blocksRaycasts = true;
+		yield return OpenScreen<MainScreen>();
 	}
 
 	public IEnumerator FadeIntoPlay()
@@ -210,6 +223,55 @@ public class MainMenuUI : MonoBehaviour
 			t += Time.fixedDeltaTime;
 			pressAnyKeyText.alpha = t;
 		}
+	}
+
+	public Coroutine OpenScreen<T>() where T : MenuScreen
+	{
+		var menuScreen = screens.GetScreen<T>();
+		return StartCoroutine(OpenScreenSequence(menuScreen));
+	}
+
+	private IEnumerator OpenScreenSequence(MenuScreen menuScreen)
+	{
+		globalCanvasGroup.interactable = false;
+		globalCanvasGroup.blocksRaycasts = false;
+		if (screens.currentScreen)
+		{
+			screens.currentScreen.Close();
+			yield return new WaitForSeconds(screens.currentScreen.closeDuration);
+			var startSettings = screens.currentScreen.defaultHeartLocation;
+			screens.currentScreen = menuScreen;
+			var currentSettings = screens.currentScreen.defaultHeartLocation;
+			float t = 0;
+			while (t < 1)
+			{
+				yield return null;
+				t += Time.fixedDeltaTime * 3;
+				var realT = heartMovementCurve.Evaluate(t);
+				RepositionHeart(new HeartSettings(
+					Vector2.Lerp(startSettings.position, currentSettings.position, realT),
+					Mathf.Lerp(startSettings.rotation, currentSettings.rotation, realT),
+					Mathf.Lerp(startSettings.scale, currentSettings.scale, realT)
+				));
+			}
+			yield return new WaitForSeconds(0.25f);
+		}
+		else
+		{
+			screens.currentScreen = menuScreen;
+			var currentSettings = screens.currentScreen.defaultHeartLocation;
+			RepositionHeart(currentSettings);
+		}
+
+		menuScreen.Open();
+		yield return new WaitForSeconds(screens.currentScreen.openDuration);
+		globalCanvasGroup.interactable = true;
+		globalCanvasGroup.blocksRaycasts = true;
+	}
+
+	public GameObject CurrentUIHit()
+	{
+		return inputModule.CurrentHitWithLayer(uiLayerMask);
 	}
 
 	public static MainMenuUI Instance { get; private set; }

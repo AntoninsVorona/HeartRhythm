@@ -1,18 +1,27 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 public class MenuScreen : MonoBehaviour
 {
 	[SerializeField]
-	private Animator animator;
+	protected Animator animator;
 
 	[SerializeField]
-	private float closeDuration = 1;
-	
+	protected List<FillingButton> fillingButtons;
+
+	public MainMenuUI.HeartSettings defaultHeartLocation = MainMenuUI.HeartSettings.DEFAULT_SETTINGS;
+	public float openDuration = 1;
+	public float closeDuration = 1;
+
 	public virtual void Open(bool withAnimation = true)
 	{
-	    MainMenuUI.Instance.screens.currentScreen = this;
+		foreach (var heartButton in fillingButtons)
+		{
+			heartButton.ResetFill();
+		}
+		
 		gameObject.SetActive(true);
 		if (withAnimation)
 		{

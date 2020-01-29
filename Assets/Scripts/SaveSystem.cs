@@ -10,7 +10,7 @@ public static class SaveSystem
 	private const string SAVE_VERSION = "0.1";
 	private static readonly string GAME_SAVE_FOLDER_PATH = Application.persistentDataPath + "/saves";
 	private static readonly GameSettings GAME_SETTINGS = new GameSettings();
-	private static List<UILoadData> uiGameSaves;
+	public static List<UILoadData> uiGameSaves;
 	public static GameSave currentGameSave;
 
 	public struct UILoadData
@@ -286,6 +286,12 @@ public static class SaveSystem
 	private static void AddUISave(GameSave gameSave)
 	{
 		uiGameSaves.Add(gameSave.ToUILoadData());
-		//TODO Init on UI
+	}
+
+	public static void EraseSave(string filePath)
+	{
+		var uiLoadData = uiGameSaves.First(u => u.filePath == filePath);
+		uiGameSaves.Remove(uiLoadData);
+		File.Delete(uiLoadData.filePath);
 	}
 }
