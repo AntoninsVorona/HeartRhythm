@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
 	}
 
 	[SerializeField]
-	private Backpack currentBackpack;
+	private Backpack currentBackpack; //TODO Load Backpack
 
 	private List<ItemInformation> itemInformation;
 
@@ -45,6 +45,7 @@ public class Inventory : MonoBehaviour
 
 	private void LoadItemInformation()
 	{
+		//TODO Load
 		itemInformation = new List<ItemInformation>();
 //		AddItem("Sword", 0, 1);
 //		AddItem("Sword", 1, 1);
