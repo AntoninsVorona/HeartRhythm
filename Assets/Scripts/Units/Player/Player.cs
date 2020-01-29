@@ -8,11 +8,13 @@ public class Player : Unit
 	[Serializable]
 	public class PlayerData : UnitData
 	{
-		public PlayerData(string identifierName, Vector2Int currentPosition) : base(identifierName, currentPosition)
+		public Inventory.InventoryData inventoryData;
+		
+		public PlayerData(string identifierName, Vector2Int currentPosition,
+			Inventory.InventoryData inventoryData) : base(identifierName, currentPosition)
 		{
+			this.inventoryData = inventoryData;
 		}
-
-		//TODO Inventory
 	}
 
 	[Serializable]
@@ -320,12 +322,12 @@ public class Player : Unit
 	{
 		base.ApplyUnitData(unitData);
 		var data = (PlayerData) unitData;
-		//TODO Inventory
+		inventory.LoadData(data.inventoryData);
 	}
-	
+
 	public override UnitData GetUnitData()
 	{
-		return new PlayerData(identifierName, currentPosition);
+		return new PlayerData(identifierName, currentPosition, inventory.GetData());
 	}
 
 	public static Player Instance { get; private set; }

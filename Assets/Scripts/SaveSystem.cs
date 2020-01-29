@@ -228,7 +228,7 @@ public static class SaveSystem
 		currentGameSave = new GameSave
 		{
 			currentLevelName = startingLevel,
-			playerData = new Player.PlayerData("Player", Vector2Int.zero),
+			playerData = new Player.PlayerData("Player", Vector2Int.zero, null),
 			globalVariables = new GlobalVariables(new GlobalVariables.ScavengerAssociationVariables())
 		};
 	}

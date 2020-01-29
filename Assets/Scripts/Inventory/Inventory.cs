@@ -5,6 +5,21 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+	private const string BACKPACK_PATH = "Backpacks/";
+
+	[Serializable]
+	public class InventoryData
+	{
+		public string backpackName;
+		public List<Inventory.ItemInformation> inventoryData;
+
+		public InventoryData(string backpackName, List<ItemInformation> inventoryData)
+		{
+			this.backpackName = backpackName;
+			this.inventoryData = inventoryData;
+		}
+	}
+
 	[Serializable]
 	public class ItemInformation
 	{
@@ -31,24 +46,35 @@ public class Inventory : MonoBehaviour
 		}
 	}
 
-	[SerializeField]
-	private Backpack currentBackpack; //TODO Load Backpack
-
+	private Backpack currentBackpack;
 	private List<ItemInformation> itemInformation;
 
 	public void Initialize()
 	{
 		GameUI.Instance.uiInventory.InitializeSlots(currentBackpack);
-		LoadItemInformation();
 		GameUI.Instance.uiInventory.InitializeItems(itemInformation);
 	}
 
-	private void LoadItemInformation()
+	public void LoadData(InventoryData data)
 	{
-		//TODO Load
-		itemInformation = new List<ItemInformation>();
-//		AddItem("Sword", 0, 1);
-//		AddItem("Sword", 1, 1);
+		if (data != null)
+		{
+			itemInformation = data.inventoryData ?? new List<ItemInformation>();
+			currentBackpack = string.IsNullOrEmpty(data.backpackName)
+				? null
+				: Resources.Load<Backpack>($"{BACKPACK_PATH}{data.backpackName}");
+		}
+		else
+		{
+			currentBackpack = null;
+			itemInformation = new List<ItemInformation>();
+		}
+	}
+
+	public InventoryData GetData()
+	{
+		var backPackName = currentBackpack ? currentBackpack.identifierName : null;
+		return new InventoryData(backPackName, itemInformation);
 	}
 
 	public (bool pickedUpAll, int amountLeft) PickUpItem(Item item, int amount)

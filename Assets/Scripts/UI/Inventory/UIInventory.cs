@@ -32,12 +32,13 @@ public class UIInventory : MonoBehaviour
 	private InventorySlot selectedInventorySlot;
 	private float dragTime;
 
-	[Header("Prefabs")] [SerializeField]
+	[Header("Prefabs")]
+	[SerializeField]
 	private BackpackSlot backpackSlotPrefab;
 
 	public void InitializeSlots(Backpack currentBackpack)
 	{
-		if (currentBackpack.amountOfItems > 0)
+		if (currentBackpack != null && currentBackpack.amountOfItems > 0)
 		{
 			backpackSlotsObject.SetActive(true);
 			var backPackSlots = inventorySlots.Count(i => i is BackpackSlot);
