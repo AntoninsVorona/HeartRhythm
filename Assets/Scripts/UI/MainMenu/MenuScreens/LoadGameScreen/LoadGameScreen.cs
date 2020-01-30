@@ -1,11 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class LoadGameScreen : MenuScreen
 {
 	[SerializeField]
 	private GameSaveButton gameSaveButtonPrefab;
+
+	[SerializeField]
+	private ScrollRect gameSaveScrollRect;
 
 	[SerializeField]
 	private RectTransform gameSaveButtonHolder;
@@ -15,11 +20,16 @@ public class LoadGameScreen : MenuScreen
 
 	public override void Open(bool withAnimation = true)
 	{
+		base.Open(withAnimation);
 		if (!savesInitialized)
 		{
-			InitializeSaves();
+			InitializeSaves(); 
+			Canvas.ForceUpdateCanvases();
+			LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform) gameSaveScrollRect.transform);
 		}
-		base.Open(withAnimation);
+
+		gameSaveScrollRect.verticalNormalizedPosition = 1; //TODO Scroll to top
+		Canvas.ForceUpdateCanvases();
 	}
 
 	public override Coroutine Close(bool withAnimation = true)

@@ -160,6 +160,7 @@ public static class SaveSystem
 	[Serializable]
 	public class GameSave : SaveData
 	{
+		[NonSerialized]
 		public string filePath;
 		public Player.PlayerData playerData;
 		public string currentLevelName;

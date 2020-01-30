@@ -26,4 +26,25 @@ public class UnitManager<T> : MonoBehaviour where T : Unit
 	{
 		return allUnits.OfType<U>().Select(i => i.GetUnitData()).Where(d => !string.IsNullOrEmpty(d.identifierName)).ToList();
 	}
+	
+	public void StopAllActionsBeforeLoading()
+	{
+		StopAllCoroutines();
+		var units = new List<T>(allUnits);
+		foreach (var unit in units)
+		{
+			if (!unit)
+			{
+				allUnits.Remove(unit);
+				continue;
+			}
+
+			AdditionalActionsToUnitsWhenStopping(unit);
+		}
+	}
+
+	public virtual void AdditionalActionsToUnitsWhenStopping(T unit)
+	{
+		unit.RemoveGameStateObserver();
+	} 
 }

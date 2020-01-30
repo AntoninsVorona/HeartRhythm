@@ -115,7 +115,7 @@ MonoBehaviour:
     position: {x: 0, y: 160}
     rotation: 0
     scale: 1
-  openDuration: 1
+  openDuration: 1.1
   closeDuration: 0.7
   continueButton: {fileID: 7404257924609268872}
   loadButton: {fileID: 7404257925077294449}
@@ -241,12 +241,12 @@ PrefabInstance:
       propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7823118643597447324}
-    - target: {fileID: 5887050367370684448, guid: f971ba0c724c10e46aad20ec6b06c4dd,
+    - target: {fileID: 5887050366428907982, guid: f971ba0c724c10e46aad20ec6b06c4dd,
         type: 3}
       propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7823118643597447324}
-    - target: {fileID: 5887050366428907982, guid: f971ba0c724c10e46aad20ec6b06c4dd,
+    - target: {fileID: 5887050367370684448, guid: f971ba0c724c10e46aad20ec6b06c4dd,
         type: 3}
       propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

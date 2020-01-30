@@ -149,9 +149,12 @@ public abstract class Unit : MonoBehaviour
 	[DrawIf("talksWhenInteractedWith", true)]
 	protected TalkUI talkUI;
 
+	private Observer gameStateChangedObserver;
+
 	protected virtual void Start()
 	{
-		GameLogic.Instance.gameStateObservers.Add(new Observer(GameStateChanged));
+		gameStateChangedObserver = new Observer(GameStateChanged);
+		GameLogic.Instance.gameStateObservers.Add(gameStateChangedObserver);
 		if (ApplyDataOnStart())
 		{
 			ApplyUnitData(GameLogic.Instance.currentLevelState.GetDataByName(identifierName));
@@ -421,6 +424,12 @@ public abstract class Unit : MonoBehaviour
 	protected virtual bool ApplyDataOnStart()
 	{
 		return true;
+	}
+
+	public void RemoveGameStateObserver()
+	{
+		Debug.Log("Remove" + name);
+		GameLogic.Instance.gameStateObservers.Remove(gameStateChangedObserver);
 	}
 
 	protected virtual void OnDrawGizmosSelected()

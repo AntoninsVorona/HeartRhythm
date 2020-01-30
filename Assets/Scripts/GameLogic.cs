@@ -50,7 +50,7 @@ public class GameLogic : MonoBehaviour
 	public SceneObjects currentSceneObjects;
 
 	[HideInInspector]
-	public List<Observer> gameStateObservers = new List<Observer>();
+	public List<Observer> gameStateObservers; //TODO Remake Game Session Data
 
 	[HideInInspector]
 	public PlayState playState = PlayState.Basic;
@@ -76,6 +76,7 @@ public class GameLogic : MonoBehaviour
 		}
 
 		SaveSystem.LoadData();
+		gameStateObservers = new List<Observer>();
 	}
 
 	private void Start()
@@ -177,6 +178,7 @@ public class GameLogic : MonoBehaviour
 
 		gameStateObservers.RemoveAll(o => o == null);
 		gameStateObservers.ForEach(o => o?.NotifyBegin());
+		Debug.Log(gameStateObservers.Count);
 	}
 
 	public void BeginFightMode(Music fightMusic)
@@ -398,6 +400,7 @@ public class GameLogic : MonoBehaviour
 			yield return MainMenuUI.Instance.FadeIntoPlay();
 		}
 
+		gameStateObservers = new List<Observer>();
 		currentLevelData = GetLevelByName(SaveSystem.currentGameSave.currentLevelName);
 		yield return SceneManager.LoadSceneAsync(GAME_SCENE);
 		Player.Instance.ApplyUnitData(SaveSystem.currentGameSave.playerData);

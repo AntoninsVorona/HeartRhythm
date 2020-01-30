@@ -154,6 +154,7 @@ public class Mob : Unit
 		base.PeaceState();
 		if (movementSettings.moveDuringPeaceMode && peaceModeMovementCoroutine == null)
 		{
+			Debug.Log("Start" + name);
 			peaceModeMovementCoroutine = CoroutineStarter().StartCoroutine(PeaceModeMovement());
 		}
 	}
