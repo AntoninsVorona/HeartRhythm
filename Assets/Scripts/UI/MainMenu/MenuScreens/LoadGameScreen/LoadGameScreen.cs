@@ -18,6 +18,7 @@ public class LoadGameScreen : MenuScreen
 
 	private GameSaveButton selectedGameSaveButton;
 	private bool savesInitialized;
+	private List<GameSaveButton> gameSaveButtons;
 
 	public override void Open(bool withAnimation = true)
 	{
@@ -74,18 +75,22 @@ public class LoadGameScreen : MenuScreen
 
 	private void InitializeSaves()
 	{
+		gameSaveButtons = new List<GameSaveButton>();
 		savesInitialized = true;
+		var isLatest = true;
 		foreach (var uiLoadData in SaveSystem.uiGameSaves.OrderByDescending(u => u.lastChanged))
 		{
-			AddSave(uiLoadData);
+			AddSave(uiLoadData, isLatest);
+			isLatest = false;
 		}
 	}
 
-	private void AddSave(SaveSystem.UILoadData uiLoadData)
+	private void AddSave(SaveSystem.UILoadData uiLoadData, bool isLatest)
 	{
 		var gameSaveButton = Instantiate(gameSaveButtonPrefab, gameSaveButtonHolder);
-		gameSaveButton.Initialize(uiLoadData);
+		gameSaveButton.Initialize(uiLoadData, isLatest);
 		fillingButtons.Add(gameSaveButton);
+		gameSaveButtons.Add(gameSaveButton);
 	}
 
 	public void BackToMainScreen()
@@ -107,6 +112,16 @@ public class LoadGameScreen : MenuScreen
 		{
 			SaveSystem.EraseSave(selectedGameSaveButton.filePath);
 			fillingButtons.Remove(selectedGameSaveButton);
+			gameSaveButtons.Remove(selectedGameSaveButton);
+			if (selectedGameSaveButton.latest)
+			{
+				var latestSave = gameSaveButtons.FirstOrDefault();
+				if (latestSave)
+				{
+					latestSave.ApplyLatest(true);
+				}
+			}
+
 			Destroy(selectedGameSaveButton.gameObject);
 			selectedGameSaveButton = null;
 		}
