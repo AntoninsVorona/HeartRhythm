@@ -11,8 +11,7 @@ public class Obstacle : Unit
 		base.Start();
 		if (initializeSelf)
 		{
-			var unitData = GameLogic.Instance.currentLevelState.GetDataByName(identifierName);
-			GameLogic.Instance.currentSceneObjects.currentObstacleManager.InitializeUnit(this, spawnPoint);
+			GameSessionManager.Instance.currentSceneObjects.currentObstacleManager.InitializeUnit(this, spawnPoint);
 		}
 	}
 
@@ -23,23 +22,23 @@ public class Obstacle : Unit
 	public override void Die()
 	{
 		UnoccupyTile();
-		GameLogic.Instance.currentSceneObjects.currentObstacleManager.RemoveUnit(this);
+		GameSessionManager.Instance.currentSceneObjects.currentObstacleManager.RemoveUnit(this);
 		gameObject.SetActive(false);
 	}
 
 	protected override void OccupyTile()
 	{
-		GameLogic.Instance.currentSceneObjects.currentWorld.AddObstacle(currentPosition, this);
+		GameSessionManager.Instance.currentSceneObjects.currentWorld.AddObstacle(currentPosition, this);
 
 		foreach (var point in otherPoints)
 		{
-			GameLogic.Instance.currentSceneObjects.currentWorld.AddObstacle(point, this);
+			GameSessionManager.Instance.currentSceneObjects.currentWorld.AddObstacle(point, this);
 		}
 	}
 
 	protected override void UnoccupyTile()
 	{
-		GameLogic.Instance.currentSceneObjects.currentWorld.RemoveObstacle(currentPosition);
+		GameSessionManager.Instance.currentSceneObjects.currentWorld.RemoveObstacle(currentPosition);
 	}
 
 	public override void Talk(string text = null)

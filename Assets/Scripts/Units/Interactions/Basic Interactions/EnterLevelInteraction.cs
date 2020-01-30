@@ -10,7 +10,7 @@ public class EnterLevelInteraction : Interaction
 	
 	public override bool ApplyInteraction()
 	{
-		GameLogic.Instance.LoadLevel(levelToEnter, entranceId);
+		GameSessionManager.Instance.LoadLevel(levelToEnter, entranceId);
 		return true;
 	}
 	

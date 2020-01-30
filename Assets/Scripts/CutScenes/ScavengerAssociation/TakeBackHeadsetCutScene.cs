@@ -17,6 +17,6 @@ public class TakeBackHeadsetCutScene : CutScene
 		// GameLogic.Instance.StartConversation("ItsTimeToPackStuff");;
 		// yield return new WaitUntil(() => dialogueFinished);
 		yield return null;
-		GameLogic.Instance.CutSceneFinished();
+		GameSessionManager.Instance.CutSceneFinished();
 	}
 }

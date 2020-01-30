@@ -13,7 +13,7 @@ public class ScavengerAssociationInsideRegistrator : DialogueRegistrator
 
 	public void StartDuel()
 	{
-		GameLogic.Instance.FightAnEnemy(duelGuard);
+		GameSessionManager.Instance.LoadLevel(duelGuard);
 	}
 
 	public override void RegisterDialogueFunctions()

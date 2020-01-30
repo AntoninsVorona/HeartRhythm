@@ -23,7 +23,7 @@ public class ObstacleManager : UnitManager<Obstacle>
 
 	public bool CanSpawnOnLocation(Vector2Int location)
 	{
-		var world = GameLogic.Instance.currentSceneObjects.currentWorld;
+		var world = GameSessionManager.Instance.currentSceneObjects.currentWorld;
 		var (cantMoveReason, _) = world.CanWalk(location);
 		return cantMoveReason == GameTile.CantMoveReason.None;
 	}
@@ -31,7 +31,7 @@ public class ObstacleManager : UnitManager<Obstacle>
 	public (bool canSpawn, MovementDirectionUtilities.MovementDirection movementDirection) CanSpawnAroundLocation(
 		Vector2Int location)
 	{
-		var world = GameLogic.Instance.currentSceneObjects.currentWorld;
+		var world = GameSessionManager.Instance.currentSceneObjects.currentWorld;
 		var movementDirections = EnumUtilities.GetValues<MovementDirectionUtilities.MovementDirection>();
 		movementDirections.Remove(MovementDirectionUtilities.MovementDirection.None);
 		foreach (var direction in movementDirections)

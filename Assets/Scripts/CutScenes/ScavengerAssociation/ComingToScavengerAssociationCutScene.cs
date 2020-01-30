@@ -15,8 +15,8 @@ public class ComingToScavengerAssociationCutScene : CutScene
 		yield return new WaitForSeconds(0.5f);
 		yield return Player.Instance.Move(new Vector2Int(-5, 15));
 		yield return new WaitForSeconds(0.5f);
-		GameLogic.Instance.StartConversation("ComingToScavengerAssociation");
+		GameSessionManager.Instance.StartConversation("ComingToScavengerAssociation");
 		yield return new WaitUntil(() => dialogueFinished);
-		GameLogic.Instance.CutSceneFinished();
+		GameSessionManager.Instance.CutSceneFinished();
 	}
 }

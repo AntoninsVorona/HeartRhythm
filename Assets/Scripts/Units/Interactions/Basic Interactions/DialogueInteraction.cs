@@ -10,7 +10,7 @@ public class DialogueInteraction : Interaction
 	
 	public override bool ApplyInteraction()
 	{
-		GameLogic.Instance.StartConversation(conversationTitle, owner);
+		GameSessionManager.Instance.StartConversation(conversationTitle, owner);
 		return true;
 	}
 

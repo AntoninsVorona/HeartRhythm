@@ -107,12 +107,12 @@ public class Player : Unit
 
 	public void ReceiveInput(MovementDirectionUtilities.MovementDirection movementDirection)
 	{
-		switch (GameLogic.Instance.playState)
+		switch (GameSessionManager.Instance.playState)
 		{
-			case GameLogic.PlayState.Basic:
+			case GameSessionManager.PlayState.Basic:
 				Move(movementDirection);
 				break;
-			case GameLogic.PlayState.DanceMove:
+			case GameSessionManager.PlayState.DanceMove:
 				ReceiveDanceMove(movementDirection);
 				break;
 			default:
@@ -133,7 +133,7 @@ public class Player : Unit
 			animator.SetTrigger(FINISH_DANCE_MOVE_TRIGGER);
 		}
 
-		GameLogic.Instance.FinishDanceMove(!withAnimation);
+		GameSessionManager.Instance.FinishDanceMove(!withAnimation);
 	}
 
 	protected override IEnumerator MovementSequence(Vector2Int newPosition)
@@ -177,7 +177,7 @@ public class Player : Unit
 		if (unit.interactions.Count > 0)
 		{
 			interactingWithUnit = unit;
-			GameLogic.Instance.StartDanceMove(unit);
+			GameSessionManager.Instance.StartDanceMove(unit);
 		}
 	}
 
@@ -221,13 +221,13 @@ public class Player : Unit
 		if (amount > 0)
 		{
 			var (canSpawn, movementDirection) =
-				GameLogic.Instance.currentSceneObjects.currentObstacleManager.CanSpawnAroundLocation(currentPosition);
+				GameSessionManager.Instance.currentSceneObjects.currentObstacleManager.CanSpawnAroundLocation(currentPosition);
 			if (canSpawn)
 			{
 				var item = selectedInventorySlot.itemInside;
 				var droppedAll = inventory.DropItem(selectedInventorySlot, amount);
 				var location = currentPosition + MovementDirectionUtilities.VectorFromDirection(movementDirection);
-				GameLogic.Instance.currentSceneObjects.currentObstacleManager.SpawnItemOnGround(item, amount, location);
+				GameSessionManager.Instance.currentSceneObjects.currentObstacleManager.SpawnItemOnGround(item, amount, location);
 				return droppedAll;
 			}
 
@@ -329,7 +329,7 @@ public class Player : Unit
 	{
 		base.ApplyUnitData(unitData);
 		GetComponent<DialogueSystemEvents>().conversationEvents.onConversationEnd
-			.AddListener(t => GameLogic.Instance.EndConversation());
+			.AddListener(t => GameSessionManager.Instance.EndConversation());
 		Inventory.LoadData(((PlayerData) unitData)?.inventoryData);
 		Inventory.Initialize();
 	}

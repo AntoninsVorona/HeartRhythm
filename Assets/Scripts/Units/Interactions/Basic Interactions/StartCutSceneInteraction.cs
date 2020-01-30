@@ -10,7 +10,7 @@ public class StartCutSceneInteraction : Interaction
 	
 	public override bool ApplyInteraction()
 	{
-		GameLogic.Instance.PlayCutScene(cutSceneToStart);
+		GameSessionManager.Instance.PlayCutScene(cutSceneToStart);
 		return true;
 	}
 

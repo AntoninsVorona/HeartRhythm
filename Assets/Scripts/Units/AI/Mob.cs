@@ -88,14 +88,14 @@ public class Mob : Unit
 		base.Start();
 		if (initializeSelf)
 		{
-			GameLogic.Instance.currentSceneObjects.currentMobManager.InitializeMob(this, spawnPoint);
+			GameSessionManager.Instance.currentSceneObjects.currentMobManager.InitializeMob(this, spawnPoint);
 		}
 	}
 
 	public override void Initialize(Vector2Int location)
 	{
 		base.Initialize(location);
-		if (GameLogic.Instance.CurrentGameState == GameLogic.GameState.Peace
+		if (GameSessionManager.Instance.CurrentGameState == GameSessionManager.GameState.Peace
 		    && movementSettings.moveDuringPeaceMode
 		    && peaceModeMovementCoroutine == null)
 		{
@@ -135,7 +135,7 @@ public class Mob : Unit
 	public override void Die()
 	{
 		UnoccupyTile();
-		GameLogic.Instance.currentSceneObjects.currentMobManager.RemoveUnit(this);
+		GameSessionManager.Instance.currentSceneObjects.currentMobManager.RemoveUnit(this);
 		if (peaceModeMovementCoroutine != null)
 		{
 			CoroutineStarter().StopCoroutine(peaceModeMovementCoroutine);
@@ -174,7 +174,7 @@ public class Mob : Unit
 		while (true)
 		{
 			yield return new WaitForSeconds(movementSettings.peaceModeMovementDelay);
-			if (GameLogic.Instance.playState == GameLogic.PlayState.Basic)
+			if (GameSessionManager.Instance.playState == GameSessionManager.PlayState.Basic)
 			{
 				MakeAction();
 			}

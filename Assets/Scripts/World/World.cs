@@ -77,7 +77,7 @@ public class World : MonoBehaviour
 	public GameTile GetTileInDirection(Vector2Int position, MovementDirectionUtilities.MovementDirection direction)
 	{
 		var vectorFromDirection = MovementDirectionUtilities.VectorFromDirection(direction);
-		return GameLogic.Instance.currentSceneObjects.currentWorld.GetTile(position + vectorFromDirection);
+		return GameSessionManager.Instance.currentSceneObjects.currentWorld.GetTile(position + vectorFromDirection);
 	}
 
 	public (GameTile.CantMoveReason, Unit) CanWalk(Vector2Int position)

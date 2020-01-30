@@ -7,10 +7,10 @@ public class FightInteraction : Interaction
 {
 	public override bool ApplyInteraction()
 	{
-		GameLogic.Instance.FightAnEnemy(((Enemy) owner).battleConfiguration);
+		GameSessionManager.Instance.LoadLevel(((Enemy) owner).battleConfiguration);
 		return true;
 	}
-	
+
 	protected override object[] GetDescriptionParams()
 	{
 		return new object[0];

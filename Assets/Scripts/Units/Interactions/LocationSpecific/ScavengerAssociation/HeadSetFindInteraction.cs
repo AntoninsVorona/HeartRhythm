@@ -9,7 +9,7 @@ public class HeadSetFindInteraction : StartCutSceneInteraction
 	public override bool ApplyInteraction()
 	{
 		HeadSetTrashPiles.Interacted();
-		GameLogic.Instance.PlayCutScene(cutSceneToStart);
+		GameSessionManager.Instance.PlayCutScene(cutSceneToStart);
 		return true;
 	}
 

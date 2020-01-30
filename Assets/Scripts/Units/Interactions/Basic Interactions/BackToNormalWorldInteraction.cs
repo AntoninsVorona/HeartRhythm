@@ -5,11 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Interactions/Basic Interactions/Back To Normal World Interaction", fileName = "BackToNormalWorldInteraction")]
 public class BackToNormalWorldInteraction : Interaction
 {
-	public bool enablePieceMode;
-	
 	public override bool ApplyInteraction()
 	{
-		GameLogic.Instance.BackToRealWorld(enablePieceMode);
+		GameSessionManager.Instance.BackToRealWorld();
 		return true;
 	}
 	

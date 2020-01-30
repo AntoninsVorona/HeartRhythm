@@ -216,9 +216,9 @@ public class AudioManager : MonoBehaviour
 
 	public void ApplyBeat()
 	{
-		if (GameLogic.Instance.playState == GameLogic.PlayState.Basic)
+		if (GameSessionManager.Instance.playState == GameSessionManager.PlayState.Basic)
 		{
-			GameLogic.Instance.currentSceneObjects.currentMobManager.MakeMobsActions();
+			GameSessionManager.Instance.currentSceneObjects.currentMobManager.MakeMobsActions();
 		}
 	}
 

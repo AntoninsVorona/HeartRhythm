@@ -10,6 +10,7 @@ public class GameCamera : MonoBehaviour
 	private Vector3 offset;
 
 	private Vector3 targetPosition;
+
 	[HideInNormalInspector]
 	public new Camera camera;
 
@@ -24,13 +25,13 @@ public class GameCamera : MonoBehaviour
 		if (Instance == null)
 		{
 			Instance = this;
-			DontDestroyOnLoad(this);
 		}
 		else if (Instance != this)
 		{
 			Destroy(gameObject);
 			return;
 		}
+
 		camera = GetComponent<Camera>();
 	}
 
@@ -55,7 +56,7 @@ public class GameCamera : MonoBehaviour
 			}
 		}
 	}
-	
+
 	public void Shake(float duration = 0.4f, float posPower = 0.2f, float rotPower = 15)
 	{
 		if (shakeCoroutine != null)
@@ -112,6 +113,6 @@ public class GameCamera : MonoBehaviour
 		shakeRot = Vector3.zero;
 		shakeOffset = Vector3.zero;
 	}
-	
+
 	public static GameCamera Instance { get; private set; }
 }

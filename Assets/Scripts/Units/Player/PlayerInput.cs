@@ -30,11 +30,11 @@ public class PlayerInput : MonoBehaviour
 				return false;
 			}
 
-			switch (GameLogic.Instance.CurrentGameState)
+			switch (GameSessionManager.Instance.CurrentGameState)
 			{
-				case GameLogic.GameState.Peace:
+				case GameSessionManager.GameState.Peace:
 					return PlayerReadyForInput;
-				case GameLogic.GameState.Fight:
+				case GameSessionManager.GameState.Fight:
 					if (!BeatIsValid)
 					{
 						lastWrongInput = WrongInputType.InvalidInputTime;
@@ -55,7 +55,7 @@ public class PlayerInput : MonoBehaviour
 
 		public bool CanToggleInventory()
 		{
-			if (ConversationInProgress || GameLogic.Instance.CurrentGameState == GameLogic.GameState.Fight)
+			if (ConversationInProgress || GameSessionManager.Instance.CurrentGameState == GameSessionManager.GameState.Fight)
 			{
 				return false;
 			}
@@ -84,7 +84,7 @@ public class PlayerInput : MonoBehaviour
 
 	private void Start()
 	{
-		GameLogic.Instance.gameStateObservers.Add(new Observer(GameStateChanged));
+		GameSessionManager.Instance.gameStateObservers.Add(new Observer(this, GameStateChanged));
 	}
 
 	private void Update()
@@ -101,14 +101,14 @@ public class PlayerInput : MonoBehaviour
 
 			int horizontal;
 			int vertical;
-			switch (GameLogic.Instance.CurrentGameState)
+			switch (GameSessionManager.Instance.CurrentGameState)
 			{
-				case GameLogic.GameState.Peace when GameLogic.Instance.playState == GameLogic.PlayState.Basic:
+				case GameSessionManager.GameState.Peace when GameSessionManager.Instance.playState == GameSessionManager.PlayState.Basic:
 					horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
 					vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
 					break;
-				case GameLogic.GameState.Peace when GameLogic.Instance.playState == GameLogic.PlayState.DanceMove:
-				case GameLogic.GameState.Fight:
+				case GameSessionManager.GameState.Peace when GameSessionManager.Instance.playState == GameSessionManager.PlayState.DanceMove:
+				case GameSessionManager.GameState.Fight:
 					horizontal = Input.GetButtonDown("Left")
 						? -1
 						: Input.GetButtonDown("Right")
@@ -136,11 +136,11 @@ public class PlayerInput : MonoBehaviour
 						);
 					}
 
-					switch (GameLogic.Instance.CurrentGameState)
+					switch (GameSessionManager.Instance.CurrentGameState)
 					{
-						case GameLogic.GameState.Peace:
+						case GameSessionManager.GameState.Peace:
 							break;
-						case GameLogic.GameState.Fight:
+						case GameSessionManager.GameState.Fight:
 							acceptor.ReceivedInputThisTimeFrame = true;
 							acceptor.FirstBattleInputDone = true;
 							break;
@@ -150,11 +150,11 @@ public class PlayerInput : MonoBehaviour
 
 					Player.Instance.ReceiveInput(movementDirection);
 
-					switch (GameLogic.Instance.CurrentGameState)
+					switch (GameSessionManager.Instance.CurrentGameState)
 					{
-						case GameLogic.GameState.Peace:
+						case GameSessionManager.GameState.Peace:
 							break;
-						case GameLogic.GameState.Fight:
+						case GameSessionManager.GameState.Fight:
 							AudioManager.Instance.ApplyBeat();
 							break;
 						default:
@@ -165,11 +165,11 @@ public class PlayerInput : MonoBehaviour
 				{
 					if (GameLogic.Instance.inputDebugEnabled)
 					{
-						switch (GameLogic.Instance.CurrentGameState)
+						switch (GameSessionManager.Instance.CurrentGameState)
 						{
-							case GameLogic.GameState.Peace:
+							case GameSessionManager.GameState.Peace:
 								break;
-							case GameLogic.GameState.Fight:
+							case GameSessionManager.GameState.Fight:
 								switch (acceptor.lastWrongInput)
 								{
 									case WrongInputType.InvalidInputTime:
@@ -200,7 +200,7 @@ public class PlayerInput : MonoBehaviour
 						);
 					}
 
-					if (GameLogic.Instance.playState == GameLogic.PlayState.DanceMove)
+					if (GameSessionManager.Instance.playState == GameSessionManager.PlayState.DanceMove)
 					{
 						Player.Instance.EndDanceMove(true);
 					}
@@ -211,13 +211,13 @@ public class PlayerInput : MonoBehaviour
 
 	private void GameStateChanged()
 	{
-		var newGameState = GameLogic.Instance.CurrentGameState;
+		var newGameState = GameSessionManager.Instance.CurrentGameState;
 		switch (newGameState)
 		{
-			case GameLogic.GameState.Peace:
+			case GameSessionManager.GameState.Peace:
 				acceptor.PlayerReadyForInput = true;
 				break;
-			case GameLogic.GameState.Fight:
+			case GameSessionManager.GameState.Fight:
 				acceptor.BeatIsValid = false;
 				acceptor.ReceivedInputThisTimeFrame = false;
 				acceptor.FirstBattleInputDone = false;
@@ -255,7 +255,7 @@ public class PlayerInput : MonoBehaviour
 			Debug.LogError("Missed the Beat!");
 		}
 
-		if (GameLogic.Instance.playState == GameLogic.PlayState.DanceMove && acceptor.FirstBattleInputDone)
+		if (GameSessionManager.Instance.playState == GameSessionManager.PlayState.DanceMove && acceptor.FirstBattleInputDone)
 		{
 			Player.Instance.ReceiveInput(MovementDirectionUtilities.MovementDirection.None);
 		}

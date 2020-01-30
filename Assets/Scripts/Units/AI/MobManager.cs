@@ -18,11 +18,6 @@ public class MobManager : UnitManager<Mob>
 		InitializeUnit(mob, location);
 	}
 
-	public void ResumeAllMobs()
-	{
-		allUnits.ForEach(m => m.Initialize(m.CurrentPosition));
-	}
-
 	public override void AdditionalActionsToUnitsWhenStopping(Mob unit)
 	{
 		base.AdditionalActionsToUnitsWhenStopping(unit);

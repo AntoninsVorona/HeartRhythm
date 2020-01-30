@@ -191,7 +191,7 @@ public static class SaveSystem
 
 		public void UpdateLevelState(bool includeEverything)
 		{
-			var levelState = GameLogic.Instance.GetLevelState(includeEverything);
+			var levelState = GameSessionManager.Instance.GetLevelState(includeEverything);
 			var existingLevelState = levelStates.FirstOrDefault(l => l.levelName == levelState.levelName);
 			if (existingLevelState != null)
 			{
@@ -267,7 +267,7 @@ public static class SaveSystem
 
 		var filePath = $@"{GAME_SAVE_FOLDER_PATH}/{DateTime.Now.Ticks}.dat";
 		currentGameSave.filePath = filePath;
-		currentGameSave.currentLevelName = GameLogic.Instance.CurrentLevelName();
+		currentGameSave.currentLevelName = GameSessionManager.Instance.CurrentLevelName();
 		currentGameSave.playerData = (Player.PlayerData) Player.Instance.GetUnitData();
 		currentGameSave.Save();
 		AddUISave(currentGameSave);

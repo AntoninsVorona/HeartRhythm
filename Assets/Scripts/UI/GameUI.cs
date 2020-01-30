@@ -33,18 +33,18 @@ public class GameUI : MonoBehaviour
 
 	private void Start()
 	{
-		GameLogic.Instance.gameStateObservers.Add(new Observer(GameStateChanged));
+		GameSessionManager.Instance.gameStateObservers.Add(new Observer(this, GameStateChanged));
 	}
 
 	private void GameStateChanged()
 	{
-		var currentGameState = GameLogic.Instance.CurrentGameState;
+		var currentGameState = GameSessionManager.Instance.CurrentGameState;
 		modeToggler.text = $"{currentGameState} Mode";
 		switch (currentGameState)
 		{
-			case GameLogic.GameState.Peace:
+			case GameSessionManager.GameState.Peace:
 				break;
-			case GameLogic.GameState.Fight:
+			case GameSessionManager.GameState.Fight:
 				break;
 			default:
 				throw new ArgumentOutOfRangeException(nameof(currentGameState), currentGameState, null);

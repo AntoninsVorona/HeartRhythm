@@ -153,11 +153,11 @@ public abstract class Unit : MonoBehaviour
 
 	protected virtual void Start()
 	{
-		gameStateChangedObserver = new Observer(GameStateChanged);
-		GameLogic.Instance.gameStateObservers.Add(gameStateChangedObserver);
+		gameStateChangedObserver = new Observer(this, GameStateChanged);
+		GameSessionManager.Instance.gameStateObservers.Add(gameStateChangedObserver);
 		if (ApplyDataOnStart())
 		{
-			ApplyUnitData(GameLogic.Instance.currentLevelState.GetDataByName(identifierName));
+			ApplyUnitData(GameSessionManager.Instance.currentLevelState.GetDataByName(identifierName));
 		}
 
 		if (talkUI.canvas)
@@ -169,15 +169,15 @@ public abstract class Unit : MonoBehaviour
 	
 	public virtual void Initialize(Vector2Int location)
 	{
-		if (GameLogic.Instance.currentSceneObjects.currentWorld.tileMapInitialized)
+		if (GameSessionManager.Instance.currentSceneObjects.currentWorld.tileMapInitialized)
 		{
 			Move(location, true);
 		}
 		else
 		{
 			spawnPoint = location;
-			GameLogic.Instance.currentSceneObjects.currentWorld.tileMapObservers.Add(
-				new Observer(ForceInitializePosition));
+			GameSessionManager.Instance.currentSceneObjects.currentWorld.tileMapObservers.Add(
+				new Observer(this, ForceInitializePosition));
 		}
 
 		defaultMovementSpeed = movementSpeed;
@@ -219,7 +219,7 @@ public abstract class Unit : MonoBehaviour
 		}
 
 		Coroutine coroutine = null;
-		var (cantMoveReason, unit) = GameLogic.Instance.currentSceneObjects.currentWorld.CanWalk(newPosition);
+		var (cantMoveReason, unit) = GameSessionManager.Instance.currentSceneObjects.currentWorld.CanWalk(newPosition);
 		if (cantMoveReason == GameTile.CantMoveReason.None || force)
 		{
 			UnoccupyTile();
@@ -257,12 +257,12 @@ public abstract class Unit : MonoBehaviour
 
 	protected virtual void OccupyTile()
 	{
-		GameLogic.Instance.currentSceneObjects.currentWorld.OccupyTargetTile(currentPosition, this);
+		GameSessionManager.Instance.currentSceneObjects.currentWorld.OccupyTargetTile(currentPosition, this);
 	}
 
 	protected virtual void UnoccupyTile()
 	{
-		GameLogic.Instance.currentSceneObjects.currentWorld.UnoccupyTargetTile(currentPosition);
+		GameSessionManager.Instance.currentSceneObjects.currentWorld.UnoccupyTargetTile(currentPosition);
 	}
 
 	protected abstract void InteractWithObject(Unit unit);
@@ -351,27 +351,27 @@ public abstract class Unit : MonoBehaviour
 
 	protected Vector3 GetCurrentPosition()
 	{
-		var cellCenterWorld = GameLogic.Instance.currentSceneObjects.currentWorld.GetCellCenterWorld(currentPosition);
+		var cellCenterWorld = GameSessionManager.Instance.currentSceneObjects.currentWorld.GetCellCenterWorld(currentPosition);
 		cellCenterWorld.z = cellCenterWorld.y;
 		return cellCenterWorld;
 	}
 
 	protected Vector3 GetPosition(Vector2Int position)
 	{
-		var cellCenterWorld = GameLogic.Instance.currentSceneObjects.currentWorld.GetCellCenterWorld(position);
+		var cellCenterWorld = GameSessionManager.Instance.currentSceneObjects.currentWorld.GetCellCenterWorld(position);
 		cellCenterWorld.z = cellCenterWorld.y;
 		return cellCenterWorld;
 	}
 
 	protected void GameStateChanged()
 	{
-		var newGameState = GameLogic.Instance.CurrentGameState;
+		var newGameState = GameSessionManager.Instance.CurrentGameState;
 		switch (newGameState)
 		{
-			case GameLogic.GameState.Peace:
+			case GameSessionManager.GameState.Peace:
 				PeaceState();
 				break;
-			case GameLogic.GameState.Fight:
+			case GameSessionManager.GameState.Fight:
 				FightState();
 				break;
 			default:
@@ -396,7 +396,7 @@ public abstract class Unit : MonoBehaviour
 
 	protected virtual MonoBehaviour CoroutineStarter()
 	{
-		return GameLogic.Instance.currentSceneObjects.currentMobManager;
+		return GameSessionManager.Instance.currentSceneObjects.currentMobManager;
 	}
 
 	public abstract void Talk(string text = null);
@@ -428,8 +428,7 @@ public abstract class Unit : MonoBehaviour
 
 	public void RemoveGameStateObserver()
 	{
-		Debug.Log("Remove" + name);
-		GameLogic.Instance.gameStateObservers.Remove(gameStateChangedObserver);
+		GameSessionManager.Instance.gameStateObservers.Remove(gameStateChangedObserver);
 	}
 
 	protected virtual void OnDrawGizmosSelected()
