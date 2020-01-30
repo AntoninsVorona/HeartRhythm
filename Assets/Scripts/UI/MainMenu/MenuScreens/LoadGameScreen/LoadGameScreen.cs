@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,13 +24,16 @@ public class LoadGameScreen : MenuScreen
 		base.Open(withAnimation);
 		if (!savesInitialized)
 		{
-			InitializeSaves(); 
-			Canvas.ForceUpdateCanvases();
-			LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform) gameSaveScrollRect.transform);
+			InitializeSaves();
 		}
 
-		gameSaveScrollRect.verticalNormalizedPosition = 1; //TODO Scroll to top
-		Canvas.ForceUpdateCanvases();
+		StartCoroutine(ScrollToTop());
+	}
+
+	private IEnumerator ScrollToTop()
+	{
+		yield return new WaitForSeconds(0.4f);
+		gameSaveScrollRect.verticalNormalizedPosition = 1;
 	}
 
 	public override Coroutine Close(bool withAnimation = true)

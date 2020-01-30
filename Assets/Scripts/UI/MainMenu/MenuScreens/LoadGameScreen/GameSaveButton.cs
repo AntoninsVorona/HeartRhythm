@@ -13,6 +13,7 @@ public class GameSaveButton : FillingButton
 	
 	public void Initialize(SaveSystem.UILoadData uiLoadData)
 	{
+		ResetFill();
 		filePath = uiLoadData.filePath;
 		lastChangedText.text = uiLoadData.lastChanged.ToString(CultureInfo.InvariantCulture);
 		heart.gameObject.SetActive(false);
