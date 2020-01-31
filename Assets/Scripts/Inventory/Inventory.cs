@@ -11,9 +11,9 @@ public class Inventory : MonoBehaviour
 	public class InventoryData
 	{
 		public string backpackName;
-		public List<Inventory.ItemInformation> inventoryData;
+		public List<ItemInformation.ItemInformationData> inventoryData;
 
-		public InventoryData(string backpackName, List<ItemInformation> inventoryData)
+		public InventoryData(string backpackName, List<ItemInformation.ItemInformationData> inventoryData)
 		{
 			this.backpackName = backpackName;
 			this.inventoryData = inventoryData;
@@ -23,6 +23,19 @@ public class Inventory : MonoBehaviour
 	[Serializable]
 	public class ItemInformation
 	{
+		[Serializable]
+		public class ItemInformationData
+		{
+			public string itemName;
+			public List<SlotItemInformation> slotItemInformation;
+
+			public ItemInformationData(string itemName, List<SlotItemInformation> slotItemInformation)
+			{
+				this.itemName = itemName;
+				this.slotItemInformation = slotItemInformation;
+			}
+		}
+
 		public Item item;
 		public List<SlotItemInformation> slotItemInformation;
 
@@ -30,6 +43,11 @@ public class Inventory : MonoBehaviour
 		{
 			this.item = item;
 			this.slotItemInformation = slotItemInformation;
+		}
+
+		public ItemInformationData GetData()
+		{
+			return new ItemInformationData(item.itemName, slotItemInformation);
 		}
 	}
 
@@ -59,10 +77,7 @@ public class Inventory : MonoBehaviour
 	{
 		if (data != null)
 		{
-			itemInformation = data.inventoryData ?? new List<ItemInformation>();
-			currentBackpack = string.IsNullOrEmpty(data.backpackName)
-				? null
-				: Resources.Load<Backpack>($"{BACKPACK_PATH}{data.backpackName}");
+			ParseInventoryData(data);
 		}
 		else
 		{
@@ -71,10 +86,27 @@ public class Inventory : MonoBehaviour
 		}
 	}
 
+	private void ParseInventoryData(InventoryData data)
+	{
+		itemInformation = new List<ItemInformation>();
+		data.inventoryData?.ForEach(d =>
+		{
+			itemInformation.Add(
+				new ItemInformation(
+					ItemManager.Instance.GetItemByName(d.itemName),
+					d.slotItemInformation
+				)
+			);
+		});
+		currentBackpack = string.IsNullOrEmpty(data.backpackName)
+			? null
+			: Resources.Load<Backpack>($"{BACKPACK_PATH}{data.backpackName}");
+	}
+
 	public InventoryData GetData()
 	{
 		var backPackName = currentBackpack ? currentBackpack.identifierName : null;
-		return new InventoryData(backPackName, itemInformation); //TODO itemInformation.item => itemInformation.itemName
+		return new InventoryData(backPackName, itemInformation.Select(i => i.GetData()).ToList());
 	}
 
 	public (bool pickedUpAll, int amountLeft) PickUpItem(Item item, int amount)
