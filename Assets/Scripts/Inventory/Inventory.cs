@@ -74,7 +74,7 @@ public class Inventory : MonoBehaviour
 	public InventoryData GetData()
 	{
 		var backPackName = currentBackpack ? currentBackpack.identifierName : null;
-		return new InventoryData(backPackName, itemInformation);
+		return new InventoryData(backPackName, itemInformation); //TODO itemInformation.item => itemInformation.itemName
 	}
 
 	public (bool pickedUpAll, int amountLeft) PickUpItem(Item item, int amount)
