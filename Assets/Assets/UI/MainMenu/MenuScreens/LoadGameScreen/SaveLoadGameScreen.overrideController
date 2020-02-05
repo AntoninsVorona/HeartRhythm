@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LoadGameScreen
+  m_Name: SaveLoadGameScreen
   m_Controller: {fileID: 9100000, guid: 2fd5e8c323996534e841d349f269247b, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 89f6b51a326e1644fb3c70c2e6d4059b, type: 2}

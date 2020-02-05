@@ -11,6 +11,7 @@ public class GameUI : MonoBehaviour
 	public Text modeToggler;
 	public Animator cutSceneLines;
 	public EqualizerController equalizerController;
+	public CustomStandaloneInputModule inputModule;
 
 	private void Awake()
 	{

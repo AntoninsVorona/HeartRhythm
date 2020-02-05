@@ -79,35 +79,8 @@ public class UIInventory : MonoBehaviour
 
 	private void Update()
 	{
-		if (splitController.splitInProgress)
+		if (!splitController.splitInProgress && !itemActionsUI.dropInProgress && itemActionsUI.menuActive)
 		{
-			if (Input.GetButtonDown("Cancel"))
-			{
-				splitController.CancelSplit();
-			}
-			else if (Input.GetButtonDown("Submit"))
-			{
-				splitController.ApplyInput();
-			}
-		}
-		else if (itemActionsUI.dropInProgress)
-		{
-			if (Input.GetButtonDown("Cancel"))
-			{
-				itemActionsUI.DropCancel();
-			}
-			else if (Input.GetButtonDown("Submit"))
-			{
-				itemActionsUI.DropInputDone();
-			}
-		}
-		else if (itemActionsUI.menuActive)
-		{
-			if (Input.GetButtonDown("Cancel"))
-			{
-				itemActionsUI.Close();
-			}
-
 			if (Input.GetMouseButtonDown(0))
 			{
 				if (!ItemActionsHit())
@@ -201,20 +174,38 @@ public class UIInventory : MonoBehaviour
 					}
 				}
 			}
+		}
+	}
 
-			if (Input.GetButtonDown("Cancel"))
-			{
-				Close();
-			}
+	public void ApplySubmit()
+	{
+		if (splitController.splitInProgress)
+		{
+			splitController.ApplyInput();
+		}
+		else if (itemActionsUI.dropInProgress)
+		{
+			itemActionsUI.DropInputDone();
+		}
+	}
 
-//			else if (Input.GetButtonDown("Submit"))
-//			{
-//				if (selectedInventorySlot)
-//				{
-//					Debug.LogError("Open");
-//					itemActionsUI.OpenActionsFor(selectedInventorySlot);
-//				}
-//			}
+	public void ApplyCancel()
+	{
+		if (splitController.splitInProgress)
+		{
+			splitController.CancelSplit();
+		}
+		else if (itemActionsUI.dropInProgress)
+		{
+			itemActionsUI.DropCancel();
+		}
+		else if (itemActionsUI.menuActive)
+		{
+			itemActionsUI.Close();
+		}
+		else
+		{
+			Close();
 		}
 	}
 

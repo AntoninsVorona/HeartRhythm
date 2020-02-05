@@ -38,7 +38,7 @@ public class GameLogic : MonoBehaviour
 	{
 		if (SceneManager.GetActiveScene().name == MAIN_MENU_SCENE)
 		{
-			MainMenuUI.Instance.Show();
+			((MainMenu) AbstractMainMenu.Instance).Show();
 		}
 		else
 		{
@@ -59,35 +59,55 @@ public class GameLogic : MonoBehaviour
 		StartCoroutine(LoadGameSequence(true));
 	}
 
-	public void LoadSave(string filePath, bool mainMenu)
+	public void LoadSave(string filePath, bool fade)
 	{
 		SaveSystem.LoadSave(filePath);
-		StartCoroutine(LoadGameSequence(mainMenu));
+		StartCoroutine(LoadGameSequence(fade));
 		//TODO Dialogue Manager doesn't display text if loaded
 	}
 
-	private IEnumerator LoadGameSequence(bool mainMenu)
+	private IEnumerator LoadGameSequence(bool fade)
 	{
-		if (mainMenu)
+		if (fade)
 		{
-			yield return MainMenuUI.Instance.FadeIntoPlay();
+			yield return AbstractMainMenu.Instance.FadeIntoPlay();
 		}
 
+		LoadingUI.Instance.StartLoading();
 		yield return SceneManager.LoadSceneAsync(GAME_SCENE);
 		var levelData = GetLevelByName(SaveSystem.currentGameSave.currentLevelName);
 		Player.Instance.ApplyUnitData(SaveSystem.currentGameSave.playerData);
-		yield return GameSessionManager.Instance.LoadLevel(levelData, SaveSystem.currentGameSave.playerData.currentPosition);
+		yield return GameSessionManager.Instance.LoadLevel(levelData,
+			SaveSystem.currentGameSave.playerData.currentPosition);
 	}
 
-	public void Save()
+	public SaveSystem.UILoadData Save()
 	{
 		SaveSystem.currentGameSave.UpdateLevelState(true);
-		SaveSystem.Save();
+		return SaveSystem.Save();
 	}
 
 	private LevelData GetLevelByName(string currentLevelName)
 	{
 		return Resources.Load<LevelData>($"{LEVEL_STORAGE_PATH}{currentLevelName}");
+	}
+
+	public void LoadMainMenuScene()
+	{
+		StartCoroutine(LoadMainMenuSceneSequence());
+	}
+
+	private IEnumerator LoadMainMenuSceneSequence()
+	{
+		LoadingUI.Instance.StartLoading();
+		yield return SceneManager.LoadSceneAsync(MAIN_MENU_SCENE);
+		LoadingUI.Instance.StopLoading();
+		((MainMenu) AbstractMainMenu.Instance).Show();
+	}
+
+	public bool CanSave()
+	{
+		return true; //TODO
 	}
 
 	public static GameLogic Instance { get; private set; }

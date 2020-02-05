@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class MenuScreen : MonoBehaviour
+public abstract class MenuScreen : MonoBehaviour
 {
 	[SerializeField]
 	protected Animator animator;
@@ -11,9 +11,14 @@ public class MenuScreen : MonoBehaviour
 	[SerializeField]
 	protected List<FillingButton> fillingButtons;
 
-	public MainMenuUI.HeartSettings defaultHeartLocation = MainMenuUI.HeartSettings.DEFAULT_SETTINGS;
+	public AbstractMainMenu.HeartSettings defaultHeartLocation = AbstractMainMenu.HeartSettings.DEFAULT_SETTINGS;
 	public float openDuration = 1;
 	public float closeDuration = 1;
+
+	[SerializeField]
+	private GameObject separatorGameObject;
+
+	private HeartButton currentHeartButton;
 
 	public virtual void Open(bool withAnimation = true)
 	{
@@ -27,6 +32,8 @@ public class MenuScreen : MonoBehaviour
 		{
 			animator.SetTrigger(AnimatorUtilities.SHOW_TRIGGER);
 		}
+
+		currentHeartButton = null;
 	}
 
 	public virtual Coroutine Close(bool withAnimation = true)
@@ -46,9 +53,50 @@ public class MenuScreen : MonoBehaviour
 		yield return new WaitForSeconds(closeDuration);
 		gameObject.SetActive(false);
 	}
+	
+	protected virtual void Update()
+	{
+		var hit = AbstractMainMenu.Instance.CurrentUIHit();
+		if (hit)
+		{
+			var heartButton = hit.GetComponentInParent<HeartButton>();
+			if (heartButton)
+			{
+				if (heartButton != currentHeartButton)
+				{
+					if (currentHeartButton)
+					{
+						currentHeartButton.Deselect();
+					}
+
+					currentHeartButton = heartButton;
+					AbstractMainMenu.Instance.uiHeart.Reposition(currentHeartButton.Select());
+				}
+
+				if (Input.GetMouseButtonDown(0))
+				{
+					heartButton.Click();
+				}
+			}
+			else if (currentHeartButton && hit != separatorGameObject)
+			{
+				currentHeartButton.Deselect();
+				AbstractMainMenu.Instance.uiHeart.Reposition(defaultHeartLocation);
+				currentHeartButton = null;
+			}
+		}
+		else if (currentHeartButton)
+		{
+			currentHeartButton.Deselect();
+			AbstractMainMenu.Instance.uiHeart.Reposition(defaultHeartLocation);
+			currentHeartButton = null;
+		}
+	}
 
 	private void Reset()
 	{
 		animator = GetComponent<Animator>();
 	}
+
+	public abstract void ApplyCancel();
 }

@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class FillingButton : MonoBehaviour
 {
-	private const float FILL_RATE = 0.025f;
-	private const float DECAY_RATE = 0.125f;
+	private const float FILL_RATE = 0.005f;
+	private const float DECAY_RATE = 0.05f;
 	private const float FILL_DELTA = 0.02f;
 
 	private float fillAmount;
@@ -62,7 +62,7 @@ public class FillingButton : MonoBehaviour
 		}
 	}
 
-	public virtual MainMenuUI.HeartSettings Select()
+	public virtual AbstractMainMenu.HeartSettings Select()
 	{
 		isSelected = true;
 		time = 0;

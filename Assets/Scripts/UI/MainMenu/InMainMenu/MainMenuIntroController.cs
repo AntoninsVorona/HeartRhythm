@@ -64,7 +64,7 @@ public class MainMenuIntroController : MonoBehaviour
 		float t = 0;
 		while (t < 0.125f)
 		{
-			yield return null;
+			yield return new WaitForFixedUpdate();
 			var fixedDeltaTime = Time.fixedDeltaTime;
 			t += fixedDeltaTime;
 			foreach (var shatterPiece in firstWaveShatterPieces)
@@ -80,7 +80,7 @@ public class MainMenuIntroController : MonoBehaviour
 
 		while (t < 0.25f)
 		{
-			yield return null;
+			yield return new WaitForFixedUpdate();
 			var fixedDeltaTime = Time.fixedDeltaTime;
 			t += fixedDeltaTime;
 			foreach (var shatterPiece in firstWaveShatterPieces)
@@ -101,7 +101,7 @@ public class MainMenuIntroController : MonoBehaviour
 
 		while (t < 3f)
 		{
-			yield return null;
+			yield return new WaitForFixedUpdate();
 			var fixedDeltaTime = Time.fixedDeltaTime;
 			t += fixedDeltaTime;
 			foreach (var shatterPiece in firstWaveShatterPieces)

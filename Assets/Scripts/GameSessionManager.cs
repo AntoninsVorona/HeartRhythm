@@ -66,6 +66,11 @@ public class GameSessionManager : MonoBehaviour
 		InitVariables();
 	}
 
+	private void Start()
+	{
+		CloseMainMenu();
+	}
+
 	private void InitVariables()
 	{
 		gameStateObservers = new List<Observer>();
@@ -91,6 +96,23 @@ public class GameSessionManager : MonoBehaviour
 		}
 	}
 #endif
+
+	public void OpenMainMenu()
+	{
+		((InGameMainMenu) AbstractMainMenu.Instance).Open();
+		PlayerInput.Instance.acceptor.MainMenuOpened = true;
+	}
+
+	public void CloseMainMenu()
+	{
+		((InGameMainMenu) AbstractMainMenu.Instance).Close();
+		PlayerInput.Instance.acceptor.MainMenuOpened = false;
+	}
+
+	public void ApplyCancelToMainMenu()
+	{
+		((InGameMainMenu) AbstractMainMenu.Instance).ApplyCancel();
+	}
 
 	public Coroutine BackToRealWorld()
 	{

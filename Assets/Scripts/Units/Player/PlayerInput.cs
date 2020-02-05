@@ -19,13 +19,15 @@ public class PlayerInput : MonoBehaviour
 		public bool ConversationInProgress { get; set; }
 		public bool IgnoreInput { get; set; }
 		public bool DontReceiveAnyInput { get; set; }
+		public bool MainMenuOpened { get; set; }
 
 		public WrongInputType lastWrongInput;
 		public List<MovementDirectionUtilities.MovementDirection> danceMoveSet;
 
 		public bool AcceptInput()
 		{
-			if (IgnoreInput || DontReceiveAnyInput || ConversationInProgress || GameUI.Instance.uiInventory.open)
+			if (IgnoreInput || DontReceiveAnyInput || ConversationInProgress || GameUI.Instance.uiInventory.open ||
+			    MainMenuOpened)
 			{
 				return false;
 			}
@@ -53,9 +55,16 @@ public class PlayerInput : MonoBehaviour
 			}
 		}
 
+		public bool CanToggleMainMenu()
+		{
+			return true;
+		}
+
 		public bool CanToggleInventory()
 		{
-			if (ConversationInProgress || GameSessionManager.Instance.CurrentGameState == GameSessionManager.GameState.Fight)
+			if (ConversationInProgress ||
+			    GameSessionManager.Instance.CurrentGameState == GameSessionManager.GameState.Fight ||
+			    MainMenuOpened)
 			{
 				return false;
 			}
@@ -93,9 +102,33 @@ public class PlayerInput : MonoBehaviour
 		{
 			if (acceptor.CanToggleInventory())
 			{
-				if (Input.GetButtonUp("Inventory"))
+				if (Input.GetButtonDown("Inventory"))
 				{
 					GameUI.Instance.ToggleInventory();
+				}
+			}
+
+			if (Input.GetButtonDown("Cancel"))
+			{
+				if (GameUI.Instance.uiInventory.open)
+				{
+					GameUI.Instance.uiInventory.ApplyCancel();
+				}
+				else if (acceptor.MainMenuOpened)
+				{
+					GameSessionManager.Instance.ApplyCancelToMainMenu();
+				}
+				else if (acceptor.CanToggleMainMenu())
+				{
+					GameSessionManager.Instance.OpenMainMenu();
+				}
+			}
+
+			if (Input.GetButtonDown("Submit"))
+			{
+				if (GameUI.Instance.uiInventory.open)
+				{
+					GameUI.Instance.uiInventory.ApplySubmit();
 				}
 			}
 
@@ -103,11 +136,13 @@ public class PlayerInput : MonoBehaviour
 			int vertical;
 			switch (GameSessionManager.Instance.CurrentGameState)
 			{
-				case GameSessionManager.GameState.Peace when GameSessionManager.Instance.playState == GameSessionManager.PlayState.Basic:
+				case GameSessionManager.GameState.Peace
+					when GameSessionManager.Instance.playState == GameSessionManager.PlayState.Basic:
 					horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
 					vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
 					break;
-				case GameSessionManager.GameState.Peace when GameSessionManager.Instance.playState == GameSessionManager.PlayState.DanceMove:
+				case GameSessionManager.GameState.Peace
+					when GameSessionManager.Instance.playState == GameSessionManager.PlayState.DanceMove:
 				case GameSessionManager.GameState.Fight:
 					horizontal = Input.GetButtonDown("Left")
 						? -1
@@ -255,7 +290,8 @@ public class PlayerInput : MonoBehaviour
 			Debug.LogError("Missed the Beat!");
 		}
 
-		if (GameSessionManager.Instance.playState == GameSessionManager.PlayState.DanceMove && acceptor.FirstBattleInputDone)
+		if (GameSessionManager.Instance.playState == GameSessionManager.PlayState.DanceMove &&
+		    acceptor.FirstBattleInputDone)
 		{
 			Player.Instance.ReceiveInput(MovementDirectionUtilities.MovementDirection.None);
 		}

@@ -6,7 +6,7 @@ public class HeartButton : FillingButton
 	[SerializeField]
 	private UnityEvent clickEvent;
 	[SerializeField]
-	private MainMenuUI.HeartSettings heartSettings = MainMenuUI.HeartSettings.DEFAULT_SETTINGS;
+	private AbstractMainMenu.HeartSettings heartSettings = AbstractMainMenu.HeartSettings.DEFAULT_SETTINGS;
 
 	private void Start()
 	{
@@ -18,7 +18,7 @@ public class HeartButton : FillingButton
 		clickEvent.Invoke();
 	}
 
-	public override MainMenuUI.HeartSettings Select()
+	public override AbstractMainMenu.HeartSettings Select()
 	{
 		base.Select();
 		return heartSettings;

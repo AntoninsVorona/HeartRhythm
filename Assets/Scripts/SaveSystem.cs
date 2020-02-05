@@ -258,7 +258,7 @@ public static class SaveSystem
 		};
 	}
 
-	public static void Save()
+	public static UILoadData Save()
 	{
 		if (!Directory.Exists(GAME_SAVE_FOLDER_PATH))
 		{
@@ -270,7 +270,7 @@ public static class SaveSystem
 		currentGameSave.currentLevelName = GameSessionManager.Instance.CurrentLevelName();
 		currentGameSave.playerData = (Player.PlayerData) Player.Instance.GetUnitData();
 		currentGameSave.Save();
-		AddUISave(currentGameSave);
+		return AddUISave(currentGameSave);
 	}
 
 	public static string GetLatestSave()
@@ -284,9 +284,11 @@ public static class SaveSystem
 		return uiGameSaves.Count > 0;
 	}
 
-	private static void AddUISave(GameSave gameSave)
+	private static UILoadData AddUISave(GameSave gameSave)
 	{
-		uiGameSaves.Add(gameSave.ToUILoadData());
+		var uiLoadData = gameSave.ToUILoadData();
+		uiGameSaves.Add(uiLoadData);
+		return uiLoadData;
 	}
 
 	public static void EraseSave(string filePath)

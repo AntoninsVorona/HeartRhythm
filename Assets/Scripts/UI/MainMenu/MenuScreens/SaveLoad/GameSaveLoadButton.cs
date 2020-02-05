@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-public class GameSaveButton : FillingButton
+public class GameSaveLoadButton : SaveLoadScreenButton
 {
 	[HideInInspector]
 	public string filePath;
@@ -13,9 +13,6 @@ public class GameSaveButton : FillingButton
 	[SerializeField]
 	private TextMeshProUGUI lastText;
 
-	[SerializeField]
-	private Animator heart;
-
 	[HideInInspector]
 	public bool latest;
 
@@ -24,7 +21,7 @@ public class GameSaveButton : FillingButton
 		ResetFill();
 		filePath = uiLoadData.filePath;
 		lastChangedText.text = uiLoadData.lastChanged.ToString(CultureInfo.InvariantCulture);
-		heart.gameObject.SetActive(false);
+		uiHeart.gameObject.SetActive(false);
 		ApplyLatest(isLatestSave);
 	}
 
@@ -32,17 +29,5 @@ public class GameSaveButton : FillingButton
 	{
 		latest = isLatestSave;
 		lastText.gameObject.SetActive(isLatestSave);
-	}
-
-	public override MainMenuUI.HeartSettings Select()
-	{
-		heart.gameObject.SetActive(true); //TODO Subscribe to beat
-		return base.Select();
-	}
-
-	public override void Deselect()
-	{
-		base.Deselect();
-		heart.gameObject.SetActive(false);
 	}
 }

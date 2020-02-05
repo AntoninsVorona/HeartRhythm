@@ -50,7 +50,7 @@ public class LetterPart : MonoBehaviour
 		var closingDelta = Vector3.Distance(point, transform.position);
 		while (t < 1)
 		{
-			yield return null;
+			yield return new WaitForFixedUpdate();
 			var angleDelta = Time.fixedDeltaTime * SPEED;
 			transform.Rotate(0, 0, rotation);
 			transform.RotateAround(point, Vector3.forward, angleDelta);

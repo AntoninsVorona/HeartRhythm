@@ -2,68 +2,39 @@
 using System.Linq;
 using UnityEngine;
 
-public class MainScreen : MenuScreen
+public abstract class MainScreen : MenuScreen
 {
-	private bool secretActivated = false;
-
 	[SerializeField]
-	private HeartButton continueButton;
-
-	[SerializeField]
-	private HeartButton loadButton;
+	protected HeartButton loadButton;
 
 	public override void Open(bool withAnimation = true)
 	{
 		if (!SaveSystem.HasAnySaves())
 		{
-			continueButton.gameObject.SetActive(false);
-			loadButton.gameObject.SetActive(false);
+			DisableLoadingButtons();
+		}
+		else
+		{
+			EnableLoadingButtons();
 		}
 
 		base.Open(withAnimation);
 	}
 
-	private void Update()
+	protected virtual void EnableLoadingButtons()
 	{
-		if (!secretActivated)
-		{
-			var secretCanBeActivated = fillingButtons.All(heartButton => !(heartButton.FillAmount < 0.5f));
-			if (secretCanBeActivated)
-			{
-				ActivateSecret();
-			}
-		}
+		loadButton.gameObject.SetActive(true);
 	}
 
-	private void ActivateSecret()
+	protected virtual void DisableLoadingButtons()
 	{
-		secretActivated = true;
-		Debug.Log("Secret Activated!");
-	}
-
-	public void NewGameClicked()
-	{
-		GameLogic.Instance.NewGame();
+		loadButton.gameObject.SetActive(false);
 	}
 
 	public void LoadGameClicked()
 	{
-		MainMenuUI.Instance.OpenScreen<LoadGameScreen>();
-	}
-	
-	public void ContinueClicked()
-	{
-		var latestSave = SaveSystem.GetLatestSave();
-		if (string.IsNullOrEmpty(latestSave))
-		{
-			return;
-		}
-
-		GameLogic.Instance.LoadSave(latestSave, true);
+		AbstractMainMenu.Instance.OpenScreen<LoadGameScreen>();
 	}
 
-	public void QuitClicked()
-	{
-		AppHelper.Quit();
-	}
+	public abstract void QuitClicked();
 }
