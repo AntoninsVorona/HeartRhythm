@@ -349,7 +349,7 @@ public class GameSessionManager : MonoBehaviour
 		PlayerInput.Instance.acceptor.IgnoreInput = true;
 		PlayerInput.Instance.acceptor.FirstBattleInputDone = false;
 		yield return new WaitForSeconds(0.5f);
-		GameUI.Instance.danceMoveUI.Deactivate();
+		GameUI.Instance.danceMoveUI.Deactivate(false);
 		if (backToIdle)
 		{
 			Player.Instance.BackToIdleAnimation();
@@ -379,7 +379,7 @@ public class GameSessionManager : MonoBehaviour
 	public void StartDanceMove(Unit interactingWith)
 	{
 		playState = PlayState.DanceMove;
-		GameUI.Instance.danceMoveUI.Initialize(interactingWith);
+		GameUI.Instance.danceMoveUI.InitializeInteraction(interactingWith);
 		PlayerInput.Instance.DanceMoveStarted();
 	}
 

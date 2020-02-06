@@ -12,6 +12,7 @@ public class GameUI : MonoBehaviour
 	public Animator cutSceneLines;
 	public EqualizerController equalizerController;
 	public CustomStandaloneInputModule inputModule;
+	public RectTransform canvasRect;
 
 	private void Awake()
 	{
@@ -28,7 +29,7 @@ public class GameUI : MonoBehaviour
 		equalizerController.Initialize();
 		cutSceneLines.gameObject.SetActive(false);
 		beatController.Deactivate();
-		danceMoveUI.Deactivate();
+		danceMoveUI.Initialize();
 		uiInventory.Close();
 	}
 

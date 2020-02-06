@@ -83,6 +83,7 @@ public class Player : Unit
 	private Unit interactingWithUnit;
 
 	private Animator animator;
+	public Vector3 SpriteOffset => sprite.transform.localPosition;
 
 	private void Awake()
 	{
@@ -221,13 +222,15 @@ public class Player : Unit
 		if (amount > 0)
 		{
 			var (canSpawn, movementDirection) =
-				GameSessionManager.Instance.currentSceneObjects.currentObstacleManager.CanSpawnAroundLocation(currentPosition);
+				GameSessionManager.Instance.currentSceneObjects.currentObstacleManager.CanSpawnAroundLocation(
+					currentPosition);
 			if (canSpawn)
 			{
 				var item = selectedInventorySlot.itemInside;
 				var droppedAll = inventory.DropItem(selectedInventorySlot, amount);
 				var location = currentPosition + MovementDirectionUtilities.VectorFromDirection(movementDirection);
-				GameSessionManager.Instance.currentSceneObjects.currentObstacleManager.SpawnItemOnGround(item, amount, location);
+				GameSessionManager.Instance.currentSceneObjects.currentObstacleManager.SpawnItemOnGround(item, amount,
+					location);
 				return droppedAll;
 			}
 
