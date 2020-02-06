@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SubtitlePanel
+  m_Controller: {fileID: 9100000, guid: 62b8011547f389344ba48f87b2ada51c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 26b9ff14f098f4247a4857154f0a8264, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f74ac445ffee1ea46b2bb6984fa703a0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4e723352b8ebe9540a29335860b85a4a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 276581c3bf0a2eb4081190761487604a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0ba32211bb8ed944392b21a33b101791, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: fab56a86583010048998bfbd5d0142e1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 853fc541aa274d449b139d19d76a1381, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8958445674356904f9acccb9d53eb357, type: 2}
