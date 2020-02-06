@@ -93,7 +93,7 @@ public class BeatController : MonoBehaviour
 	private void Pulse()
 	{
 		pulsingObject.SetTrigger(PULSE_TRIGGER);
-		Debug.LogError($"PULSE: Time: {AudioManager.Instance.CurrentTime} | Music: {AudioManager.Instance.musicAudioSource.time}");
+		// Debug.LogError($"PULSE: Time: {AudioManager.Instance.CurrentTime} | Music: {AudioManager.Instance.musicAudioSource.time}");
 	}
 
 	private void EqualizerBump()

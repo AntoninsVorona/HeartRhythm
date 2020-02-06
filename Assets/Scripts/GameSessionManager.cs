@@ -268,7 +268,7 @@ public class GameSessionManager : MonoBehaviour
 				AudioManager.Instance.StopBeat();
 				break;
 			case GameState.Fight:
-				AudioManager.Instance.InitializeMusic(fightMusic, true);
+				AudioManager.Instance.InitializeMusic(fightMusic, true, 1.5f);
 				break;
 			default:
 				throw new ArgumentOutOfRangeException();

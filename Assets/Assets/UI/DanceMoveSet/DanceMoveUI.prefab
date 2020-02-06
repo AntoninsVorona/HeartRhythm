@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 225}
-  m_SizeDelta: {x: 0, y: 90}
+  m_SizeDelta: {x: 0, y: 200}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &65456495729599158
 MonoBehaviour:
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388c0dc720ca4a4581ec86faef8a6514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  symbolPrefab: {fileID: -1494950474094032279, guid: 0379905d2cfd90047b38ab213e503a15,
+  symbolPrefab: {fileID: 8293023603572936649, guid: d09df19490c55f04ab10ea96aa13cdc0,
     type: 3}
 --- !u!222 &5381387330229376810
 CanvasRenderer:
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65456495729599161}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 

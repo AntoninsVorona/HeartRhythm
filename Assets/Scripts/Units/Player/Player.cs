@@ -134,6 +134,7 @@ public class Player : Unit
 			animator.SetTrigger(FINISH_DANCE_MOVE_TRIGGER);
 		}
 
+		GameUI.Instance.danceMoveUI.FillLeftoverSymbols();
 		GameSessionManager.Instance.FinishDanceMove(!withAnimation);
 	}
 

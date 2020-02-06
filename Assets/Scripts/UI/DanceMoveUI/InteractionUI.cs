@@ -17,6 +17,6 @@ public class InteractionUI : MonoBehaviour
 
 	public void AddSymbol(Sprite symbol, int index)
 	{
-		symbolHolder.AddSymbol(symbol, index);
+		symbolHolder.AddSymbol(symbol, index, false);
 	}
 }

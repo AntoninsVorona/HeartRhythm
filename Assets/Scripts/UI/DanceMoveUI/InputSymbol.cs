@@ -4,16 +4,16 @@ using UnityEngine.UI;
 public class InputSymbol : MonoBehaviour
 {
     [SerializeField]
-    private Image image;
+    protected Image symbolImage;
 
-    public void Initialize(Sprite sprite)
+    public virtual void Initialize(Sprite sprite)
     {
         UpdateSymbol(sprite);
         gameObject.SetActive(true);
     }
     
-    public void UpdateSymbol(Sprite sprite)
+    public virtual void UpdateSymbol(Sprite sprite)
     {
-        image.sprite = sprite;
+        symbolImage.sprite = sprite;
     }
 }

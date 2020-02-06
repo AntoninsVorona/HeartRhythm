@@ -142,7 +142,13 @@ public class DanceMoveUI : MonoBehaviour
 
 	public void AddSymbol(MovementDirectionUtilities.MovementDirection movementDirection, int index)
 	{
-		mainSymbolHolder.AddSymbol(arrows[movementDirection], index);
+		mainSymbolHolder.AddSymbol(arrows[movementDirection], index,
+			movementDirection == MovementDirectionUtilities.MovementDirection.None);
+	}
+
+	public void FillLeftoverSymbols()
+	{
+		mainSymbolHolder.FillLeftoverSymbols();
 	}
 
 	private IEnumerator ShowCutOut()
