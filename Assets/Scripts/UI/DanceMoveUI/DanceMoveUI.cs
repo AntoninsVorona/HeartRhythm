@@ -41,6 +41,8 @@ public class DanceMoveUI : MonoBehaviour
 
 	private Coroutine showCutOut;
 	private Coroutine clearCutOut;
+	private Coroutine pulseSequence;
+	private AudioManager.PulseEventSubscriber pulseEventSubscriber;
 
 	private readonly List<InteractionUI> interactions = new List<InteractionUI>();
 
@@ -153,26 +155,42 @@ public class DanceMoveUI : MonoBehaviour
 
 	private IEnumerator ShowCutOut()
 	{
-		yield return ResizeCutOut(CutOutMin());
+		if (pulseSequence != null)
+		{
+			StopCoroutine(pulseSequence);
+		}
+
+		yield return ResizeCutOut(CutOutMin(), 0.25f, true);
+		SubscribeToBeat();
 		showCutOut = null;
 	}
 
 	private IEnumerator ClearCutOut()
 	{
-		yield return ResizeCutOut(CutOutMax());
-		clearCutOut = null;
+		UnsubscribeFromBeat();
+		if (pulseSequence != null)
+		{
+			StopCoroutine(pulseSequence);
+		}
+
+		yield return ResizeCutOut(CutOutMax(), 0.25f, false);
 		gameObject.SetActive(false);
+		clearCutOut = null;
 	}
 
-	private IEnumerator ResizeCutOut(Vector2 finalSize)
+	private IEnumerator ResizeCutOut(Vector2 finalSize, float time, bool reposition)
 	{
-		RepositionOnPlayer();
+		if (reposition)
+		{
+			RepositionOnPlayer();
+		}
+
 		var startingCutOut = cutOut.rectTransform.sizeDelta;
 		float t = 0;
-		var repositionAgain = true;
+		var repositionAgain = reposition;
 		while (t < 1)
 		{
-			t += Time.fixedDeltaTime * 5;
+			t += Time.deltaTime / time;
 			var realT = cutOutCurve.Evaluate(t);
 			if (repositionAgain && t > 0.5f)
 			{
@@ -181,10 +199,13 @@ public class DanceMoveUI : MonoBehaviour
 			}
 
 			cutOut.rectTransform.sizeDelta = Vector2.Lerp(startingCutOut, finalSize, realT);
-			yield return new WaitForFixedUpdate();
+			yield return null;
 		}
 
-		RepositionOnPlayer();
+		if (reposition)
+		{
+			RepositionOnPlayer();
+		}
 	}
 
 	private void RepositionOnPlayer()
@@ -198,6 +219,23 @@ public class DanceMoveUI : MonoBehaviour
 		cutOut.transform.localPosition = canvasPos;
 	}
 
+	private void Pulse()
+	{
+		if (pulseSequence != null)
+		{
+			StopCoroutine(pulseSequence);
+		}
+
+		pulseSequence = StartCoroutine(PulseSequence());
+	}
+
+	private IEnumerator PulseSequence()
+	{
+		yield return ResizeCutOut(CutOutPulse(), 0.05f, false);
+		yield return ResizeCutOut(CutOutMin(), 0.05f, false);
+		pulseSequence = null;
+	}
+
 	private Vector2 CutOutMax()
 	{
 		return new Vector2(Screen.width, Screen.height) * 2;
@@ -206,5 +244,34 @@ public class DanceMoveUI : MonoBehaviour
 	private Vector2 CutOutMin()
 	{
 		return new Vector2(Screen.width, Screen.height) / 4;
+	}
+
+	private Vector2 CutOutPulse()
+	{
+		return new Vector2(Screen.width, Screen.height) / 3.5f;
+	}
+
+	private void SubscribeToBeat()
+	{
+		if (!AudioManager.Instance.IsCurrentlyPlaying)
+		{
+			return;
+		}
+
+		if (pulseEventSubscriber == null)
+		{
+			pulseEventSubscriber = new AudioManager.PulseEventSubscriber(this, Pulse,
+				AudioManager.Instance.GetTimeUntilNextPulse(), -0.025f);
+			AudioManager.Instance.pulseSubscribers.Add(pulseEventSubscriber);
+		}
+	}
+
+	private void UnsubscribeFromBeat()
+	{
+		if (pulseEventSubscriber != null)
+		{
+			AudioManager.Instance.pulseSubscribers.Remove(pulseEventSubscriber);
+			pulseEventSubscriber = null;
+		}
 	}
 }

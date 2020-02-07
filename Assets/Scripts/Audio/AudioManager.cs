@@ -73,6 +73,8 @@ public class AudioManager : MonoBehaviour
 
 	private bool isCurrentlyPlaying;
 
+	public bool IsCurrentlyPlaying => isCurrentlyPlaying;
+
 	private double currentTime;
 
 	public double CurrentTime => currentTime;
@@ -107,6 +109,7 @@ public class AudioManager : MonoBehaviour
 		this.startingDelay = startingDelay;
 		startTime = this.startingDelay + AudioSettings.dspTime;
 		currentMusic = music;
+		currentTime = 0;
 		musicAudioSource.Stop();
 		musicAudioSource.loop = currentMusic.loop;
 		musicAudioSource.clip = currentMusic.audioClip;
@@ -231,7 +234,7 @@ public class AudioManager : MonoBehaviour
 
 	public double GetTimeUntilNextPulse()
 	{
-		return currentTime;
+		return beatDelay - currentTime;
 	}
 
 	public void ApplyBeat()

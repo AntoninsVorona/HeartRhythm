@@ -57,7 +57,7 @@ public class PlayerInput : MonoBehaviour
 
 		public bool CanToggleMainMenu()
 		{
-			return true;
+			return !ConversationInProgress;
 		}
 
 		public bool CanToggleInventory()
