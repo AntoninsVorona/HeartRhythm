@@ -1,4 +1,5 @@
-﻿using PixelCrushers.DialogueSystem;
+﻿using System.Linq;
+using PixelCrushers.DialogueSystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,7 +23,7 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 	{
 		var actor = DialogueManager.masterDatabase.GetActor("Player");
 		playerImage.sprite = actor.spritePortrait;
-		playerName.text = actor.Name;
+		playerName.text = actor.fields.First(f => f.title == "Display Name").value;
 		playerPortrait.SetActive(true);
 		base.Start();
 	}
