@@ -4,14 +4,16 @@ using UnityEngine;
 public class DialogueManagerScripts : MonoBehaviour
 {
 	private int lastSpeakerId = -1;
+	private bool conversationStarted;
+
+	private void OnConversationStart(Transform actor)
+	{
+		conversationStarted = true;
+	}
 
 	private void OnConversationLine(Subtitle subtitle)
 	{
-		if (lastSpeakerId == -1)
-		{
-			lastSpeakerId = subtitle.speakerInfo.id;
-		}
-		else if (subtitle.speakerInfo.id != lastSpeakerId)
+		if (conversationStarted && (lastSpeakerId == -1 || subtitle.speakerInfo.id != lastSpeakerId))
 		{
 			const string delayCommand = "Delay(0.5)";
 			subtitle.sequence = string.IsNullOrEmpty(subtitle.sequence)
@@ -25,5 +27,6 @@ public class DialogueManagerScripts : MonoBehaviour
 	private void OnConversationEnd(Transform actor)
 	{
 		lastSpeakerId = -1;
+		conversationStarted = false;
 	}
 }

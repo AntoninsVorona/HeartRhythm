@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 1493884857558983887}
   - component: {fileID: 7770378578941821215}
   - component: {fileID: 8293023603572936649}
+  - component: {fileID: 1069576830941220225}
   m_Layer: 5
   m_Name: SymbolPlaceholder
   m_TagString: Untagged
@@ -209,7 +210,26 @@ MonoBehaviour:
   noSymbolImage: {fileID: 2156881057376129657}
   heartImage: {fileID: 6417590729831461886}
   decayedHeartImage: {fileID: 617151584938132895}
-  hopAnimator: {fileID: 7849808424477004400}
+  hopAnimator: {fileID: 1069576830941220225}
+--- !u!95 &1069576830941220225
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5051067780937319724}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f5484255adf811942bbe6b069dfc49d9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5155394943746314285
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +385,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 336270507129490627}
-  - component: {fileID: 7849808424477004400}
   m_Layer: 5
   m_Name: Heart
   m_TagString: Untagged
@@ -395,22 +414,3 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &7849808424477004400
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7374510910672332428}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f5484255adf811942bbe6b069dfc49d9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

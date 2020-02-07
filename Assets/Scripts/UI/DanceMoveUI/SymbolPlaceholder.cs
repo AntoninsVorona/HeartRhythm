@@ -20,6 +20,7 @@ public class SymbolPlaceholder : InputSymbol
 		if (symbol == null)
 		{
 			noSymbolImage.gameObject.SetActive(true);
+			hopAnimator.SetTrigger(AnimatorUtilities.START_TRIGGER);
 			heartImage.gameObject.SetActive(false);
 			decayedHeartImage.gameObject.SetActive(false);
 			symbolImage.gameObject.SetActive(false);
