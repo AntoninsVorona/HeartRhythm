@@ -19,7 +19,7 @@ public class DialogueManagerScripts : MonoBehaviour
 			subtitle.sequence = string.IsNullOrEmpty(subtitle.sequence)
 				? $"{delayCommand}; {{default}}"
 				: $"{delayCommand}; {subtitle.sequence}";
-
+		
 			lastSpeakerId = subtitle.speakerInfo.id;
 		}
 	}

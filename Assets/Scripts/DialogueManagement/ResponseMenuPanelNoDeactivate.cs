@@ -25,9 +25,9 @@ public class ResponseMenuPanelNoDeactivate : StandardUIMenuPanel
 
 	public override void Open()
 	{
-		base.Open();
 		CanvasGroup.alpha = 0;
 		CanvasGroup.interactable = false;
 		CanvasGroup.blocksRaycasts = false;
+		base.Open();
 	}
 }
