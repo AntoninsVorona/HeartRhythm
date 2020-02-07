@@ -59,10 +59,11 @@ public class BeatController : MonoBehaviour
 			CreateBeat(rightSpawnPoint, time);
 			startTime -= AudioManager.Instance.beatDelay;
 		}
+
 		var leftBeatEvent =
-			new AudioManager.PulseEventSubscriber(CreateLeftBeat, -startTime);
+			new AudioManager.PulseEventSubscriber(this, CreateLeftBeat, -startTime) {ignoreMusicStartTime = true};
 		var rightBeatEvent =
-			new AudioManager.PulseEventSubscriber(CreateRightBeat, -startTime);
+			new AudioManager.PulseEventSubscriber(this, CreateRightBeat, -startTime) {ignoreMusicStartTime = true};
 		AudioManager.Instance.pulseSubscribers.Add(leftBeatEvent);
 		AudioManager.Instance.pulseSubscribers.Add(rightBeatEvent);
 	}
@@ -97,7 +98,7 @@ public class BeatController : MonoBehaviour
 	}
 
 	private void EqualizerBump()
-	{ 
+	{
 		// Debug.LogError($"PULSE: Time: {AudioManager.Instance.currentTime} | Music: {AudioManager.Instance.musicAudioSource.time}");
 		var equalizerController = GameUI.Instance.equalizerController;
 		if (equalizerController.active)
@@ -109,9 +110,9 @@ public class BeatController : MonoBehaviour
 	private void SchedulePulse()
 	{
 		var bumpEvent =
-			new AudioManager.PulseEventSubscriber(EqualizerBump, AudioManager.Instance.startingDelay);
+			new AudioManager.PulseEventSubscriber(this, EqualizerBump, AudioManager.Instance.startingDelay);
 		var pulseEvent =
-			new AudioManager.PulseEventSubscriber(Pulse, AudioManager.Instance.startingDelay, 0.05f);
+			new AudioManager.PulseEventSubscriber(this, Pulse, AudioManager.Instance.startingDelay, -0.05f);
 		AudioManager.Instance.pulseSubscribers.Add(bumpEvent);
 		AudioManager.Instance.pulseSubscribers.Add(pulseEvent);
 	}

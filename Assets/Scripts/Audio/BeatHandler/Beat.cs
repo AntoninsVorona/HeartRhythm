@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class Beat : MonoBehaviour
 {
+	[SerializeField]
+	private Animator animator;
+
+	private bool bonkLeft;
+	private static readonly int LEFT = Animator.StringToHash("Left");
+	private static readonly int RIGHT = Animator.StringToHash("Right");
+
 	public void Initialize(Vector2 startPosition, Vector2 endPosition, double startTime, double endTime)
 	{
+		AudioManager.Instance.pulseSubscribers.Add(new AudioManager.PulseEventSubscriber(this, Bonk,
+			AudioManager.Instance.GetTimeUntilNextPulse(), -0.05f));
 		StartCoroutine(Move(startPosition, endPosition, startTime, endTime));
 	}
 
@@ -26,5 +35,11 @@ public class Beat : MonoBehaviour
 
 			yield return null;
 		}
+	}
+
+	private void Bonk()
+	{
+		bonkLeft = !bonkLeft;
+		animator.SetTrigger(bonkLeft ? LEFT : RIGHT);
 	}
 }

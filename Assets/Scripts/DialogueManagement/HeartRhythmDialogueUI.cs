@@ -26,6 +26,6 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 	public override void ShowResponses(Subtitle subtitle, Response[] responses, float timeout)
 	{
 		base.ShowResponses(subtitle, responses, timeout);
-		conversationUIElements.defaultNPCSubtitlePanel.HideSubtitle(null);
+		conversationUIElements.defaultNPCSubtitlePanel.Close();
 	}
 }

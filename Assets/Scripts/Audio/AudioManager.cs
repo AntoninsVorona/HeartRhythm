@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -9,24 +10,38 @@ public class AudioManager : MonoBehaviour
 	[Serializable]
 	public class PulseEventSubscriber
 	{
+		public UnityEngine.Object owner;
 		public Action action;
 		public double startTime;
+		public bool ignoreMusicStartTime;
 
-		public PulseEventSubscriber(Action action, double startDelay)
+		public PulseEventSubscriber(UnityEngine.Object owner, Action action)
 		{
+			this.owner = owner;
 			this.action = action;
-			startTime = PulseTime(startDelay);
+			startTime = PulseTime(Instance.GetTimeUntilNextPulse());
+			ignoreMusicStartTime = false;
 		}
 
-		public PulseEventSubscriber(Action action, double startDelay, double delay)
+		public PulseEventSubscriber(UnityEngine.Object owner, Action action, double startDelay)
 		{
+			this.owner = owner;
+			this.action = action;
+			startTime = PulseTime(startDelay);
+			ignoreMusicStartTime = false;
+		}
+
+		public PulseEventSubscriber(UnityEngine.Object owner, Action action, double startDelay, double delay)
+		{
+			this.owner = owner;
 			this.action = action;
 			startTime = PulseTime(startDelay, delay);
+			ignoreMusicStartTime = false;
 		}
 
 		private double PulseTime(double startDelay, double delay = 0)
 		{
-			return AudioSettings.dspTime + startDelay - Instance.beatDelay - delay;
+			return AudioSettings.dspTime + startDelay - Instance.beatDelay + delay;
 		}
 	}
 
@@ -49,6 +64,8 @@ public class AudioManager : MonoBehaviour
 
 	[HideInNormalInspector]
 	public double startingDelay;
+
+	private double startTime;
 
 	private Music currentMusic;
 
@@ -88,6 +105,7 @@ public class AudioManager : MonoBehaviour
 		beatDelay = 60 / (double) music.bpm;
 		beatTravelTime = beatDelay * BEATS_ON_SCREEN;
 		this.startingDelay = startingDelay;
+		startTime = this.startingDelay + AudioSettings.dspTime;
 		currentMusic = music;
 		musicAudioSource.Stop();
 		musicAudioSource.loop = currentMusic.loop;
@@ -103,8 +121,8 @@ public class AudioManager : MonoBehaviour
 
 	private void SchedulePlay()
 	{
-		musicAudioSource.PlayScheduled(AudioSettings.dspTime + startingDelay);
-		beatChecker = StartCoroutine(BeatChecker(startingDelay));
+		musicAudioSource.PlayScheduled(startTime);
+		beatChecker = StartCoroutine(BeatChecker());
 	}
 
 	public void StopBeat()
@@ -124,11 +142,10 @@ public class AudioManager : MonoBehaviour
 		}
 	}
 
-	private IEnumerator BeatChecker(double travelTime)
+	private IEnumerator BeatChecker()
 	{
 		const double lowerAccuracy = 0.1;
 		const double upperAccuracy = 0.1;
-		var startTime = AudioSettings.dspTime + travelTime;
 		var timeWasValidAFrameAgo = false;
 		var timeInLowerBounds = false;
 		while (true)
@@ -200,9 +217,12 @@ public class AudioManager : MonoBehaviour
 	private void CheckPulses()
 	{
 		var time = beatDelay - TOLERANCE;
-		pulseSubscribers.RemoveAll(p => p == null);
-		foreach (var pulseEventSubscriber in pulseSubscribers.Where(pulseEventSubscriber =>
-			AudioSettings.dspTime - pulseEventSubscriber.startTime >= time))
+		pulseSubscribers.RemoveAll(p => p.owner == null);
+		var triggered = pulseSubscribers.Where(pulseEventSubscriber =>
+			(pulseEventSubscriber.ignoreMusicStartTime || AudioSettings.dspTime >= startTime) &&
+			AudioSettings.dspTime - pulseEventSubscriber.startTime >= time).ToList();
+
+		foreach (var pulseEventSubscriber in triggered)
 		{
 			pulseEventSubscriber.action();
 			pulseEventSubscriber.startTime += beatDelay;
@@ -211,7 +231,7 @@ public class AudioManager : MonoBehaviour
 
 	public double GetTimeUntilNextPulse()
 	{
-		return AudioSettings.dspTime + currentTime;
+		return currentTime;
 	}
 
 	public void ApplyBeat()
