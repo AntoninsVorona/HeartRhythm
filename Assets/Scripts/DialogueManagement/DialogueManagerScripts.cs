@@ -3,30 +3,23 @@ using UnityEngine;
 
 public class DialogueManagerScripts : MonoBehaviour
 {
-	private int lastSpeakerId = -1;
-	private bool conversationStarted;
+	private int lastSpeakerId;
 
 	private void OnConversationStart(Transform actor)
 	{
-		conversationStarted = true;
+		lastSpeakerId = -1;
 	}
 
 	private void OnConversationLine(Subtitle subtitle)
 	{
-		if (conversationStarted && (lastSpeakerId == -1 || subtitle.speakerInfo.id != lastSpeakerId))
+		if (subtitle.dialogueEntry.id != 0 && subtitle.speakerInfo.id != lastSpeakerId)
 		{
-			const string delayCommand = "Delay(0.5)";
+			const string delayCommand = "Delay(0.45)";
 			subtitle.sequence = string.IsNullOrEmpty(subtitle.sequence)
 				? $"{delayCommand}; {{default}}"
 				: $"{delayCommand}; {subtitle.sequence}";
 		
 			lastSpeakerId = subtitle.speakerInfo.id;
 		}
-	}
-
-	private void OnConversationEnd(Transform actor)
-	{
-		lastSpeakerId = -1;
-		conversationStarted = false;
 	}
 }

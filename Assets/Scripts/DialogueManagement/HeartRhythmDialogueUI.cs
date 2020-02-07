@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class HeartRhythmDialogueUI : StandardDialogueUI
 {
-	private const string DELAY_COMMAND = "Delay(5)";
-
 	[SerializeField]
 	private GameObject playerPortrait;
 
@@ -16,8 +14,6 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 
 	[SerializeField]
 	private TextMeshProUGUI playerName;
-
-	private int lastSpeakerId;
 
 	public override void Start()
 	{
@@ -28,27 +24,6 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 		base.Start();
 	}
 	
-	public override void Open()
-	{
-		base.Open();
-		lastSpeakerId = -1;
-	}
-	
-	public override void ShowSubtitle(Subtitle subtitle)
-	{
-		// Debug.Log("Show");
-		// if (lastSpeakerId == -1 || subtitle.speakerInfo.id != lastSpeakerId)
-		// {
-		// 	subtitle.sequence = string.IsNullOrEmpty(subtitle.sequence)
-		// 		? $"{DELAY_COMMAND}; {{default}}"
-		// 		: $"{DELAY_COMMAND}; {subtitle.sequence}";
-		// 	lastSpeakerId = subtitle.speakerInfo.id;
-		// }
-
-		base.ShowSubtitle(subtitle);
-	}
-	
-
 	public override void ShowResponses(Subtitle subtitle, Response[] responses, float timeout)
 	{
 		base.ShowResponses(subtitle, responses, timeout);
