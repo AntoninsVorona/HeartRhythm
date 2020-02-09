@@ -167,7 +167,10 @@ public abstract class AbstractMainMenu : MonoBehaviour
 
 	public void ApplyCancel()
 	{
-		screens.currentScreen.ApplyCancel();
+		if (globalCanvasGroup.interactable)
+		{
+			screens.currentScreen.ApplyCancel();
+		}
 	}
 
 	public IEnumerator FadeIntoPlay()
