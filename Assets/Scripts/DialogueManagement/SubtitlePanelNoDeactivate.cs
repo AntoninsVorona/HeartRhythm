@@ -4,6 +4,9 @@ public class SubtitlePanelNoDeactivate : StandardUISubtitlePanel
 {
 	protected override void OnHidden()
 	{
-		panelState = PanelState.Closed;
+		if (panelState != PanelState.Uninitialized)
+		{
+			panelState = PanelState.Closed;
+		}
 	}
 }

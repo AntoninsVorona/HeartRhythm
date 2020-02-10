@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hide
+  m_Name: PCResponseHidden
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -22,16 +22,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -160
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.5
-        value: 750
+        value: -750
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -42,7 +33,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: NPC Subtitle Panel
+    path: 
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -50,15 +41,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -320
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.5
         value: -2140
         inSlope: 0
         outSlope: 0
@@ -70,7 +52,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SizeDelta.x
-    path: NPC Subtitle Panel
+    path: 
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -89,7 +71,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Alpha
-    path: NPC Subtitle Panel/SubtitleTextFieldWithContinue/Continue Button
+    path: Scroll Rect/Scroll Content
     classID: 225
     script: {fileID: 0}
   - curve:
@@ -108,7 +90,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_BlocksRaycasts
-    path: NPC Subtitle Panel/SubtitleTextFieldWithContinue/Continue Button
+    path: Scroll Rect/Scroll Content
     classID: 225
     script: {fileID: 0}
   - curve:
@@ -127,7 +109,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Interactable
-    path: NPC Subtitle Panel/SubtitleTextFieldWithContinue/Continue Button
+    path: Scroll Rect/Scroll Content
     classID: 225
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -139,39 +121,39 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 191478393
-      attribute: 1460864421
-      script: {fileID: 0}
-      typeID: 224
-      customType: 28
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 191478393
-      attribute: 1967290853
-      script: {fileID: 0}
-      typeID: 224
-      customType: 28
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 362717578
+      path: 4061083058
       attribute: 1574349066
       script: {fileID: 0}
       typeID: 225
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 362717578
+      path: 4061083058
       attribute: 3739863151
       script: {fileID: 0}
       typeID: 225
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 362717578
+      path: 4061083058
       attribute: 4287062452
       script: {fileID: 0}
       typeID: 225
       customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 0
+      attribute: 1460864421
+      script: {fileID: 0}
+      typeID: 224
+      customType: 28
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 0
+      attribute: 1967290853
+      script: {fileID: 0}
+      typeID: 224
+      customType: 28
       isPPtrCurve: 0
     pptrCurveMapping: []
   m_AnimationClipSettings:
@@ -179,7 +161,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 0
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -200,16 +182,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -160
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.5
-        value: 750
+        value: -750
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -220,7 +193,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: NPC Subtitle Panel
+    path: 
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -228,15 +201,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -320
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.5
         value: -2140
         inSlope: 0
         outSlope: 0
@@ -248,7 +212,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SizeDelta.x
-    path: NPC Subtitle Panel
+    path: 
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -267,7 +231,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Alpha
-    path: NPC Subtitle Panel/SubtitleTextFieldWithContinue/Continue Button
+    path: Scroll Rect/Scroll Content
     classID: 225
     script: {fileID: 0}
   - curve:
@@ -286,7 +250,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_BlocksRaycasts
-    path: NPC Subtitle Panel/SubtitleTextFieldWithContinue/Continue Button
+    path: Scroll Rect/Scroll Content
     classID: 225
     script: {fileID: 0}
   - curve:
@@ -305,7 +269,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Interactable
-    path: NPC Subtitle Panel/SubtitleTextFieldWithContinue/Continue Button
+    path: Scroll Rect/Scroll Content
     classID: 225
     script: {fileID: 0}
   m_EulerEditorCurves: []
