@@ -166,6 +166,7 @@ public static class SaveSystem
 		public string currentLevelName;
 		public List<LevelState> levelStates = new List<LevelState>();
 		public GlobalVariables globalVariables;
+		public string databaseData;
 
 		protected override SaveData GetSelfData()
 		{
@@ -269,6 +270,7 @@ public static class SaveSystem
 		currentGameSave.filePath = filePath;
 		currentGameSave.currentLevelName = GameSessionManager.Instance.CurrentLevelName();
 		currentGameSave.playerData = (Player.PlayerData) Player.Instance.GetUnitData();
+		currentGameSave.databaseData = PixelCrushers.DialogueSystem.PersistentDataManager.GetSaveData();
 		currentGameSave.Save();
 		return AddUISave(currentGameSave);
 	}

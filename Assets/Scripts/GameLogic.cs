@@ -77,6 +77,7 @@ public class GameLogic : MonoBehaviour
 		yield return SceneManager.LoadSceneAsync(GAME_SCENE);
 		var levelData = GetLevelByName(SaveSystem.currentGameSave.currentLevelName);
 		Player.Instance.ApplyUnitData(SaveSystem.currentGameSave.playerData);
+		PersistentDataManager.ApplySaveData(SaveSystem.currentGameSave.databaseData);
 		yield return GameSessionManager.Instance.LoadLevel(levelData,
 			SaveSystem.currentGameSave.playerData.currentPosition);
 	}
