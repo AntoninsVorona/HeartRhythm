@@ -63,7 +63,6 @@ public class GameLogic : MonoBehaviour
 	{
 		SaveSystem.LoadSave(filePath);
 		StartCoroutine(LoadGameSequence(fade));
-		//TODO Dialogue Manager doesn't display text if loaded
 	}
 
 	private IEnumerator LoadGameSequence(bool fade)
