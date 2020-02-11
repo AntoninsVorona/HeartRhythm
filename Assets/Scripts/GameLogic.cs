@@ -107,7 +107,9 @@ public class GameLogic : MonoBehaviour
 
 	public bool CanSave()
 	{
-		return true; //TODO
+		return GameSessionManager.Instance.CurrentGameState == GameSessionManager.GameState.Peace && 
+			!PlayerInput.Instance.acceptor.ConversationInProgress &&
+			!GameSessionManager.Instance.IsCutSceneInProgress();
 	}
 
 	public static GameLogic Instance { get; private set; }

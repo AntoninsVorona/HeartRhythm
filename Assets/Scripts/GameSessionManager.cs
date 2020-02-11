@@ -403,5 +403,10 @@ public class GameSessionManager : MonoBehaviour
 		return currentLevelData.name;
 	}
 
+	public bool IsCutSceneInProgress()
+	{
+		return currentCutScene != null;
+	}
+
 	public static GameSessionManager Instance { get; private set; }
 }
