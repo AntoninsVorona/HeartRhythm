@@ -22,6 +22,14 @@ public class MainMenu : AbstractMainMenu
 	private Coroutine pressAnyKey;
 	public CustomStandaloneInputModule inputModule;
 
+	private void Update()
+	{
+		if (Input.GetButtonDown("Cancel"))
+		{
+			ApplyCancel();
+		}
+	}
+
 	public void Show()
 	{
 		introController.gameObject.SetActive(true);
