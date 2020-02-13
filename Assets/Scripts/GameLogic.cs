@@ -72,7 +72,7 @@ public class GameLogic : MonoBehaviour
 			yield return AbstractMainMenu.Instance.FadeIntoPlay();
 		}
 
-		LoadingUI.Instance.StartLoading();
+		yield return LoadingUI.Instance.StartLoading();
 		yield return SceneManager.LoadSceneAsync(GAME_SCENE);
 		var levelData = GetLevelByName(SaveSystem.currentGameSave.currentLevelName);
 		Player.Instance.ApplyUnitData(SaveSystem.currentGameSave.playerData);
@@ -99,9 +99,9 @@ public class GameLogic : MonoBehaviour
 
 	private IEnumerator LoadMainMenuSceneSequence()
 	{
-		LoadingUI.Instance.StartLoading();
+		yield return LoadingUI.Instance.StartLoading();
 		yield return SceneManager.LoadSceneAsync(MAIN_MENU_SCENE);
-		LoadingUI.Instance.StopLoading();
+		yield return LoadingUI.Instance.StopLoading();
 		((MainMenu) AbstractMainMenu.Instance).Show();
 	}
 

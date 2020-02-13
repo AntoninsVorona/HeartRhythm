@@ -175,7 +175,7 @@ public class GameSessionManager : MonoBehaviour
 
 	private IEnumerator LoadLevelCoroutine(Vector2Int spawnPoint, GameState newGameState)
 	{
-		PreLoadSequence(currentLevelData.cameraIsStatic, currentLevelData.focusPosition);
+		yield return PreLoadSequence(currentLevelData.cameraIsStatic, currentLevelData.focusPosition);
 		currentLevelState = SaveSystem.currentGameSave.GetLevelState(currentLevelData.name);
 		if (currentLevelData.dialogueRegistrator)
 		{
@@ -225,14 +225,14 @@ public class GameSessionManager : MonoBehaviour
 			}
 		}
 
-		PostLoadSequence();
+		yield return PostLoadSequence();
 	}
 
-	private void PreLoadSequence(bool cameraIsStatic, Vector2Int focusPosition)
+	private IEnumerator PreLoadSequence(bool cameraIsStatic, Vector2Int focusPosition)
 	{
 		PlayerInput.Instance.acceptor.DontReceiveAnyInput = true;
 		PlayerInput.Instance.acceptor.FirstBattleInputDone = false;
-		LoadingUI.Instance.StartLoading();
+		yield return LoadingUI.Instance.StartLoading();
 		if (currentSceneObjects)
 		{
 			currentSceneObjects.currentMobManager.StopAllActionsBeforeLoading();
@@ -250,14 +250,13 @@ public class GameSessionManager : MonoBehaviour
 		}
 	}
 
-	private void PostLoadSequence()
+	private IEnumerator PostLoadSequence()
 	{
+		yield return LoadingUI.Instance.StopLoading();
 		if (!currentCutScene)
 		{
 			PlayerInput.Instance.acceptor.DontReceiveAnyInput = false;
 		}
-
-		LoadingUI.Instance.StopLoading();
 	}
 
 	private void GameStateChanged()

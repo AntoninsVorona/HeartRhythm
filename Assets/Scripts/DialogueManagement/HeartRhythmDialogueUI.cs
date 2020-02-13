@@ -36,6 +36,9 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 
 	public override void Open()
 	{
+		conversationUIElements.defaultPCSubtitlePanel.gameObject.SetActive(false);
+		conversationUIElements.defaultNPCSubtitlePanel.gameObject.SetActive(false);
+		conversationUIElements.defaultMenuPanel.gameObject.SetActive(false);
 		base.Open();
 		hasShownSubtitle = false;
 		lastSpeakerId = -1;
