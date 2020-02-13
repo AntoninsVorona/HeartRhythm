@@ -133,16 +133,18 @@ public class AudioManager : MonoBehaviour
 		if (isCurrentlyPlaying)
 		{
 			musicAudioSource.Stop();
-			GameUI.Instance.beatController.StopPlaying();
 			if (beatChecker != null)
 			{
 				StopCoroutine(beatChecker);
 			}
 
-			PlayerInput.Instance.acceptor.BeatIsValid = false;
-			PlayerInput.Instance.acceptor.ReceivedInputThisTimeFrame = false;
+			StopOtherElements();
 			isCurrentlyPlaying = false;
 		}
+	}
+
+	protected virtual void StopOtherElements()
+	{
 	}
 
 	private IEnumerator BeatChecker()
@@ -158,22 +160,11 @@ public class AudioManager : MonoBehaviour
 			if (timeIsValid)
 			{
 				timeWasValidAFrameAgo = true;
-				PlayerInput.Instance.acceptor.BeatIsValid = true;
+				TimeIsValid();
 			}
 			else
 			{
-				PlayerInput.Instance.acceptor.BeatIsValid = false;
-				if (PlayerInput.Instance.acceptor.ReceivedInputThisTimeFrame)
-				{
-					PlayerInput.Instance.acceptor.ReceivedInputThisTimeFrame = false;
-				}
-				else if (PlayerInput.Instance.acceptor.FirstBattleInputDone &&
-				         timeWasValidAFrameAgo)
-				{
-					PlayerInput.Instance.MissedBeat();
-					ApplyBeat();
-				}
-
+				TimeIsInvalid(timeWasValidAFrameAgo);
 				timeWasValidAFrameAgo = false;
 			}
 
@@ -217,6 +208,14 @@ public class AudioManager : MonoBehaviour
 		}
 	}
 
+	protected virtual void TimeIsInvalid(bool timeWasValidAFrameAgo)
+	{
+	}
+
+	protected virtual void TimeIsValid()
+	{
+	}
+
 	private void CheckPulses()
 	{
 		var time = beatDelay - TOLERANCE;
@@ -237,12 +236,14 @@ public class AudioManager : MonoBehaviour
 		return beatDelay - currentTime;
 	}
 
-	public void ApplyBeat()
+	public float GetVolume()
 	{
-		if (GameSessionManager.Instance.playState == GameSessionManager.PlayState.Basic)
-		{
-			GameSessionManager.Instance.currentSceneObjects.currentMobManager.MakeMobsActions();
-		}
+		return musicAudioSource.volume;
+	}
+
+	public void SetVolume(float volume)
+	{
+		musicAudioSource.volume = volume;
 	}
 
 	public static AudioManager Instance { get; private set; }

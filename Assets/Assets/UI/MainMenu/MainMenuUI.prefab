@@ -3512,12 +3512,13 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  inputModule: {fileID: 4455915693722526431}
   uiHeart: {fileID: 3978859064150432701}
   introController: {fileID: 3098167604838441138}
   letterController: {fileID: 3098167604489325679}
   pressAnyKeyText: {fileID: 2643802579192099479}
   shaker: {fileID: 3098167605164910350}
+  mainMenuMusic: {fileID: 11400000, guid: 824e084aa5ce4f9489220345ec05f290, type: 2}
+  inputModule: {fileID: 4455915693722526431}
 --- !u!1 &7987396516516981166
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class FindHeadsetCutScene : CutScene
 	protected override IEnumerator CutSceneSequence()
 	{
 		dialogueFinished = false;
-		//TODO Play Search Animation and Sound
+		//TODO Play Search Animation
 		Player.Instance.PickUpItem(ItemManager.Instance.GetItemByName("Headset"));
 		GameSessionManager.Instance.StartConversation("FoundHeadsetFirstTime");
 		yield return new WaitUntil(() => dialogueFinished);

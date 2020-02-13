@@ -9,7 +9,7 @@ public class HideHeadsetCutScene : CutScene
 	protected override IEnumerator CutSceneSequence()
 	{
 		dialogueFinished = false;
-		//TODO Play Hide Animation and Sound
+		//TODO Play Hide Animation
 		Player.Instance.LoseItem(ItemManager.Instance.GetItemByName("Headset"));
 		GameSessionManager.Instance.StartConversation("HeadSetHidden");
 		yield return new WaitUntil(() => dialogueFinished);

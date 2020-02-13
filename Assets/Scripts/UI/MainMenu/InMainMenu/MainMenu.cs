@@ -18,9 +18,14 @@ public class MainMenu : AbstractMainMenu
 	[SerializeField]
 	private Animator shaker;
 
+	[SerializeField]
+	private Music mainMenuMusic;
+	
 	private Coroutine musicLessHeartBeat;
+	private float musicLessHeartBeatDelay = 1;
 	private Coroutine pressAnyKey;
 	public CustomStandaloneInputModule inputModule;
+	private bool fastenUp;
 
 	private void Update()
 	{
@@ -45,7 +50,7 @@ public class MainMenu : AbstractMainMenu
 		for (var i = 1; i < stages; i++)
 		{
 			yield return new WaitForSeconds(0.97f);
-			uiHeart.Beat();
+			uiHeart.Beat(true);
 			yield return new WaitForSeconds(0.03f);
 			introController.ChangeStage(i);
 			if (i + 1 != stages)
@@ -54,6 +59,7 @@ public class MainMenu : AbstractMainMenu
 			}
 		}
 
+		fastenUp = false;
 		musicLessHeartBeat = StartCoroutine(MusicLessHeartBeat());
 		pressAnyKey = StartCoroutine(PressAnyKey());
 
@@ -64,17 +70,28 @@ public class MainMenu : AbstractMainMenu
 			StopCoroutine(pressAnyKey);
 		}
 
+		fastenUp = true;
+		musicLessHeartBeatDelay = 0.8f;
 		pressAnyKeyText.gameObject.SetActive(false);
 		yield return letterController.InitiateFlightSequence(uiHeart.transform.position);
 		yield return OpenScreen<MainScreen>();
+		StopCoroutine(musicLessHeartBeat);
+		musicLessHeartBeat = null;
+		AudioManager.Instance.InitializeMusic(mainMenuMusic, false, 0);
+		uiHeart.Subscribe();
 	}
 
 	private IEnumerator MusicLessHeartBeat()
 	{
 		while (true)
 		{
-			yield return new WaitForSeconds(1f);
-			uiHeart.Beat();
+			yield return new WaitForSeconds(musicLessHeartBeatDelay);
+			if (fastenUp)
+			{
+				musicLessHeartBeatDelay = Mathf.Clamp(musicLessHeartBeatDelay - 0.1f, 0.5f, 1);
+			}
+
+			uiHeart.Beat(true);
 		}
 	}
 
@@ -95,5 +112,22 @@ public class MainMenu : AbstractMainMenu
 	protected override CustomStandaloneInputModule GetModule()
 	{
 		return inputModule;
+	}
+
+	public override IEnumerator FadeIntoPlay()
+	{
+		StartCoroutine(FadeMusic());
+		return base.FadeIntoPlay();
+	}
+
+	private IEnumerator FadeMusic()
+	{
+		var volume = AudioManager.Instance.GetVolume();
+		while (volume > 0)
+		{
+			yield return null;
+			volume -= Time.deltaTime * 3;
+			AudioManager.Instance.SetVolume(volume);
+		}
 	}
 }

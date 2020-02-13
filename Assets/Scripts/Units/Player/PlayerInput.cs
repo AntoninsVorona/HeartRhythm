@@ -190,7 +190,7 @@ public class PlayerInput : MonoBehaviour
 						case GameSessionManager.GameState.Peace:
 							break;
 						case GameSessionManager.GameState.Fight:
-							AudioManager.Instance.ApplyBeat();
+							((InGameAudioManager) AudioManager.Instance).ApplyBeat();
 							break;
 						default:
 							throw new ArgumentOutOfRangeException();

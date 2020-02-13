@@ -19,11 +19,16 @@ public class InGameMainMenu : AbstractMainMenu
 		}
 
 		globalCanvasGroup.gameObject.SetActive(false);
+		uiHeart.Unsubscribe();
 	}
 	
 	private void InitHeartBeat()
 	{
-		//TODO
+		uiHeart.Reset();
+		if (AudioManager.Instance.IsCurrentlyPlaying)
+		{
+			uiHeart.Subscribe();
+		}
 	}
 	
 	protected override CustomStandaloneInputModule GetModule()

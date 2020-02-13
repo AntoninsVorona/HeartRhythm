@@ -7,13 +7,15 @@ public abstract class SaveLoadScreenButton : FillingButton
 
 	public override AbstractMainMenu.HeartSettings Select()
 	{
-		uiHeart.gameObject.SetActive(true); //TODO Subscribe to beat
+		uiHeart.gameObject.SetActive(true);
+		uiHeart.Subscribe();
 		return base.Select();
 	}
 
 	public override void Deselect()
 	{
 		base.Deselect();
-		uiHeart.gameObject.SetActive(false); //TODO Unsubscribe to beat
+		uiHeart.Unsubscribe();
+		uiHeart.gameObject.SetActive(false);
 	}
 }

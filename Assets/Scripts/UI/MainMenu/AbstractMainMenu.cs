@@ -173,7 +173,7 @@ public abstract class AbstractMainMenu : MonoBehaviour
 		}
 	}
 
-	public IEnumerator FadeIntoPlay()
+	public virtual IEnumerator FadeIntoPlay()
 	{
 		globalCanvasGroup.interactable = false;
 		globalCanvasGroup.blocksRaycasts = false;

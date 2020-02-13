@@ -8,7 +8,7 @@ public class TakeBackHeadsetCutScene : CutScene
 	{
 		//TODO Make Cutscene
 		// dialogueFinished = false;
-		// //TODO Play Hide Animation and Sound
+		// //TODO Play Hide Animation
 		// Player.Instance.LoseItem(ItemManager.Instance.GetItemByName("Headset"));
 		// GameLogic.Instance.StartConversation("HeadSetHidden");
 		// yield return new WaitUntil(() => dialogueFinished);
