@@ -162,6 +162,7 @@ public static class SaveSystem
 	{
 		[NonSerialized]
 		public string filePath;
+
 		public Player.PlayerData playerData;
 		public string currentLevelName;
 		public List<LevelState> levelStates = new List<LevelState>();
@@ -254,7 +255,7 @@ public static class SaveSystem
 			playerData = new Player.PlayerData("Player", Vector2Int.zero,
 				new Inventory.InventoryData("InitialBackpack", null)),
 			globalVariables =
-				new GlobalVariables(new GlobalVariables.ScavengerAssociationVariables(true,
+				new GlobalVariables(false, new GlobalVariables.ScavengerAssociationVariables(true,
 					HeadSetHideAndSeekController.HeadSetState.InTrash))
 		};
 	}

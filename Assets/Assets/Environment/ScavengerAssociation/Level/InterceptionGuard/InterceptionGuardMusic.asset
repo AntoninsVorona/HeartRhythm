@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aba2d7795ae4c6881d5e3f8e5729c40, type: 3}
-  m_Name: TakeBackHeadsetCutScene
+  m_Script: {fileID: 11500000, guid: a35f75f2ed14a894585425d278e2f412, type: 3}
+  m_Name: InterceptionGuardMusic
   m_EditorClassIdentifier: 
-  dialogueFinished: 0
-  battleConfiguration: {fileID: 11400000, guid: e710205618c30cd41b2cf51225d560a5,
-    type: 2}
+  audioClip: {fileID: 0}
+  loop: 0
+  bpm: 60

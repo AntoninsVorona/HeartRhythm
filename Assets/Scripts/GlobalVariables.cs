@@ -17,10 +17,12 @@ public class GlobalVariables
 		}
 	}
 
-	public GlobalVariables(ScavengerAssociationVariables scavengerAssociationVariables)
+	public GlobalVariables(bool wearsHeadset, ScavengerAssociationVariables scavengerAssociationVariables)
 	{
+		this.wearsHeadset = wearsHeadset;
 		this.scavengerAssociationVariables = scavengerAssociationVariables;
 	}
 
+	public bool wearsHeadset;
 	public ScavengerAssociationVariables scavengerAssociationVariables;
 }

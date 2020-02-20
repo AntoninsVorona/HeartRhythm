@@ -64,9 +64,16 @@ public class GameUI : MonoBehaviour
 		cutSceneLines.SetTrigger(AnimatorUtilities.SHOW_TRIGGER);
 	}
 	
-	public void CutSceneFinished()
+	public void CutSceneFinished(bool force = false)
 	{
-		StartCoroutine(CutSceneFinishedSequence());
+		if (force)
+		{
+			cutSceneLines.gameObject.SetActive(false);	
+		}
+		else
+		{
+			StartCoroutine(CutSceneFinishedSequence());
+		}
 	}
 
 	private IEnumerator CutSceneFinishedSequence()

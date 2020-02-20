@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb508d1a6c5844ada457ade13ed7cdab, type: 3}
+  m_Name: InterceptionGuard
+  m_EditorClassIdentifier: 
+  sceneObjects: {fileID: 610986543576554462, guid: f2508ec0fe143454986215befac6338d,
+    type: 3}
+  dialogueRegistrator: {fileID: 0}
+  cameraIsStatic: 0
+  levelState:
+    levelName: 
+    unitData: []
+  focusPosition: {x: 0, y: 0}
+  playerSpawnPoints:
+    m_keys: 00000000
+    m_values:
+    - {x: 0, y: 0}
+  battleMusic: {fileID: 11400000, guid: f15c6cf29facbdc4b88a6859cd32ef01, type: 2}

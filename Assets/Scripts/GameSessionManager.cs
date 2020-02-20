@@ -320,10 +320,18 @@ public class GameSessionManager : MonoBehaviour
 		currentCutScene.StartCutScene();
 	}
 
-	public void CutSceneFinished()
+	public void CutSceneFinished(bool force = false)
 	{
 		currentCutScene = null;
-		StartCoroutine(CutSceneFinishedSequence());
+		if (force)
+		{
+			GameUI.Instance.CutSceneFinished(true);
+			PlayerInput.Instance.acceptor.DontReceiveAnyInput = false;
+		}
+		else
+		{
+			StartCoroutine(CutSceneFinishedSequence());
+		}
 	}
 
 	private IEnumerator CutSceneFinishedSequence()
