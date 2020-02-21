@@ -50,6 +50,8 @@ public class AudioManager : MonoBehaviour
 
 	[HideInInspector]
 	public List<PulseEventSubscriber> pulseSubscribers;
+	[HideInInspector]
+	public List<PulseEventSubscriber> pulseSubscribersForNextPlay = new List<PulseEventSubscriber>();
 
 	public AudioSource musicAudioSource;
 
@@ -114,7 +116,8 @@ public class AudioManager : MonoBehaviour
 		musicAudioSource.loop = currentMusic.loop;
 		musicAudioSource.clip = currentMusic.audioClip;
 		isCurrentlyPlaying = true;
-		pulseSubscribers = new List<PulseEventSubscriber>();
+		pulseSubscribers = new List<PulseEventSubscriber>(pulseSubscribersForNextPlay);
+		pulseSubscribersForNextPlay.Clear();
 		SchedulePlay();
 		if (isBattle)
 		{

@@ -62,4 +62,13 @@ public class ObstacleManager : UnitManager<Obstacle>
 			}
 		}
 	}
+	
+	public override void AdditionalActionsToUnitsWhenStopping(Obstacle unit)
+	{
+		base.AdditionalActionsToUnitsWhenStopping(unit);
+		if (unit is RhythmObstacle rhythmObstacle)
+		{
+			rhythmObstacle.Unsubscribe();
+		}
+	}
 }

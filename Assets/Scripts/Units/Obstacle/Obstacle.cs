@@ -51,9 +51,12 @@ public class Obstacle : Unit
 		base.OnDrawGizmosSelected();
 		Gizmos.color = Color.red;
 		var size = new Vector3(1, 1, 0.2f);
-		foreach (var otherPoint in otherPoints)
+		if (otherPoints != null && otherPoints.Count > 0)
 		{
-			Gizmos.DrawCube(CubeLocation(otherPoint), size);
+			foreach (var otherPoint in otherPoints)
+			{
+				Gizmos.DrawCube(CubeLocation(otherPoint), size);
+			}
 		}
 
 		Vector3 CubeLocation(Vector2Int point)
