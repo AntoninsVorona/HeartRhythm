@@ -48,7 +48,7 @@ public class HeadSetHidePlace : Obstacle
 		animator.SetTrigger(AnimatorUtilities.START_TRIGGER);
 		if (canHide)
 		{
-			interactions.Add(hide ? hideInteraction : getHeadSetBack);
+			headsetLessInteraction = hide ? hideInteraction : getHeadSetBack;
 			InitializeInteractions();
 		}
 		else
@@ -61,6 +61,7 @@ public class HeadSetHidePlace : Obstacle
 	{
 		talksWhenInteractedWith = false;
 		interactions.Clear();
+		headsetLessInteraction = null;
 		animator.SetTrigger(AnimatorUtilities.STOP_TRIGGER);
 	}
 }

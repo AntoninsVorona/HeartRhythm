@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: TakeBackHeadsetCutScene
   m_EditorClassIdentifier: 
   dialogueFinished: 0
-  battleConfiguration: {fileID: 11400000, guid: e710205618c30cd41b2cf51225d560a5,
-    type: 2}
+  battleArea: {fileID: 11400000, guid: e710205618c30cd41b2cf51225d560a5, type: 2}

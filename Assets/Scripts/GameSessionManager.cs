@@ -120,7 +120,7 @@ public class GameSessionManager : MonoBehaviour
 			levelBeforeBattle is BattleArea ? GameState.Fight : GameState.Peace);
 	}
 
-	public Coroutine LoadLevel(BattleConfiguration levelToEnter)
+	public Coroutine LoadLevel(BattleArea levelToEnter)
 	{
 		return LoadLevel(levelToEnter, 0, CurrentGameState);
 	}
@@ -149,14 +149,14 @@ public class GameSessionManager : MonoBehaviour
 				currentLevelData.dialogueRegistrator.UnregisterDialogueFunctions();
 			}
 
-			if (currentLevelData is BattleConfiguration)
+			if (currentLevelData is BattleArea)
 			{
 				spawnPoint = playerPositionBeforeBattle;
 				GameUI.Instance.BackToRealWorld();
 			}
 			else
 			{
-				if (levelToEnter is BattleConfiguration)
+				if (levelToEnter is BattleArea)
 				{
 					playerPositionBeforeBattle = Player.Instance.CurrentPosition;
 					levelBeforeBattle = currentLevelData;
@@ -193,25 +193,16 @@ public class GameSessionManager : MonoBehaviour
 		yield return currentSceneObjects.currentWorld.InitializeWorld();
 		Player.Instance.Initialize(spawnPoint);
 		var updateGameState = true;
-		if (currentLevelData is BattleConfiguration battleConfiguration)
+		if (currentLevelData is BattleArea battleArea)
 		{
-			Player.Instance.InitializeFightWithEnemyCombatData();
-			GameUI.Instance.FightAnEnemy();
-
-			if (CurrentGameState != GameState.Fight)
+			if (battleArea.autoStartBattle)
 			{
-				BeginFightMode(battleConfiguration.battleMusic);
+				InitializeFightWithAnEnemy(battleArea.battleMusic);
+				updateGameState = false;
 			}
-
-			updateGameState = false;
 		}
 
 		currentSceneObjects.currentObstacleManager.ApplyItemData(currentLevelState.GetItemData());
-		if (currentLevelData is BattleArea battleArea)
-		{
-			BeginFightMode(battleArea.battleMusic);
-			updateGameState = false;
-		}
 
 		if (updateGameState)
 		{
@@ -226,6 +217,17 @@ public class GameSessionManager : MonoBehaviour
 		}
 
 		yield return PostLoadSequence();
+	}
+
+	public void InitializeFightWithAnEnemy(Music battleMusic)
+	{
+		Player.Instance.InitializeFightWithEnemyCombatData();
+		GameUI.Instance.FightAnEnemy();
+
+		if (CurrentGameState != GameState.Fight)
+		{
+			BeginFightMode(battleMusic);
+		}
 	}
 
 	private IEnumerator PreLoadSequence(bool cameraIsStatic, Vector2Int focusPosition)

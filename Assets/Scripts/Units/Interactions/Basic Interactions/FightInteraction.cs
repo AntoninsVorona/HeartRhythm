@@ -7,7 +7,7 @@ public class FightInteraction : Interaction
 {
 	public override bool ApplyInteraction()
 	{
-		GameSessionManager.Instance.LoadLevel(((Enemy) owner).battleConfiguration);
+		GameSessionManager.Instance.LoadLevel(((Enemy) owner).battleArea);
 		return true;
 	}
 

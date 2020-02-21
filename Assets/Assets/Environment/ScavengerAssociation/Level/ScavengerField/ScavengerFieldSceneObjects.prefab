@@ -43658,6 +43658,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: b79f41b946b16a74ab9cb1a6f99bf524,
         type: 2}
+    - target: {fileID: 5507574224342107115, guid: 84a8ac9b5e7ab8d41996c696192a8a85,
+        type: 3}
+      propertyPath: headsetLessInteraction
+      value: 
+      objectReference: {fileID: 11400000, guid: b79f41b946b16a74ab9cb1a6f99bf524,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84a8ac9b5e7ab8d41996c696192a8a85, type: 3}
 --- !u!4 &5177399351601083942 stripped
@@ -43918,6 +43924,12 @@ PrefabInstance:
     - target: {fileID: 5507574224342107115, guid: 84a8ac9b5e7ab8d41996c696192a8a85,
         type: 3}
       propertyPath: interactions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b79f41b946b16a74ab9cb1a6f99bf524,
+        type: 2}
+    - target: {fileID: 5507574224342107115, guid: 84a8ac9b5e7ab8d41996c696192a8a85,
+        type: 3}
+      propertyPath: headsetLessInteraction
       value: 
       objectReference: {fileID: 11400000, guid: b79f41b946b16a74ab9cb1a6f99bf524,
         type: 2}

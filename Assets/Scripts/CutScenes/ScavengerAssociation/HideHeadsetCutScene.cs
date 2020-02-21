@@ -11,6 +11,7 @@ public class HideHeadsetCutScene : CutScene
 		dialogueFinished = false;
 		//TODO Play Hide Animation
 		Player.Instance.LoseItem(ItemManager.Instance.GetItemByName("Headset"));
+		SaveSystem.currentGameSave.globalVariables.scavengerAssociationVariables.playerHasToSleepFirst = false;
 		GameSessionManager.Instance.StartConversation("HeadSetHidden");
 		yield return new WaitUntil(() => dialogueFinished);
 		dialogueFinished = false;

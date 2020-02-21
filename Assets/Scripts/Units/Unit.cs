@@ -113,11 +113,10 @@ public abstract class Unit : MonoBehaviour
 		}
 	}
 
-	[Header("Data")]
-	[SerializeField]
+	[Header("Data")] [SerializeField]
 	protected string identifierName;
-	[Tooltip("A value of 5 means traveling will take 0.2 seconds, 1 = 1 second.")]
-	[SerializeField]
+
+	[Tooltip("A value of 5 means traveling will take 0.2 seconds, 1 = 1 second.")] [SerializeField]
 	protected float movementSpeed = 5;
 
 	protected float defaultMovementSpeed;
@@ -141,12 +140,13 @@ public abstract class Unit : MonoBehaviour
 	public bool initializeSelf = true;
 
 	[Header("Interaction")]
+	public Interaction headsetLessInteraction;
+
 	public List<Interaction> interactions;
 
 	public bool talksWhenInteractedWith;
 
-	[SerializeField]
-	[DrawIf("talksWhenInteractedWith", true)]
+	[SerializeField] [DrawIf("talksWhenInteractedWith", true)]
 	protected TalkUI talkUI;
 
 	private Observer gameStateChangedObserver;
@@ -166,7 +166,7 @@ public abstract class Unit : MonoBehaviour
 			talkUI.canvas.gameObject.SetActive(false);
 		}
 	}
-	
+
 	public virtual void Initialize(Vector2Int location)
 	{
 		if (GameSessionManager.Instance.currentSceneObjects.currentWorld.tileMapInitialized)
@@ -194,6 +194,10 @@ public abstract class Unit : MonoBehaviour
 		}
 
 		interactions = inter;
+		if (headsetLessInteraction)
+		{
+			headsetLessInteraction = Instantiate(headsetLessInteraction);
+		}
 	}
 
 	protected void ForceInitializePosition()
@@ -351,7 +355,8 @@ public abstract class Unit : MonoBehaviour
 
 	protected Vector3 GetCurrentPosition()
 	{
-		var cellCenterWorld = GameSessionManager.Instance.currentSceneObjects.currentWorld.GetCellCenterWorld(currentPosition);
+		var cellCenterWorld =
+			GameSessionManager.Instance.currentSceneObjects.currentWorld.GetCellCenterWorld(currentPosition);
 		cellCenterWorld.z = cellCenterWorld.y;
 		return cellCenterWorld;
 	}
@@ -415,7 +420,7 @@ public abstract class Unit : MonoBehaviour
 			spawnPoint = unitData.currentPosition;
 		}
 	}
-	
+
 	public virtual UnitData GetUnitData()
 	{
 		return new UnitData(identifierName, currentPosition);

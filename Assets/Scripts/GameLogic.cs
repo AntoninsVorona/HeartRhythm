@@ -14,6 +14,8 @@ public class GameLogic : MonoBehaviour
 	[Header("Debug")]
 	public LevelData debugLevelToLoad;
 
+	public bool wearsHeadset;
+
 	public Music testFightMusic;
 
 	public bool inputDebugEnabled;
@@ -43,6 +45,7 @@ public class GameLogic : MonoBehaviour
 		else
 		{
 			SaveSystem.MakeDefaultStartingGameSave(debugLevelToLoad.name);
+			SaveSystem.currentGameSave.globalVariables.wearsHeadset = wearsHeadset;
 			Player.Instance.ApplyUnitData(SaveSystem.currentGameSave.playerData);
 			GameSessionManager.Instance.LoadLevel(debugLevelToLoad, 0);
 		}

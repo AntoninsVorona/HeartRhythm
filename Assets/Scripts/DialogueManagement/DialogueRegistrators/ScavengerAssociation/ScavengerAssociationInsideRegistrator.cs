@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Dialogues/Dialogue Registrators/Scavenger Association Inside Registrator ", fileName = "ScavengerAssociationInsideRegistrator")]
 public class ScavengerAssociationInsideRegistrator : DialogueRegistrator
 {
-	public BattleConfiguration duelGuard;
+	public BattleArea duelGuard;
 	
 	public bool CanPickUp(string itemName, double amount)
 	{

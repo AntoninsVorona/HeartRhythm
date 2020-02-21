@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enemy : Mob
 {
-	public BattleConfiguration battleConfiguration;
+	public BattleArea battleArea;
 
 	protected override void InteractWithObject(Unit unit)
 	{

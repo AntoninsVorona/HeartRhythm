@@ -300,6 +300,7 @@ public class PlayerInput : MonoBehaviour
 	public void ConversationStarted()
 	{
 		acceptor.ConversationInProgress = true;
+		acceptor.FirstBattleInputDone = false;
 	}
 
 	public void ConversationFinished()

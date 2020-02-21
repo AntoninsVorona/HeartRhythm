@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb508d1a6c5844ada457ade13ed7cdab, type: 3}
-  m_Name: GuardDuelBattleConfiguration
+  m_Script: {fileID: 11500000, guid: d19aa7634aef4d589f5570c69e3aa841, type: 3}
+  m_Name: GuardDuelBattleArea
   m_EditorClassIdentifier: 
   sceneObjects: {fileID: 8981519576598219680, guid: 775f98fa3d79fb742a6562bbe1f463dd,
     type: 3}
@@ -24,4 +24,5 @@ MonoBehaviour:
     m_keys: 00000000
     m_values:
     - {x: 0, y: 0}
+  autoStartBattle: 1
   battleMusic: {fileID: 11400000, guid: 60eaf042f444f644ba3113a34593d82f, type: 2}

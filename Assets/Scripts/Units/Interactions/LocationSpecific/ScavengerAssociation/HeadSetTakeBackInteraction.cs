@@ -8,6 +8,7 @@ public class HeadSetTakeBackInteraction : StartCutSceneInteraction
 {
 	public override bool ApplyInteraction()
 	{
+		GameLogic.Instance.Save();
 		HeadSetHidePlace.HeadSetTakenBack();
 		GameSessionManager.Instance.PlayCutScene(cutSceneToStart);
 		return true;

@@ -6,7 +6,7 @@ using UnityEngine;
 	fileName = "TakeBackHeadsetCutScene")]
 public class TakeBackHeadsetCutScene : CutScene
 {
-	public BattleConfiguration battleConfiguration;
+	public BattleArea battleArea;
 
 	protected override IEnumerator CutSceneSequence()
 	{
@@ -28,10 +28,17 @@ public class TakeBackHeadsetCutScene : CutScene
 			yield return new WaitForSeconds(0.25f);
 		}
 
-		//TODO Player Exclamation Mark
+		GameSessionManager.Instance.StartConversation("HandOverHeadset");
+		yield return new WaitUntil(() => dialogueFinished);
+		dialogueFinished = false;
+		yield return new WaitForSeconds(0.25f);
 		interceptionGuard.Move(playerPosition);
 		yield return new WaitForSeconds(0.25f);
+		yield return GameSessionManager.Instance.LoadLevel(battleArea);
+		GameSessionManager.Instance.StartConversation("WhereAmIInterceptionGuard");
+		yield return new WaitUntil(() => dialogueFinished);
+		dialogueFinished = false;
+		GameSessionManager.Instance.InitializeFightWithAnEnemy(battleArea.battleMusic);
 		GameSessionManager.Instance.CutSceneFinished();
-		GameSessionManager.Instance.LoadLevel(battleConfiguration);
 	}
 }

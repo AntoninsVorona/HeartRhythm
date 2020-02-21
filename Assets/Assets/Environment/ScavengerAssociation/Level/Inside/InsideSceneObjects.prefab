@@ -1006,6 +1006,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: b1b9b390a89c63c4b8e76a2d5e6173de,
         type: 2}
+    - target: {fileID: 5507574224342107115, guid: 84a8ac9b5e7ab8d41996c696192a8a85,
+        type: 3}
+      propertyPath: headsetLessInteraction
+      value: 
+      objectReference: {fileID: 11400000, guid: b1b9b390a89c63c4b8e76a2d5e6173de,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84a8ac9b5e7ab8d41996c696192a8a85, type: 3}
 --- !u!4 &5328099395476087250 stripped
@@ -1195,6 +1201,12 @@ PrefabInstance:
     - target: {fileID: 5507574224342107115, guid: 84a8ac9b5e7ab8d41996c696192a8a85,
         type: 3}
       propertyPath: interactions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c33a58323a2cce24e8d4fe670dd535fa,
+        type: 2}
+    - target: {fileID: 5507574224342107115, guid: 84a8ac9b5e7ab8d41996c696192a8a85,
+        type: 3}
+      propertyPath: headsetLessInteraction
       value: 
       objectReference: {fileID: 11400000, guid: c33a58323a2cce24e8d4fe670dd535fa,
         type: 2}
@@ -1449,6 +1461,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: c33a58323a2cce24e8d4fe670dd535fa,
         type: 2}
+    - target: {fileID: 5507574224342107115, guid: 84a8ac9b5e7ab8d41996c696192a8a85,
+        type: 3}
+      propertyPath: headsetLessInteraction
+      value: 
+      objectReference: {fileID: 11400000, guid: c33a58323a2cce24e8d4fe670dd535fa,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84a8ac9b5e7ab8d41996c696192a8a85, type: 3}
 --- !u!4 &2387541827172450255 stripped
@@ -1537,6 +1555,12 @@ PrefabInstance:
     - target: {fileID: 5507574224342107115, guid: 84a8ac9b5e7ab8d41996c696192a8a85,
         type: 3}
       propertyPath: interactions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b1b9b390a89c63c4b8e76a2d5e6173de,
+        type: 2}
+    - target: {fileID: 5507574224342107115, guid: 84a8ac9b5e7ab8d41996c696192a8a85,
+        type: 3}
+      propertyPath: headsetLessInteraction
       value: 
       objectReference: {fileID: 11400000, guid: b1b9b390a89c63c4b8e76a2d5e6173de,
         type: 2}

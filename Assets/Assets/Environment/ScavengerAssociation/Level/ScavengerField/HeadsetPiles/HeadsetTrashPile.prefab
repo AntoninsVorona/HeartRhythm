@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b69d55fc1d49f9a9fa24b4f93cdb59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  identifierName: 
   movementSpeed: 0
   sprite: {fileID: 0}
   movementSpeedCurve:
@@ -60,8 +61,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   spawnPoint: {x: 0, y: 0}
   initializeSelf: 1
-  interactions:
-  - {fileID: 11400000, guid: 629d5de69ba5d1d4ca5b55bf02b2549d, type: 2}
+  headsetLessInteraction: {fileID: 11400000, guid: 629d5de69ba5d1d4ca5b55bf02b2549d,
+    type: 2}
+  interactions: []
   talksWhenInteractedWith: 0
   talkUI:
     canvas: {fileID: 0}
@@ -84,11 +86,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1276124800363360896}
     m_Modifications:
-    - target: {fileID: 847834569984894414, guid: 1295c3eb49f4fad4cab1348334d5452e,
-        type: 3}
-      propertyPath: m_Name
-      value: BlinkingStar
-      objectReference: {fileID: 0}
     - target: {fileID: 672042693140612076, guid: 1295c3eb49f4fad4cab1348334d5452e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -143,6 +140,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 847834569984894414, guid: 1295c3eb49f4fad4cab1348334d5452e,
+        type: 3}
+      propertyPath: m_Name
+      value: BlinkingStar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1295c3eb49f4fad4cab1348334d5452e, type: 3}

@@ -176,10 +176,20 @@ public class Player : Unit
 			return;
 		}
 
-		if (unit.interactions.Count > 0)
+		if (SaveSystem.currentGameSave.globalVariables.wearsHeadset)
+		{
+			if (unit.interactions.Count > 0)
+			{
+				interactingWithUnit = unit;
+				GameSessionManager.Instance.StartDanceMove(unit);
+			}
+		}
+		else if (unit.headsetLessInteraction)
 		{
 			interactingWithUnit = unit;
-			GameSessionManager.Instance.StartDanceMove(unit);
+			PlayerInput.Instance.acceptor.IgnoreInput = true;
+			var restoreInput = unit.headsetLessInteraction.ApplyInteraction();
+			PlayerInput.Instance.acceptor.IgnoreInput = !restoreInput;
 		}
 	}
 
