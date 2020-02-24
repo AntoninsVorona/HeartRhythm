@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7766726581828847274}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.15, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7766726581833781658}
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 99
   m_Sprite: {fileID: 21300000, guid: a02bfc7e53858e14ebb1a1bcf1af381b, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.6666667}
   m_FlipX: 0
@@ -193,6 +193,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   spawnPoint: {x: 0, y: 0}
   initializeSelf: 1
+  initializeSpawnPointForMe: 0
+  headsetLessInteraction: {fileID: 0}
   interactions: []
   talksWhenInteractedWith: 0
   talkUI:
@@ -395,10 +397,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 3427114271967980436, guid: 8e1f545696ba131449d0aeab170589de,
+  m_Sprite: {fileID: 7103749574173715010, guid: 70679f8229449e64d8390ae6f7d6cddd,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2, y: 2}
