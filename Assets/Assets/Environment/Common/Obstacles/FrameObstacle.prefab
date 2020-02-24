@@ -60,6 +60,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   spawnPoint: {x: 0, y: 0}
   initializeSelf: 1
+  initializeSpawnPointForMe: 1
   headsetLessInteraction: {fileID: 0}
   interactions: []
   talksWhenInteractedWith: 0

@@ -113,10 +113,12 @@ public abstract class Unit : MonoBehaviour
 		}
 	}
 
-	[Header("Data")] [SerializeField]
+	[Header("Data")]
+	[SerializeField]
 	protected string identifierName;
 
-	[Tooltip("A value of 5 means traveling will take 0.2 seconds, 1 = 1 second.")] [SerializeField]
+	[Tooltip("A value of 5 means traveling will take 0.2 seconds, 1 = 1 second.")]
+	[SerializeField]
 	protected float movementSpeed = 5;
 
 	protected float defaultMovementSpeed;
@@ -130,6 +132,7 @@ public abstract class Unit : MonoBehaviour
 	[SerializeField]
 	protected AnimationCurve movementDisplaceCurve;
 
+	[DrawIf("initializeSpawnPointForMe", false)]
 	[SerializeField]
 	protected Vector2Int spawnPoint;
 
@@ -138,6 +141,7 @@ public abstract class Unit : MonoBehaviour
 
 	[Header("Initialization")]
 	public bool initializeSelf = true;
+	public bool initializeSpawnPointForMe;
 
 	[Header("Interaction")]
 	public Interaction headsetLessInteraction;
@@ -146,7 +150,8 @@ public abstract class Unit : MonoBehaviour
 
 	public bool talksWhenInteractedWith;
 
-	[SerializeField] [DrawIf("talksWhenInteractedWith", true)]
+	[SerializeField]
+	[DrawIf("talksWhenInteractedWith", true)]
 	protected TalkUI talkUI;
 
 	private Observer gameStateChangedObserver;
@@ -158,6 +163,10 @@ public abstract class Unit : MonoBehaviour
 		if (ApplyDataOnStart())
 		{
 			ApplyUnitData(GameSessionManager.Instance.currentLevelState.GetDataByName(identifierName));
+		}
+		else if (initializeSpawnPointForMe)
+		{
+			spawnPoint = Vector2Int.FloorToInt(transform.position);
 		}
 
 		if (talkUI.canvas)
@@ -418,6 +427,10 @@ public abstract class Unit : MonoBehaviour
 		if (unitData != null)
 		{
 			spawnPoint = unitData.currentPosition;
+		}
+		else if (initializeSpawnPointForMe)
+		{
+			spawnPoint = Vector2Int.FloorToInt(transform.position);
 		}
 	}
 
