@@ -256,7 +256,7 @@ public static class SaveSystem
 				new Inventory.InventoryData("InitialBackpack", null)),
 			globalVariables =
 				new GlobalVariables(false, new GlobalVariables.ScavengerAssociationVariables(true,
-					HeadSetHideAndSeekController.HeadSetState.InTrash))
+					HeadSetHideAndSeekController.HeadSetState.InTrash, false))
 		};
 	}
 

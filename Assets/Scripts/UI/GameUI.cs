@@ -12,6 +12,8 @@ public class GameUI : MonoBehaviour
 	public Animator cutSceneLines;
 	public EqualizerController equalizerController;
 	public CustomStandaloneInputModule inputModule;
+	public BlackAnnouncer blackAnnouncer;
+	public CanvasGroup fadeAlphaCanvasGroup;
 	public RectTransform canvasRect;
 
 	private void Awake()
@@ -26,11 +28,13 @@ public class GameUI : MonoBehaviour
 			return;
 		}
 
+		ResetFadeAlpha();
 		equalizerController.Initialize();
 		cutSceneLines.gameObject.SetActive(false);
 		beatController.Deactivate();
 		danceMoveUI.Initialize();
 		uiInventory.Close();
+		blackAnnouncer.Close(true);
 	}
 
 	private void Start()
@@ -91,6 +95,38 @@ public class GameUI : MonoBehaviour
 	public void BackToRealWorld()
 	{
 		equalizerController.Deactivate();
+	}
+
+	public void ResetFadeAlpha()
+	{
+		fadeAlphaCanvasGroup.alpha = 0;
+	}
+	
+	public void FadeAlpha(float start, float end)
+	{
+		StartCoroutine(FadeAlphaSequence(start, end));
+	}
+
+	private IEnumerator FadeAlphaSequence(float start, float end)
+	{
+		float t = 0;
+		while (t < 1)
+		{
+			t += Time.deltaTime;
+			float alpha = Mathf.Lerp(start, end, t);
+			fadeAlphaCanvasGroup.alpha = alpha;
+			yield return null;
+		}
+	}
+
+	public Coroutine ShowBlackAnnouncer(BlackAnnouncer.AnnouncementData announcementData)
+	{
+		return blackAnnouncer.Show(announcementData);
+	}
+
+	public Coroutine CloseBlackAnnouncer()
+	{
+		return blackAnnouncer.Close();
 	}
 
 	public static GameUI Instance { get; private set; }

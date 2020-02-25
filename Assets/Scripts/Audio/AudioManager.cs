@@ -176,7 +176,7 @@ public class AudioManager : MonoBehaviour
 
 			CheckPulses();
 
-			yield return null;
+			yield return new WaitForFixedUpdate();
 		}
 
 		bool IsTimeValid()

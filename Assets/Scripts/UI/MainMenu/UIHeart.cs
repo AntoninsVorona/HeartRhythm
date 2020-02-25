@@ -34,8 +34,7 @@ public class UIHeart : MonoBehaviour
 
 	public void Subscribe()
 	{
-		pulseEventSubscriber = new AudioManager.PulseEventSubscriber(this, SoundlessBeat,
-			AudioManager.Instance.GetTimeUntilNextPulse(), -0.03f);
+		pulseEventSubscriber = new AudioManager.PulseEventSubscriber(this, SoundlessBeat);
 		AudioManager.Instance.pulseSubscribers.Add(pulseEventSubscriber);
 	}
 

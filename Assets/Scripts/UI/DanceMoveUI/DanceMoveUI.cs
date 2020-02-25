@@ -260,8 +260,7 @@ public class DanceMoveUI : MonoBehaviour
 
 		if (pulseEventSubscriber == null)
 		{
-			pulseEventSubscriber = new AudioManager.PulseEventSubscriber(this, Pulse,
-				AudioManager.Instance.GetTimeUntilNextPulse(), -0.025f);
+			pulseEventSubscriber = new AudioManager.PulseEventSubscriber(this, Pulse);
 			AudioManager.Instance.pulseSubscribers.Add(pulseEventSubscriber);
 		}
 	}

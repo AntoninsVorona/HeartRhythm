@@ -40,9 +40,9 @@ public class GameCamera : MonoBehaviour
 		var newPosition = Vector3.Lerp(transform.position, targetPosition,
 			20 * Time.deltaTime);
 		newPosition.z = offset.z;
-//		newPosition += shakeOffset;
+		newPosition += shakeOffset;
 		transform.position = newPosition;
-//		transform.rotation = Quaternion.Euler(shakeRot);
+		transform.rotation = Quaternion.Euler(shakeRot);
 	}
 
 	public void ChangeTargetPosition(Vector3 targetPosition, bool force = false)
@@ -57,7 +57,7 @@ public class GameCamera : MonoBehaviour
 		}
 	}
 
-	public void Shake(float duration = 0.4f, float posPower = 0.2f, float rotPower = 15)
+	public void Shake(float duration = 0.4f, float posPower = 0.075f, float rotPower = 2.5f)
 	{
 		if (shakeCoroutine != null)
 		{

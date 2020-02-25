@@ -13,8 +13,7 @@ public class Beat : MonoBehaviour
 
 	public void Initialize(Vector2 startPosition, Vector2 endPosition, double startTime, double endTime)
 	{
-		AudioManager.Instance.pulseSubscribers.Add(new AudioManager.PulseEventSubscriber(this, Bonk,
-			AudioManager.Instance.GetTimeUntilNextPulse(), -0.025f));
+		AudioManager.Instance.pulseSubscribers.Add(new AudioManager.PulseEventSubscriber(this, Bonk));
 		StartCoroutine(Move(startPosition, endPosition, startTime, endTime));
 	}
 
@@ -33,7 +32,7 @@ public class Beat : MonoBehaviour
 				yield break;
 			}
 
-			yield return null;
+			yield return new WaitForFixedUpdate();
 		}
 	}
 

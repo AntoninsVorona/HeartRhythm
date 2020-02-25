@@ -16,6 +16,7 @@ public class TakeBackHeadsetCutScene : CutScene
 		GameSessionManager.Instance.StartConversation("HeadSetTakenBack");
 		yield return new WaitUntil(() => dialogueFinished);
 		dialogueFinished = false;
+		// //TODO Play Put On Animation
 		var playerPosition = Player.Instance.CurrentPosition;
 		var spawnPoint = new Vector2Int(0, playerPosition.y + 1);
 		var interceptionGuard =

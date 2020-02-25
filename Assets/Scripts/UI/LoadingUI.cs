@@ -35,7 +35,7 @@ public class LoadingUI : MonoBehaviour
 		loading = false;
 	}
 
-	public Coroutine StartLoading()
+	public Coroutine StartLoading(bool animate = true)
 	{
 		if (loading)
 		{
@@ -44,8 +44,13 @@ public class LoadingUI : MonoBehaviour
 
 		loading = true;
 		canvas.SetActive(true);
-		startSequence = StartCoroutine(StartSequence());
-		return startSequence;
+		if (animate)
+		{
+			startSequence = StartCoroutine(StartSequence());
+			return startSequence;
+		}
+
+		return null;
 	}
 
 	private IEnumerator StartSequence()

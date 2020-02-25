@@ -112,7 +112,7 @@ public class BeatController : MonoBehaviour
 		var bumpEvent =
 			new AudioManager.PulseEventSubscriber(this, EqualizerBump, AudioManager.Instance.startingDelay);
 		var pulseEvent =
-			new AudioManager.PulseEventSubscriber(this, Pulse, AudioManager.Instance.startingDelay, -0.025f);
+			new AudioManager.PulseEventSubscriber(this, Pulse, AudioManager.Instance.startingDelay);
 		AudioManager.Instance.pulseSubscribers.Add(bumpEvent);
 		AudioManager.Instance.pulseSubscribers.Add(pulseEvent);
 	}

@@ -206,6 +206,7 @@ public abstract class Unit : MonoBehaviour
 		if (headsetLessInteraction)
 		{
 			headsetLessInteraction = Instantiate(headsetLessInteraction);
+			headsetLessInteraction.Initialize(this);
 		}
 	}
 
@@ -459,6 +460,14 @@ public abstract class Unit : MonoBehaviour
 		{
 			return (Vector3Int) point + new Vector3(0.5f, 0.5f, 0);
 		}
+	}
+
+	public float SetMovementSpeed(float movementSpeed)
+	{
+		var previous = defaultMovementSpeed;
+		defaultMovementSpeed = movementSpeed;
+		this.movementSpeed = movementSpeed;
+		return previous;
 	}
 
 #if UNITY_EDITOR
