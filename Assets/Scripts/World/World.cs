@@ -9,6 +9,15 @@ public class World : MonoBehaviour
 	public class GameTiles : SerializableDictionary<Vector2Int, GameTile>
 	{
 	}
+	
+	public static readonly Vector2Int END_COORDINATE = new Vector2Int(int.MinValue, int.MinValue);
+	public static readonly List<Vector2Int> NEIGHBOURS = new List<Vector2Int>
+	{
+		new Vector2Int(-1, 0),
+		new Vector2Int(1, 0),
+		new Vector2Int(0, -1),
+		new Vector2Int(0, 1),
+	};
 
 	[HideInInspector]
 	public List<Observer> tileMapObservers = new List<Observer>();
@@ -67,6 +76,11 @@ public class World : MonoBehaviour
 		tileMapObservers.ForEach(o => o?.NotifyBegin());
 	}
 
+	public bool TileExists(Vector2Int position)
+	{
+		return GetTile(position) != null;
+	}
+	
 	public GameTile GetTile(Vector2Int position)
 	{
 		return gameTiles.ContainsKey(position)

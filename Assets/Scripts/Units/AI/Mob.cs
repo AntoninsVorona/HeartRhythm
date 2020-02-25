@@ -79,6 +79,7 @@ public class Mob : Unit
 
 	public MovementSettings movementSettings;
 	private float lastMovementDuringPeaceMode;
+	private Pathfinder pathfinder = new Pathfinder();
 
 	[HideInInspector]
 	public Coroutine peaceModeMovementCoroutine;
