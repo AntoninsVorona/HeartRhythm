@@ -116,7 +116,9 @@ public class AudioManager : MonoBehaviour
 		musicAudioSource.loop = currentMusic.loop;
 		musicAudioSource.clip = currentMusic.audioClip;
 		isCurrentlyPlaying = true;
-		pulseSubscribers = new List<PulseEventSubscriber>(pulseSubscribersForNextPlay);
+		pulseSubscribersForNextPlay.RemoveAll(p => p.owner == null);
+		pulseSubscribersForNextPlay.ForEach(p => p.startTime = startTime);
+			pulseSubscribers = new List<PulseEventSubscriber>(pulseSubscribersForNextPlay);
 		pulseSubscribersForNextPlay.Clear();
 		SchedulePlay();
 		if (isBattle)
