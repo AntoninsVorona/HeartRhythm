@@ -178,7 +178,6 @@ public abstract class AbstractMainMenu : MonoBehaviour
 		globalCanvasGroup.interactable = false;
 		globalCanvasGroup.blocksRaycasts = false;
 		yield return screens.currentScreen.Close();
-		//TODO Fade
 	}
 
 	public static AbstractMainMenu Instance { get; private set; }
