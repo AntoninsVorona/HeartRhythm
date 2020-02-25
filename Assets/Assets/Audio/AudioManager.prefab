@@ -44,10 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1586c4a4e52a65442ba34c9787775794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pulseSubscribers: []
+  pulseSubscribersForNextPlay: []
   musicAudioSource: {fileID: 201512460408891348}
   beatDelay: 0
   bpm: 0
-  time: 0
+  beatTravelTime: 0
+  startingDelay: 0
 --- !u!1 &201512460408891351
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +91,8 @@ AudioSource:
   m_GameObject: {fileID: 201512460408891351}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6914993737304123520, guid: bb1671476f8b7a248830714aa51c7372,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1

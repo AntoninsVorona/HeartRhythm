@@ -165,7 +165,6 @@ public class Player : Unit
 	public override void Die()
 	{
 		//TODO Lose Game
-		//TODO Get Kicked out
 	}
 
 	protected override void InteractWithObject(Unit unit)

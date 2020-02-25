@@ -412,6 +412,16 @@ public class GameSessionManager : MonoBehaviour
 		return currentLevelData.name;
 	}
 
+	public BattleArea.BattleSettings CurrentLevelBattleSettings()
+	{
+		if (currentLevelData is BattleArea battleArea)
+		{
+			return battleArea.battleSettings;
+		}
+
+		return null;
+	}
+
 	public bool IsCutSceneInProgress()
 	{
 		return currentCutScene != null;

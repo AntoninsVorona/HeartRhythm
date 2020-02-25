@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35f75f2ed14a894585425d278e2f412, type: 3}
   m_Name: InterceptionGuardMusic
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 0}
-  loop: 0
+  audioClip: {fileID: 8300000, guid: 2d4870e289aa6324a87f41d37af7018a, type: 3}
+  loop: 1
   bpm: 60

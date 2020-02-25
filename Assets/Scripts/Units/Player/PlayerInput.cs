@@ -285,15 +285,23 @@ public class PlayerInput : MonoBehaviour
 
 	public void MissedBeat()
 	{
-		if (GameLogic.Instance.inputDebugEnabled)
+		if (acceptor.FirstBattleInputDone)
 		{
-			Debug.LogError("Missed the Beat!");
-		}
+			if (GameLogic.Instance.inputDebugEnabled)
+			{
+				Debug.LogError("Missed the Beat!");
+			}
 
-		if (GameSessionManager.Instance.playState == GameSessionManager.PlayState.DanceMove &&
-		    acceptor.FirstBattleInputDone)
-		{
-			Player.Instance.ReceiveInput(MovementDirectionUtilities.MovementDirection.None);
+			if (GameSessionManager.Instance.playState == GameSessionManager.PlayState.DanceMove)
+			{
+				Player.Instance.ReceiveInput(MovementDirectionUtilities.MovementDirection.None);
+			}
+
+			var battleSettings = GameSessionManager.Instance.CurrentLevelBattleSettings();
+			if (battleSettings != null)
+			{
+				Player.Instance.TakeDamage(battleSettings.damagePerMissedBeat);
+			}
 		}
 	}
 

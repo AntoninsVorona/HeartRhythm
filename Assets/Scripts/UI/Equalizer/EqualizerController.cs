@@ -21,6 +21,7 @@ public class EqualizerController : MonoBehaviour
 
 	[SerializeField]
 	private Image equalizerCurrentHp;
+
 	[SerializeField]
 	private Image damagedEqualizerBackground;
 
@@ -113,7 +114,7 @@ public class EqualizerController : MonoBehaviour
 			var line = equalizerLines[nextPoint];
 			line.fillAmount = fillModifier;
 			fillModifier = GetFillAmount(fillModifier);
-			if (fillModifier == MIN_FILL)
+			if (Mathf.Approximately(fillModifier, MIN_FILL))
 			{
 				fillModifier = GetMinFillAmount();
 			}
@@ -129,8 +130,9 @@ public class EqualizerController : MonoBehaviour
 
 	public void UpdateCurrentHp(int currentHp, int maxHp)
 	{
-		equalizerCurrentHp.fillAmount = (float) currentHp / maxHp;
-		currentMaxValue = (float) Player.Instance.GetCurrentHp() / Player.Instance.GetMaxHp();
+		var percentage = (float) currentHp / maxHp;
+		equalizerCurrentHp.fillAmount = percentage;
+		currentMaxValue = Player.Instance.GetCurrentHp() / Player.Instance.GetMaxHp();
 		var prevMaxPoint = currentMaxPoint;
 		currentMaxPoint = Mathf.RoundToInt(currentMaxValue * (MAX_POINT + 1)) - 1;
 		if (currentMaxPoint < 0)
@@ -156,6 +158,27 @@ public class EqualizerController : MonoBehaviour
 		}
 
 		damagedEqualizerBackground.fillAmount = (float) (MAX_POINT - currentMaxPoint) / (MAX_POINT + 1);
+		ApplyHealthEffects(Mathf.RoundToInt(percentage * 100));
+	}
+
+	private void ApplyHealthEffects(int percentage)
+	{
+		const float minPitch = 0.5f;
+		const int basicModeMin = 36;
+		const int basicModeMax = 69;
+		AudioManager.MusicSettings musicSettings;
+		if (percentage >= basicModeMin && percentage <= basicModeMax)
+		{
+			musicSettings = AudioManager.MusicSettings.DEFAULT_SETTINGS;
+		}
+		else
+		{
+			var pitchT = (float) percentage / (basicModeMin - 1);
+			var pitch = Mathf.Lerp(minPitch, 1, pitchT);
+			musicSettings = new AudioManager.MusicSettings(pitch);
+		}
+		
+		// AudioManager.Instance.ApplyMusicSettings(musicSettings);
 	}
 
 	private static Vector2 GetLinePosition(int equalizerPoint)

@@ -8,6 +8,19 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
 	[Serializable]
+	public class MusicSettings
+	{
+		public float pitch;
+
+		public MusicSettings(float pitch)
+		{
+			this.pitch = pitch;
+		}
+
+		public static readonly MusicSettings DEFAULT_SETTINGS = new MusicSettings(1); 
+	}
+	
+	[Serializable]
 	public class PulseEventSubscriber
 	{
 		public UnityEngine.Object owner;
@@ -126,6 +139,15 @@ public class AudioManager : MonoBehaviour
 		{
 			GameUI.Instance.beatController.InitializeBeatController();
 		}
+		else
+		{
+			ApplyMusicSettings(MusicSettings.DEFAULT_SETTINGS);
+		}
+	}
+
+	public void ApplyMusicSettings(MusicSettings settings)
+	{
+		musicAudioSource.pitch = settings.pitch;
 	}
 
 	private void SchedulePlay()
