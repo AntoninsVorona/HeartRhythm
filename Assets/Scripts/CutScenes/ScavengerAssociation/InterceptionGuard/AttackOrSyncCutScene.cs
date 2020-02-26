@@ -43,16 +43,10 @@ public class AttackOrSyncCutScene : CutScene
 		yield return new WaitForSeconds(2f);
 		Player.Instance.Move(new Vector2Int(0, 4));
 		yield return new WaitForSeconds(2.25f);
-		//TODO Play fall animation
-		yield return new WaitForSeconds(2);
+		Player.Instance.PlayAnimation("RunawayForestFall");
+		yield return new WaitForSeconds(6.5f);
 		Player.Instance.SetMovementSpeed(previousMovementSpeed);
-		dialogueFinished = false;
-		GameSessionManager.Instance.StartConversation("RunawayForest");
-		yield return new WaitUntil(() => dialogueFinished);
-		GameCamera.Instance.staticView = false;
-		GameCamera.Instance.ChangeTargetPosition(Player.Instance.transform.position);
-		//TODO Play Stand Animation
-		yield return new WaitForSeconds(1.5f);
+		//TODO Play Woodcutter
 		GameSessionManager.Instance.CutSceneFinished();
 		GameLogic.Instance.Save();
 	}

@@ -1,0 +1,1219 @@
+fileFormatVersion: 2
+guid: 69adc1f3480a4f84faaf68bb777453a1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7579060739073997851
+    second: FallAnimationFull_0
+  - first:
+      213: -1063981936908061942
+    second: FallAnimationFull_1
+  - first:
+      213: 5770642149394928796
+    second: FallAnimationFull_2
+  - first:
+      213: 3393066676149098571
+    second: FallAnimationFull_3
+  - first:
+      213: -6029633342427309168
+    second: FallAnimationFull_4
+  - first:
+      213: -3395361179560934502
+    second: FallAnimationFull_5
+  - first:
+      213: 690765782166483505
+    second: FallAnimationFull_6
+  - first:
+      213: 3717228745025178146
+    second: FallAnimationFull_7
+  - first:
+      213: -8222979590315829496
+    second: FallAnimationFull_8
+  - first:
+      213: -7002630775967054213
+    second: FallAnimationFull_9
+  - first:
+      213: 5806870617582787786
+    second: FallAnimationFull_10
+  - first:
+      213: -4950890165471423882
+    second: FallAnimationFull_11
+  - first:
+      213: -4000100100957467715
+    second: FallAnimationFull_12
+  - first:
+      213: -7806622964669259085
+    second: FallAnimationFull_13
+  - first:
+      213: -2183961320687861608
+    second: FallAnimationFull_14
+  - first:
+      213: -404767921048280619
+    second: FallAnimationFull_15
+  - first:
+      213: -1100749985642877260
+    second: FallAnimationFull_16
+  - first:
+      213: 1937419494736157425
+    second: FallAnimationFull_17
+  - first:
+      213: -3305009227419197934
+    second: FallAnimationFull_18
+  - first:
+      213: 6949343958143089422
+    second: FallAnimationFull_19
+  - first:
+      213: 5327113333546868606
+    second: FallAnimationFull_20
+  - first:
+      213: -1919940878717994456
+    second: FallAnimationFull_21
+  - first:
+      213: -2931698185167321161
+    second: FallAnimationFull_22
+  - first:
+      213: -7387199945156508224
+    second: FallAnimationFull_23
+  - first:
+      213: 6891171582936855427
+    second: FallAnimationFull_24
+  - first:
+      213: -7423754154925305284
+    second: FallAnimationFull_25
+  - first:
+      213: -1141712558861144186
+    second: FallAnimationFull_26
+  - first:
+      213: 2198674216623072936
+    second: FallAnimationFull_27
+  - first:
+      213: 7381967608366949838
+    second: FallAnimationFull_28
+  - first:
+      213: -7997169013745181612
+    second: FallAnimationFull_29
+  - first:
+      213: 6542703604246377591
+    second: FallAnimationFull_30
+  - first:
+      213: 1617094627053381323
+    second: FallAnimationFull_31
+  - first:
+      213: 4982061727875398906
+    second: FallAnimationFull_32
+  - first:
+      213: 7701355659127203458
+    second: FallAnimationFull_33
+  - first:
+      213: 7426540697576918571
+    second: FallAnimationFull_34
+  - first:
+      213: -1127253858182957335
+    second: FallAnimationFull_35
+  - first:
+      213: -3769808831383017365
+    second: FallAnimationFull_36
+  - first:
+      213: 132516146131989865
+    second: FallAnimationFull_37
+  - first:
+      213: 605468729479831261
+    second: FallAnimationFull_38
+  - first:
+      213: -877760784067449587
+    second: FallAnimationFull_39
+  - first:
+      213: -235391064540049975
+    second: FallAnimationFull_40
+  - first:
+      213: -4297234304051434822
+    second: FallAnimationFull_41
+  - first:
+      213: 8952573893218546500
+    second: FallAnimationFull_42
+  - first:
+      213: 5697654567042800523
+    second: FallAnimationFull_43
+  - first:
+      213: -5698557259583159771
+    second: FallAnimationFull_0
+  - first:
+      213: -7378545563620247291
+    second: FallAnimationFull_1
+  - first:
+      213: -7407430141606654367
+    second: FallAnimationFull_2
+  - first:
+      213: 4470297524689748509
+    second: FallAnimationFull_3
+  - first:
+      213: 2245432351101969958
+    second: FallAnimationFull_4
+  - first:
+      213: 467476799611641776
+    second: FallAnimationFull_5
+  - first:
+      213: 6873293086397173072
+    second: FallAnimationFull_6
+  - first:
+      213: -4740244272798618831
+    second: FallAnimationFull_7
+  - first:
+      213: -5400460265301008609
+    second: FallAnimationFull_8
+  - first:
+      213: -3956325427437227393
+    second: FallAnimationFull_9
+  - first:
+      213: -2400463079316100782
+    second: FallAnimationFull_10
+  - first:
+      213: -65076474267137607
+    second: FallAnimationFull_11
+  - first:
+      213: 4539575069596282876
+    second: FallAnimationFull_12
+  - first:
+      213: 8027821938266048582
+    second: FallAnimationFull_13
+  - first:
+      213: 4133115451415973077
+    second: FallAnimationFull_14
+  - first:
+      213: 3176576506506277155
+    second: FallAnimationFull_15
+  - first:
+      213: -4154565253936311148
+    second: FallAnimationFull_16
+  - first:
+      213: 4180053379515288818
+    second: FallAnimationFull_17
+  - first:
+      213: -2346145847184940812
+    second: FallAnimationFull_18
+  - first:
+      213: -6287905777727665723
+    second: FallAnimationFull_19
+  - first:
+      213: -7037684973886991359
+    second: FallAnimationFull_20
+  - first:
+      213: 6932362775347892088
+    second: FallAnimationFull_21
+  - first:
+      213: 3427633723395386968
+    second: FallAnimationFull_22
+  - first:
+      213: -5990877727388010516
+    second: FallAnimationFull_23
+  - first:
+      213: -4470096620636245098
+    second: FallAnimationFull_24
+  - first:
+      213: -841178000475969339
+    second: FallAnimationFull_25
+  - first:
+      213: 1021721805709114164
+    second: FallAnimationFull_26
+  - first:
+      213: 7204007293391813657
+    second: FallAnimationFull_27
+  - first:
+      213: -8398251617631094278
+    second: FallAnimationFull_28
+  - first:
+      213: 4414732615640633724
+    second: FallAnimationFull_29
+  - first:
+      213: 7943323302947493746
+    second: FallAnimationFull_30
+  - first:
+      213: 4030675238016242493
+    second: FallAnimationFull_31
+  - first:
+      213: 5400621317228583232
+    second: FallAnimationFull_32
+  - first:
+      213: -2302009232280586910
+    second: FallAnimationFull_33
+  - first:
+      213: 7607815215269964485
+    second: FallAnimationFull_34
+  - first:
+      213: -6180350774213501791
+    second: FallAnimationFull_35
+  - first:
+      213: -998120935434365280
+    second: FallAnimationFull_36
+  - first:
+      213: -6168039334166428400
+    second: FallAnimationFull_37
+  - first:
+      213: 45932973065943860
+    second: FallAnimationFull_38
+  - first:
+      213: -3150442500918933189
+    second: FallAnimationFull_39
+  - first:
+      213: -8142357118079708435
+    second: FallAnimationFull_40
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FallAnimationFull_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 522825a5d58aae0b0800000000000000
+      internalID: -5698557259583159771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 509716137e32a9990800000000000000
+      internalID: -7378545563620247291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16e830f4885833990800000000000000
+      internalID: -7407430141606654367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d12c07ff9efa90e30800000000000000
+      internalID: 4470297524689748509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6266a9693d0692f10800000000000000
+      internalID: 2245432351101969958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bf96952cafcc7600800000000000000
+      internalID: 467476799611641776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05d0ad355a7d26f50800000000000000
+      internalID: 6873293086397173072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13b2243e2f4473eb0800000000000000
+      internalID: -4740244272798618831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1f1f176006bd05b0800000000000000
+      internalID: -5400460265301008609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7232c93cfe4819c0800000000000000
+      internalID: -3956325427437227393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_10
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2596cec2c87dfaed0800000000000000
+      internalID: -2400463079316100782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_11
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b9821c9a4dc81ff0800000000000000
+      internalID: -65076474267137607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_12
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cff618e597fcffe30800000000000000
+      internalID: 4539575069596282876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_13
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6488f66058d886f60800000000000000
+      internalID: 8027821938266048582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_14
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dcc359da96cb5930800000000000000
+      internalID: 4133115451415973077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_15
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3217820a087751c20800000000000000
+      internalID: 3176576506506277155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_16
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49412f2d9e40856c0800000000000000
+      internalID: -4154565253936311148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_17
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fc0e2cd668820a30800000000000000
+      internalID: 4180053379515288818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_18
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f0a84b48c0d07fd0800000000000000
+      internalID: -2346145847184940812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_19
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c98a69820fdcb8a0800000000000000
+      internalID: -6287905777727665723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_20
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1049c52bdce155e90800000000000000
+      internalID: -7037684973886991359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_21
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87f80c60733b43060800000000000000
+      internalID: 6932362775347892088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_22
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85ea12706b6619f20800000000000000
+      internalID: 3427633723395386968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_23
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce7fc3ea2702cdca0800000000000000
+      internalID: -5990877727388010516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_24
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6937d4f9ec607f1c0800000000000000
+      internalID: -4470096620636245098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_25
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c8a1c8b0198354f0800000000000000
+      internalID: -841178000475969339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_26
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43bff88a192ed2e00800000000000000
+      internalID: 1021721805709114164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_27
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91c31f10776c9f360800000000000000
+      internalID: 7204007293391813657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_28
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af9bfbc46aa637b80800000000000000
+      internalID: -8398251617631094278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_29
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7157957ce7444d30800000000000000
+      internalID: 4414732615640633724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_30
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2779440657a5c3e60800000000000000
+      internalID: 7943323302947493746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_31
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d33dbe606c5dfe730800000000000000
+      internalID: 4030675238016242493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_32
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 049dfcb697cd2fa40800000000000000
+      internalID: 5400621317228583232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_33
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 265fe30ccce9d00e0800000000000000
+      internalID: -2302009232280586910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_34
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ca6afe51a3649960800000000000000
+      internalID: 7607815215269964485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_35
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ac91bb37bbfa3aa0800000000000000
+      internalID: -6180350774213501791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_36
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a6dd882c46f522f0800000000000000
+      internalID: -998120935434365280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_37
+      rect:
+        serializedVersion: 2
+        x: 1184
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0158f5eb7e8b66aa0800000000000000
+      internalID: -6168039334166428400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_38
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43bb21fabcf23a000800000000000000
+      internalID: 45932973065943860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_39
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b390f67bc316744d0800000000000000
+      internalID: -3150442500918933189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallAnimationFull_40
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.1725, y: 0.437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de25c765759800f80800000000000000
+      internalID: -8142357118079708435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

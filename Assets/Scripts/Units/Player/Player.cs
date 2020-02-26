@@ -60,7 +60,6 @@ public class Player : Unit
 	}
 
 	private static readonly int FINISH_DANCE_MOVE_TRIGGER = Animator.StringToHash("FinishDanceMove");
-	private static readonly int IDLE_TRIGGER = Animator.StringToHash("Idle");
 
 	[SerializeField]
 	private CombatData combatData;
@@ -206,7 +205,7 @@ public class Player : Unit
 
 	public void BackToIdleAnimation()
 	{
-		animator.SetTrigger(IDLE_TRIGGER);
+		animator.SetTrigger(AnimatorUtilities.IDLE_TRIGGER);
 	}
 
 	public (bool pickedUpAll, int amountLeft) PickUpItem(Item item, int amount = 1)
@@ -355,6 +354,25 @@ public class Player : Unit
 	protected override bool ApplyDataOnStart()
 	{
 		return false;
+	}
+
+	protected override void PeaceState()
+	{
+		base.PeaceState();
+		animator.SetBool(AnimatorUtilities.PIECE_BOOL, true);
+		animator.SetTrigger(AnimatorUtilities.IDLE_TRIGGER);
+	}
+	
+	protected override void FightState()
+	{
+		base.PeaceState();
+		animator.SetBool(AnimatorUtilities.PIECE_BOOL, false);
+		animator.SetTrigger(AnimatorUtilities.IDLE_TRIGGER);
+	}
+
+	public void PlayAnimation(string trigger)
+	{
+		animator.SetTrigger(trigger);
 	}
 
 	public static Player Instance { get; private set; }

@@ -7,4 +7,6 @@ public static class AnimatorUtilities
 	public static readonly int START_TRIGGER = Animator.StringToHash("Start");
 	public static readonly int STOP_TRIGGER = Animator.StringToHash("Stop");
 	public static readonly int RESET_TRIGGER = Animator.StringToHash("Reset");
+	public static readonly int IDLE_TRIGGER = Animator.StringToHash("Idle");
+	public static readonly int PIECE_BOOL = Animator.StringToHash("Piece");
 }

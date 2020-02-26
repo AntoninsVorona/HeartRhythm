@@ -400,7 +400,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 7103749574173715010, guid: 70679f8229449e64d8390ae6f7d6cddd,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2, y: 2}
@@ -525,6 +525,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DrawingBoardCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860851777215594346, guid: 49f82e130a341a44988ff9079968beff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f82e130a341a44988ff9079968beff, type: 3}
