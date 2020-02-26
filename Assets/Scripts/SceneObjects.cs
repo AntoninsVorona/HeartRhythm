@@ -27,10 +27,13 @@ public class SceneObjects : MonoBehaviour
 			return unitData.OfType<ItemOnGround.ItemOnGroundData>().ToList();
 		}
 	}
-	
+
 	public World currentWorld;
 	public MobManager currentMobManager;
 	public ObstacleManager currentObstacleManager;
+
+	[HideInInspector]
+	public List<Observer> beatListeners = new List<Observer>();
 
 	private string levelName;
 
@@ -38,7 +41,7 @@ public class SceneObjects : MonoBehaviour
 	{
 		this.levelName = levelName;
 	}
-	
+
 	public void Activate()
 	{
 		gameObject.SetActive(true);
@@ -65,5 +68,12 @@ public class SceneObjects : MonoBehaviour
 
 		levelState.unitData = allUnitData;
 		return levelState;
+	}
+
+	public void ApplyBeat()
+	{
+		currentMobManager.MakeMobsActions();
+		beatListeners.RemoveAll(b => b.owner == null);
+		beatListeners.ForEach(b => b.NotifyBegin());
 	}
 }

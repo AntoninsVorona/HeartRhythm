@@ -12,7 +12,8 @@ public class Mob : Unit
 		None = 0,
 		Constant = 1,
 		Random = 2,
-		DefinedArea = 3
+		DefinedArea = 3,
+		FollowPlayer = 4
 	}
 
 	[Serializable]
@@ -79,7 +80,7 @@ public class Mob : Unit
 
 	public MovementSettings movementSettings;
 	private float lastMovementDuringPeaceMode;
-	private Pathfinder pathfinder = new Pathfinder();
+	private readonly Pathfinder pathfinder = new Pathfinder();
 
 	[HideInInspector]
 	public Coroutine peaceModeMovementCoroutine;
@@ -121,6 +122,25 @@ public class Mob : Unit
 				movementSettings.movementDirection =
 					movementSettings.definedArea.GetMovementDirectionWithinArea(currentPosition);
 				Move(movementSettings.movementDirection);
+				break;
+			case TypeOfMovement.FollowPlayer:
+				var (canMove, nextStep) = pathfinder.FindPath(Player.Instance.CurrentPosition, currentPosition);
+				if (canMove)
+				{
+					movementSettings.movementDirection =
+						MovementDirectionUtilities.DirectionFromDifference(currentPosition, nextStep);
+					Move(movementSettings.movementDirection);
+				}
+				else
+				{
+					(canMove, nextStep) = pathfinder.FindPath(Player.Instance.CurrentPosition, currentPosition, true);
+					if (canMove && GameSessionManager.Instance.currentSceneObjects.currentWorld.CanWalk(nextStep).Item1 == GameTile.CantMoveReason.None)
+					{
+						movementSettings.movementDirection =
+							MovementDirectionUtilities.DirectionFromDifference(currentPosition, nextStep);
+						Move(movementSettings.movementDirection);
+					}
+				}
 				break;
 			default:
 				throw new ArgumentOutOfRangeException();

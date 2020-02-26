@@ -26,3 +26,5 @@ MonoBehaviour:
     - {x: 40, y: 4}
   autoStartBattle: 0
   battleMusic: {fileID: 11400000, guid: f15c6cf29facbdc4b88a6859cd32ef01, type: 2}
+  battleSettings:
+    damagePerMissedBeat: 0

@@ -3,16 +3,22 @@ using UnityEngine;
 
 public class MobManager : UnitManager<Mob>
 {
-	private const string PATH = "Mobs/"; 
-	
+	private const string PATH = "Mobs/";
+
 	public void MakeMobsActions()
 	{
-		allUnits.ForEach(m => m.MakeAction());
+		var units = new List<Mob>(allUnits);
+		units.ForEach(m => m.MakeAction());
 	}
 
 	public Mob SpawnMob(string mobName, Vector2Int location, Mob.MovementSettings movementSettings = null)
 	{
 		var mob = Resources.Load<Mob>($"{PATH}{mobName}");
+		return SpawnMob(mob, location, movementSettings);
+	}
+
+	public Mob SpawnMob(Mob mob, Vector2Int location, Mob.MovementSettings movementSettings = null)
+	{
 		var mobInstance = Instantiate(mob, transform);
 		mobInstance.initializeSelf = false;
 		InitializeMob(mobInstance, location, movementSettings);

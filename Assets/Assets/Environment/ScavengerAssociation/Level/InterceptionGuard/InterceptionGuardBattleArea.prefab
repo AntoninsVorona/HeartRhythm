@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 1521203674098410096}
   - component: {fileID: 610986543576554462}
   - component: {fileID: 5403958902782185311}
+  - component: {fileID: 3544946200422315823}
   m_Layer: 0
   m_Name: InterceptionGuardBattleArea
   m_TagString: Untagged
@@ -95,6 +96,7 @@ MonoBehaviour:
   currentWorld: {fileID: 6794937386423404621}
   currentMobManager: {fileID: 1521203674814194060}
   currentObstacleManager: {fileID: 3386207736338818404}
+  beatListeners: []
 --- !u!114 &5403958902782185311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,7 +109,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac713ef713854e1faa6c4f65115dad29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 0, y: 0}
+  position: {x: 9, y: 2}
+--- !u!114 &3544946200422315823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521203674098410097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141a622fd41244e2b977cec0eafda5e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionWhenStartSpawning: {x: 9, y: 2}
+  spawnRate: 3
+  spawnPoint: {x: 0, y: 0}
+  enemyToSpawn: {fileID: 2704897040181694261, guid: 78988e1094ccd54409b68618b009614e,
+    type: 3}
 --- !u!1 &1521203674746251151
 GameObject:
   m_ObjectHideFlags: 0

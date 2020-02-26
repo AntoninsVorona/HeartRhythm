@@ -35,7 +35,7 @@
 	{
 		if (GameSessionManager.Instance.playState == GameSessionManager.PlayState.Basic)
 		{
-			GameSessionManager.Instance.currentSceneObjects.currentMobManager.MakeMobsActions();
+			GameSessionManager.Instance.currentSceneObjects.ApplyBeat();
 		}
 	}
 }

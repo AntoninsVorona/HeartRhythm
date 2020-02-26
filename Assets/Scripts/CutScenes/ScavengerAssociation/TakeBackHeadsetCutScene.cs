@@ -36,6 +36,8 @@ public class TakeBackHeadsetCutScene : CutScene
 		interceptionGuard.Move(playerPosition);
 		yield return new WaitForSeconds(0.25f);
 		yield return GameSessionManager.Instance.LoadLevel(battleArea);
+		SaveSystem.currentGameSave.GetLevelState("ScavengerField").unitData
+			.Add(new Unit.UnitData("InterceptionGuard", new Vector2Int(20, -2)));
 		GameSessionManager.Instance.StartConversation("WhereAmIInterceptionGuard");
 		yield return new WaitUntil(() => dialogueFinished);
 		dialogueFinished = false;

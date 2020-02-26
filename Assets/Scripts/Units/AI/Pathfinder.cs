@@ -5,39 +5,40 @@ using UnityEngine;
 
 public class Pathfinder
 {
-	private List<Node> checkedVector2Ints;
-	private List<Node> uncheckedVector2Ints;
+	private List<Node> checkedCoordinates;
+	private List<Node> uncheckedCoordinates;
 	private List<Vector2Int> finalPath;
 	private Vector2Int currentStep;
 	private Vector2Int final;
 	private Vector2Int ownerPosition;
 
-	public (bool moved, Vector2Int nextStep) FindPath(Vector2Int final, Vector2Int ownerPosition)
+	public (bool canMove, Vector2Int nextStep) FindPath(Vector2Int final, Vector2Int ownerPosition,
+		bool ignoreOtherUnits = false)
 	{
 		this.ownerPosition = ownerPosition;
-		checkedVector2Ints = new List<Node>();
-		uncheckedVector2Ints = new List<Node>();
+		checkedCoordinates = new List<Node>();
+		uncheckedCoordinates = new List<Node>();
 		this.final = final;
 		if (ownerPosition.Equals(final) ||
-		    GameSessionManager.Instance.currentSceneObjects.currentWorld.TileExists(final))
+		    !GameSessionManager.Instance.currentSceneObjects.currentWorld.TileExists(final))
 		{
 			return (false, World.END_COORDINATE);
 		}
 
-		uncheckedVector2Ints.Add(new Node(ownerPosition, null, 0, ComputeCostToEnd(ownerPosition), 0));
+		uncheckedCoordinates.Add(new Node(ownerPosition, null, 0, ComputeCostToEnd(ownerPosition), 0));
 
-		while (uncheckedVector2Ints.Count > 0)
+		while (uncheckedCoordinates.Count > 0)
 		{
-			var current = uncheckedVector2Ints.OrderBy(node => node.CombinedCost()).First();
-			uncheckedVector2Ints.Remove(current);
+			var current = uncheckedCoordinates.OrderBy(node => node.CombinedCost()).First();
+			uncheckedCoordinates.Remove(current);
 			if (current.coordinate == final)
 			{
 				var nextStep = ConstructPath(current);
 				return (true, nextStep);
 			}
 
-			AddNeighbours(current);
-			checkedVector2Ints.Add(current);
+			AddNeighbours(current, ignoreOtherUnits);
+			checkedCoordinates.Add(current);
 		}
 
 		return (false, World.END_COORDINATE);
@@ -66,32 +67,38 @@ public class Pathfinder
 		finalPath.Add(node.coordinate);
 	}
 
-	private void AddNeighbours(Node origin)
+	private void AddNeighbours(Node origin, bool ignoreOtherUnits)
 	{
 		var neighbours = World.NEIGHBOURS;
 		foreach (var coordinate in neighbours.Select(neighbour => origin.coordinate + neighbour))
 		{
-			AddVector2Int(coordinate, origin.curCost, origin);
+			AddCoordinate(coordinate, origin.curCost, origin, ignoreOtherUnits);
 		}
 	}
 
-	private bool AddVector2Int(Vector2Int coordinate, int sum, Node parent)
+	private bool AddCoordinate(Vector2Int coordinate, int sum, Node parent, bool ignoreOtherUnits)
 	{
 		var valid = GameSessionManager.Instance.currentSceneObjects.currentWorld.TileExists(coordinate);
 		if (valid)
 		{
+			var (cantMoveReason, unit) = GameSessionManager.Instance.currentSceneObjects.currentWorld.CanWalk(coordinate);
+			valid = cantMoveReason == GameTile.CantMoveReason.None || cantMoveReason == GameTile.CantMoveReason.Unit && (unit is Player || ignoreOtherUnits);
+		}
+		
+		if (valid)
+		{
 			var newDepth = parent.actionCost + 1;
-			var key = checkedVector2Ints.FirstOrDefault(n => n.Equals(coordinate));
+			var key = checkedCoordinates.FirstOrDefault(n => n.Equals(coordinate));
 			var checkedNotContainsKey = key == null;
 			var curCost = 1 + sum;
 
 			if (checkedNotContainsKey)
 			{
-				if (uncheckedVector2Ints.FirstOrDefault(n => n.Equals(coordinate)) == null)
+				if (uncheckedCoordinates.FirstOrDefault(n => n.Equals(coordinate)) == null)
 				{
 					var neighbour = new Node(coordinate, parent, curCost, ComputeCostToEnd(coordinate),
 						newDepth);
-					uncheckedVector2Ints.Add(neighbour);
+					uncheckedCoordinates.Add(neighbour);
 				}
 
 				return true;
