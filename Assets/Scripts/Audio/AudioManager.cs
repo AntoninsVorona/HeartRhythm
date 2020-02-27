@@ -4,22 +4,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
 	[Serializable]
 	public class MusicSettings
 	{
-		public float pitch;
+		public const float NORMAL_LOWPASS = 22000;
+		public const float MIN_LOWPASS = 300;
+		public float lowPass;
 
-		public MusicSettings(float pitch)
+		public MusicSettings(float lowPass)
 		{
-			this.pitch = pitch;
+			this.lowPass = lowPass;
 		}
 
-		public static readonly MusicSettings DEFAULT_SETTINGS = new MusicSettings(1); 
+		public bool Equals(MusicSettings musicSettings)
+		{
+			return Mathf.RoundToInt(musicSettings.lowPass) == Mathf.RoundToInt(lowPass);
+		}
+
+		public static readonly MusicSettings DEFAULT_SETTINGS = new MusicSettings(NORMAL_LOWPASS);
 	}
-	
+
 	[Serializable]
 	public class PulseEventSubscriber
 	{
@@ -66,6 +74,9 @@ public class AudioManager : MonoBehaviour
 
 	[HideInInspector]
 	public List<PulseEventSubscriber> pulseSubscribersForNextPlay = new List<PulseEventSubscriber>();
+
+	[SerializeField]
+	private AudioMixer masterMixer;
 
 	public AudioSource musicAudioSource;
 
@@ -147,7 +158,7 @@ public class AudioManager : MonoBehaviour
 
 	public void ApplyMusicSettings(MusicSettings settings)
 	{
-		musicAudioSource.pitch = settings.pitch;
+		masterMixer.SetFloat("Lowpass", settings.lowPass);
 	}
 
 	private void SchedulePlay()

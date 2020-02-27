@@ -201,25 +201,29 @@ public class PlayerInput : MonoBehaviour
 				}
 				else
 				{
-					if (GameLogic.Instance.inputDebugEnabled)
+					if (acceptor.FirstBattleInputDone)
 					{
 						switch (GameSessionManager.Instance.CurrentGameState)
 						{
 							case GameSessionManager.GameState.Peace:
 								break;
 							case GameSessionManager.GameState.Fight:
-								switch (acceptor.lastWrongInput)
+								if (GameLogic.Instance.inputDebugEnabled)
 								{
-									case WrongInputType.InvalidInputTime:
-										Debug.LogError("Invalid Input Time!");
-										break;
-									case WrongInputType.AlreadyReceivedAnInput:
-										Debug.LogError("Already Received an Input during this Beat!");
-										break;
-									default:
-										throw new ArgumentOutOfRangeException();
+									switch (acceptor.lastWrongInput)
+									{
+										case WrongInputType.InvalidInputTime:
+											Debug.LogError("Invalid Input Time!");
+											break;
+										case WrongInputType.AlreadyReceivedAnInput:
+											Debug.LogError("Already Received an Input during this Beat!");
+											break;
+										default:
+											throw new ArgumentOutOfRangeException();
+									}
 								}
 
+								Player.Instance.InvalidInputTime();
 								break;
 							default:
 								throw new ArgumentOutOfRangeException();

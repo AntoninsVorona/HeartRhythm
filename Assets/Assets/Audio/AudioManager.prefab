@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseSubscribers: []
   pulseSubscribersForNextPlay: []
+  masterMixer: {fileID: 24100000, guid: bb1671476f8b7a248830714aa51c7372, type: 2}
   musicAudioSource: {fileID: 201512460408891348}
   beatDelay: 0
   bpm: 0

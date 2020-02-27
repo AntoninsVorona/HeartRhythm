@@ -197,7 +197,7 @@ public class GameSessionManager : MonoBehaviour
 		{
 			if (battleArea.autoStartBattle)
 			{
-				InitializeFightWithAnEnemy(battleArea.battleMusic);
+				InitializeFightWithAnEnemy(battleArea);
 				updateGameState = false;
 			}
 		}
@@ -219,14 +219,14 @@ public class GameSessionManager : MonoBehaviour
 		yield return PostLoadSequence();
 	}
 
-	public void InitializeFightWithAnEnemy(Music battleMusic)
+	public void InitializeFightWithAnEnemy(BattleArea battleArea)
 	{
-		Player.Instance.InitializeFightWithEnemyCombatData();
 		GameUI.Instance.FightAnEnemy();
+		Player.Instance.InitializeFightWithEnemyCombatData(battleArea.battleSettings);
 
 		if (CurrentGameState != GameState.Fight)
 		{
-			BeginFightMode(battleMusic);
+			BeginFightMode(battleArea.battleMusic);
 		}
 	}
 
@@ -246,10 +246,11 @@ public class GameSessionManager : MonoBehaviour
 		GameCamera.Instance.staticView = false;
 		if (cameraIsStatic)
 		{
-			GameCamera.Instance.staticView = false;
 			GameCamera.Instance.ChangeTargetPosition((Vector3Int) focusPosition + new Vector3(0.5f, 0.5f), true);
 			GameCamera.Instance.staticView = true;
 		}
+
+		GameCamera.Instance.camera.backgroundColor = currentLevelData.backgroundColor;
 	}
 
 	private IEnumerator PostLoadSequence()

@@ -6,9 +6,8 @@ public class Enemy : Mob
 	[Serializable]
 	public class EnemyInteractionWithPlayerData
 	{
-		public int damageOnContact;
+		public BattleArea.BattleDamage damageOnContact = new BattleArea.BattleDamage(0, 5f);
 		public bool dissipateOnContact = true;
-		public float equalizerShake = 5f;
 	}
 
 	[SerializeField]
@@ -19,9 +18,9 @@ public class Enemy : Mob
 		base.InteractWithObject(unit);
 		if (unit is Player player)
 		{
-			if (enemyInteractionWithPlayerData.damageOnContact > 0)
+			if (enemyInteractionWithPlayerData.damageOnContact.damage > 0)
 			{
-				player.TakeDamage(enemyInteractionWithPlayerData.damageOnContact, enemyInteractionWithPlayerData.equalizerShake);
+				player.TakeDamage(enemyInteractionWithPlayerData.damageOnContact.damage, enemyInteractionWithPlayerData.damageOnContact.equalizerShake);
 			}
 
 			if (enemyInteractionWithPlayerData.dissipateOnContact)

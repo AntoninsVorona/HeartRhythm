@@ -291,9 +291,10 @@ MonoBehaviour:
     moveDuringPeaceMode: 0
     peaceModeMovementDelay: 1
   enemyInteractionWithPlayerData:
-    damageOnContact: 1
+    damageOnContact:
+      damage: 1
+      equalizerShake: 5
     dissipateOnContact: 1
-    equalizerShake: 5
 --- !u!95 &1246679901538086990
 Animator:
   serializedVersion: 3

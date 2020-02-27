@@ -9,6 +9,7 @@ public class LevelData : ScriptableObject
 	public SceneObjects sceneObjects;
 	public DialogueRegistrator dialogueRegistrator;
 	public bool cameraIsStatic;
+	public Color32 backgroundColor = new Color32(22, 19, 19, 255);
 
 	[HideInInspector]
 	public SceneObjects.LevelState levelState;

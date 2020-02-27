@@ -41,7 +41,7 @@ public class TakeBackHeadsetCutScene : CutScene
 		GameSessionManager.Instance.StartConversation("WhereAmIInterceptionGuard");
 		yield return new WaitUntil(() => dialogueFinished);
 		dialogueFinished = false;
-		GameSessionManager.Instance.InitializeFightWithAnEnemy(battleArea.battleMusic);
+		GameSessionManager.Instance.InitializeFightWithAnEnemy(battleArea);
 		GameSessionManager.Instance.CutSceneFinished();
 	}
 }

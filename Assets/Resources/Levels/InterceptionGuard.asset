@@ -16,6 +16,9 @@ MonoBehaviour:
     type: 3}
   dialogueRegistrator: {fileID: 0}
   cameraIsStatic: 0
+  backgroundColor:
+    serializedVersion: 2
+    rgba: 4279440150
   levelState:
     levelName: 
     unitData: []
@@ -27,6 +30,10 @@ MonoBehaviour:
   autoStartBattle: 0
   battleMusic: {fileID: 11400000, guid: f15c6cf29facbdc4b88a6859cd32ef01, type: 2}
   battleSettings:
+    startingHp: 50
+    maxHp: 100
     damagePerMissedBeat: 1
-    equalizerShake: 2.5
+    missedBeatEqualizerShake: 2.5
+    damagePerInvalidInput: 0
+    invalidInputEqualizerShake: 2.5
     hitsInARowToHeal: 3

@@ -232,22 +232,11 @@ public abstract class Unit : MonoBehaviour
 			return null;
 		}
 
-		Coroutine coroutine = null;
+		Coroutine coroutine;
 		var (cantMoveReason, unit) = GameSessionManager.Instance.currentSceneObjects.currentWorld.CanWalk(newPosition);
 		if (cantMoveReason == GameTile.CantMoveReason.None || force)
 		{
-			UnoccupyTile();
-			currentPosition = newPosition;
-			if (force)
-			{
-				ForceMove();
-			}
-			else
-			{
-				coroutine = CoroutineStarter().StartCoroutine(MovementSequence(newPosition));
-			}
-
-			OccupyTile();
+			coroutine = SuccessfulMove(newPosition, force);
 		}
 		else
 		{
@@ -266,6 +255,24 @@ public abstract class Unit : MonoBehaviour
 			}
 		}
 
+		return coroutine;
+	}
+
+	protected virtual Coroutine SuccessfulMove(Vector2Int newPosition, bool force)
+	{
+		UnoccupyTile();
+		currentPosition = newPosition;
+		Coroutine coroutine = null;
+		if (force)
+		{
+			ForceMove();
+		}
+		else
+		{
+			coroutine = CoroutineStarter().StartCoroutine(MovementSequence(newPosition));
+		}
+
+		OccupyTile();
 		return coroutine;
 	}
 

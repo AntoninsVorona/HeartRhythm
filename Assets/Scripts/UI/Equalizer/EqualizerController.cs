@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 public class EqualizerController : MonoBehaviour
 {
@@ -44,6 +41,7 @@ public class EqualizerController : MonoBehaviour
 	private Vector3 shakeRot;
 	private float currentMaxValue;
 	private int currentMaxPoint;
+	private AudioManager.MusicSettings previousMusicSettings;
 
 	public void Initialize()
 	{
@@ -62,6 +60,7 @@ public class EqualizerController : MonoBehaviour
 	{
 		gameObject.SetActive(true);
 		active = true;
+		previousMusicSettings = null;
 	}
 
 	public void Deactivate()
@@ -169,10 +168,9 @@ public class EqualizerController : MonoBehaviour
 
 	private void ApplyHealthEffects(int percentage)
 	{
-		const float minPitch = 0.5f;
 		const int basicModeMin = 41;
-		AudioManager.MusicSettings musicSettings;
 		var corruptionLevel = 0;
+		AudioManager.MusicSettings musicSettings;
 		//TODO Add color change when very high
 		if (percentage >= basicModeMin)
 		{
@@ -210,12 +208,29 @@ public class EqualizerController : MonoBehaviour
 				corruptionLevel = 1;
 			}
 
-			var t = (float) percentage / basicModeMin;
-			musicSettings = new AudioManager.MusicSettings(t);
+			const float middleLowPass = 4000;
+			var point = (float) percentage / basicModeMin;
+			float lowPass;
+			if (point > 0.5f)
+			{
+				var t = Mathf.InverseLerp(0.5f, 1f, point);
+				lowPass = Mathf.Lerp(middleLowPass, AudioManager.MusicSettings.NORMAL_LOWPASS, t);
+			}
+			else
+			{
+				var t = Mathf.InverseLerp(0, 0.5f, point);
+				lowPass = Mathf.Lerp(AudioManager.MusicSettings.MIN_LOWPASS, middleLowPass, t);
+			}
+
+			musicSettings = new AudioManager.MusicSettings(lowPass);
 		}
 
-		//TODO
-		// AudioManager.Instance.ApplyMusicSettings(musicSettings);
+		if (previousMusicSettings == null || !musicSettings.Equals(previousMusicSettings))
+		{
+			previousMusicSettings = musicSettings;
+			AudioManager.Instance.ApplyMusicSettings(previousMusicSettings);
+		}
+
 		GameUI.Instance.corruption.UpdateCorruption(corruptionLevel);
 	}
 

@@ -21,8 +21,8 @@ public class Player : Unit
 	[Serializable]
 	public class CombatData
 	{
-		public int startHp = 50;
-		public int maxHp = 100;
+		public int MaxHp { get; }
+
 		private int successfulBeatsInARow;
 
 		public int SuccessfulBeatsInARow
@@ -50,13 +50,13 @@ public class Player : Unit
 			set
 			{
 				currentHp = value;
-				GameUI.Instance.equalizerController.UpdateCurrentHp(currentHp, maxHp);
+				GameUI.Instance.equalizerController.UpdateCurrentHp(currentHp, MaxHp);
 			}
 		}
 
 		public void Heal(int heal)
 		{
-			var canHeal = maxHp - CurrentHp;
+			var canHeal = MaxHp - CurrentHp;
 			if (heal > canHeal)
 			{
 				heal = canHeal;
@@ -75,14 +75,23 @@ public class Player : Unit
 
 			CurrentHp -= damage;
 		}
+
+		public CombatData(int startHp, int maxHp)
+		{
+			MaxHp = maxHp;
+			CurrentHp = startHp;
+			SuccessfulBeatsInARow = 0;
+		}
 	}
 
 	private static readonly int FINISH_DANCE_MOVE_TRIGGER = Animator.StringToHash("FinishDanceMove");
+	private static readonly int HEADSET_BOOL = Animator.StringToHash("Headset");
 
 	[SerializeField]
 	private CombatData combatData;
 
 	private Inventory inventory;
+
 
 	private Inventory Inventory
 	{
@@ -136,11 +145,16 @@ public class Player : Unit
 			default:
 				throw new ArgumentOutOfRangeException();
 		}
+	}
 
+	protected override Coroutine SuccessfulMove(Vector2Int newPosition, bool force)
+	{
 		if (GameSessionManager.Instance.CurrentLevelBattleSettings() != null)
 		{
 			combatData.SuccessfulBeatsInARow++;
 		}
+
+		return base.SuccessfulMove(newPosition, force);
 	}
 
 	private void ReceiveDanceMove(MovementDirectionUtilities.MovementDirection movementDirection)
@@ -326,15 +340,14 @@ public class Player : Unit
 		return Inventory.ItemsInSlot(slot);
 	}
 
-	public void InitializeFightWithEnemyCombatData()
+	public void InitializeFightWithEnemyCombatData(BattleArea.BattleSettings battleSettings)
 	{
-		combatData.SuccessfulBeatsInARow = 0;
-		combatData.CurrentHp = combatData.startHp;
+		combatData = new CombatData(battleSettings.startingHp, battleSettings.maxHp);
 	}
 
 	public int GetMaxHp()
 	{
-		return combatData.maxHp;
+		return combatData.MaxHp;
 	}
 
 	public float GetCurrentHp()
@@ -376,14 +389,29 @@ public class Player : Unit
 		var battleSettings = GameSessionManager.Instance.CurrentLevelBattleSettings();
 		if (battleSettings != null)
 		{
-			if (battleSettings.damagePerMissedBeat > 0)
+			if (battleSettings.missedBeatDamage.damage > 0)
 			{
-				TakeDamage(battleSettings.damagePerMissedBeat, battleSettings.equalizerShake);
+				TakeDamage(battleSettings.missedBeatDamage.damage, battleSettings.missedBeatDamage.equalizerShake);
 			}
 
 			combatData.SuccessfulBeatsInARow = 0;
 		}
 	}
+
+	public void InvalidInputTime()
+	{
+		var battleSettings = GameSessionManager.Instance.CurrentLevelBattleSettings();
+		if (battleSettings != null)
+		{
+			if (battleSettings.invalidInputDamage.damage > 0)
+			{
+				TakeDamage(battleSettings.invalidInputDamage.damage, battleSettings.invalidInputDamage.equalizerShake);
+			}
+
+			combatData.SuccessfulBeatsInARow = 0;
+		}
+	}
+
 
 	public override void Talk(string text = null)
 	{
@@ -398,6 +426,7 @@ public class Player : Unit
 		var playerData = (PlayerData) unitData;
 		Inventory.LoadData(playerData.inventoryData);
 		Inventory.Initialize();
+		UpdateHeadset();
 	}
 
 	public override UnitData GetUnitData()
@@ -427,6 +456,11 @@ public class Player : Unit
 	public void PlayAnimation(string trigger)
 	{
 		animator.SetTrigger(trigger);
+	}
+
+	public void UpdateHeadset()
+	{
+		animator.SetBool(HEADSET_BOOL, SaveSystem.currentGameSave.globalVariables.wearsHeadset);
 	}
 
 	public static Player Instance { get; private set; }
