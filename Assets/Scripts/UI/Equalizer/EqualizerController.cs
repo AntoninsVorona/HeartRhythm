@@ -137,7 +137,7 @@ public class EqualizerController : MonoBehaviour
 	{
 		var percentage = (float) currentHp / maxHp;
 		equalizerCurrentHp.fillAmount = percentage;
-		currentMaxValue = Player.Instance.GetCurrentHp() / Player.Instance.GetMaxHp();
+		currentMaxValue = (float) currentHp / maxHp;
 		var prevMaxPoint = currentMaxPoint;
 		currentMaxPoint = Mathf.RoundToInt(currentMaxValue * (MAX_POINT + 1)) - 1;
 		if (currentMaxPoint < 0)

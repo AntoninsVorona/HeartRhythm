@@ -350,7 +350,7 @@ public class Player : Unit
 		return combatData.MaxHp;
 	}
 
-	public float GetCurrentHp()
+	public int GetCurrentHp()
 	{
 		return combatData.CurrentHp;
 	}
