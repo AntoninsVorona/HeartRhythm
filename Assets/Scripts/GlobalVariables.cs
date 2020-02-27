@@ -19,12 +19,14 @@ public class GlobalVariables
 		}
 	}
 
-	public GlobalVariables(bool wearsHeadset, ScavengerAssociationVariables scavengerAssociationVariables)
+	public GlobalVariables(bool wearsHeadset, int maxDanceMoveSymbols, ScavengerAssociationVariables scavengerAssociationVariables)
 	{
 		this.wearsHeadset = wearsHeadset;
+		this.maxDanceMoveSymbols = maxDanceMoveSymbols;
 		this.scavengerAssociationVariables = scavengerAssociationVariables;
 	}
 
 	public bool wearsHeadset;
+	public int maxDanceMoveSymbols;
 	public ScavengerAssociationVariables scavengerAssociationVariables;
 }

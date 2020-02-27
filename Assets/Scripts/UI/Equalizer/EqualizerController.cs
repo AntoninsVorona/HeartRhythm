@@ -25,6 +25,9 @@ public class EqualizerController : MonoBehaviour
 	[SerializeField]
 	private Image damagedEqualizerBackground;
 
+	[SerializeField]
+	private RectTransform area;
+
 	[Header("Equalizer Lines")]
 	[SerializeField]
 	private AnimationCurve slowDownCurve;
@@ -37,6 +40,8 @@ public class EqualizerController : MonoBehaviour
 
 	private readonly Dictionary<int, Image> equalizerLines = new Dictionary<int, Image>();
 	private Coroutine bumpCoroutine;
+	private Coroutine shakeCoroutine;
+	private Vector3 shakeRot;
 	private float currentMaxValue;
 	private int currentMaxPoint;
 
@@ -66,6 +71,7 @@ public class EqualizerController : MonoBehaviour
 			StopCoroutine(bumpCoroutine);
 		}
 
+		StopShake();
 		currentMaxPoint = 0;
 		active = false;
 		gameObject.SetActive(false);
@@ -164,21 +170,112 @@ public class EqualizerController : MonoBehaviour
 	private void ApplyHealthEffects(int percentage)
 	{
 		const float minPitch = 0.5f;
-		const int basicModeMin = 36;
-		const int basicModeMax = 69;
+		const int basicModeMin = 41;
 		AudioManager.MusicSettings musicSettings;
-		if (percentage >= basicModeMin && percentage <= basicModeMax)
+		var corruptionLevel = 0;
+		//TODO Add color change when very high
+		if (percentage >= basicModeMin)
 		{
 			musicSettings = AudioManager.MusicSettings.DEFAULT_SETTINGS;
 		}
 		else
 		{
-			var pitchT = (float) percentage / (basicModeMin - 1);
-			var pitch = Mathf.Lerp(minPitch, 1, pitchT);
-			musicSettings = new AudioManager.MusicSettings(pitch);
+			const int corruptionLevel2 = 35;
+			const int corruptionLevel3 = 30;
+			const int corruptionLevel4 = 25;
+			const int corruptionLevel5 = 20;
+			const int corruptionLevel6 = 10;
+			if (percentage <= corruptionLevel6)
+			{
+				corruptionLevel = 6;
+			}
+			else if (percentage <= corruptionLevel5)
+			{
+				corruptionLevel = 5;
+			}
+			else if (percentage <= corruptionLevel4)
+			{
+				corruptionLevel = 4;
+			}
+			else if (percentage <= corruptionLevel3)
+			{
+				corruptionLevel = 3;
+			}
+			else if (percentage <= corruptionLevel2)
+			{
+				corruptionLevel = 2;
+			}
+			else
+			{
+				corruptionLevel = 1;
+			}
+
+			var t = (float) percentage / basicModeMin;
+			musicSettings = new AudioManager.MusicSettings(t);
 		}
-		
+
+		//TODO
 		// AudioManager.Instance.ApplyMusicSettings(musicSettings);
+		GameUI.Instance.corruption.UpdateCorruption(corruptionLevel);
+	}
+
+	public void Shake(float rotPower)
+	{
+		if (shakeCoroutine != null)
+		{
+			StopCoroutine(shakeCoroutine);
+		}
+
+		shakeCoroutine = StartCoroutine(ShakeSequence(rotPower));
+	}
+
+	private IEnumerator ShakeSequence(float rotPower)
+	{
+		const float duration = 0.15f;
+		const int segments = 3;
+		const float segmentTime = duration / segments;
+		var minus = Random.Range(0, 2) == 0;
+		for (var i = 0; i < segments; i++)
+		{
+			minus = !minus;
+			float t = 0;
+			var rotationTarget = new Vector3(0, 0, (minus ? -rotPower : rotPower) / (i + 1));
+			while (t < 1)
+			{
+				t += Time.deltaTime / (segmentTime / 2);
+				Vector3 shakeRotStart = shakeRot;
+				Vector3 shakeRotEnd = rotationTarget;
+
+				shakeRot = Vector3.Lerp(shakeRotStart, shakeRotEnd, t);
+				area.rotation = Quaternion.Euler(shakeRot);
+				yield return null;
+			}
+
+			t = 0;
+			while (t < 1)
+			{
+				t += Time.deltaTime / (segmentTime / 2);
+				Vector3 shakeRotStart = rotationTarget;
+				Vector3 shakeRotEnd = Vector3.zero;
+
+				shakeRot = Vector3.Lerp(shakeRotStart, shakeRotEnd, t);
+				area.rotation = Quaternion.Euler(shakeRot);
+				yield return null;
+			}
+		}
+
+		StopShake();
+	}
+
+	private void StopShake()
+	{
+		shakeRot = Vector3.zero;
+		area.rotation = Quaternion.identity;
+		if (shakeCoroutine != null)
+		{
+			StopCoroutine(shakeCoroutine);
+			shakeCoroutine = null;
+		}
 	}
 
 	private static Vector2 GetLinePosition(int equalizerPoint)

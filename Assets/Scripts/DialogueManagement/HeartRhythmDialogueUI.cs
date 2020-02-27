@@ -102,7 +102,6 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 
 	public void FastForward()
 	{
-		//TODO Button
 		if (lastSubtitlePanel)
 		{
 			var typewriter = lastSubtitlePanel.GetTypewriter();

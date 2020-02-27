@@ -71,7 +71,7 @@ public class DanceMoveUI : MonoBehaviour
 
 	public void InitializeInteraction(Unit interactingWith)
 	{
-		mainSymbolHolder.Initialize(PlayerInput.Instance.maxDanceMoveSymbols, waitingForInput);
+		mainSymbolHolder.Initialize(SaveSystem.currentGameSave.globalVariables.maxDanceMoveSymbols, waitingForInput);
 		var unitInteractions = interactingWith.interactions;
 		for (var i = 0; i < unitInteractions.Count; i++)
 		{

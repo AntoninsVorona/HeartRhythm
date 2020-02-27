@@ -455,6 +455,7 @@ MonoBehaviour:
   active: 0
   equalizerCurrentHp: {fileID: 5757440800698583117}
   damagedEqualizerBackground: {fileID: 496105580098165610}
+  area: {fileID: 6447399498307237403}
   slowDownCurve:
     serializedVersion: 2
     m_Curve:

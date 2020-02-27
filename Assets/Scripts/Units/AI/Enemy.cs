@@ -8,6 +8,7 @@ public class Enemy : Mob
 	{
 		public int damageOnContact;
 		public bool dissipateOnContact = true;
+		public float equalizerShake = 5f;
 	}
 
 	[SerializeField]
@@ -20,7 +21,7 @@ public class Enemy : Mob
 		{
 			if (enemyInteractionWithPlayerData.damageOnContact > 0)
 			{
-				player.TakeDamage(enemyInteractionWithPlayerData.damageOnContact);
+				player.TakeDamage(enemyInteractionWithPlayerData.damageOnContact, enemyInteractionWithPlayerData.equalizerShake);
 			}
 
 			if (enemyInteractionWithPlayerData.dissipateOnContact)

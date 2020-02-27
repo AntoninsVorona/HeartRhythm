@@ -86,15 +86,10 @@ public class GameCamera : MonoBehaviour
 			Vector3 shakeRotEnd = Vector3.zero;
 			Vector3 shakeOffsetEnd = Vector3.zero;
 
-			if (t >= 1 - tSegmentSize)
-			{
-				shakeRotEnd = Vector3.zero;
-				shakeOffsetEnd = Vector3.zero;
-			}
-			else
+			if (t < 1 - tSegmentSize)
 			{
 				shakeRotEnd = new Vector3(0, 0, Random.Range(-rotAmplitude, rotAmplitude));
-				shakeOffsetEnd = Random.insideUnitSphere * posAmplitude;
+				shakeOffsetEnd = Random.insideUnitCircle * posAmplitude;
 			}
 
 			while (t2 < 1)

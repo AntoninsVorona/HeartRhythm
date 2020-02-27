@@ -15,6 +15,7 @@ public class GameUI : MonoBehaviour
 	public BlackAnnouncer blackAnnouncer;
 	public CanvasGroup fadeAlphaCanvasGroup;
 	public RectTransform canvasRect;
+	public Corruption corruption;
 
 	private void Awake()
 	{
@@ -35,6 +36,7 @@ public class GameUI : MonoBehaviour
 		danceMoveUI.Initialize();
 		uiInventory.Close();
 		blackAnnouncer.Close(true);
+		corruption.UpdateCorruption(0);
 	}
 
 	private void Start()

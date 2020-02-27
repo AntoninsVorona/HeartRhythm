@@ -8,6 +8,8 @@ public class BattleArea : LevelData
 	public class BattleSettings
 	{
 		public int damagePerMissedBeat = 1;
+		public float equalizerShake = 2.5f;
+		public int hitsInARowToHeal = 5;
 	}
 
 	public bool autoStartBattle = true;

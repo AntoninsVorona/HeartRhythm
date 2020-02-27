@@ -293,6 +293,7 @@ MonoBehaviour:
   enemyInteractionWithPlayerData:
     damageOnContact: 1
     dissipateOnContact: 1
+    equalizerShake: 5
 --- !u!95 &1246679901538086990
 Animator:
   serializedVersion: 3

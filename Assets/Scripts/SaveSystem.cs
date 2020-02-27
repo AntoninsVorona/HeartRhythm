@@ -244,19 +244,21 @@ public static class SaveSystem
 	{
 		//TODO
 		const string startingLevel = "MainCharacterRoom";
-		MakeDefaultStartingGameSave(startingLevel);
+		MakeDefaultStartingGameSave(startingLevel, 2);
 	}
 
-	public static void MakeDefaultStartingGameSave(string startingLevel)
+	public static void MakeDefaultStartingGameSave(string startingLevel, int maxDanceMoveSymbols)
 	{
 		currentGameSave = new GameSave
 		{
 			currentLevelName = startingLevel,
 			playerData = new Player.PlayerData("Player", Vector2Int.zero,
-				new Inventory.InventoryData("InitialBackpack", null)),
+				new Inventory.InventoryData(null, null)),
 			globalVariables =
-				new GlobalVariables(false, new GlobalVariables.ScavengerAssociationVariables(true,
-					HeadSetHideAndSeekController.HeadSetState.InTrash, false))
+				new GlobalVariables(false, maxDanceMoveSymbols,
+					new GlobalVariables.ScavengerAssociationVariables(true,
+						HeadSetHideAndSeekController.HeadSetState.InTrash, false)
+				)
 		};
 	}
 

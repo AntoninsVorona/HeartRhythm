@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using PixelCrushers.DialogueSystem;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
@@ -17,6 +18,7 @@ public class PlayerInput : MonoBehaviour
 		public bool ReceivedInputThisTimeFrame { get; set; }
 		public bool FirstBattleInputDone { get; set; }
 		public bool ConversationInProgress { get; set; }
+		public bool CutSceneInProgress { get; set; }
 		public bool IgnoreInput { get; set; }
 		public bool DontReceiveAnyInput { get; set; }
 		public bool MainMenuOpened { get; set; }
@@ -27,7 +29,7 @@ public class PlayerInput : MonoBehaviour
 		public bool AcceptInput()
 		{
 			if (IgnoreInput || DontReceiveAnyInput || ConversationInProgress || GameUI.Instance.uiInventory.open ||
-			    MainMenuOpened)
+			    MainMenuOpened || CutSceneInProgress)
 			{
 				return false;
 			}
@@ -57,23 +59,16 @@ public class PlayerInput : MonoBehaviour
 
 		public bool CanToggleMainMenu()
 		{
-			return !ConversationInProgress;
+			return !ConversationInProgress && !CutSceneInProgress;
 		}
 
 		public bool CanToggleInventory()
 		{
-			if (ConversationInProgress ||
-			    GameSessionManager.Instance.CurrentGameState == GameSessionManager.GameState.Fight ||
-			    MainMenuOpened)
-			{
-				return false;
-			}
-
-			return true;
+			return !ConversationInProgress && !CutSceneInProgress &&
+			       GameSessionManager.Instance.CurrentGameState != GameSessionManager.GameState.Fight &&
+			       !MainMenuOpened;
 		}
 	}
-
-	public int maxDanceMoveSymbols = 2;
 
 	[HideInNormalInspector]
 	public Acceptor acceptor;
@@ -122,6 +117,10 @@ public class PlayerInput : MonoBehaviour
 				{
 					GameSessionManager.Instance.OpenMainMenu();
 				}
+				else if (acceptor.ConversationInProgress)
+				{
+					((HeartRhythmDialogueUI) DialogueManager.DialogueUI).FastForward();
+				}
 			}
 
 			if (Input.GetButtonDown("Submit"))
@@ -129,6 +128,10 @@ public class PlayerInput : MonoBehaviour
 				if (GameUI.Instance.uiInventory.open)
 				{
 					GameUI.Instance.uiInventory.ApplySubmit();
+				}
+				else if (acceptor.ConversationInProgress)
+				{
+					((HeartRhythmDialogueUI) DialogueManager.DialogueUI).FastForward();
 				}
 			}
 
@@ -272,7 +275,7 @@ public class PlayerInput : MonoBehaviour
 	{
 		GameUI.Instance.danceMoveUI.AddSymbol(movementDirection, acceptor.danceMoveSet.Count);
 		acceptor.danceMoveSet.Add(movementDirection);
-		if (acceptor.danceMoveSet.Count == maxDanceMoveSymbols)
+		if (acceptor.danceMoveSet.Count == SaveSystem.currentGameSave.globalVariables.maxDanceMoveSymbols)
 		{
 			Player.Instance.EndDanceMove(false);
 		}
@@ -292,16 +295,7 @@ public class PlayerInput : MonoBehaviour
 				Debug.LogError("Missed the Beat!");
 			}
 
-			if (GameSessionManager.Instance.playState == GameSessionManager.PlayState.DanceMove)
-			{
-				Player.Instance.ReceiveInput(MovementDirectionUtilities.MovementDirection.None);
-			}
-
-			var battleSettings = GameSessionManager.Instance.CurrentLevelBattleSettings();
-			if (battleSettings != null)
-			{
-				Player.Instance.TakeDamage(battleSettings.damagePerMissedBeat);
-			}
+			Player.Instance.MissedBeat();
 		}
 	}
 

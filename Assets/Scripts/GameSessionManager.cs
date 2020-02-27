@@ -255,10 +255,7 @@ public class GameSessionManager : MonoBehaviour
 	private IEnumerator PostLoadSequence()
 	{
 		yield return LoadingUI.Instance.StopLoading();
-		if (!currentCutScene)
-		{
-			PlayerInput.Instance.acceptor.DontReceiveAnyInput = false;
-		}
+		PlayerInput.Instance.acceptor.DontReceiveAnyInput = false;
 	}
 
 	private void GameStateChanged()
@@ -316,7 +313,7 @@ public class GameSessionManager : MonoBehaviour
 	{
 		Player.Instance.StopTalk(true);
 		currentCutScene = Instantiate(cutScene);
-		PlayerInput.Instance.acceptor.DontReceiveAnyInput = true;
+		PlayerInput.Instance.acceptor.CutSceneInProgress = true;
 		PlayerInput.Instance.acceptor.FirstBattleInputDone = false;
 		GameUI.Instance.CutSceneStarted();
 		currentCutScene.StartCutScene();
@@ -328,7 +325,7 @@ public class GameSessionManager : MonoBehaviour
 		if (force)
 		{
 			GameUI.Instance.CutSceneFinished(true);
-			PlayerInput.Instance.acceptor.DontReceiveAnyInput = false;
+			PlayerInput.Instance.acceptor.CutSceneInProgress = false;
 		}
 		else
 		{
@@ -340,7 +337,7 @@ public class GameSessionManager : MonoBehaviour
 	{
 		GameUI.Instance.CutSceneFinished();
 		yield return new WaitForSeconds(1);
-		PlayerInput.Instance.acceptor.DontReceiveAnyInput = false;
+		PlayerInput.Instance.acceptor.CutSceneInProgress = false;
 	}
 
 	public SceneObjects.LevelState GetLevelState(bool includeEverything)

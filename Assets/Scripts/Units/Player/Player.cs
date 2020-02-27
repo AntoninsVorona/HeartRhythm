@@ -11,8 +11,8 @@ public class Player : Unit
 	{
 		public Inventory.InventoryData inventoryData;
 
-		public PlayerData(string identifierName, Vector2Int currentPosition,
-			Inventory.InventoryData inventoryData) : base(identifierName, currentPosition)
+		public PlayerData(string identifierName, Vector2Int currentPosition, Inventory.InventoryData inventoryData) :
+			base(identifierName, currentPosition)
 		{
 			this.inventoryData = inventoryData;
 		}
@@ -23,6 +23,24 @@ public class Player : Unit
 	{
 		public int startHp = 50;
 		public int maxHp = 100;
+		private int successfulBeatsInARow;
+
+		public int SuccessfulBeatsInARow
+		{
+			get => successfulBeatsInARow;
+			set
+			{
+				if (value == GameSessionManager.Instance.CurrentLevelBattleSettings().hitsInARowToHeal)
+				{
+					successfulBeatsInARow = 0;
+					Instance.Heal(1);
+				}
+				else
+				{
+					successfulBeatsInARow = value;
+				}
+			}
+		}
 
 		private int currentHp;
 
@@ -117,6 +135,11 @@ public class Player : Unit
 				break;
 			default:
 				throw new ArgumentOutOfRangeException();
+		}
+
+		if (GameSessionManager.Instance.CurrentLevelBattleSettings() != null)
+		{
+			combatData.SuccessfulBeatsInARow++;
 		}
 	}
 
@@ -305,6 +328,7 @@ public class Player : Unit
 
 	public void InitializeFightWithEnemyCombatData()
 	{
+		combatData.SuccessfulBeatsInARow = 0;
 		combatData.CurrentHp = combatData.startHp;
 	}
 
@@ -321,14 +345,43 @@ public class Player : Unit
 	public void Heal(int heal)
 	{
 		combatData.Heal(heal);
+		//TODO Green Particles
 	}
 
-	public void TakeDamage(int damage)
+	public void TakeDamage(int damage, float equalizerShake = 5f)
 	{
 		combatData.TakeDamage(damage);
 		if (combatData.CurrentHp == 0)
 		{
 			Die();
+		}
+		else
+		{
+			if (equalizerShake > 0)
+			{
+				GameUI.Instance.equalizerController.Shake(equalizerShake);
+			}
+
+			combatData.SuccessfulBeatsInARow = 0;
+		}
+	}
+
+	public void MissedBeat()
+	{
+		if (GameSessionManager.Instance.playState == GameSessionManager.PlayState.DanceMove)
+		{
+			ReceiveInput(MovementDirectionUtilities.MovementDirection.None);
+		}
+
+		var battleSettings = GameSessionManager.Instance.CurrentLevelBattleSettings();
+		if (battleSettings != null)
+		{
+			if (battleSettings.damagePerMissedBeat > 0)
+			{
+				TakeDamage(battleSettings.damagePerMissedBeat, battleSettings.equalizerShake);
+			}
+
+			combatData.SuccessfulBeatsInARow = 0;
 		}
 	}
 
@@ -342,7 +395,8 @@ public class Player : Unit
 		base.ApplyUnitData(unitData);
 		GetComponent<DialogueSystemEvents>().conversationEvents.onConversationEnd
 			.AddListener(t => GameSessionManager.Instance.EndConversation());
-		Inventory.LoadData(((PlayerData) unitData)?.inventoryData);
+		var playerData = (PlayerData) unitData;
+		Inventory.LoadData(playerData.inventoryData);
 		Inventory.Initialize();
 	}
 
@@ -362,7 +416,7 @@ public class Player : Unit
 		animator.SetBool(AnimatorUtilities.PIECE_BOOL, true);
 		animator.SetTrigger(AnimatorUtilities.IDLE_TRIGGER);
 	}
-	
+
 	protected override void FightState()
 	{
 		base.PeaceState();
