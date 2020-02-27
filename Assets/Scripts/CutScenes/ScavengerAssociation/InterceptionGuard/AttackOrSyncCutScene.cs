@@ -27,7 +27,6 @@ public class AttackOrSyncCutScene : CutScene
 		yield return new WaitForSeconds(0.25f);
 		Player.Instance.Move(new Vector2Int(22, -1));
 		yield return new WaitForSeconds(0.25f);
-		//TODO Place InterceptionGuardLyingOnTheGround
 		yield return GameSessionManager.Instance.LoadLevel(runawayForest, 0);
 		GameCamera.Instance.ChangeTargetPosition(new Vector3(3, 8));
 		GameCamera.Instance.staticView = true;

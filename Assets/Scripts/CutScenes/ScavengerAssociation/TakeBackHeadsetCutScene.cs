@@ -13,6 +13,7 @@ public class TakeBackHeadsetCutScene : CutScene
 		SaveSystem.currentGameSave.globalVariables.wearsHeadset = true;
 		dialogueFinished = false;
 		// //TODO Play Take Animation
+		Player.Instance.UpdateHeadset();
 		GameSessionManager.Instance.StartConversation("HeadSetTakenBack");
 		yield return new WaitUntil(() => dialogueFinished);
 		dialogueFinished = false;
