@@ -86,7 +86,7 @@ MonoBehaviour:
   - id: 2
     fields:
     - title: Name
-      value: GuardInsideBuilding
+      value: ScavengerAssociationGuard
       type: 0
       typeString: CustomFieldType_Text
     - title: Pictures
@@ -106,8 +106,7 @@ MonoBehaviour:
       type: 0
       typeString: 
     portrait: {fileID: 0}
-    spritePortrait: {fileID: 5665697985723416187, guid: c38117f833459cb438e25049979fdb31,
-      type: 3}
+    spritePortrait: {fileID: 21300000, guid: 3c21b530857ed0249ba7583528d6a745, type: 3}
     alternatePortraits: []
     spritePortraits: []
   - id: 4

@@ -461,6 +461,7 @@ public class Player : Unit
 	public void UpdateHeadset()
 	{
 		animator.SetBool(HEADSET_BOOL, SaveSystem.currentGameSave.globalVariables.wearsHeadset);
+		animator.SetTrigger(AnimatorUtilities.IDLE_TRIGGER);
 	}
 
 	public static Player Instance { get; private set; }
