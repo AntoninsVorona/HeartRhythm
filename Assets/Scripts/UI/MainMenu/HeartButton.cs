@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class HeartButton : FillingButton
 {
 	[SerializeField]
-	private UnityEvent clickEvent;
+	protected UnityEvent clickEvent;
 	[SerializeField]
 	private AbstractMainMenu.HeartSettings heartSettings = AbstractMainMenu.HeartSettings.DEFAULT_SETTINGS;
 

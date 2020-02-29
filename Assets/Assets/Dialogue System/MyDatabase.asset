@@ -354,6 +354,42 @@ MonoBehaviour:
         destinationDialogueID: 3
         isConnector: 0
         priority: 2
+      - originConversationID: 1
+        originDialogueID: 1
+        destinationConversationID: 1
+        destinationDialogueID: 15
+        isConnector: 0
+        priority: 2
+      - originConversationID: 1
+        originDialogueID: 1
+        destinationConversationID: 1
+        destinationDialogueID: 16
+        isConnector: 0
+        priority: 2
+      - originConversationID: 1
+        originDialogueID: 1
+        destinationConversationID: 1
+        destinationDialogueID: 17
+        isConnector: 0
+        priority: 2
+      - originConversationID: 1
+        originDialogueID: 1
+        destinationConversationID: 1
+        destinationDialogueID: 18
+        isConnector: 0
+        priority: 2
+      - originConversationID: 1
+        originDialogueID: 1
+        destinationConversationID: 1
+        destinationDialogueID: 19
+        isConnector: 0
+        priority: 2
+      - originConversationID: 1
+        originDialogueID: 1
+        destinationConversationID: 1
+        destinationDialogueID: 20
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: 
       onExecute:
@@ -1297,54 +1333,10 @@ MonoBehaviour:
         y: 548.7235
         width: 160
         height: 30
-    canvasScrollPosition: {x: 20.212769, y: 90.42557}
-    canvasZoom: 0.94
-  - id: 2
-    fields:
-    - title: Title
-      value: DuelGuardInsideBuilding
-      type: 0
-      typeString: CustomFieldType_Text
-    - title: Pictures
-      value: '[]'
-      type: 3
-      typeString: CustomFieldType_Files
-    - title: Description
-      value: 
-      type: 0
-      typeString: CustomFieldType_Text
-    - title: Actor
-      value: 1
-      type: 5
-      typeString: CustomFieldType_Actor
-    - title: Conversant
-      value: 2
-      type: 5
-      typeString: CustomFieldType_Actor
-    overrideSettings:
-      useOverrides: 0
-      overrideSubtitleSettings: 0
-      showNPCSubtitlesDuringLine: 1
-      showNPCSubtitlesWithResponses: 1
-      showPCSubtitlesDuringLine: 0
-      skipPCSubtitleAfterResponseMenu: 0
-      subtitleCharsPerSecond: 30
-      minSubtitleSeconds: 2
-      continueButton: 0
-      overrideSequenceSettings: 0
-      defaultSequence: 
-      defaultPlayerSequence: 
-      defaultResponseMenuSequence: 
-      overrideInputSettings: 0
-      alwaysForceResponseMenu: 1
-      includeInvalidEntries: 0
-      responseTimeout: 0
-    nodeColor: 
-    dialogueEntries:
-    - id: 0
+    - id: 15
       fields:
       - title: Title
-        value: START
+        value: New Dialogue Entry
         type: 0
         typeString: 
       - title: Pictures
@@ -1384,81 +1376,10 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: None()
-        type: 0
-        typeString: 
-      conversationID: 2
-      isRoot: 0
-      isGroup: 0
-      nodeColor: 
-      delaySimStatus: 0
-      falseConditionAction: Block
-      conditionPriority: 2
-      outgoingLinks:
-      - originConversationID: 2
-        originDialogueID: 0
-        destinationConversationID: 2
-        destinationDialogueID: 1
-        isConnector: 0
-        priority: 2
-      conditionsString: 
-      userScript: 
-      onExecute:
-        m_PersistentCalls:
-          m_Calls: []
-      canvasRect:
-        serializedVersion: 2
-        x: 279
-        y: 42
-        width: 160
-        height: 30
-    - id: 1
-      fields:
-      - title: Title
         value: 
         type: 0
         typeString: 
-      - title: Pictures
-        value: '[]'
-        type: 3
-        typeString: CustomFieldType_Files
-      - title: Description
-        value: 
-        type: 0
-        typeString: 
-      - title: Actor
-        value: 2
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Conversant
-        value: 1
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Menu Text
-        value: 
-        type: 0
-        typeString: 
-      - title: Dialogue Text
-        value: LET'S D-D-D-DUEL!
-        type: 0
-        typeString: 
-      - title: Parenthetical
-        value: 
-        type: 0
-        typeString: 
-      - title: Audio Files
-        value: '[]'
-        type: 3
-        typeString: CustomFieldType_Files
-      - title: Video File
-        value: 
-        type: 0
-        typeString: 
-      - title: Sequence
-        value: 
-        type: 0
-        typeString: 
-      conversationID: 2
+      conversationID: 1
       isRoot: 0
       isGroup: 0
       nodeColor: 
@@ -1467,18 +1388,343 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: StartDuel()
+      userScript: 
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 279
-        y: 92
+        x: 560
+        y: 101.9149
         width: 160
         height: 30
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 1
+    - id: 16
+      fields:
+      - title: Title
+        value: New Dialogue Entry
+        type: 0
+        typeString: 
+      - title: Pictures
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Parenthetical
+        value: 
+        type: 0
+        typeString: 
+      - title: Audio Files
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Video File
+        value: 
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 1
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 467.44678
+        y: 35.95746
+        width: 160
+        height: 30
+    - id: 17
+      fields:
+      - title: Title
+        value: New Dialogue Entry
+        type: 0
+        typeString: 
+      - title: Pictures
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Parenthetical
+        value: 
+        type: 0
+        typeString: 
+      - title: Audio Files
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Video File
+        value: 
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 1
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 670.6383
+        y: 43.40425
+        width: 160
+        height: 30
+    - id: 18
+      fields:
+      - title: Title
+        value: New Dialogue Entry
+        type: 0
+        typeString: 
+      - title: Pictures
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Parenthetical
+        value: 
+        type: 0
+        typeString: 
+      - title: Audio Files
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Video File
+        value: 
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 1
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 683.4043
+        y: 177.44681
+        width: 160
+        height: 30
+    - id: 19
+      fields:
+      - title: Title
+        value: New Dialogue Entry
+        type: 0
+        typeString: 
+      - title: Pictures
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Parenthetical
+        value: 
+        type: 0
+        typeString: 
+      - title: Audio Files
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Video File
+        value: 
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 1
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 651.4893
+        y: 324.25534
+        width: 160
+        height: 30
+    - id: 20
+      fields:
+      - title: Title
+        value: New Dialogue Entry
+        type: 0
+        typeString: 
+      - title: Pictures
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Parenthetical
+        value: 
+        type: 0
+        typeString: 
+      - title: Audio Files
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Video File
+        value: 
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 1
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 644.0426
+        y: 427.4468
+        width: 160
+        height: 30
+    canvasScrollPosition: {x: 113.82977, y: 0}
+    canvasZoom: 0.94
   - id: 3
     fields:
     - title: Title

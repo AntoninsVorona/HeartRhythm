@@ -18,12 +18,16 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 	[SerializeField]
 	private TextMeshProUGUI playerName;
 
+	[SerializeField]
+	private ScrollRect responseRect;
+
 	private bool hasShownSubtitle;
 	private int lastSpeakerId;
 	private StandardUISubtitlePanel lastSubtitlePanel;
 	private StandardUIMenuPanel lastMenuPanel;
 	private Coroutine typeWriterDelay;
 	private float typeWriterSpeed;
+	private DialogueFillingButton lastSelectedDialogueButton;
 
 	public override void Start()
 	{
@@ -32,6 +36,34 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 		playerName.text = actor.fields.First(f => f.title == "Display Name").value;
 		playerPortrait.SetActive(true);
 		base.Start();
+	}
+
+	public override void Update()
+	{
+		base.Update();
+		var hit = AbstractMainMenu.Instance.CurrentUIHit();
+		if (hit)
+		{
+			var dialogueFillingButton = hit.GetComponentInParent<DialogueFillingButton>();
+			if (dialogueFillingButton)
+			{
+				if (dialogueFillingButton != lastSelectedDialogueButton)
+				{
+					if (lastSelectedDialogueButton)
+					{
+						lastSelectedDialogueButton.Deselect();
+					}
+
+					lastSelectedDialogueButton = dialogueFillingButton;
+					lastSelectedDialogueButton.Select();
+				}
+
+				if (Input.GetMouseButtonDown(0))
+				{
+					dialogueFillingButton.Click();
+				}
+			}
+		}
 	}
 
 	public override void Open()
@@ -98,6 +130,25 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 		lastSpeakerId = -1;
 		lastSubtitlePanel = null;
 		lastMenuPanel = conversationUIElements.defaultMenuPanel;
+		Debug.Log(lastMenuPanel.instantiatedButtons.Count);
+		foreach (var responseButton in lastMenuPanel.instantiatedButtons.Select(b =>
+			b.GetComponent<HeartRhythmResponseButton>()))
+		{
+			responseButton.fillingButton.ResetFill();
+			responseButton.fillingButton.Deselect();
+		}
+
+		responseRect.verticalNormalizedPosition = 1;
+	}
+
+	public override void HideResponses()
+	{
+		base.HideResponses();
+		if (lastSelectedDialogueButton)
+		{
+			lastSelectedDialogueButton.Deselect();
+			lastSelectedDialogueButton = null;
+		}
 	}
 
 	public void FastForward()
