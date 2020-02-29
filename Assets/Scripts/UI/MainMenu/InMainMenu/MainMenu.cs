@@ -46,7 +46,6 @@ public class MainMenu : AbstractMainMenu
 	{
 		introController.Initialize();
 		var stages = introController.GetStagesAmount();
-		yield return new WaitForSeconds(0.03f);
 		for (var i = 1; i < stages; i++)
 		{
 			yield return new WaitForSeconds(0.97f);

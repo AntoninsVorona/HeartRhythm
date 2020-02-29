@@ -106,7 +106,7 @@ public class GameLogic : MonoBehaviour
 	{
 		yield return LoadingUI.Instance.StartLoading();
 		yield return SceneManager.LoadSceneAsync(MAIN_MENU_SCENE);
-		yield return LoadingUI.Instance.StopLoading();
+		LoadingUI.Instance.StopLoading();
 		((MainMenu) AbstractMainMenu.Instance).Show();
 	}
 
