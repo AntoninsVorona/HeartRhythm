@@ -545,7 +545,7 @@ PrefabInstance:
     - target: {fileID: 3710416115441813072, guid: 1c9a7e5307868d64d8d9402aeb6aff8d,
         type: 3}
       propertyPath: wearsHeadset
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3710416115441813073, guid: 1c9a7e5307868d64d8d9402aeb6aff8d,
         type: 3}

@@ -32,8 +32,10 @@ MonoBehaviour:
   battleSettings:
     startingHp: 50
     maxHp: 100
-    damagePerMissedBeat: 1
-    missedBeatEqualizerShake: 2.5
-    damagePerInvalidInput: 0
-    invalidInputEqualizerShake: 2.5
+    missedBeatDamage:
+      damage: 1
+      equalizerShake: 2.5
+    invalidInputDamage:
+      damage: 1
+      equalizerShake: 2.5
     hitsInARowToHeal: 3
