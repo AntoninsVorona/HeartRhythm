@@ -1139,11 +1139,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 38901602}
-    - target: {fileID: 4325617954897102606, guid: 8f18fb76ac5bae84cbe06be47abce977,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4325617955434805406, guid: 8f18fb76ac5bae84cbe06be47abce977,
         type: 3}
       propertyPath: m_fontSize
@@ -1877,41 +1872,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameSessionManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 6414209970118120687, guid: dfb5e19f6f4e2e444801c4da3e688ea0,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6414209970118120687, guid: dfb5e19f6f4e2e444801c4da3e688ea0,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6414209970118120687, guid: dfb5e19f6f4e2e444801c4da3e688ea0,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6414209970118120687, guid: dfb5e19f6f4e2e444801c4da3e688ea0,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6414209970118120687, guid: dfb5e19f6f4e2e444801c4da3e688ea0,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6414209970118120687, guid: dfb5e19f6f4e2e444801c4da3e688ea0,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6414209970118120687, guid: dfb5e19f6f4e2e444801c4da3e688ea0,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6414209970118120687, guid: dfb5e19f6f4e2e444801c4da3e688ea0,
         type: 3}
