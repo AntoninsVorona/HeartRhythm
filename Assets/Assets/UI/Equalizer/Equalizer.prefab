@@ -456,6 +456,9 @@ MonoBehaviour:
   equalizerCurrentHp: {fileID: 5757440800698583117}
   damagedEqualizerBackground: {fileID: 496105580098165610}
   area: {fileID: 6447399498307237403}
+  defaultColor: {r: 0.30588236, g: 0.8784314, b: 0.12941177, a: 1}
+  defaultToFadeOutColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 0.39215687}
+  completeFadeColor: {r: 0.25490198, g: 0.25490198, b: 0.25490198, a: 0.25490198}
   slowDownCurve:
     serializedVersion: 2
     m_Curve:

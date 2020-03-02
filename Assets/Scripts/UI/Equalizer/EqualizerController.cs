@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class EqualizerController : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class EqualizerController : MonoBehaviour
 	private const int EQUALIZER_MAX_DOTS = 10;
 	private const int MIN_POINT = 0;
 	private const int MAX_POINT = 19;
-	private const float MIN_FILL = 0; // 1f / EQUALIZER_MAX_DOTS;
 	private const float FILL_MODIFIER = 1f / EQUALIZER_MAX_DOTS;
 
 	[HideInNormalInspector]
@@ -27,6 +27,15 @@ public class EqualizerController : MonoBehaviour
 
 	[Header("Equalizer Lines")]
 	[SerializeField]
+	private Color defaultColor;
+
+	[SerializeField]
+	private Color defaultToFadeOutColor;
+
+	[SerializeField]
+	private Color completeFadeColor;
+
+	[SerializeField]
 	private AnimationCurve slowDownCurve;
 
 	[SerializeField]
@@ -39,6 +48,7 @@ public class EqualizerController : MonoBehaviour
 	private Coroutine bumpCoroutine;
 	private Coroutine shakeCoroutine;
 	private Vector3 shakeRot;
+	private float currentHealthPercentage;
 	private float currentMaxValue;
 	private int currentMaxPoint;
 	private AudioManager.MusicSettings previousMusicSettings;
@@ -89,11 +99,13 @@ public class EqualizerController : MonoBehaviour
 	private IEnumerator BumpSequence()
 	{
 		var randomHpPoint = RandomHpPoint();
+		var (color, random) = InitLineColor();
 		var firstLine = equalizerLines[randomHpPoint];
-		firstLine.fillAmount = 1;
-
-		CreateSideBumps(randomHpPoint, -1);
-		CreateSideBumps(randomHpPoint, 1);
+		var startFill = GetStartFill();
+		firstLine.fillAmount = startFill;
+		firstLine.color = color;
+		CreateSideBumps(randomHpPoint, -1, startFill, color, random);
+		CreateSideBumps(randomHpPoint, 1, startFill, color, random);
 		InitLinesBeyondMaxPoint();
 		float timePassed = 0;
 		while (true)
@@ -104,27 +116,184 @@ public class EqualizerController : MonoBehaviour
 			for (var i = 0; i <= currentMaxPoint; i++)
 			{
 				var line = equalizerLines[i];
-				var fillAmount = GetFillAmount(line.fillAmount);
+				var fillAmount = GetFillAmount(line.fillAmount, 0);
 				line.fillAmount = fillAmount;
 			}
 		}
 	}
 
-	private void CreateSideBumps(int startPoint, int modifier)
+	private (Color color, bool random) InitLineColor()
 	{
+		var percentage = currentHealthPercentage * 100;
+		const int fadeOutColorEdge = 41;
+		const int defaultColorUntil = 60;
+		const int rainbowStarting = 80;
+		var random = false;
+		Color color;
+		if (percentage < fadeOutColorEdge)
+		{
+			var t = percentage / fadeOutColorEdge;
+			if (t > 0.5f)
+			{
+				var colorT = Mathf.InverseLerp(0.5f, 1f, t);
+				color = Color.Lerp(defaultToFadeOutColor, defaultColor, colorT);
+			}
+			else
+			{
+				var colorT = Mathf.InverseLerp(0, 0.5f, t);
+				color = Color.Lerp(completeFadeColor, defaultToFadeOutColor, colorT);
+			}
+		}
+		else if (percentage <= defaultColorUntil)
+		{
+			color = defaultColor;
+		}
+		else if (percentage < rainbowStarting)
+		{
+			color = RandomColor();
+		}
+		else
+		{
+			random = true;
+			color = RandomColor();
+		}
+
+		return (color, random);
+
+		Color RandomColor()
+		{
+			return Random.ColorHSV(0, 1, 0.6f, 1, 0.5f, 0.85f, 1, 1);
+		}
+	}
+
+	private void CreateSideBumps(int startPoint, int modifier, float startFill, Color color, bool random)
+	{
+		Color.RGBToHSV(color, out var h, out var s, out var v);
+		const float hueModifier = 0.025f;
+		var currentHueModifier = hueModifier * modifier;
 		var nextPoint = startPoint + modifier;
-		var fillModifier = GetFillAmount(1);
+		var minFill = GetMinFill();
+		var fillModifier = GetFillAmount(startFill, minFill);
 		while (nextPoint >= MIN_POINT && nextPoint <= currentMaxPoint)
 		{
 			var line = equalizerLines[nextPoint];
 			line.fillAmount = fillModifier;
-			fillModifier = GetFillAmount(fillModifier);
-			if (Mathf.Approximately(fillModifier, MIN_FILL))
+			fillModifier = GetFillAmount(fillModifier, minFill);
+			if (Mathf.Approximately(fillModifier, minFill))
 			{
 				fillModifier = GetMinFillAmount();
 			}
 
+			if (random)
+			{
+				h += currentHueModifier;
+				if (h > 1)
+				{
+					h -= 1;
+				}
+				else if (h < 0)
+				{
+					h += 1;
+				}
+
+				color = Color.HSVToRGB(h, s, v);
+			}
+
+			line.color = color;
+
 			nextPoint += modifier;
+		}
+	}
+
+	private float GetStartFill()
+	{
+		if (currentHealthPercentage > 0.4f)
+		{
+			return 1;
+		}
+
+		if (currentHealthPercentage > 0.2f)
+		{
+			return 0.8f;
+		}
+
+		return 0.6f;
+	}
+
+	private float GetMinFill()
+	{
+		if (currentHealthPercentage > 0.6f)
+		{
+			return FILL_MODIFIER * 2;
+		}
+
+		if (currentHealthPercentage > 0.8f)
+		{
+			return FILL_MODIFIER * 3;
+		}
+
+		return 0;
+	}
+	
+	private float GetFillAmount(float start, float minFill)
+	{
+		float modifier;
+		switch (Random.Range(0, 5))
+		{
+			case 2:
+			case 3:
+				modifier = FILL_MODIFIER * 2;
+				break;
+			case 4:
+				modifier = FILL_MODIFIER * 3;
+				break;
+			default:
+				modifier = FILL_MODIFIER;
+				break;
+		}
+
+		var fillAmount = start - modifier;
+
+		if (fillAmount < minFill)
+		{
+			fillAmount = minFill;
+		}
+
+		return fillAmount;
+	}
+
+	private float GetMinFillAmount()
+	{
+		int random;
+		if (currentHealthPercentage > 0.8f)
+		{
+			random = Random.Range(4, 8);
+		}
+		else if (currentHealthPercentage > 0.6f)
+		{
+			random = Random.Range(3, 6);
+		}
+		else
+		{
+			random = Random.Range(0, 3);
+		}
+
+		switch (random)
+		{
+			case 1:
+				return FILL_MODIFIER * 3;
+			case 2:
+			case 3:
+				return FILL_MODIFIER * 4;
+			case 4:
+				return FILL_MODIFIER * 5;
+			case 5:
+			case 6:
+				return FILL_MODIFIER * 6;
+			case 7:
+				return FILL_MODIFIER * 7;
+			default:
+				return FILL_MODIFIER * 2;
 		}
 	}
 
@@ -135,8 +304,8 @@ public class EqualizerController : MonoBehaviour
 
 	public void UpdateCurrentHp(int currentHp, int maxHp)
 	{
-		var percentage = (float) currentHp / maxHp;
-		equalizerCurrentHp.fillAmount = percentage;
+		currentHealthPercentage = (float) currentHp / maxHp;
+		equalizerCurrentHp.fillAmount = currentHealthPercentage;
 		currentMaxValue = (float) currentHp / maxHp;
 		var prevMaxPoint = currentMaxPoint;
 		currentMaxPoint = Mathf.RoundToInt(currentMaxValue * (MAX_POINT + 1)) - 1;
@@ -158,14 +327,14 @@ public class EqualizerController : MonoBehaviour
 			{
 				var line = equalizerLines[i];
 				line.gameObject.SetActive(true);
-				line.fillAmount = MIN_FILL;
+				line.fillAmount = 0;
 			}
 		}
 
 		damagedEqualizerBackground.fillAmount = (float) (MAX_POINT - currentMaxPoint) / (MAX_POINT + 1);
-		ApplyHealthEffects(Mathf.RoundToInt(percentage * 100));
+		ApplyHealthEffects(Mathf.RoundToInt(currentHealthPercentage * 100));
 	}
-
+	
 	private void ApplyHealthEffects(int percentage)
 	{
 		const int basicModeMin = 41;
@@ -296,46 +465,6 @@ public class EqualizerController : MonoBehaviour
 	private static Vector2 GetLinePosition(int equalizerPoint)
 	{
 		return new Vector2(equalizerPoint * EQUALIZER_LINE_WIDTH, 0);
-	}
-
-	private float GetFillAmount(float start)
-	{
-		float modifier = 0;
-		switch (Random.Range(0, 5))
-		{
-			case 0:
-			case 1:
-				modifier = FILL_MODIFIER;
-				break;
-			case 2:
-			case 3:
-				modifier = FILL_MODIFIER * 2;
-				break;
-			case 4:
-				modifier = FILL_MODIFIER * 3;
-				break;
-		}
-
-		var fillAmount = start - modifier;
-		if (fillAmount < MIN_FILL)
-		{
-			fillAmount = MIN_FILL;
-		}
-
-		return fillAmount;
-	}
-
-	private float GetMinFillAmount()
-	{
-		switch (Random.Range(0, 3))
-		{
-			case 1:
-				return FILL_MODIFIER * 3;
-			case 2:
-				return FILL_MODIFIER * 4;
-			default:
-				return FILL_MODIFIER * 2;
-		}
 	}
 
 	private void InitLinesBeyondMaxPoint()
