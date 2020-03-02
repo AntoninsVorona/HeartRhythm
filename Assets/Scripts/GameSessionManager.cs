@@ -81,7 +81,7 @@ public class GameSessionManager : MonoBehaviour
 #if UNITY_EDITOR
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.F9) && currentCutScene == null)
+		if (Input.GetKeyDown(KeyCode.F9))
 		{
 			var latestSave = SaveSystem.GetLatestSave();
 			if (!string.IsNullOrEmpty(latestSave))
@@ -90,9 +90,14 @@ public class GameSessionManager : MonoBehaviour
 			}
 		}
 
-		if (Input.GetKeyDown(KeyCode.F5) && currentCutScene == null)
+		if (Input.GetKeyDown(KeyCode.F5))
 		{
 			GameLogic.Instance.Save();
+		}
+		
+		if (Input.GetKeyDown(KeyCode.L))
+		{
+			Player.Instance.Heal(1);
 		}
 	}
 #endif
