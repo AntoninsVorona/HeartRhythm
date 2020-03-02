@@ -7,6 +7,5 @@ public class Potion : Consumable
 {
 	public override void ApplyEffect()
 	{
-		//TODO Apply smth
 	}
 }

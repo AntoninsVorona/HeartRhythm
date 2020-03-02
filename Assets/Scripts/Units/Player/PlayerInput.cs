@@ -242,7 +242,8 @@ public class PlayerInput : MonoBehaviour
 						);
 					}
 
-					if (GameSessionManager.Instance.playState == GameSessionManager.PlayState.DanceMove)
+					if (GameSessionManager.Instance.playState == GameSessionManager.PlayState.DanceMove &&
+					    SaveSystem.currentGameSave.globalVariables.maxDanceMoveSymbols > 2)
 					{
 						Player.Instance.EndDanceMove(true);
 					}
@@ -277,7 +278,6 @@ public class PlayerInput : MonoBehaviour
 
 	public void AddDanceMoveSymbol(MovementDirectionUtilities.MovementDirection movementDirection)
 	{
-		//TODO If 2 symbols then don't count space
 		GameUI.Instance.danceMoveUI.AddSymbol(movementDirection, acceptor.danceMoveSet.Count);
 		acceptor.danceMoveSet.Add(movementDirection);
 		if (acceptor.danceMoveSet.Count == SaveSystem.currentGameSave.globalVariables.maxDanceMoveSymbols)
