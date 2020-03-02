@@ -232,6 +232,7 @@ public class GameSessionManager : MonoBehaviour
 
 	private IEnumerator PreLoadSequence(bool cameraIsStatic, Vector2Int focusPosition)
 	{
+		GameUI.Instance.messageBox.Hide(true);
 		PlayerInput.Instance.acceptor.DontReceiveAnyInput = true;
 		PlayerInput.Instance.acceptor.FirstBattleInputDone = false;
 		yield return LoadingUI.Instance.StartLoading();
@@ -257,6 +258,10 @@ public class GameSessionManager : MonoBehaviour
 	{
 		yield return LoadingUI.Instance.StopLoading();
 		PlayerInput.Instance.acceptor.DontReceiveAnyInput = false;
+		if (!string.IsNullOrEmpty(currentLevelData.proclamationName))
+		{
+			GameUI.Instance.messageBox.Show(currentLevelData.proclamationName);
+		}
 	}
 
 	private void GameStateChanged()
@@ -297,6 +302,7 @@ public class GameSessionManager : MonoBehaviour
 			GameUI.Instance.uiInventory.Toggle();
 		}
 
+		GameUI.Instance.messageBox.Hide(true);
 		Player.Instance.StopTalk(true);
 		PlayerInput.Instance.ConversationStarted();
 	}

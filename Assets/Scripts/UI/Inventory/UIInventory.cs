@@ -79,98 +79,100 @@ public class UIInventory : MonoBehaviour
 
 	private void Update()
 	{
-		if (!splitController.splitInProgress && !itemActionsUI.dropInProgress && itemActionsUI.menuActive)
+		if (!splitController.splitInProgress && !itemActionsUI.dropInProgress)
 		{
-			if (Input.GetMouseButtonDown(0))
+			if (itemActionsUI.menuActive)
 			{
-				if (!ItemActionsHit())
+				if (Input.GetMouseButtonDown(0))
 				{
-					itemActionsUI.Close();
-					DeselectInventorySlot();
-				}
-			}
-
-			if (Input.GetMouseButtonDown(1))
-			{
-				if (!ItemActionsHit())
-				{
-					var slotHit = GetSlotHit();
-					if (slotHit && slotHit.itemInside)
-					{
-						if (slotHit != selectedInventorySlot)
-						{
-							SelectInventorySlot(slotHit);
-							itemActionsUI.OpenActionsFor(slotHit);
-						}
-					}
-					else
+					if (!ItemActionsHit())
 					{
 						itemActionsUI.Close();
 						DeselectInventorySlot();
 					}
 				}
-			}
-		}
-		else
-		{
-			if (Input.GetMouseButtonDown(0))
-			{
-				var slotHit = GetSlotHit();
-				if (slotHit && slotHit.itemInside)
+
+				if (Input.GetMouseButtonDown(1))
 				{
-					itemActionsUI.Close();
-					SelectInventorySlot(slotHit);
-					dragTime = Time.time + TIME_HOLD_TO_DRAG;
-				}
-				else
-				{
-					dragTime = float.MaxValue;
-				}
-			}
-			else
-			{
-				if (Input.GetMouseButton(0))
-				{
-					if (Time.time >= dragTime)
+					if (!ItemActionsHit())
 					{
-						if (dragController.draggedInventorySlot)
+						var slotHit = GetSlotHit();
+						if (slotHit && slotHit.itemInside)
 						{
-							dragController.OnDrag();
+							if (slotHit != selectedInventorySlot)
+							{
+								SelectInventorySlot(slotHit);
+								itemActionsUI.OpenActionsFor(slotHit);
+							}
 						}
 						else
 						{
 							itemActionsUI.Close();
-							dragController.BeginDrag(selectedInventorySlot);
-						}
-					}
-				}
-				else if (Input.GetMouseButtonUp(0))
-				{
-					if (dragController.draggedInventorySlot)
-					{
-						var newSlot = dragController.OnEndDrag();
-						if (newSlot)
-						{
-							SelectInventorySlot(newSlot);
+							DeselectInventorySlot();
 						}
 					}
 				}
 			}
-
-			if (Input.GetMouseButtonDown(1))
+			else
 			{
-				if (dragController.draggedInventorySlot)
-				{
-					dragController.StopDrag();
-					dragTime = float.MaxValue;
-				}
-				else
+				if (Input.GetMouseButtonDown(0))
 				{
 					var slotHit = GetSlotHit();
 					if (slotHit && slotHit.itemInside)
 					{
 						SelectInventorySlot(slotHit);
-						itemActionsUI.OpenActionsFor(slotHit);
+						dragTime = Time.time + TIME_HOLD_TO_DRAG;
+					}
+					else
+					{
+						dragTime = float.MaxValue;
+					}
+				}
+				else
+				{
+					if (Input.GetMouseButton(0))
+					{
+						if (Time.time >= dragTime)
+						{
+							if (dragController.draggedInventorySlot)
+							{
+								dragController.OnDrag();
+							}
+							else
+							{
+								itemActionsUI.Close();
+								dragController.BeginDrag(selectedInventorySlot);
+							}
+						}
+					}
+					else if (Input.GetMouseButtonUp(0))
+					{
+						if (dragController.draggedInventorySlot)
+						{
+							var newSlot = dragController.OnEndDrag();
+							if (newSlot)
+							{
+								SelectInventorySlot(newSlot);
+							}
+						}
+					}
+				}
+
+				if (Input.GetMouseButtonDown(1))
+				{
+					if (dragController.draggedInventorySlot)
+					{
+						dragController.StopDrag();
+						dragTime = float.MaxValue;
+					}
+					else
+					{
+						var slotHit = GetSlotHit();
+						if (slotHit && slotHit.itemInside)
+						{
+							SelectInventorySlot(slotHit);
+							itemActionsUI.OpenActionsFor(slotHit);
+						}
 					}
 				}
 			}

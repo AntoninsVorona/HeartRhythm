@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5072114572183708539}
   - component: {fileID: 7232759703067333023}
+  - component: {fileID: 164923979007108483}
   m_Layer: 5
   m_Name: Corruption
   m_TagString: Untagged
@@ -54,6 +55,18 @@ MonoBehaviour:
   corruptionTier1: {fileID: 7129480473505078435}
   corruptionTier2: {fileID: 3647240489048803950}
   corruptionTier3: {fileID: 943634904380949598}
+--- !u!225 &164923979007108483
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084686691311903718}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &6307216841747059132
 GameObject:
   m_ObjectHideFlags: 0

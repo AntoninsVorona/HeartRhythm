@@ -59,13 +59,15 @@ public class PlayerInput : MonoBehaviour
 
 		public bool CanToggleMainMenu()
 		{
-			return !ConversationInProgress && !CutSceneInProgress;
+			return !ConversationInProgress && !CutSceneInProgress &&
+			       GameSessionManager.Instance.playState == GameSessionManager.PlayState.Basic;
 		}
 
 		public bool CanToggleInventory()
 		{
 			return !ConversationInProgress && !CutSceneInProgress &&
 			       GameSessionManager.Instance.CurrentGameState != GameSessionManager.GameState.Fight &&
+			       GameSessionManager.Instance.playState == GameSessionManager.PlayState.Basic &&
 			       !MainMenuOpened;
 		}
 	}

@@ -247,10 +247,16 @@ public class Player : Unit
 
 	public (bool pickedUpAll, int amountLeft) PickUpItem(Item item, int amount = 1)
 	{
-		//TODO Display cant pick up
 		if (amount > 0)
 		{
-			return Inventory.PickUpItem(item, amount);
+			var pickUpItem = Inventory.PickUpItem(item, amount);
+
+			if (!pickUpItem.pickedUpAll)
+			{
+				GameUI.Instance.messageBox.Show("Can't pick up!");
+			}
+
+			return pickUpItem;
 		}
 
 		Debug.LogError("Can't pick up less than or equals to 0 items!");
@@ -280,7 +286,7 @@ public class Player : Unit
 				return droppedAll;
 			}
 
-			//TODO Display cant drop
+			GameUI.Instance.messageBox.Show("Can't drop!");
 			Debug.LogError("No Drop Location!");
 			return false;
 		}

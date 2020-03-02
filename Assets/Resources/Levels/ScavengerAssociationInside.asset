@@ -17,6 +17,10 @@ MonoBehaviour:
   dialogueRegistrator: {fileID: 11400000, guid: 746543eeb65d9484681ae76e2cf39f8e,
     type: 2}
   cameraIsStatic: 1
+  backgroundColor:
+    serializedVersion: 2
+    rgba: 4279440150
+  proclamationName: Scavenger Asssociation Main Hall
   levelState:
     levelName: 
     unitData: []

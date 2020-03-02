@@ -16,6 +16,10 @@ MonoBehaviour:
     type: 3}
   dialogueRegistrator: {fileID: 0}
   cameraIsStatic: 0
+  backgroundColor:
+    serializedVersion: 2
+    rgba: 4279440150
+  proclamationName: Scavenger Association Outskirts
   levelState:
     levelName: 
     unitData: []

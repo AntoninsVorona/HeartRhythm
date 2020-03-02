@@ -17,7 +17,7 @@ public class HideHeadsetCutScene : CutScene
 		dialogueFinished = false;
 		yield return GameSessionManager.Instance.LoadLevel(levelToLoad, 0);
 		yield return new WaitForSeconds(0.5f);
-		GameSessionManager.Instance.StartConversation("ItsTimeToPackStuff");;
+		GameSessionManager.Instance.StartConversation("ItsTimeToPackStuff");
 		yield return new WaitUntil(() => dialogueFinished);
 		GameSessionManager.Instance.CutSceneFinished();
 	}

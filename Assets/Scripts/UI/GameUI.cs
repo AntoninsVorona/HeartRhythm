@@ -16,6 +16,7 @@ public class GameUI : MonoBehaviour
 	public CanvasGroup fadeAlphaCanvasGroup;
 	public RectTransform canvasRect;
 	public Corruption corruption;
+	public MessageBox messageBox;
 
 	private void Awake()
 	{
@@ -37,6 +38,7 @@ public class GameUI : MonoBehaviour
 		uiInventory.Close();
 		blackAnnouncer.Close(true);
 		corruption.UpdateCorruption(0);
+		messageBox.Hide(true);
 	}
 
 	private void Start()
@@ -66,6 +68,7 @@ public class GameUI : MonoBehaviour
 
 	public void CutSceneStarted()
 	{
+		messageBox.Hide(true);
 		cutSceneLines.gameObject.SetActive(true);
 		cutSceneLines.SetTrigger(AnimatorUtilities.SHOW_TRIGGER);
 	}
