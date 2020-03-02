@@ -340,7 +340,6 @@ public class EqualizerController : MonoBehaviour
 		const int basicModeMin = 41;
 		var corruptionLevel = 0;
 		AudioManager.MusicSettings musicSettings;
-		//TODO Add color change when very high
 		if (percentage >= basicModeMin)
 		{
 			musicSettings = AudioManager.MusicSettings.DEFAULT_SETTINGS;
