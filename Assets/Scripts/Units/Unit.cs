@@ -483,7 +483,7 @@ public abstract class Unit : MonoBehaviour
 		return previous;
 	}
 
-	public virtual void Tint(Color color, float duration = 0.25f)
+	public virtual void Tint(Color color, float duration = 0.15f)
 	{
 		if (sprite)
 		{
@@ -522,7 +522,7 @@ public abstract class Unit : MonoBehaviour
 		}
 	}
 
-	public virtual void Shake(float duration = 0.25f)
+	public virtual void Shake(float duration = 0.15f)
 	{
 		if (sprite)
 		{
@@ -546,10 +546,22 @@ public abstract class Unit : MonoBehaviour
 		spriteTransform.localPosition = new Vector3(newPositionX, spritePosition.y, spritePosition.z);
 		while (t < 1)
 		{
-			yield return null;
-			t += Time.deltaTime / duration;
+			yield return new WaitForSeconds(0.025f);
+			t += 0.025f / duration;
 			spritePosition = spriteTransform.localPosition;
-			newPositionX = ++count % 2 == 1 ? -displace : displace;
+			switch (++count % 4)
+			{
+				case 0:
+					newPositionX = displace;
+					break;
+				case 2:
+					newPositionX = -displace;
+					break;
+				default:
+					newPositionX = 0;
+					break;
+			}
+
 			spriteTransform.localPosition = new Vector3(newPositionX, spritePosition.y, spritePosition.z);
 		}
 
