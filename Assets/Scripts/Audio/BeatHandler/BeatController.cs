@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class BeatController : MonoBehaviour
 {
+	public static bool bonkLeft;
+	public static bool nextIsOdd;
 	private static readonly int PULSE_TRIGGER = Animator.StringToHash("Pulse");
 
 	[SerializeField]
@@ -61,6 +63,8 @@ public class BeatController : MonoBehaviour
 			var time = AudioSettings.dspTime - startTime;
 			CreateBeat(leftSpawnPoint, time);
 			CreateBeat(rightSpawnPoint, time);
+			bonkLeft = !bonkLeft;
+			nextIsOdd = !nextIsOdd;
 			startTime -= AudioManager.Instance.beatDelay;
 		}
 
@@ -68,8 +72,17 @@ public class BeatController : MonoBehaviour
 			new AudioManager.PulseEventSubscriber(this, CreateLeftBeat, -startTime) {ignoreMusicStartTime = true};
 		var rightBeatEvent =
 			new AudioManager.PulseEventSubscriber(this, CreateRightBeat, -startTime) {ignoreMusicStartTime = true};
+		var changeBonkEvent =
+			new AudioManager.PulseEventSubscriber(this, ChangeBonk, -startTime, 0.1f) {ignoreMusicStartTime = true};
 		AudioManager.Instance.pulseSubscribers.Add(leftBeatEvent);
 		AudioManager.Instance.pulseSubscribers.Add(rightBeatEvent);
+		AudioManager.Instance.pulseSubscribers.Add(changeBonkEvent);
+	}
+
+	private void ChangeBonk()
+	{
+		bonkLeft = !bonkLeft;
+		nextIsOdd = !nextIsOdd;
 	}
 
 	private void CreateLeftBeat()
@@ -86,7 +99,7 @@ public class BeatController : MonoBehaviour
 	{
 		var beat = Instantiate(beatPrefab, beatHolder.beatHolder);
 		beat.Initialize(startPoint, middlePoint, startTime,
-			startTime + AudioManager.Instance.beatTravelTime);
+			startTime + AudioManager.Instance.beatTravelTime, nextIsOdd);
 		beatHolder.beats.Add(beat);
 	}
 

@@ -7,12 +7,13 @@ public class Beat : MonoBehaviour
 	[SerializeField]
 	private Animator animator;
 
-	private bool bonkLeft;
+	private bool odd;
 	private static readonly int LEFT = Animator.StringToHash("Left");
 	private static readonly int RIGHT = Animator.StringToHash("Right");
 
-	public void Initialize(Vector2 startPosition, Vector2 endPosition, double startTime, double endTime)
+	public void Initialize(Vector2 startPosition, Vector2 endPosition, double startTime, double endTime, bool odd)
 	{
+		this.odd = odd;
 		AudioManager.Instance.pulseSubscribers.Add(new AudioManager.PulseEventSubscriber(this, Bonk));
 		StartCoroutine(Move(startPosition, endPosition, startTime, endTime));
 	}
@@ -38,7 +39,12 @@ public class Beat : MonoBehaviour
 
 	private void Bonk()
 	{
-		bonkLeft = !bonkLeft;
+		var bonkLeft = BeatController.bonkLeft;
+		if (odd)
+		{
+			bonkLeft = !bonkLeft;
+		}
+
 		animator.SetTrigger(bonkLeft ? LEFT : RIGHT);
 	}
 }
