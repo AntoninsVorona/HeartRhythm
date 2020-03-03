@@ -46,5 +46,7 @@ public class UnitManager<T> : MonoBehaviour where T : Unit
 	public virtual void AdditionalActionsToUnitsWhenStopping(T unit)
 	{
 		unit.RemoveGameStateObserver();
+		unit.StopShake();
+		unit.StopTint();
 	} 
 }

@@ -11,6 +11,9 @@ using UnityEditor;
 
 public abstract class Unit : MonoBehaviour
 {
+	protected static readonly Color GOOD_EFFECT_COLOR = new Color32(76, 221, 32, 255);
+	protected static readonly Color BAD_EFFECT_COLOR = new Color32(222, 32, 32, 255);
+
 	[Serializable]
 	public class UnitData
 	{
@@ -141,6 +144,7 @@ public abstract class Unit : MonoBehaviour
 
 	[Header("Initialization")]
 	public bool initializeSelf = true;
+
 	public bool initializeSpawnPointForMe;
 
 	[Header("Interaction")]
@@ -155,6 +159,8 @@ public abstract class Unit : MonoBehaviour
 	protected TalkUI talkUI;
 
 	private Observer gameStateChangedObserver;
+	protected Coroutine colorTintCoroutine;
+	protected Coroutine shakeCoroutine;
 
 	protected virtual void Start()
 	{
@@ -475,6 +481,101 @@ public abstract class Unit : MonoBehaviour
 		defaultMovementSpeed = movementSpeed;
 		this.movementSpeed = movementSpeed;
 		return previous;
+	}
+
+	public virtual void Tint(Color color, float duration = 0.15f)
+	{
+		if (sprite)
+		{
+			if (colorTintCoroutine != null)
+			{
+				StopCoroutine(colorTintCoroutine);
+			}
+
+			colorTintCoroutine = StartCoroutine(TintSequence(color, duration));
+		}
+	}
+
+	private IEnumerator TintSequence(Color color, float duration)
+	{
+		var defaultColor = Color.white;
+		sprite.color = color;
+		float t = 1;
+		while (t > 0)
+		{
+			yield return null;
+			t -= Time.deltaTime / duration;
+			sprite.color = Color.Lerp(defaultColor, color, t);
+		}
+
+		sprite.color = Color.white;
+		colorTintCoroutine = null;
+	}
+
+	public void StopTint()
+	{
+		if (colorTintCoroutine != null)
+		{
+			StopCoroutine(colorTintCoroutine);
+			colorTintCoroutine = null;
+			sprite.color = Color.white;
+		}
+	}
+
+	public virtual void Shake(int sequenceTimes = 18)
+	{
+		if (sprite)
+		{
+			if (shakeCoroutine != null)
+			{
+				StopCoroutine(shakeCoroutine);
+			}
+
+			shakeCoroutine = StartCoroutine(ShakeSequence(sequenceTimes));
+		}
+	}
+
+	private IEnumerator ShakeSequence(int sequenceTimes)
+	{
+		const float displace = 0.05f;
+		var spriteTransform = sprite.transform;
+		for (var i = 0; i < sequenceTimes; i++)
+		{
+			var spritePosition = spriteTransform.localPosition;
+			float newPositionX;
+			switch (i % 3)
+			{
+				case 1:
+					newPositionX = -displace;
+					break;
+				case 2:
+					newPositionX = 0;
+					break;
+				default:
+					newPositionX = displace;
+					break;
+			}
+
+			spriteTransform.localPosition = new Vector3(newPositionX, spritePosition.y, spritePosition.z);
+			yield return null;
+		}
+
+		spriteTransform.localPosition =
+			new Vector3(0, spriteTransform.localPosition.y, spriteTransform.localPosition.z);
+		shakeCoroutine = null;
+	}
+
+	public void StopShake()
+	{
+		if (shakeCoroutine != null)
+		{
+			StopCoroutine(shakeCoroutine);
+			shakeCoroutine = null;
+
+			var spriteTransform = sprite.transform;
+			spriteTransform.localPosition =
+				new Vector3(0, spriteTransform.localPosition.y, spriteTransform.localPosition.z);
+		}
 	}
 
 #if UNITY_EDITOR

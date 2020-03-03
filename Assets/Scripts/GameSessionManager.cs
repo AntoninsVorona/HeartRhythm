@@ -240,6 +240,8 @@ public class GameSessionManager : MonoBehaviour
 		GameUI.Instance.messageBox.Hide(true);
 		PlayerInput.Instance.acceptor.DontReceiveAnyInput = true;
 		PlayerInput.Instance.acceptor.FirstBattleInputDone = false;
+		Player.Instance.StopTint();
+		Player.Instance.StopShake();
 		yield return LoadingUI.Instance.StartLoading();
 		if (currentSceneObjects)
 		{
@@ -434,6 +436,11 @@ public class GameSessionManager : MonoBehaviour
 	public bool IsCutSceneInProgress()
 	{
 		return currentCutScene != null;
+	}
+
+	public bool FightingAnEnemy()
+	{
+		return currentLevelData is BattleArea;
 	}
 
 	public static GameSessionManager Instance { get; private set; }

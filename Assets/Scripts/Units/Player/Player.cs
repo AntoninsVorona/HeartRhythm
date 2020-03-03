@@ -363,25 +363,39 @@ public class Player : Unit
 
 	public void Heal(int heal)
 	{
-		combatData.Heal(heal);
-		//TODO Green Particles
+		if (heal > 0)
+		{
+			combatData.Heal(heal);
+			TintGreen();
+		}
+
+		void TintGreen()
+		{
+			Tint(GOOD_EFFECT_COLOR);
+		}
 	}
 
-	public void TakeDamage(int damage, float equalizerShake = 5f)
+	public void TakeDamage(int damage)
 	{
-		combatData.TakeDamage(damage);
-		if (combatData.CurrentHp == 0)
+		if (damage > 0)
 		{
-			Die();
-		}
-		else
-		{
-			if (equalizerShake > 0)
+			combatData.TakeDamage(damage);
+			if (combatData.CurrentHp == 0)
 			{
-				GameUI.Instance.equalizerController.Shake(equalizerShake);
+				Die();
 			}
+			else
+			{
+				// GameUI.Instance.equalizerController.Shake(equalizerShake);
+				ShakeAndTintRed();
+				combatData.SuccessfulBeatsInARow = 0;
+			}
+		}
 
-			combatData.SuccessfulBeatsInARow = 0;
+		void ShakeAndTintRed()
+		{
+			Tint(BAD_EFFECT_COLOR);
+			Shake();
 		}
 	}
 
@@ -397,7 +411,7 @@ public class Player : Unit
 		{
 			if (battleSettings.missedBeatDamage.damage > 0)
 			{
-				TakeDamage(battleSettings.missedBeatDamage.damage, battleSettings.missedBeatDamage.equalizerShake);
+				TakeDamage(battleSettings.missedBeatDamage.damage);
 			}
 
 			combatData.SuccessfulBeatsInARow = 0;
@@ -411,7 +425,7 @@ public class Player : Unit
 		{
 			if (battleSettings.invalidInputDamage.damage > 0)
 			{
-				TakeDamage(battleSettings.invalidInputDamage.damage, battleSettings.invalidInputDamage.equalizerShake);
+				TakeDamage(battleSettings.invalidInputDamage.damage);
 			}
 
 			combatData.SuccessfulBeatsInARow = 0;
@@ -469,6 +483,6 @@ public class Player : Unit
 		animator.SetBool(HEADSET_BOOL, SaveSystem.currentGameSave.globalVariables.wearsHeadset);
 		animator.SetTrigger(AnimatorUtilities.IDLE_TRIGGER);
 	}
-
+	
 	public static Player Instance { get; private set; }
 }

@@ -6,21 +6,19 @@ using Random = UnityEngine.Random;
 
 public class EqualizerController : MonoBehaviour
 {
-	private const int EQUALIZER_MAX_AREA_WIDTH = 1000;
 	private const int EQUALIZER_LINE_WIDTH = 50;
-	private const int EQUALIZER_MAX_DOTS = 10;
-	private const int MIN_POINT = 0;
-	private const int MAX_POINT = 19;
+	private const int EQUALIZER_MAX_DOTS = 8;
+	private const int MIDDLE_POINT = 25;
+	private const int MAX_DELTA = 25;
 	private const float FILL_MODIFIER = 1f / EQUALIZER_MAX_DOTS;
 
 	[HideInNormalInspector]
 	public bool active;
 
 	[SerializeField]
-	private Image equalizerCurrentHp;
-
+	private Image equalizerCurrentHpLeftToRight;
 	[SerializeField]
-	private Image damagedEqualizerBackground;
+	private Image equalizerCurrentHpRightToLeft;
 
 	[SerializeField]
 	private RectTransform area;
@@ -50,18 +48,22 @@ public class EqualizerController : MonoBehaviour
 	private Vector3 shakeRot;
 	private float currentHealthPercentage;
 	private float currentMaxValue;
-	private int currentMaxPoint;
+	private int currentDelta;
 	private AudioManager.MusicSettings previousMusicSettings;
 
 	public void Initialize()
 	{
-		for (var i = 0; i <= MAX_POINT; i++)
+		for (var i = 0; i <= MIDDLE_POINT + MAX_DELTA; i++)
 		{
 			var line = Instantiate(equalizerLinePrefab, lineHolder);
 			equalizerLines.Add(i, line);
 			line.rectTransform.anchoredPosition = GetLinePosition(i);
 			line.gameObject.SetActive(false);
 		}
+
+		var middle = equalizerLines[MIDDLE_POINT];
+		middle.gameObject.SetActive(true);
+		middle.fillAmount = 0;
 
 		Deactivate();
 	}
@@ -81,7 +83,7 @@ public class EqualizerController : MonoBehaviour
 		}
 
 		StopShake();
-		currentMaxPoint = 0;
+		currentDelta = 0;
 		active = false;
 		gameObject.SetActive(false);
 	}
@@ -98,22 +100,41 @@ public class EqualizerController : MonoBehaviour
 
 	private IEnumerator BumpSequence()
 	{
-		var randomHpPoint = RandomHpPoint();
+		InitLinesBeyondDelta();
+		var randomHpDelta = RandomHpDelta();
 		var (color, random) = InitLineColor();
-		var firstLine = equalizerLines[randomHpPoint];
 		var startFill = GetStartFill();
-		firstLine.fillAmount = startFill;
-		firstLine.color = color;
-		CreateSideBumps(randomHpPoint, -1, startFill, color, random);
-		CreateSideBumps(randomHpPoint, 1, startFill, color, random);
-		InitLinesBeyondMaxPoint();
+		var middle = equalizerLines[MIDDLE_POINT];
+		middle.fillAmount = startFill;
+		middle.color = color;
+		if (randomHpDelta == 0)
+		{
+			CreateSideBumps(MIDDLE_POINT, MIDDLE_POINT - currentDelta, -1, startFill, color, random);
+			CreateSideBumps(MIDDLE_POINT, MIDDLE_POINT + currentDelta, 1, startFill, color, random);
+		}
+		else
+		{
+			var lowerStartPoint = MIDDLE_POINT - randomHpDelta;
+			var upperStartPoint = MIDDLE_POINT + randomHpDelta;
+			var startingLineLower = equalizerLines[lowerStartPoint];
+			var startingLineUpper = equalizerLines[upperStartPoint];
+			startingLineLower.fillAmount = startFill;
+			startingLineLower.color = color;
+			startingLineUpper.fillAmount = startFill;
+			startingLineUpper.color = color;
+			CreateSideBumps(lowerStartPoint, MIDDLE_POINT - currentDelta, -1, startFill, color, random);
+			CreateSideBumps(lowerStartPoint, MIDDLE_POINT - 1, 1, startFill, color, random);
+			CreateSideBumps(upperStartPoint, MIDDLE_POINT + currentDelta, 1, startFill, color, random);
+			CreateSideBumps(upperStartPoint, MIDDLE_POINT + 1, -1, startFill, color, random);
+		}
+
 		float timePassed = 0;
 		while (true)
 		{
 			var slowDownRate = slowDownCurve.Evaluate(timePassed) * (float) AudioManager.Instance.beatDelay;
 			yield return new WaitForSeconds(slowDownRate);
 			timePassed += slowDownRate * 3;
-			for (var i = 0; i <= currentMaxPoint; i++)
+			for (var i = MIDDLE_POINT - currentDelta; i <= MIDDLE_POINT + currentDelta; i++)
 			{
 				var line = equalizerLines[i];
 				var fillAmount = GetFillAmount(line.fillAmount, 0);
@@ -162,20 +183,21 @@ public class EqualizerController : MonoBehaviour
 
 		Color RandomColor()
 		{
-			return Random.ColorHSV(0, 1, 0.6f, 1, 0.5f, 0.85f, 1, 1);
+			return Random.ColorHSV(0, 1, 0.6f, 1, 0.5f, 0.85f, 0.5f, 0.5f);
 		}
 	}
 
-	private void CreateSideBumps(int startPoint, int modifier, float startFill, Color color, bool random)
+	private void CreateSideBumps(int startPoint, int endPoint, int modifier, float startFill, Color color, bool random)
 	{
 		Color.RGBToHSV(color, out var h, out var s, out var v);
 		const float hueModifier = 0.025f;
 		var currentHueModifier = hueModifier * modifier;
-		var nextPoint = startPoint + modifier;
+		var nextPoint = startPoint;
 		var minFill = GetMinFill();
 		var fillModifier = GetFillAmount(startFill, minFill);
-		while (nextPoint >= MIN_POINT && nextPoint <= currentMaxPoint)
+		while (nextPoint != endPoint)
 		{
+			nextPoint += modifier;
 			var line = equalizerLines[nextPoint];
 			line.fillAmount = fillModifier;
 			fillModifier = GetFillAmount(fillModifier, minFill);
@@ -197,11 +219,10 @@ public class EqualizerController : MonoBehaviour
 				}
 
 				color = Color.HSVToRGB(h, s, v);
+				color.a = 0.5f;
 			}
 
 			line.color = color;
-
-			nextPoint += modifier;
 		}
 	}
 
@@ -214,10 +235,10 @@ public class EqualizerController : MonoBehaviour
 
 		if (currentHealthPercentage > 0.2f)
 		{
-			return 0.8f;
+			return FILL_MODIFIER * (EQUALIZER_MAX_DOTS - 1);
 		}
 
-		return 0.6f;
+		return FILL_MODIFIER * (EQUALIZER_MAX_DOTS - 2);
 	}
 
 	private float GetMinFill()
@@ -234,7 +255,7 @@ public class EqualizerController : MonoBehaviour
 
 		return 0;
 	}
-	
+
 	private float GetFillAmount(float start, float minFill)
 	{
 		float modifier;
@@ -297,33 +318,46 @@ public class EqualizerController : MonoBehaviour
 		}
 	}
 
-	private int RandomHpPoint()
+	private int RandomHpDelta()
 	{
-		return Mathf.RoundToInt(Random.Range(0f, currentMaxValue) * currentMaxPoint);
+		return Random.Range(0, currentDelta + 1);
 	}
 
 	public void UpdateCurrentHp(int currentHp, int maxHp)
 	{
 		currentHealthPercentage = (float) currentHp / maxHp;
-		equalizerCurrentHp.fillAmount = currentHealthPercentage;
+		equalizerCurrentHpLeftToRight.fillAmount = currentHealthPercentage;
+		equalizerCurrentHpRightToLeft.fillAmount = currentHealthPercentage;
 		currentMaxValue = (float) currentHp / maxHp;
-		var prevMaxPoint = currentMaxPoint;
-		currentMaxPoint = Mathf.RoundToInt(currentMaxValue * (MAX_POINT + 1)) - 1;
-		if (currentMaxPoint < 0)
+		var prevDelta = currentDelta;
+		currentDelta = Mathf.RoundToInt(currentMaxValue * (MAX_DELTA + 1)) - 1;
+		if (currentDelta < 0)
 		{
-			currentMaxPoint = 0;
+			currentDelta = 0;
 		}
 
-		if (prevMaxPoint > currentMaxPoint)
+		if (prevDelta > currentDelta)
 		{
-			for (var i = prevMaxPoint; i > currentMaxPoint; i--)
+			for (var i = MIDDLE_POINT - prevDelta; i < MIDDLE_POINT - currentDelta; i++)
+			{
+				equalizerLines[i].gameObject.SetActive(false);
+			}
+
+			for (var i = MIDDLE_POINT + prevDelta; i > MIDDLE_POINT + currentDelta; i--)
 			{
 				equalizerLines[i].gameObject.SetActive(false);
 			}
 		}
 		else
 		{
-			for (var i = prevMaxPoint; i <= currentMaxPoint; i++)
+			for (var i = MIDDLE_POINT - currentDelta; i < MIDDLE_POINT - prevDelta; i++)
+			{
+				var line = equalizerLines[i];
+				line.gameObject.SetActive(true);
+				line.fillAmount = 0;
+			}
+
+			for (var i = MIDDLE_POINT + currentDelta; i > MIDDLE_POINT + prevDelta; i--)
 			{
 				var line = equalizerLines[i];
 				line.gameObject.SetActive(true);
@@ -331,10 +365,9 @@ public class EqualizerController : MonoBehaviour
 			}
 		}
 
-		damagedEqualizerBackground.fillAmount = (float) (MAX_POINT - currentMaxPoint) / (MAX_POINT + 1);
 		ApplyHealthEffects(Mathf.RoundToInt(currentHealthPercentage * 100));
 	}
-	
+
 	private void ApplyHealthEffects(int percentage)
 	{
 		const int basicModeMin = 41;
@@ -466,9 +499,14 @@ public class EqualizerController : MonoBehaviour
 		return new Vector2(equalizerPoint * EQUALIZER_LINE_WIDTH, 0);
 	}
 
-	private void InitLinesBeyondMaxPoint()
+	private void InitLinesBeyondDelta()
 	{
-		for (var i = currentMaxPoint + 1; i <= MAX_POINT; i++)
+		for (var i = 0; i < MIDDLE_POINT - currentDelta; i++)
+		{
+			equalizerLines[i].gameObject.SetActive(false);
+		}
+
+		for (var i = MIDDLE_POINT + MAX_DELTA; i > MIDDLE_POINT + currentDelta; i--)
 		{
 			equalizerLines[i].gameObject.SetActive(false);
 		}

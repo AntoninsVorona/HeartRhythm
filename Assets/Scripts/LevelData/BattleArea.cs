@@ -8,12 +8,10 @@ public class BattleArea : LevelData
 	public class BattleDamage
 	{
 		public int damage;
-		public float equalizerShake;
 
-		public BattleDamage(int damage, float equalizerShake)
+		public BattleDamage(int damage)
 		{
 			this.damage = damage;
-			this.equalizerShake = equalizerShake;
 		}
 	}
 	
@@ -22,8 +20,8 @@ public class BattleArea : LevelData
 	{
 		public int startingHp = 50;
 		public int maxHp = 100;
-		public BattleDamage missedBeatDamage = new BattleDamage(1, 2.5f);
-		public BattleDamage invalidInputDamage = new BattleDamage(0, 2.5f);
+		public BattleDamage missedBeatDamage = new BattleDamage(1);
+		public BattleDamage invalidInputDamage = new BattleDamage(1);
 		public int hitsInARowToHeal = 5;
 	}
 

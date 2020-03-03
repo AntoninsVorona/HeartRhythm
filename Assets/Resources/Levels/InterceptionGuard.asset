@@ -19,6 +19,7 @@ MonoBehaviour:
   backgroundColor:
     serializedVersion: 2
     rgba: 4279440150
+  proclamationName: 
   levelState:
     levelName: 
     unitData: []
@@ -34,8 +35,8 @@ MonoBehaviour:
     maxHp: 100
     missedBeatDamage:
       damage: 1
-      equalizerShake: 2.5
+      equalizerShake: 1
     invalidInputDamage:
       damage: 1
-      equalizerShake: 2.5
+      equalizerShake: 1
     hitsInARowToHeal: 3

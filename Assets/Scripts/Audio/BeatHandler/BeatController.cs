@@ -26,6 +26,10 @@ public class BeatController : MonoBehaviour
 		rightSpawnPoint = new Vector2(beatHolderRect.xMax, middlePoint.y);
 		SchedulePulse();
 		ScheduleBeats();
+		if (!GameSessionManager.Instance.FightingAnEnemy())
+		{
+			GameUI.Instance.equalizerController.Deactivate();
+		}
 	}
 
 	public void StopPlaying()
