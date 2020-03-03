@@ -84,14 +84,15 @@ public class Player : Unit
 		}
 	}
 
-	private static readonly int FINISH_DANCE_MOVE_TRIGGER = Animator.StringToHash("FinishDanceMove");
 	private static readonly int HEADSET_BOOL = Animator.StringToHash("Headset");
+	private static readonly int FINISH_DANCE_MOVE_TRIGGER = Animator.StringToHash("FinishDanceMove");
+	private static readonly int HANDS_OF_OUT_JACKET_TRIGGER = Animator.StringToHash("HandsOfOutJacket");
+	private static readonly int TAKE_SOMETHING_TRIGGER = Animator.StringToHash("TakeSomething");
 
 	[SerializeField]
 	private CombatData combatData;
 
 	private Inventory inventory;
-
 
 	private Inventory Inventory
 	{
@@ -249,6 +250,7 @@ public class Player : Unit
 	{
 		if (amount > 0)
 		{
+			PerformTakeAnimation();
 			var pickUpItem = Inventory.PickUpItem(item, amount);
 
 			if (!pickUpItem.pickedUpAll)
@@ -283,6 +285,7 @@ public class Player : Unit
 				var location = currentPosition + MovementDirectionUtilities.VectorFromDirection(movementDirection);
 				GameSessionManager.Instance.currentSceneObjects.currentObstacleManager.SpawnItemOnGround(item, amount,
 					location);
+				PerformTakeAnimation();
 				return droppedAll;
 			}
 
@@ -294,6 +297,17 @@ public class Player : Unit
 		Debug.LogError("Can't drop less than or equals to 0 items!");
 
 		return false;
+	}
+
+	private void PerformTakeAnimation()
+	{
+		PlayerInput.Instance.acceptor.PerformingAnimation = true;
+		animator.SetTrigger(TAKE_SOMETHING_TRIGGER);
+	}
+
+	public void TakeAnimationDone()
+	{
+		PlayerInput.Instance.acceptor.PerformingAnimation = false;
 	}
 
 	public void LoseItem(Item item, int amount = 1)
@@ -447,6 +461,7 @@ public class Player : Unit
 		Inventory.LoadData(playerData.inventoryData);
 		Inventory.Initialize();
 		UpdateHeadset();
+		animator.SetTrigger(AnimatorUtilities.IDLE_TRIGGER);
 	}
 
 	public override UnitData GetUnitData()
@@ -470,7 +485,7 @@ public class Player : Unit
 	{
 		base.PeaceState();
 		animator.SetBool(AnimatorUtilities.PIECE_BOOL, false);
-		animator.SetTrigger(AnimatorUtilities.IDLE_TRIGGER);
+		animator.SetTrigger(HANDS_OF_OUT_JACKET_TRIGGER);
 	}
 
 	public void PlayAnimation(string trigger)
@@ -481,8 +496,7 @@ public class Player : Unit
 	public void UpdateHeadset()
 	{
 		animator.SetBool(HEADSET_BOOL, SaveSystem.currentGameSave.globalVariables.wearsHeadset);
-		animator.SetTrigger(AnimatorUtilities.IDLE_TRIGGER);
 	}
-	
+
 	public static Player Instance { get; private set; }
 }

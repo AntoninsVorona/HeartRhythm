@@ -325,6 +325,7 @@ public abstract class Unit : MonoBehaviour
 	{
 		var start = transform.position;
 		var end = GetPosition(newPosition);
+		sprite.flipX = start.x > end.x;
 		var jumpStart = sprite.transform.localPosition;
 		float t = 0;
 		const float moveUntil = 0.3f;

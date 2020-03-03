@@ -1,0 +1,775 @@
+fileFormatVersion: 2
+guid: 40c3fa9f865954f4092b7715399d5acf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1859677709868563506
+    second: TakeSomethingWithoutHeadset_0
+  - first:
+      213: 8176024217500308973
+    second: TakeSomethingWithoutHeadset_1
+  - first:
+      213: 960565598315620357
+    second: TakeSomethingWithoutHeadset_2
+  - first:
+      213: -8582332902044274127
+    second: TakeSomethingWithoutHeadset_3
+  - first:
+      213: 4255720360410121357
+    second: TakeSomethingWithoutHeadset_4
+  - first:
+      213: -6785556626048428155
+    second: TakeSomethingWithoutHeadset_5
+  - first:
+      213: -6300818536121363097
+    second: TakeSomethingWithoutHeadset_6
+  - first:
+      213: -1837230384125783850
+    second: TakeSomethingWithoutHeadset_7
+  - first:
+      213: -1051833856739228284
+    second: TakeSomethingWithoutHeadset_8
+  - first:
+      213: -8361710534810767176
+    second: TakeSomethingWithoutHeadset_9
+  - first:
+      213: -1769281410503606
+    second: TakeSomethingWithoutHeadset_10
+  - first:
+      213: -69677516633624644
+    second: TakeSomethingWithoutHeadset_11
+  - first:
+      213: 373574121075473736
+    second: TakeSomethingWithoutHeadset_12
+  - first:
+      213: 6637948200455265568
+    second: TakeSomethingWithoutHeadset_13
+  - first:
+      213: 185390471919006639
+    second: TakeSomethingWithoutHeadset_14
+  - first:
+      213: 5734938542989492170
+    second: TakeSomethingWithoutHeadset_15
+  - first:
+      213: 5683006549894594300
+    second: TakeSomethingWithoutHeadset_16
+  - first:
+      213: -6919154667333208321
+    second: TakeSomethingWithoutHeadset_17
+  - first:
+      213: -8163312836385853520
+    second: TakeSomethingWithoutHeadset_18
+  - first:
+      213: -4482228564407722505
+    second: TakeSomethingWithoutHeadset_19
+  - first:
+      213: -2114849238446447212
+    second: TakeSomethingWithoutHeadset_20
+  - first:
+      213: -2478535976159493043
+    second: TakeSomethingWithoutHeadset_21
+  - first:
+      213: 2025823294180972499
+    second: TakeSomethingWithoutHeadset_22
+  - first:
+      213: 3005954406531429215
+    second: TakeSomethingWithoutHeadset_23
+  - first:
+      213: -5389796427895331406
+    second: TakeSomethingWithoutHeadset_24
+  - first:
+      213: 7783734697759551646
+    second: TakeSomethingWithoutHeadset_25
+  - first:
+      213: 3033108327843492112
+    second: TakeSomethingWithoutHeadset_26
+  - first:
+      213: -1882980842255793320
+    second: TakeSomethingWithoutHeadset_27
+  - first:
+      213: -5190858317532725845
+    second: TakeSomethingWithoutHeadset_28
+  - first:
+      213: 7414794264136627237
+    second: TakeSomethingWithoutHeadset_29
+  - first:
+      213: 3604664131453139466
+    second: TakeSomethingWithoutHeadset_30
+  - first:
+      213: 4729681468629032706
+    second: TakeSomethingWithoutHeadset_31
+  - first:
+      213: -3118907921228541365
+    second: TakeSomethingWithoutHeadset_32
+  - first:
+      213: -2535822429769889490
+    second: TakeSomethingWithoutHeadset_33
+  - first:
+      213: 2699695647244230669
+    second: TakeSomethingWithoutHeadset_0
+  - first:
+      213: -6330957330675122504
+    second: TakeSomethingWithoutHeadset_1
+  - first:
+      213: 2441491150247732125
+    second: TakeSomethingWithoutHeadset_2
+  - first:
+      213: 8127589549136167594
+    second: TakeSomethingWithoutHeadset_3
+  - first:
+      213: -4092450553395246301
+    second: TakeSomethingWithoutHeadset_4
+  - first:
+      213: -6062684639918143737
+    second: TakeSomethingWithoutHeadset_5
+  - first:
+      213: -643211212850348118
+    second: TakeSomethingWithoutHeadset_6
+  - first:
+      213: 14209954102593790
+    second: TakeSomethingWithoutHeadset_7
+  - first:
+      213: -2617061971701340302
+    second: TakeSomethingWithoutHeadset_8
+  - first:
+      213: -2478659948003726174
+    second: TakeSomethingWithoutHeadset_9
+  - first:
+      213: 8412882217579902842
+    second: TakeSomethingWithoutHeadset_10
+  - first:
+      213: 6722978288546115151
+    second: TakeSomethingWithoutHeadset_11
+  - first:
+      213: -9126578747666782218
+    second: TakeSomethingWithoutHeadset_12
+  - first:
+      213: -2358040769504332183
+    second: TakeSomethingWithoutHeadset_13
+  - first:
+      213: -8335477318518519516
+    second: TakeSomethingWithoutHeadset_14
+  - first:
+      213: -8024208071022594689
+    second: TakeSomethingWithoutHeadset_15
+  - first:
+      213: -969520348984286052
+    second: TakeSomethingWithoutHeadset_16
+  - first:
+      213: 4248342795143085748
+    second: TakeSomethingWithoutHeadset_17
+  - first:
+      213: 5114496874193776864
+    second: TakeSomethingWithoutHeadset_18
+  - first:
+      213: -9219230003028157576
+    second: TakeSomethingWithoutHeadset_19
+  - first:
+      213: 6756899857063792075
+    second: TakeSomethingWithoutHeadset_20
+  - first:
+      213: -64012280338781367
+    second: TakeSomethingWithoutHeadset_21
+  - first:
+      213: -2541498956487234895
+    second: TakeSomethingWithoutHeadset_22
+  - first:
+      213: 895042773013486667
+    second: TakeSomethingWithoutHeadset_23
+  - first:
+      213: -471472358509484274
+    second: TakeSomethingWithoutHeadset_24
+  - first:
+      213: 445300507899349194
+    second: TakeSomethingWithoutHeadset_25
+  - first:
+      213: 7672026307371247781
+    second: TakeSomethingWithoutHeadset_26
+  - first:
+      213: -5705024707069567142
+    second: TakeSomethingWithoutHeadset_27
+  - first:
+      213: -3053943135333031624
+    second: TakeSomethingWithoutHeadset_28
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0029a733ee377520800000000000000
+      internalID: 2699695647244230669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8be34f0c9dbe328a0800000000000000
+      internalID: -6330957330675122504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d93a6ccf34be1e120800000000000000
+      internalID: 2441491150247732125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa2407412affac070800000000000000
+      internalID: 8127589549136167594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32b860887e1b437c0800000000000000
+      internalID: -4092450553395246301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 707467401740ddba0800000000000000
+      internalID: -6062684639918143737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aafb18e4fcad217f0800000000000000
+      internalID: -643211212850348118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef84f82c0eb723000800000000000000
+      internalID: 14209954102593790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 277ee85a0045eabd0800000000000000
+      internalID: -2617061971701340302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2acef38e8e70a9dd0800000000000000
+      internalID: -2478659948003726174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_10
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a77fc04bdcf80c470800000000000000
+      internalID: 8412882217579902842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_11
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4e64713221dc4d50800000000000000
+      internalID: 6722978288546115151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_12
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f721b2dbf0e75180800000000000000
+      internalID: -9126578747666782218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_13
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9663ecfd96e864fd0800000000000000
+      internalID: -2358040769504332183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_14
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 429c064ca8f625c80800000000000000
+      internalID: -8335477318518519516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_15
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7530e2064944a090800000000000000
+      internalID: -8024208071022594689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_16
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c94674c11629b82f0800000000000000
+      internalID: -969520348984286052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_17
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bef794734525fa30800000000000000
+      internalID: 4248342795143085748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_18
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e07a2f2fc75af640800000000000000
+      internalID: 5114496874193776864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_19
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87b12e66827be0080800000000000000
+      internalID: -9219230003028157576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_20
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcdcc23de9455cd50800000000000000
+      internalID: 6756899857063792075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_21
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94be4219b259c1ff0800000000000000
+      internalID: -64012280338781367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithoutHeadset_22
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ba6d8d1a28cabcd0800000000000000
+      internalID: -2541498956487234895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,724 @@
+fileFormatVersion: 2
+guid: 7fe59398d96a253418293ef8488e28ec
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2067998528071331732
+    second: TakeSomethingWithHeadset_0
+  - first:
+      213: 7355415072889588302
+    second: TakeSomethingWithHeadset_1
+  - first:
+      213: -1185697727025820101
+    second: TakeSomethingWithHeadset_2
+  - first:
+      213: 6109054403741946483
+    second: TakeSomethingWithHeadset_3
+  - first:
+      213: 5975193588893562975
+    second: TakeSomethingWithHeadset_4
+  - first:
+      213: 6769333091005349673
+    second: TakeSomethingWithHeadset_5
+  - first:
+      213: -4926019440602441181
+    second: TakeSomethingWithHeadset_6
+  - first:
+      213: -2058265016602232311
+    second: TakeSomethingWithHeadset_7
+  - first:
+      213: -5341467770081251180
+    second: TakeSomethingWithHeadset_8
+  - first:
+      213: 2476507857732972817
+    second: TakeSomethingWithHeadset_9
+  - first:
+      213: -7066636346925768164
+    second: TakeSomethingWithHeadset_10
+  - first:
+      213: 6947318963493909696
+    second: TakeSomethingWithHeadset_11
+  - first:
+      213: -6525805817811989322
+    second: TakeSomethingWithHeadset_12
+  - first:
+      213: -673662317356746821
+    second: TakeSomethingWithHeadset_13
+  - first:
+      213: 5215172223671478797
+    second: TakeSomethingWithHeadset_14
+  - first:
+      213: 4790065126433119457
+    second: TakeSomethingWithHeadset_15
+  - first:
+      213: -5404334068363265656
+    second: TakeSomethingWithHeadset_16
+  - first:
+      213: 5151024719020398107
+    second: TakeSomethingWithHeadset_17
+  - first:
+      213: -2845412708194870597
+    second: TakeSomethingWithHeadset_18
+  - first:
+      213: 6096702232038272628
+    second: TakeSomethingWithHeadset_19
+  - first:
+      213: -3354180671321695562
+    second: TakeSomethingWithHeadset_20
+  - first:
+      213: 1524410020362545060
+    second: TakeSomethingWithHeadset_21
+  - first:
+      213: -1062430504945657759
+    second: TakeSomethingWithHeadset_22
+  - first:
+      213: 5653787119089167626
+    second: TakeSomethingWithHeadset_0
+  - first:
+      213: -4131720815666783889
+    second: TakeSomethingWithHeadset_1
+  - first:
+      213: 9006413404427996642
+    second: TakeSomethingWithHeadset_2
+  - first:
+      213: 679156696584446997
+    second: TakeSomethingWithHeadset_3
+  - first:
+      213: 6163534809481920147
+    second: TakeSomethingWithHeadset_4
+  - first:
+      213: 1854471252950888512
+    second: TakeSomethingWithHeadset_5
+  - first:
+      213: -4278675860251424278
+    second: TakeSomethingWithHeadset_6
+  - first:
+      213: 5599848249213854706
+    second: TakeSomethingWithHeadset_7
+  - first:
+      213: 5889649616926158594
+    second: TakeSomethingWithHeadset_8
+  - first:
+      213: -2443296879311707512
+    second: TakeSomethingWithHeadset_9
+  - first:
+      213: 1425242614250332218
+    second: TakeSomethingWithHeadset_10
+  - first:
+      213: -6902167662644553428
+    second: TakeSomethingWithHeadset_11
+  - first:
+      213: 7574673797423319106
+    second: TakeSomethingWithHeadset_12
+  - first:
+      213: 72776149125856394
+    second: TakeSomethingWithHeadset_13
+  - first:
+      213: -8469180832003745692
+    second: TakeSomethingWithHeadset_14
+  - first:
+      213: 5183273857647609568
+    second: TakeSomethingWithHeadset_15
+  - first:
+      213: 8015327061573043505
+    second: TakeSomethingWithHeadset_16
+  - first:
+      213: 5603856932288001008
+    second: TakeSomethingWithHeadset_17
+  - first:
+      213: 5023206321554899674
+    second: TakeSomethingWithHeadset_18
+  - first:
+      213: -7959434339048830981
+    second: TakeSomethingWithHeadset_19
+  - first:
+      213: -5895427456773097085
+    second: TakeSomethingWithHeadset_20
+  - first:
+      213: 1414380482630688483
+    second: TakeSomethingWithHeadset_21
+  - first:
+      213: -334740139980589851
+    second: TakeSomethingWithHeadset_22
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0d2df40e69467e40800000000000000
+      internalID: 5653787119089167626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6918171fcd29a6c0800000000000000
+      internalID: -4131720815666783889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ed4f37f5453dfc70800000000000000
+      internalID: 9006413404427996642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5146ebeca69dc6900800000000000000
+      internalID: 679156696584446997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39ebcefd046498550800000000000000
+      internalID: 6163534809481920147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 040bf4677c76cb910800000000000000
+      internalID: 1854471252950888512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae9cca879f61f94c0800000000000000
+      internalID: -4278675860251424278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f32c7a3058a6bd40800000000000000
+      internalID: 5599848249213854706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20f26643f1d3cb150800000000000000
+      internalID: 5889649616926158594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8822ec3fe6aa71ed0800000000000000
+      internalID: -2443296879311707512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_10
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a30e32d3b9a77c310800000000000000
+      internalID: 1425242614250332218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_11
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2912ef74139630a0800000000000000
+      internalID: -6902167662644553428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_12
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24840e8bfa5ae1960800000000000000
+      internalID: 7574673797423319106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_13
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8c74c4a58d820100800000000000000
+      internalID: 72776149125856394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_14
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4689ed9a7ec677a80800000000000000
+      internalID: -8469180832003745692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_15
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e687a28c10bee740800000000000000
+      internalID: 5183273857647609568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_16
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13503a7de792c3f60800000000000000
+      internalID: 8015327061573043505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_17
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f3f22d7036e4cd40800000000000000
+      internalID: 5603856932288001008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_18
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad2c6cd098306b540800000000000000
+      internalID: 5023206321554899674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_19
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf7c2f7b3a86a8190800000000000000
+      internalID: -7959434339048830981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_20
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38974ff96fb3f2ea0800000000000000
+      internalID: -5895427456773097085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_21
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ee92742e83e0a310800000000000000
+      internalID: 1414380482630688483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TakeSomethingWithHeadset_22
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.359, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e47460cd93ca5bf0800000000000000
+      internalID: -334740139980589851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

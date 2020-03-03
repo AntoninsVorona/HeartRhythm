@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HandsOfOutJacket
+  m_Name: HandsOfOutJacketWithHeadset
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -22,16 +22,16 @@ AnimationClip:
     - time: 0
       value: {fileID: -2948794999391384118, guid: 6ac9243eb8bb27f429e8cee82f317b2b,
         type: 3}
-    - time: 0.1
+    - time: 0.06666667
       value: {fileID: 4353521796436250526, guid: 6ac9243eb8bb27f429e8cee82f317b2b,
         type: 3}
-    - time: 0.2
+    - time: 0.13333334
       value: {fileID: -5693008013552408956, guid: 6ac9243eb8bb27f429e8cee82f317b2b,
         type: 3}
-    - time: 0.3
+    - time: 0.2
       value: {fileID: 5037574361881210956, guid: 6ac9243eb8bb27f429e8cee82f317b2b,
         type: 3}
-    - time: 0.4
+    - time: 0.26666668
       value: {fileID: -454399571510796316, guid: 6ac9243eb8bb27f429e8cee82f317b2b,
         type: 3}
     attribute: m_Sprite
@@ -63,7 +63,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.4166667
+    m_StopTime: 0.28333336
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

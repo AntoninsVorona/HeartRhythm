@@ -22,6 +22,7 @@ public class PlayerInput : MonoBehaviour
 		public bool IgnoreInput { get; set; }
 		public bool DontReceiveAnyInput { get; set; }
 		public bool MainMenuOpened { get; set; }
+		public bool PerformingAnimation { get; set; }
 
 		public WrongInputType lastWrongInput;
 		public List<MovementDirectionUtilities.MovementDirection> danceMoveSet;
@@ -37,7 +38,7 @@ public class PlayerInput : MonoBehaviour
 			switch (GameSessionManager.Instance.CurrentGameState)
 			{
 				case GameSessionManager.GameState.Peace:
-					return PlayerReadyForInput;
+					return PlayerReadyForInput && !PerformingAnimation;
 				case GameSessionManager.GameState.Fight:
 					if (!BeatIsValid)
 					{

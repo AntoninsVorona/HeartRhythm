@@ -94,7 +94,7 @@ public class GameSessionManager : MonoBehaviour
 		{
 			GameLogic.Instance.Save();
 		}
-		
+
 		if (Input.GetKeyDown(KeyCode.L))
 		{
 			Player.Instance.Heal(1);
@@ -222,6 +222,8 @@ public class GameSessionManager : MonoBehaviour
 		}
 
 		yield return PostLoadSequence();
+		currentSceneObjects.currentObstacleManager.SpawnItemOnGround(ItemManager.Instance.GetItemByName("Sword"), 1,
+			new Vector2Int(0, -1));
 	}
 
 	public void InitializeFightWithAnEnemy(BattleArea battleArea)
