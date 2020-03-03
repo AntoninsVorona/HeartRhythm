@@ -80,6 +80,7 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 
 	public override void ShowSubtitle(Subtitle subtitle)
 	{
+		conversationUIElements.defaultPCSubtitlePanel.portraitImage = playerImage;
 		var panel = subtitle.speakerInfo.isNPC
 			? conversationUIElements.defaultNPCSubtitlePanel
 			: conversationUIElements.defaultPCSubtitlePanel;
@@ -109,6 +110,7 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 
 	public override void HideSubtitle(Subtitle subtitle)
 	{
+		conversationUIElements.defaultPCSubtitlePanel.portraitImage = null;
 		var nextLine = DialogueManager.currentConversationState.firstNPCResponse ??
 		               DialogueManager.currentConversationState.pcAutoResponse;
 		var endOfConversation = !DialogueManager.currentConversationState.hasAnyResponses;
@@ -121,6 +123,7 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 
 	public override void ShowResponses(Subtitle subtitle, Response[] responses, float timeout)
 	{
+		conversationUIElements.defaultMenuPanel.pcImage = playerImage;
 		base.ShowResponses(subtitle, responses, timeout);
 		if (lastSubtitlePanel)
 		{
@@ -130,7 +133,6 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 		lastSpeakerId = -1;
 		lastSubtitlePanel = null;
 		lastMenuPanel = conversationUIElements.defaultMenuPanel;
-		Debug.Log(lastMenuPanel.instantiatedButtons.Count);
 		foreach (var responseButton in lastMenuPanel.instantiatedButtons.Select(b =>
 			b.GetComponent<HeartRhythmResponseButton>()))
 		{
@@ -143,6 +145,7 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 
 	public override void HideResponses()
 	{
+		conversationUIElements.defaultMenuPanel.pcImage = null;
 		base.HideResponses();
 		if (lastSelectedDialogueButton)
 		{

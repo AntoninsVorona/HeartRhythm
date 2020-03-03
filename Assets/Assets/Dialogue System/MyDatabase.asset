@@ -60,7 +60,8 @@ MonoBehaviour:
     spritePortrait: {fileID: 7103749574173715010, guid: 70679f8229449e64d8390ae6f7d6cddd,
       type: 3}
     alternatePortraits: []
-    spritePortraits: []
+    spritePortraits:
+    - {fileID: 157985118581802885, guid: af30dbe210b61744c9b44a88e20752ab, type: 3}
   - id: 3
     fields:
     - title: Name
