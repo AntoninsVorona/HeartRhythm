@@ -483,7 +483,7 @@ public abstract class Unit : MonoBehaviour
 		return previous;
 	}
 
-	public virtual void Tint(Color color, float duration = 0.15f)
+	public virtual void Tint(Color color, float duration = 0.25f)
 	{
 		if (sprite)
 		{
@@ -522,7 +522,7 @@ public abstract class Unit : MonoBehaviour
 		}
 	}
 
-	public virtual void Shake(int sequenceTimes = 18)
+	public virtual void Shake(float duration = 0.25f)
 	{
 		if (sprite)
 		{
@@ -531,33 +531,26 @@ public abstract class Unit : MonoBehaviour
 				StopCoroutine(shakeCoroutine);
 			}
 
-			shakeCoroutine = StartCoroutine(ShakeSequence(sequenceTimes));
+			shakeCoroutine = StartCoroutine(ShakeSequence(duration));
 		}
 	}
 
-	private IEnumerator ShakeSequence(int sequenceTimes)
+	private IEnumerator ShakeSequence(float duration)
 	{
 		const float displace = 0.05f;
 		var spriteTransform = sprite.transform;
-		for (var i = 0; i < sequenceTimes; i++)
+		float t = 0;
+		var count = 0;
+		var spritePosition = spriteTransform.localPosition;
+		var newPositionX = displace;
+		spriteTransform.localPosition = new Vector3(newPositionX, spritePosition.y, spritePosition.z);
+		while (t < 1)
 		{
-			var spritePosition = spriteTransform.localPosition;
-			float newPositionX;
-			switch (i % 3)
-			{
-				case 1:
-					newPositionX = -displace;
-					break;
-				case 2:
-					newPositionX = 0;
-					break;
-				default:
-					newPositionX = displace;
-					break;
-			}
-
-			spriteTransform.localPosition = new Vector3(newPositionX, spritePosition.y, spritePosition.z);
 			yield return null;
+			t += Time.deltaTime / duration;
+			spritePosition = spriteTransform.localPosition;
+			newPositionX = ++count % 2 == 1 ? -displace : displace;
+			spriteTransform.localPosition = new Vector3(newPositionX, spritePosition.y, spritePosition.z);
 		}
 
 		spriteTransform.localPosition =
