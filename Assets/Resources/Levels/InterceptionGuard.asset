@@ -28,7 +28,7 @@ MonoBehaviour:
   playerSpawnPoints:
     m_keys: 00000000
     m_values:
-    - {x: 40, y: 5}
+    - {x: 0, y: 0}
   autoStartBattle: 0
   battleMusic: {fileID: 11400000, guid: f15c6cf29facbdc4b88a6859cd32ef01, type: 2}
   battleSettings:

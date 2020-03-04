@@ -351,7 +351,6 @@ MonoBehaviour:
   spawnPoint2: {x: 41, y: 4}
   enemyToSpawn: {fileID: 2704897040181694261, guid: 78988e1094ccd54409b68618b009614e,
     type: 3}
-  startedSpawning: 0
 --- !u!1 &1521203674746251151
 GameObject:
   m_ObjectHideFlags: 0
@@ -3622,6 +3621,15 @@ Tilemap:
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 1
       m_AllTileFlags: 1073741826
+  - first: {x: 29, y: 6, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 12
+      m_TileSpriteIndex: 14
+      m_TileMatrixIndex: 3
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 1
+      m_AllTileFlags: 1073741826
   - first: {x: 30, y: 6, z: 0}
     second:
       serializedVersion: 2
@@ -3891,7 +3899,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 6c45c964ce8668c41967289eb223e883, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 5d33a34f0aedb81419c60cd7c5497be8, type: 2}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: c5b63bb4ce26c164fa5124d67760b76d, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
@@ -3932,7 +3940,7 @@ Tilemap:
   - m_RefCount: 3
     m_Data: {fileID: -5226588354776557291, guid: a3b77921905c9b643ae684c48d4de5c6,
       type: 3}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 7528964033792091108, guid: a3b77921905c9b643ae684c48d4de5c6,
       type: 3}
   - m_RefCount: 2
@@ -3993,7 +4001,7 @@ Tilemap:
       e31: 4.65e-43
       e32: 4.5916e-41
       e33: 4.65e-43
-  - m_RefCount: 117
+  - m_RefCount: 118
     m_Data:
       e00: 1
       e01: 0
@@ -4048,12 +4056,12 @@ Tilemap:
       e32: 0
       e33: 0
   m_TileColorArray:
-  - m_RefCount: 117
+  - m_RefCount: 118
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 117
+  - m_RefCount: 118
     m_Data: {fileID: 3926073209968212266, guid: b79c900b540e3f74e9e13bb7fb45ba0f,
       type: 3}
   m_AnimationFrameRate: 1

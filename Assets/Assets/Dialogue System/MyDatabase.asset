@@ -6604,7 +6604,7 @@ MonoBehaviour:
     - id: 18
       fields:
       - title: Title
-        value: New Dialogue Entry
+        value: 
         type: 0
         typeString: 
       - title: Pictures
@@ -6628,8 +6628,8 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: Let's wander around for now. You can be free to rhythm mistakes right
-          now as I mentioned earlier.
+        value: Let's wander around for now. You are free to make rhythm mistakes
+          right now as I mentioned earlier.
         type: 0
         typeString: 
       - title: Parenthetical
@@ -7120,7 +7120,7 @@ MonoBehaviour:
     - id: 25
       fields:
       - title: Title
-        value: New Dialogue Entry
+        value: 
         type: 0
         typeString: 
       - title: Pictures
@@ -7144,7 +7144,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: To be honest, that's allI can tell you about myself... I don't remember
+        value: To be honest, that's all I can tell you about myself... I don't remember
           anything else.
         type: 0
         typeString: 
@@ -7696,7 +7696,7 @@ MonoBehaviour:
     - id: 33
       fields:
       - title: Title
-        value: New Dialogue Entry
+        value: 
         type: 0
         typeString: 
       - title: Pictures
@@ -7720,7 +7720,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: This is the reason deafness.
+        value: This is the reason of deafness.
         type: 0
         typeString: 
       - title: Parenthetical
@@ -7915,7 +7915,7 @@ MonoBehaviour:
     - id: 36
       fields:
       - title: Title
-        value: New Dialogue Entry
+        value: 
         type: 0
         typeString: 
       - title: Pictures
@@ -7939,7 +7939,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: So... What happens when that happens?
+        value: But I do want to know. What happens?
         type: 0
         typeString: 
       - title: Parenthetical
@@ -8268,7 +8268,7 @@ MonoBehaviour:
         y: 1466.0642
         width: 160
         height: 30
-    canvasScrollPosition: {x: 7.788185, y: 49.92621}
+    canvasScrollPosition: {x: 0, y: 932.88074}
     canvasZoom: 0.87999976
   syncInfo:
     syncActors: 0

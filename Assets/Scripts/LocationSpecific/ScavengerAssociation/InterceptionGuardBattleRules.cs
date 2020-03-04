@@ -89,12 +89,10 @@ public class InterceptionGuardBattleRules : BattleRules
 			sceneObjects.currentObstacleManager.SpawnObstacle("BlockingObstacle", doorPosition);
 		}
 
-		sceneObjects.currentObstacleManager.RemoveUnit(sceneObjects.currentWorld
-			.GetTile(removeDoor1.doorPosition.First())
-			.ObstacleOnTile);
-		sceneObjects.currentObstacleManager.RemoveUnit(sceneObjects.currentWorld
-			.GetTile(removeDoor2.doorPosition.First())
-			.ObstacleOnTile);
+		sceneObjects.currentWorld
+			.GetTile(removeDoor1.doorPosition.First()).ObstacleOnTile.Die();
+		sceneObjects.currentWorld
+			.GetTile(removeDoor2.doorPosition.First()).ObstacleOnTile.Die();
 		placeDoor.doorAnimator.SetTrigger(AnimatorUtilities.START_TRIGGER);
 		removeDoor1.doorAnimator.SetTrigger(AnimatorUtilities.START_TRIGGER);
 		removeDoor2.doorAnimator.SetTrigger(AnimatorUtilities.START_TRIGGER);
