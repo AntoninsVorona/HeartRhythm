@@ -303,7 +303,11 @@ public abstract class Unit : MonoBehaviour
 	{
 		var start = transform.position;
 		var end = GetPosition(newPosition);
-		sprite.flipX = start.x > end.x;
+		if (!Mathf.Approximately(start.x, end.x))
+		{
+			sprite.flipX = start.x > end.x;
+		}
+
 		var jumpStart = sprite.transform.localPosition.y;
 		float t = 0;
 		while (t < 1 - Time.deltaTime * movementSpeed / 2)
@@ -325,7 +329,11 @@ public abstract class Unit : MonoBehaviour
 	{
 		var start = transform.position;
 		var end = GetPosition(newPosition);
-		sprite.flipX = start.x > end.x;
+		if (!Mathf.Approximately(start.x, end.x))
+		{
+			sprite.flipX = start.x > end.x;
+		}
+
 		var jumpStart = sprite.transform.localPosition.y;
 		float t = 0;
 		const float moveUntil = 0.3f;

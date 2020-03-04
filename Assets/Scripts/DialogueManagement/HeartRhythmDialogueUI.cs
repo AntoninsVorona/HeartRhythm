@@ -84,8 +84,7 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 		var panel = subtitle.speakerInfo.isNPC
 			? conversationUIElements.defaultNPCSubtitlePanel
 			: conversationUIElements.defaultPCSubtitlePanel;
-		var isSameSpeakerSamePanel = panel == lastSubtitlePanel && subtitle.speakerInfo.id == lastSpeakerId &&
-		                             lastMenuPanel == null;
+		var isSameSpeakerSamePanel = panel == lastSubtitlePanel && lastMenuPanel == null;
 		if (hasShownSubtitle && !isSameSpeakerSamePanel)
 		{
 			typeWriterSpeed = panel.GetTypewriterSpeed();
