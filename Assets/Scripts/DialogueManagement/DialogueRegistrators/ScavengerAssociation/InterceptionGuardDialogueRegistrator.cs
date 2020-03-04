@@ -19,7 +19,7 @@ public class InterceptionGuardDialogueRegistrator : DialogueRegistrator
 	
 	public void SpawnDude()
 	{
-		((InterceptionGuardBattleRules) BattleRules.Instance).SpawnDude();
+		((InterceptionGuardBattleRules) BattleRules.Instance).StartSpawning();
 	}
 
 	public void TurnAroundDamagingGuard()

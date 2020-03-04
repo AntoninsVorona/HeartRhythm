@@ -71,7 +71,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 818520244864750574}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27, y: 10.75, z: 0}
+  m_LocalPosition: {x: 27, y: 10.75, z: 9.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1521203674746251149}
@@ -115,7 +115,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 101
+  m_SortingOrder: 100
   m_Sprite: {fileID: 5213229242370633579, guid: 08ecb812083d03046831063226c8a23c,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac713ef713854e1faa6c4f65115dad29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 41, y: 4}
+  position: {x: 26, y: 9}
 --- !u!114 &3544946200422315823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,8 +335,8 @@ MonoBehaviour:
     type: 2}
   placeDoor:
     doorPosition:
-    - {x: 0, y: 0}
-    - {x: 0, y: 0}
+    - {x: 26, y: 9}
+    - {x: 27, y: 9}
     doorAnimator: {fileID: 6062465770968018236}
   removeDoor1:
     doorPosition:
@@ -589,7 +589,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 101
+  m_SortingOrder: 98
   m_Sprite: {fileID: 21300000, guid: dc339f421851d1b4284c596985f69499, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

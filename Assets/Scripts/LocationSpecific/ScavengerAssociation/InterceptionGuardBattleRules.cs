@@ -26,10 +26,7 @@ public class InterceptionGuardBattleRules : BattleRules
 	public Vector2Int spawnPoint1;
 	public Vector2Int spawnPoint2;
 	public Enemy enemyToSpawn;
-
-	[HideInInspector]
-	public bool startedSpawning;
-
+	private bool startedSpawning;
 	private int currentBeatCount;
 
 	protected override void Start()

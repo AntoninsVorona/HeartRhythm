@@ -96,6 +96,7 @@ public class AudioManager : MonoBehaviour
 	private Music currentMusic;
 
 	private Coroutine beatChecker;
+	private Coroutine changeVolumeCoroutine;
 
 	private bool isCurrentlyPlaying;
 
@@ -282,6 +283,39 @@ public class AudioManager : MonoBehaviour
 	public void SetVolume(float volume)
 	{
 		musicAudioSource.volume = volume;
+	}
+
+	public void ChangeVolume(float newVolume, bool instant = false)
+	{
+		if (changeVolumeCoroutine != null)
+		{
+			StopCoroutine(changeVolumeCoroutine);
+			changeVolumeCoroutine = null;
+		}
+
+		if (instant)
+		{
+			musicAudioSource.volume = newVolume;
+		}
+		else
+		{
+			changeVolumeCoroutine = StartCoroutine(ChangeVolumeSequence(newVolume));
+		}
+	}
+
+	private IEnumerator ChangeVolumeSequence(float newVolume)
+	{
+		const float duration = 0.5f;
+		var currentVolume = musicAudioSource.volume;
+		float t = 0;
+		while (t < 1)
+		{
+			t += Time.deltaTime / duration;
+			musicAudioSource.volume = Mathf.Lerp(currentVolume, newVolume, t);
+			yield return null;
+		}
+
+		changeVolumeCoroutine = null;
 	}
 
 	public static AudioManager Instance { get; private set; }
