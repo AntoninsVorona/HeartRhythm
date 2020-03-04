@@ -304,7 +304,7 @@ public abstract class Unit : MonoBehaviour
 		var start = transform.position;
 		var end = GetPosition(newPosition);
 		sprite.flipX = start.x > end.x;
-		var jumpStart = sprite.transform.localPosition;
+		var jumpStart = sprite.transform.localPosition.y;
 		float t = 0;
 		while (t < 1 - Time.deltaTime * movementSpeed / 2)
 		{
@@ -326,7 +326,7 @@ public abstract class Unit : MonoBehaviour
 		var start = transform.position;
 		var end = GetPosition(newPosition);
 		sprite.flipX = start.x > end.x;
-		var jumpStart = sprite.transform.localPosition;
+		var jumpStart = sprite.transform.localPosition.y;
 		float t = 0;
 		const float moveUntil = 0.3f;
 		while (t < moveUntil - Time.deltaTime * movementSpeed / 2)
@@ -364,16 +364,17 @@ public abstract class Unit : MonoBehaviour
 	}
 
 	protected virtual void CharacterMovement(float movementT, float characterDisplaceT, Vector3 start, Vector3 end,
-		bool jump, Vector3 jumpStart, bool updateCamera = true)
+		bool jump, float jumpStart, bool updateCamera = true)
 	{
 		var speed = movementSpeedCurve.Evaluate(movementT);
 		var x = Mathf.Lerp(start.x, end.x, speed);
 		var y = Mathf.Lerp(start.y, end.y, speed);
+		var spriteTransform = sprite.transform;
 		transform.position = new Vector3(x, y, y);
 		if (jump)
 		{
-			var spriteJump = jumpStart.y + movementDisplaceCurve.Evaluate(characterDisplaceT);
-			sprite.transform.localPosition = new Vector3(jumpStart.x, spriteJump, 0);
+			var spriteJump = jumpStart + movementDisplaceCurve.Evaluate(characterDisplaceT);
+			spriteTransform.localPosition = new Vector3(spriteTransform.localPosition.x, spriteJump, 0);
 		}
 	}
 
@@ -462,18 +463,6 @@ public abstract class Unit : MonoBehaviour
 	public void RemoveGameStateObserver()
 	{
 		GameSessionManager.Instance.gameStateObservers.Remove(gameStateChangedObserver);
-	}
-
-	protected virtual void OnDrawGizmosSelected()
-	{
-		Gizmos.color = Color.red;
-		var size = new Vector3(1, 1, 0.2f);
-		Gizmos.DrawCube(CubeLocation(spawnPoint), size);
-
-		Vector3 CubeLocation(Vector2Int point)
-		{
-			return (Vector3Int) point + new Vector3(0.5f, 0.5f, 0);
-		}
 	}
 
 	public float SetMovementSpeed(float movementSpeed)
@@ -581,6 +570,26 @@ public abstract class Unit : MonoBehaviour
 			var spriteTransform = sprite.transform;
 			spriteTransform.localPosition =
 				new Vector3(0, spriteTransform.localPosition.y, spriteTransform.localPosition.z);
+		}
+	}
+
+	public void TurnAround()
+	{
+		if (sprite)
+		{
+			sprite.flipX = !sprite.flipX;
+		}
+	}
+
+	protected virtual void OnDrawGizmosSelected()
+	{
+		Gizmos.color = Color.red;
+		var size = new Vector3(1, 1, 0.2f);
+		Gizmos.DrawCube(CubeLocation(spawnPoint), size);
+
+		Vector3 CubeLocation(Vector2Int point)
+		{
+			return (Vector3Int) point + new Vector3(0.5f, 0.5f, 0);
 		}
 	}
 

@@ -28,7 +28,7 @@ public class AttackOrSyncCutScene : CutScene
 		Player.Instance.Move(new Vector2Int(22, -1));
 		yield return new WaitForSeconds(0.25f);
 		yield return GameSessionManager.Instance.LoadLevel(runawayForest, 0);
-		GameCamera.Instance.ChangeTargetPosition(new Vector3(3, 8));
+		GameCamera.Instance.ChangeTargetPosition(new Vector3(3.5f, 8.5f));
 		GameCamera.Instance.staticView = true;
 		GameUI.Instance.ResetFadeAlpha();
 		yield return GameUI.Instance.ShowBlackAnnouncer(new BlackAnnouncer.AnnouncementData("Chapter 1", "Darkwoods"));

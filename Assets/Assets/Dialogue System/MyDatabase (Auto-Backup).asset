@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 935899b62f48ae5498594680ed17d133, type: 3}
-  m_Name: MyDatabase
+  m_Name: MyDatabase (Auto-Backup)
   m_EditorClassIdentifier: 
   version: 0.0.1
   author: bubucha
@@ -7332,12 +7332,6 @@ MonoBehaviour:
         destinationDialogueID: 30
         isConnector: 0
         priority: 2
-      - originConversationID: 14
-        originDialogueID: 27
-        destinationConversationID: 14
-        destinationDialogueID: 32
-        isConnector: 0
-        priority: 2
       conditionsString: 
       userScript: 
       onExecute:
@@ -7475,8 +7469,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 351.27994
-        y: 1532.6077
+        x: 358.12924
+        y: 1544.9364
         width: 160
         height: 30
     - id: 30
@@ -7760,8 +7754,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 757.3538
-        y: 1142.6954
+        x: 664.6709
+        y: 1135.3784
         width: 160
         height: 30
     - id: 34
@@ -7837,8 +7831,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 796.37823
-        y: 1196.5392
+        x: 664.67084
+        y: 1190.4417
         width: 160
         height: 30
     - id: 35
@@ -7908,8 +7902,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 679.9225
-        y: 1271.8557
+        x: 548.2151
+        y: 1265.7582
         width: 160
         height: 30
     - id: 36
@@ -7979,8 +7973,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 893.6386
-        y: 1257.2034
+        x: 764.6709
+        y: 1260.6948
         width: 160
         height: 30
     - id: 37
@@ -8050,8 +8044,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 930.3475
-        y: 1307.2034
+        x: 801.37976
+        y: 1310.6948
         width: 160
         height: 30
     - id: 38
@@ -8122,14 +8116,14 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 889.8412
-        y: 1361.0009
+        x: 760.8735
+        y: 1364.4923
         width: 160
         height: 30
     - id: 39
       fields:
       - title: Title
-        value: 
+        value: New Dialogue Entry
         type: 0
         typeString: 
       - title: Pictures
@@ -8153,7 +8147,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: I don't remember telling it will harm <i>you<i>.
+        value: I don't remember telling it will harm you.
         type: 0
         typeString: 
       - title: Parenthetical
@@ -8193,8 +8187,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 855.664
-        y: 1413.5323
+        x: 726.6963
+        y: 1417.0238
         width: 160
         height: 30
     - id: 40
@@ -8264,12 +8258,12 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 763.2589
-        y: 1466.0642
+        x: 634.2912
+        y: 1469.5557
         width: 160
         height: 30
-    canvasScrollPosition: {x: 247.94525, y: 932.7106}
-    canvasZoom: 0.72999984
+    canvasScrollPosition: {x: 94.93671, y: 1062.6135}
+    canvasZoom: 0.7899998
   syncInfo:
     syncActors: 0
     syncItems: 0

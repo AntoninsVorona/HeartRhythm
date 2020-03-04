@@ -6,7 +6,7 @@ public class Enemy : Mob
 	[Serializable]
 	public class EnemyInteractionWithPlayerData
 	{
-		public BattleArea.BattleDamage damageOnContact = new BattleArea.BattleDamage(0);
+		public BattleArea.BattleDamage damageOnContact = BattleArea.BattleDamage.DEFAULT_BATTLE_DAMAGE;
 		public bool dissipateOnContact = true;
 	}
 

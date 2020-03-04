@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneObjects: {fileID: 610986543576554462, guid: f2508ec0fe143454986215befac6338d,
     type: 3}
-  dialogueRegistrator: {fileID: 0}
+  dialogueRegistrator: {fileID: 11400000, guid: 6927e5c13823ec542a36fd79e3694ea9,
+    type: 2}
   cameraIsStatic: 0
   backgroundColor:
     serializedVersion: 2
@@ -35,8 +36,6 @@ MonoBehaviour:
     maxHp: 100
     missedBeatDamage:
       damage: 1
-      equalizerShake: 1
     invalidInputDamage:
       damage: 1
-      equalizerShake: 1
     hitsInARowToHeal: 3

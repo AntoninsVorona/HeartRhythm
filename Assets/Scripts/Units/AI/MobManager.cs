@@ -41,4 +41,13 @@ public class MobManager : UnitManager<Mob>
 		unit.peaceModeMovementCoroutine = null;
 		unit.StopTalk(true);
 	}
+
+	public void RemoveAllUnits()
+	{
+		var units = new List<Mob>(allUnits);
+		foreach (var unit in units)
+		{
+			unit.Die();
+		}
+	}
 }

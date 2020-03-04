@@ -30,7 +30,7 @@ public class Player : Unit
 			get => successfulBeatsInARow;
 			set
 			{
-				if (value == GameSessionManager.Instance.CurrentLevelBattleSettings().hitsInARowToHeal)
+				if (value == GameSessionManager.Instance.currentBattleSettings.hitsInARowToHeal)
 				{
 					successfulBeatsInARow = 0;
 					Instance.Heal(1);
@@ -150,7 +150,7 @@ public class Player : Unit
 
 	protected override Coroutine SuccessfulMove(Vector2Int newPosition, bool force)
 	{
-		if (GameSessionManager.Instance.CurrentLevelBattleSettings() != null)
+		if (GameSessionManager.Instance.FightingAnEnemy())
 		{
 			combatData.SuccessfulBeatsInARow++;
 		}
@@ -190,7 +190,7 @@ public class Player : Unit
 	}
 
 	protected override void CharacterMovement(float movementT, float characterDisplaceT, Vector3 start, Vector3 end,
-		bool jump, Vector3 jumpStart, bool updateCamera = true)
+		bool jump, float jumpStart, bool updateCamera = true)
 	{
 		base.CharacterMovement(movementT, characterDisplaceT, start, end, jump, jumpStart, updateCamera);
 		if (updateCamera)
@@ -420,12 +420,11 @@ public class Player : Unit
 			ReceiveInput(MovementDirectionUtilities.MovementDirection.None);
 		}
 
-		var battleSettings = GameSessionManager.Instance.CurrentLevelBattleSettings();
-		if (battleSettings != null)
+		if (GameSessionManager.Instance.FightingAnEnemy())
 		{
-			if (battleSettings.missedBeatDamage.damage > 0)
+			if (GameSessionManager.Instance.currentBattleSettings.missedBeatDamage.damage > 0)
 			{
-				TakeDamage(battleSettings.missedBeatDamage.damage);
+				TakeDamage(GameSessionManager.Instance.currentBattleSettings.missedBeatDamage.damage);
 			}
 
 			combatData.SuccessfulBeatsInARow = 0;
@@ -434,12 +433,11 @@ public class Player : Unit
 
 	public void InvalidInputTime()
 	{
-		var battleSettings = GameSessionManager.Instance.CurrentLevelBattleSettings();
-		if (battleSettings != null)
+		if (GameSessionManager.Instance.FightingAnEnemy())
 		{
-			if (battleSettings.invalidInputDamage.damage > 0)
+			if (GameSessionManager.Instance.currentBattleSettings.invalidInputDamage.damage > 0)
 			{
-				TakeDamage(battleSettings.invalidInputDamage.damage);
+				TakeDamage(GameSessionManager.Instance.currentBattleSettings.invalidInputDamage.damage);
 			}
 
 			combatData.SuccessfulBeatsInARow = 0;

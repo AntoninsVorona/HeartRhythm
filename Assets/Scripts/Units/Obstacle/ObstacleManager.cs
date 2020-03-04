@@ -14,6 +14,12 @@ public class ObstacleManager : UnitManager<Obstacle>
 		InitializeUnit(itemOnGround, spawnPoint);
 	}
 
+	public void SpawnObstacle(string obstacleName, Vector2Int spawnPoint)
+	{
+		var obstaclePrefab = Resources.Load<Obstacle>($"{OBSTACLE_PATH}/{obstacleName}");
+		SpawnObstacle(obstaclePrefab, spawnPoint);
+	}
+	
 	public void SpawnObstacle(Obstacle obstaclePrefab, Vector2Int spawnPoint)
 	{
 		var obstacle = Instantiate(obstaclePrefab, transform);

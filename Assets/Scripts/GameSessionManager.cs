@@ -42,6 +42,9 @@ public class GameSessionManager : MonoBehaviour
 	private Music fightMusic;
 	private CutScene currentCutScene;
 
+	[HideInInspector]
+	public BattleArea.BattleSettings currentBattleSettings;
+
 	[HideInNormalInspector]
 	public SceneObjects currentSceneObjects;
 
@@ -200,6 +203,7 @@ public class GameSessionManager : MonoBehaviour
 		var updateGameState = true;
 		if (currentLevelData is BattleArea battleArea)
 		{
+			currentBattleSettings = battleArea.battleSettings;
 			if (battleArea.autoStartBattle)
 			{
 				InitializeFightWithAnEnemy(battleArea);
@@ -222,8 +226,6 @@ public class GameSessionManager : MonoBehaviour
 		}
 
 		yield return PostLoadSequence();
-		currentSceneObjects.currentObstacleManager.SpawnItemOnGround(ItemManager.Instance.GetItemByName("Sword"), 1,
-			new Vector2Int(0, -1));
 	}
 
 	public void InitializeFightWithAnEnemy(BattleArea battleArea)
@@ -423,16 +425,6 @@ public class GameSessionManager : MonoBehaviour
 	public string CurrentLevelName()
 	{
 		return currentLevelData.name;
-	}
-
-	public BattleArea.BattleSettings CurrentLevelBattleSettings()
-	{
-		if (currentLevelData is BattleArea battleArea)
-		{
-			return battleArea.battleSettings;
-		}
-
-		return null;
 	}
 
 	public bool IsCutSceneInProgress()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BattleArea : LevelData
 {
 	[Serializable]
-	public class BattleDamage
+	public struct BattleDamage
 	{
 		public int damage;
 
@@ -13,19 +13,34 @@ public class BattleArea : LevelData
 		{
 			this.damage = damage;
 		}
+		
+		public static readonly BattleDamage DEFAULT_BATTLE_DAMAGE = new BattleDamage(0);
 	}
-	
+
 	[Serializable]
-	public class BattleSettings
+	public struct BattleSettings
 	{
-		public int startingHp = 50;
-		public int maxHp = 100;
-		public BattleDamage missedBeatDamage = new BattleDamage(1);
-		public BattleDamage invalidInputDamage = new BattleDamage(1);
-		public int hitsInARowToHeal = 5;
+		public int startingHp;
+		public int maxHp;
+		public BattleDamage missedBeatDamage;
+		public BattleDamage invalidInputDamage;
+		public int hitsInARowToHeal;
+
+		public BattleSettings(int startingHp, int maxHp, BattleDamage missedBeatDamage, BattleDamage invalidInputDamage,
+			int hitsInARowToHeal)
+		{
+			this.startingHp = startingHp;
+			this.maxHp = maxHp;
+			this.missedBeatDamage = missedBeatDamage;
+			this.invalidInputDamage = invalidInputDamage;
+			this.hitsInARowToHeal = hitsInARowToHeal;
+		}
+
+		public static readonly BattleSettings DEFAULT_BATTLE_SETTINGS =
+			new BattleSettings(50, 100, new BattleDamage(1), new BattleDamage(1), 5);
 	}
 
 	public bool autoStartBattle = true;
 	public Music battleMusic;
-	public BattleSettings battleSettings;
+	public BattleSettings battleSettings = BattleSettings.DEFAULT_BATTLE_SETTINGS;
 }
