@@ -1177,11 +1177,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 38901602}
-    - target: {fileID: 4325617955434805406, guid: 8f18fb76ac5bae84cbe06be47abce977,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 83.3
-      objectReference: {fileID: 0}
     - target: {fileID: 4397258855610990172, guid: 8f18fb76ac5bae84cbe06be47abce977,
         type: 3}
       propertyPath: m_textInfo.characterCount
