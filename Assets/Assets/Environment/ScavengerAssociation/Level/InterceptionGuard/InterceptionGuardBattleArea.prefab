@@ -346,7 +346,7 @@ MonoBehaviour:
     doorPosition:
     - {x: 29, y: 10}
     doorAnimator: {fileID: 3681036260869810512}
-  spawnRate: 3
+  spawnRate: 5
   spawnPoint1: {x: 0, y: 0}
   spawnPoint2: {x: 41, y: 4}
   enemyToSpawn: {fileID: 2704897040181694261, guid: 78988e1094ccd54409b68618b009614e,
