@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LoadingUI : MonoBehaviour
 {
-	private const float FADE_DURATION = 0.55f;
+	private const float FADE_DURATION = 0.5f;
 
 	[SerializeField]
 	private GameObject canvas;
@@ -59,6 +59,7 @@ public class LoadingUI : MonoBehaviour
 		animator.SetTrigger(AnimatorUtilities.START_TRIGGER);
 		yield return new WaitForSeconds(FADE_DURATION);
 		loadingText.gameObject.SetActive(true);
+		yield return new WaitForSeconds(0.1f);
 		startSequence = null;
 	}
 
