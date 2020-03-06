@@ -84,6 +84,7 @@ public class InterceptionGuardBattleRules : BattleRules
 	public void CloseDoors()
 	{
 		DespawnAllEnemies();
+		startedSpawning = false;
 		foreach (var doorPosition in placeDoor.doorPosition)
 		{
 			sceneObjects.currentObstacleManager.SpawnObstacle("BlockingObstacle", doorPosition);

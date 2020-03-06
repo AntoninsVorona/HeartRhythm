@@ -72,8 +72,8 @@ public class SceneObjects : MonoBehaviour
 
 	public void ApplyBeat()
 	{
-		currentMobManager.MakeMobsActions();
 		beatListeners.RemoveAll(b => b.owner == null);
 		beatListeners.ForEach(b => b.NotifyBegin());
+		currentMobManager.MakeMobsActions();
 	}
 }
