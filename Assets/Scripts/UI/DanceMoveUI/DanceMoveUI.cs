@@ -7,8 +7,7 @@ using UnityEngine.UI;
 public class DanceMoveUI : MonoBehaviour
 {
 	[Serializable]
-	public class
-		DirectionalArrowDictionary : SerializableDictionary<MovementDirectionUtilities.MovementDirection, Sprite>
+	public class DirectionalArrowDictionary : SerializableDictionary<MovementDirectionUtilities.MovementDirection, Sprite>
 	{
 	}
 
@@ -65,7 +64,7 @@ public class DanceMoveUI : MonoBehaviour
 
 	public void Initialize()
 	{
-		cutOut.rectTransform.sizeDelta = CutOutMax();
+		cutOut.rectTransform.localScale = Vector3.one * CutOutMax();
 		Deactivate(true);
 	}
 
@@ -102,7 +101,7 @@ public class DanceMoveUI : MonoBehaviour
 			StopCoroutine(clearCutOut);
 		}
 
-		cutOut.rectTransform.sizeDelta = CutOutMax();
+		cutOut.rectTransform.localScale = Vector3.one * CutOutMax();
 		showCutOut = StartCoroutine(ShowCutOut());
 	}
 
@@ -178,14 +177,14 @@ public class DanceMoveUI : MonoBehaviour
 		clearCutOut = null;
 	}
 
-	private IEnumerator ResizeCutOut(Vector2 finalSize, float time, bool reposition)
+	private IEnumerator ResizeCutOut(float finalScale, float time, bool reposition)
 	{
 		if (reposition)
 		{
 			RepositionOnPlayer();
 		}
 
-		var startingCutOut = cutOut.rectTransform.sizeDelta;
+		var startingCutOut = cutOut.rectTransform.localScale;
 		float t = 0;
 		var repositionAgain = reposition;
 		while (t < 1)
@@ -198,7 +197,9 @@ public class DanceMoveUI : MonoBehaviour
 				repositionAgain = false;
 			}
 
-			cutOut.rectTransform.sizeDelta = Vector2.Lerp(startingCutOut, finalSize, realT);
+			Vector3 desiredScale = Vector2.Lerp(startingCutOut, Vector2.one * finalScale, realT);
+			desiredScale.z = 1;
+ 			cutOut.rectTransform.localScale = desiredScale;
 			yield return null;
 		}
 
@@ -236,19 +237,19 @@ public class DanceMoveUI : MonoBehaviour
 		pulseSequence = null;
 	}
 
-	private Vector2 CutOutMax()
+	private float CutOutMax()
 	{
-		return new Vector2(Screen.width, Screen.height) * 2;
+		return 2.2f;
 	}
 
-	private Vector2 CutOutMin()
+	private float CutOutMin()
 	{
-		return new Vector2(Screen.width, Screen.height) / 4;
+		return 0.25f;
 	}
 
-	private Vector2 CutOutPulse()
+	private float CutOutPulse()
 	{
-		return new Vector2(Screen.width, Screen.height) / 3.5f;
+		return 0.3f;
 	}
 
 	private void SubscribeToBeat()
