@@ -138,7 +138,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '[Text]'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 82bad8bfdf84ce54aab9803d240cf55b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 970ee418d7c1d514da81978f2702f11f, type: 2}
   m_sharedMaterial: {fileID: 514409803337920922, guid: 82bad8bfdf84ce54aab9803d240cf55b,
     type: 2}
   m_fontSharedMaterials: []
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
+  m_fontSize: 45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_fontStyle: 16
   m_textAlignment: 514
   m_characterSpacing: 0
-  m_wordSpacing: -30
+  m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
@@ -289,6 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86db6e6a9f2d43119e7863714827d9b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalImage: {fileID: 6702382938068415612}
   clickEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -296,7 +297,6 @@ MonoBehaviour:
     position: {x: 0, y: 150}
     rotation: 0
     scale: 1
-  normalImage: {fileID: 6702382938068415612}
 --- !u!1 &7130020927633233911
 GameObject:
   m_ObjectHideFlags: 0
