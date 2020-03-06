@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LoadingUI : MonoBehaviour
 {
-	private const float FADE_DURATION = 0.5f;
+	private const float FADE_DURATION = 0.55f;
 
 	[SerializeField]
 	private GameObject canvas;

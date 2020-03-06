@@ -77,6 +77,7 @@ public class AudioManager : MonoBehaviour
 	[SerializeField]
 	private AudioMixer masterMixer;
 
+	public AudioSource introAudioSource;
 	public AudioSource musicAudioSource;
 
 	[HideInNormalInspector]
@@ -140,12 +141,15 @@ public class AudioManager : MonoBehaviour
 		musicAudioSource.Stop();
 		musicAudioSource.loop = currentMusic.loop;
 		musicAudioSource.clip = currentMusic.audioClip;
+		introAudioSource.loop = false;
+		introAudioSource.clip = currentMusic.introClip;
 		isCurrentlyPlaying = true;
 		pulseSubscribersForNextPlay.RemoveAll(p => p.owner == null);
 		pulseSubscribersForNextPlay.ForEach(p => p.startTime = startTime);
 		pulseSubscribers = new List<PulseEventSubscriber>(pulseSubscribersForNextPlay);
 		pulseSubscribersForNextPlay.Clear();
 		SchedulePlay();
+		ChangeVolume(1, true);
 		if (isBattle)
 		{
 			GameUI.Instance.beatController.InitializeBeatController();
@@ -163,7 +167,16 @@ public class AudioManager : MonoBehaviour
 
 	private void SchedulePlay()
 	{
-		musicAudioSource.PlayScheduled(startTime);
+		if (introAudioSource.clip != null)
+		{
+			introAudioSource.PlayScheduled(startTime);
+			musicAudioSource.PlayScheduled(startTime + introAudioSource.clip.length);
+		}
+		else
+		{
+			musicAudioSource.PlayScheduled(startTime);
+		}
+
 		beatChecker = StartCoroutine(BeatChecker());
 	}
 
@@ -282,6 +295,7 @@ public class AudioManager : MonoBehaviour
 
 	public void SetVolume(float volume)
 	{
+		introAudioSource.volume = volume;
 		musicAudioSource.volume = volume;
 	}
 
@@ -295,6 +309,7 @@ public class AudioManager : MonoBehaviour
 
 		if (instant)
 		{
+			introAudioSource.volume = newVolume;
 			musicAudioSource.volume = newVolume;
 		}
 		else
@@ -311,7 +326,9 @@ public class AudioManager : MonoBehaviour
 		while (t < 1)
 		{
 			t += Time.deltaTime / duration;
-			musicAudioSource.volume = Mathf.Lerp(currentVolume, newVolume, t);
+			var vol = Mathf.Lerp(currentVolume, newVolume, t);
+			introAudioSource.volume = vol;
+			musicAudioSource.volume = vol;
 			yield return null;
 		}
 

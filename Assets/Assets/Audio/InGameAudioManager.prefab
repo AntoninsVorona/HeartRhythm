@@ -15,6 +15,7 @@ MonoBehaviour:
   pulseSubscribers: []
   pulseSubscribersForNextPlay: []
   masterMixer: {fileID: 24100000, guid: bb1671476f8b7a248830714aa51c7372, type: 2}
+  introAudioSource: {fileID: 6097974277230946401}
   musicAudioSource: {fileID: 8538119728859050741}
   beatDelay: 0
   bpm: 0
@@ -93,6 +94,12 @@ PrefabInstance:
 --- !u!1 &8538119730299231489 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 201512459564222496, guid: c6822aa6f9db74144a37d74a39c7c57e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8410072269989696801}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &6097974277230946401 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2312263470995258688, guid: c6822aa6f9db74144a37d74a39c7c57e,
     type: 3}
   m_PrefabInstance: {fileID: 8410072269989696801}
   m_PrefabAsset: {fileID: 0}

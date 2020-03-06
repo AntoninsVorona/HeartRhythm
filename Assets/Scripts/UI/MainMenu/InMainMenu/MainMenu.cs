@@ -115,18 +115,7 @@ public class MainMenu : AbstractMainMenu
 
 	public override IEnumerator FadeIntoPlay()
 	{
-		StartCoroutine(FadeMusic());
+		AudioManager.Instance.ChangeVolume(0);
 		return base.FadeIntoPlay();
-	}
-
-	private IEnumerator FadeMusic()
-	{
-		var volume = AudioManager.Instance.GetVolume();
-		while (volume > 0)
-		{
-			yield return null;
-			volume -= Time.deltaTime * 3;
-			AudioManager.Instance.SetVolume(volume);
-		}
 	}
 }
