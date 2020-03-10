@@ -202,6 +202,7 @@ public class Player : Unit
 	public override void Die()
 	{
 		GameSessionManager.Instance.PlayerDead();
+		PlayerInput.Instance.acceptor.DontReceiveAnyInput = true;
 	}
 
 	public void ActivateGameOverSquare()

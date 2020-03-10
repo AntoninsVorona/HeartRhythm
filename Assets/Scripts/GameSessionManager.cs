@@ -443,7 +443,7 @@ public class GameSessionManager : MonoBehaviour
 
 	private IEnumerator GameOverSequence()
 	{
-		CurrentGameState = GameState.Peace;
+		AudioManager.Instance.StopBeat();
 		currentSceneObjects.currentObstacleManager.StopAllActions();
 		currentSceneObjects.currentMobManager.StopAllActions();
 		yield return GameUI.Instance.GameOver();
