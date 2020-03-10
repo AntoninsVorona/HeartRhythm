@@ -249,7 +249,6 @@ public class GameSessionManager : MonoBehaviour
 		yield return LoadingUI.Instance.StartLoading();
 		if (currentSceneObjects)
 		{
-			currentSceneObjects.currentMobManager.StopAllActionsBeforeLoading();
 			currentSceneObjects.Deactivate();
 		}
 
@@ -435,6 +434,19 @@ public class GameSessionManager : MonoBehaviour
 	public bool FightingAnEnemy()
 	{
 		return currentLevelData is BattleArea;
+	}
+
+	public void PlayerDead()
+	{
+		StartCoroutine(GameOverSequence());
+	}
+
+	private IEnumerator GameOverSequence()
+	{
+		CurrentGameState = GameState.Peace;
+		currentSceneObjects.currentObstacleManager.StopAllActions();
+		currentSceneObjects.currentMobManager.StopAllActions();
+		yield return GameUI.Instance.GameOver();
 	}
 
 	public static GameSessionManager Instance { get; private set; }

@@ -18,6 +18,7 @@ public class GameUI : MonoBehaviour
 	public Corruption corruption;
 	public MessageBox messageBox;
 	public GameLogo gameLogo;
+	public GameOverScreen gameOverScreen;
 
 	private void Awake()
 	{
@@ -41,6 +42,7 @@ public class GameUI : MonoBehaviour
 		corruption.UpdateCorruption(0);
 		messageBox.Hide(true);
 		gameLogo.Deactivate();
+		gameOverScreen.Deactivate();
 	}
 
 	private void Start()
@@ -134,6 +136,11 @@ public class GameUI : MonoBehaviour
 	public Coroutine CloseBlackAnnouncer()
 	{
 		return blackAnnouncer.Close();
+	}
+
+	public Coroutine GameOver()
+	{
+		return gameOverScreen.Show();
 	}
 
 	public static GameUI Instance { get; private set; }

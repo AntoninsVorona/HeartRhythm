@@ -90,8 +90,8 @@ public class Player : Unit
 	private static readonly int TAKE_SOMETHING_TRIGGER = Animator.StringToHash("TakeSomething");
 
 	[SerializeField]
+	private SpriteRenderer gameOverSquare;
 	private CombatData combatData;
-
 	private Inventory inventory;
 
 	private Inventory Inventory
@@ -124,6 +124,7 @@ public class Player : Unit
 		}
 
 		animator = GetComponent<Animator>();
+		gameOverSquare.gameObject.SetActive(false);
 	}
 
 	protected override void ForceMove()
@@ -149,7 +150,7 @@ public class Player : Unit
 
 	protected override Coroutine SuccessfulMove(Vector2Int newPosition, bool force)
 	{
-		if (GameSessionManager.Instance.FightingAnEnemy())
+		if (!force && GameSessionManager.Instance.FightingAnEnemy())
 		{
 			combatData.SuccessfulBeatsInARow++;
 		}
@@ -200,8 +201,14 @@ public class Player : Unit
 
 	public override void Die()
 	{
+		GameSessionManager.Instance.PlayerDead();
+	}
+
+	public void ActivateGameOverSquare()
+	{
+		gameOverSquare.gameObject.SetActive(true);
+		sprite.sortingOrder = 10001;
 		animator.SetTrigger(AnimatorUtilities.DIE_TRIGGER);
-		//TODO Lose Game
 	}
 
 	protected override void InteractWithObject(Unit unit)
@@ -391,7 +398,7 @@ public class Player : Unit
 
 	public void TakeDamage(int damage)
 	{
-		if (damage > 0)
+		if (combatData.CurrentHp > 0 && damage > 0)
 		{
 			combatData.TakeDamage(damage);
 			if (combatData.CurrentHp == 0)

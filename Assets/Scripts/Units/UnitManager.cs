@@ -27,7 +27,7 @@ public class UnitManager<T> : MonoBehaviour where T : Unit
 		return allUnits.OfType<U>().Select(i => i.GetUnitData()).Where(d => !string.IsNullOrEmpty(d.identifierName)).ToList();
 	}
 	
-	public void StopAllActionsBeforeLoading()
+	public void StopAllActions()
 	{
 		StopAllCoroutines();
 		var units = new List<T>(allUnits);

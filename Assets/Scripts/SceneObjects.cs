@@ -49,6 +49,8 @@ public class SceneObjects : MonoBehaviour
 
 	public void Deactivate()
 	{
+		currentObstacleManager.StopAllActions();
+		currentMobManager.StopAllActions();
 		gameObject.SetActive(false);
 	}
 
