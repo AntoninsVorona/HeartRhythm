@@ -163,7 +163,14 @@ public class Mob : Unit
 			peaceModeMovementCoroutine = null;
 		}
 
-		gameObject.SetActive(false);
+		if (animator)
+		{
+			animator.SetTrigger(AnimatorUtilities.DIE_TRIGGER);
+		}
+		else
+		{
+			Deactivate();
+		}
 	}
 
 	protected override void InteractWithObject(Unit unit)

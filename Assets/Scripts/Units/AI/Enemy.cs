@@ -16,17 +16,30 @@ public class Enemy : Mob
 	protected override void InteractWithObject(Unit unit)
 	{
 		base.InteractWithObject(unit);
-		if (unit is Player player)
+		if (unit is Player)
 		{
-			if (enemyInteractionWithPlayerData.damageOnContact.damage > 0)
-			{
-				player.TakeDamage(enemyInteractionWithPlayerData.damageOnContact.damage);
-			}
-
 			if (enemyInteractionWithPlayerData.dissipateOnContact)
 			{
 				Die();
 			}
+
+			CreateCorruptionFog();
+		}
+	}
+
+	public void CreateCorruptionFog()
+	{
+		var corruptionFog = Instantiate(GameResources.Instance.effects.corruptionFog, transform.position + new Vector3(0, 0.5f),
+			Quaternion.identity,
+			GameSessionManager.Instance.currentSceneObjects.transform);
+		corruptionFog.Fly(InteractWithPlayer);
+	}
+
+	private void InteractWithPlayer()
+	{
+		if (enemyInteractionWithPlayerData.damageOnContact.damage > 0)
+		{
+			Player.Instance.TakeDamage(enemyInteractionWithPlayerData.damageOnContact.damage);
 		}
 	}
 }

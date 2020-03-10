@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85679f8bcc8d430aa06785ba613f8f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1246679901538086990}
   identifierName: 
   movementSpeed: 5
   sprite: {fileID: 1246679899995514752}
@@ -292,7 +293,6 @@ MonoBehaviour:
   enemyInteractionWithPlayerData:
     damageOnContact:
       damage: 1
-      equalizerShake: 2
     dissipateOnContact: 1
 --- !u!95 &1246679901538086990
 Animator:

@@ -23,7 +23,14 @@ public class Obstacle : Unit
 	{
 		UnoccupyTile();
 		GameSessionManager.Instance.currentSceneObjects.currentObstacleManager.RemoveUnit(this);
-		gameObject.SetActive(false);
+		if (animator)
+		{
+			animator.SetTrigger(AnimatorUtilities.DIE_TRIGGER);
+		}
+		else
+		{
+			Deactivate();
+		}
 	}
 
 	protected override void OccupyTile()

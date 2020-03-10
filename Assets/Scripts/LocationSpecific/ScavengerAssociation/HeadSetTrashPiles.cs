@@ -3,10 +3,6 @@ using UnityEngine;
 
 public class HeadSetTrashPiles : Obstacle
 {
-	[Header("Additional Data")]
-	[SerializeField]
-	private Animator animator;
-
 	public void HeadSetStateChanged(HeadSetHideAndSeekController.HeadSetState newState)
 	{
 		switch (newState)

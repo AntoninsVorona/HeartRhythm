@@ -109,7 +109,6 @@ public class Player : Unit
 
 	private Unit interactingWithUnit;
 
-	private Animator animator;
 	public Vector3 SpriteOffset => sprite.transform.localPosition;
 
 	private void Awake()
@@ -201,6 +200,7 @@ public class Player : Unit
 
 	public override void Die()
 	{
+		animator.SetTrigger(AnimatorUtilities.DIE_TRIGGER);
 		//TODO Lose Game
 	}
 

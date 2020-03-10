@@ -12,9 +12,6 @@ public class HeadSetHidePlace : Obstacle
 	[SerializeField]
 	private Interaction getHeadSetBack;
 
-	[SerializeField]
-	private Animator animator;
-
 	public void HeadSetStateChanged(HeadSetHideAndSeekController.HeadSetState newState)
 	{
 		switch (newState)

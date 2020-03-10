@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e94281c1751e44eaa7ca1505523c64e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 7766726581833781656}
   identifierName: Player
   movementSpeed: 5
   sprite: {fileID: 7766726582572975702}

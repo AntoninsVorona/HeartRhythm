@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class RhythmObstacle : Obstacle
 {
-	[SerializeField]
-	private Animator animator;
-
 	private AudioManager.PulseEventSubscriber pulseEventSubscriber;
 
 	public override void Initialize(Vector2Int location)

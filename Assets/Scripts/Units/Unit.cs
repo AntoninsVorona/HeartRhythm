@@ -116,6 +116,9 @@ public abstract class Unit : MonoBehaviour
 		}
 	}
 
+	[SerializeField]
+	protected Animator animator;
+
 	[Header("Data")]
 	[SerializeField]
 	protected string identifierName;
@@ -446,6 +449,11 @@ public abstract class Unit : MonoBehaviour
 
 	public abstract void Die();
 
+	public void Deactivate()
+	{
+		gameObject.SetActive(false);
+	}
+	
 	public virtual void ApplyUnitData(UnitData unitData)
 	{
 		if (unitData != null)
