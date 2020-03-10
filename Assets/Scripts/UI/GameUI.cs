@@ -17,6 +17,7 @@ public class GameUI : MonoBehaviour
 	public RectTransform canvasRect;
 	public Corruption corruption;
 	public MessageBox messageBox;
+	public GameLogo gameLogo;
 
 	private void Awake()
 	{
@@ -39,6 +40,7 @@ public class GameUI : MonoBehaviour
 		blackAnnouncer.Close(true);
 		corruption.UpdateCorruption(0);
 		messageBox.Hide(true);
+		gameLogo.Deactivate();
 	}
 
 	private void Start()

@@ -30,6 +30,9 @@ public class AttackOrSyncCutScene : CutScene
 		yield return GameSessionManager.Instance.LoadLevel(runawayForest, 0);
 		GameCamera.Instance.ChangeTargetPosition(new Vector3(3.5f, 8.5f));
 		GameCamera.Instance.staticView = true;
+		yield return GameUI.Instance.gameLogo.Show();
+		yield return new WaitForSeconds(3);
+		yield return GameUI.Instance.gameLogo.Hide();
 		GameUI.Instance.ResetFadeAlpha();
 		yield return GameUI.Instance.ShowBlackAnnouncer(new BlackAnnouncer.AnnouncementData("Chapter 1", "Darkwoods"));
 		yield return GameUI.Instance.CloseBlackAnnouncer();
