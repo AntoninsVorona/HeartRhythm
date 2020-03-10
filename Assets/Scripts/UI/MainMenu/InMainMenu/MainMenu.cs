@@ -26,6 +26,7 @@ public class MainMenu : AbstractMainMenu
 	private Coroutine pressAnyKey;
 	public CustomStandaloneInputModule inputModule;
 	private bool fastenUp;
+	private float lastBeatTime;
 
 	private void Update()
 	{
@@ -76,7 +77,7 @@ public class MainMenu : AbstractMainMenu
 		yield return OpenScreen<MainScreen>();
 		StopCoroutine(musicLessHeartBeat);
 		musicLessHeartBeat = null;
-		AudioManager.Instance.InitializeMusic(mainMenuMusic, false, 0);
+		AudioManager.Instance.InitializeMusic(mainMenuMusic, false, 0.5f - (Time.time - lastBeatTime));
 		uiHeart.Subscribe();
 	}
 
@@ -90,6 +91,7 @@ public class MainMenu : AbstractMainMenu
 				musicLessHeartBeatDelay = Mathf.Clamp(musicLessHeartBeatDelay - 0.1f, 0.5f, 1);
 			}
 
+			lastBeatTime = Time.time;
 			uiHeart.Beat(true);
 		}
 	}
