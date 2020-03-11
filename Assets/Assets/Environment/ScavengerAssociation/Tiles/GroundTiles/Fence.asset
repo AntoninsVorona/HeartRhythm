@@ -13,18 +13,18 @@ MonoBehaviour:
   m_Name: Fence
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: 21300000, guid: 8588251faa1d7624db9225000ad71346, type: 3}
-  m_DefaultGameObject: {fileID: 648758950652407085, guid: d6e8f5572f66f154e95d649e8cde3b58,
+  m_DefaultGameObject: {fileID: 3926073209968212266, guid: b79c900b540e3f74e9e13bb7fb45ba0f,
     type: 3}
-  m_DefaultColliderType: 1
+  m_DefaultColliderType: 0
   m_TilingRules:
   - m_Neighbors: 0000000000000000000000000000000000000000000000000000000000000000
     m_Sprites:
     - {fileID: 21300000, guid: 8588251faa1d7624db9225000ad71346, type: 3}
-    m_GameObject: {fileID: 648758950652407085, guid: d6e8f5572f66f154e95d649e8cde3b58,
+    m_GameObject: {fileID: 3926073209968212266, guid: b79c900b540e3f74e9e13bb7fb45ba0f,
       type: 3}
     m_AnimationSpeed: 1
     m_PerlinScale: 0.5
     m_RuleTransform: 0
     m_Output: 1
-    m_ColliderType: 1
+    m_ColliderType: 0
     m_RandomTransform: 1

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -49,4 +50,9 @@ public class UnitManager<T> : MonoBehaviour where T : Unit
 		unit.StopShake();
 		unit.StopTint();
 	} 
+
+	public void ApplyActionOnUnits(Action<T> action)
+	{
+		allUnits.ForEach(action);
+	}
 }

@@ -91,6 +91,7 @@ public class Player : Unit
 
 	[SerializeField]
 	private SpriteRenderer gameOverSquare;
+
 	private CombatData combatData;
 	private Inventory inventory;
 
@@ -225,6 +226,11 @@ public class Player : Unit
 			if (unit.interactions.Count > 0)
 			{
 				interactingWithUnit = unit;
+				if (unit.startsConversationUponInteraction)
+				{
+					GameSessionManager.Instance.StartConversation(unit.conversationToStart);
+				}
+
 				GameSessionManager.Instance.StartDanceMove(unit);
 			}
 		}

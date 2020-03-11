@@ -17,7 +17,7 @@ public class GameLogo : MonoBehaviour
 		float t = 0;
 		while (t < 1)
 		{
-			t += Time.deltaTime * 3;
+			t += Time.deltaTime / 3;
 			canvasGroup.alpha = t;
 			yield return null;
 		}
@@ -33,7 +33,7 @@ public class GameLogo : MonoBehaviour
 		float t = 1;
 		while (t > 0)
 		{
-			t -= Time.deltaTime * 3;
+			t -= Time.deltaTime / 3;
 			canvasGroup.alpha = t;
 			yield return null;
 		}

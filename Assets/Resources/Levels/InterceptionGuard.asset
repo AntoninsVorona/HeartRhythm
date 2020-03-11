@@ -19,7 +19,7 @@ MonoBehaviour:
   cameraIsStatic: 0
   backgroundColor:
     serializedVersion: 2
-    rgba: 4279440150
+    rgba: 4280488723
   proclamationName: 
   levelState:
     levelName: 
@@ -28,7 +28,7 @@ MonoBehaviour:
   playerSpawnPoints:
     m_keys: 00000000
     m_values:
-    - {x: 0, y: 0}
+    - {x: 26, y: 18}
   autoStartBattle: 0
   battleMusic: {fileID: 11400000, guid: f15c6cf29facbdc4b88a6859cd32ef01, type: 2}
   battleSettings:

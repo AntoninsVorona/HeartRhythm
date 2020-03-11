@@ -132,10 +132,6 @@ public class PlayerInput : MonoBehaviour
 				{
 					GameUI.Instance.uiInventory.ApplySubmit();
 				}
-				else if (acceptor.ConversationInProgress)
-				{
-					((HeartRhythmDialogueUI) DialogueManager.DialogueUI).FastForward();
-				}
 			}
 
 			int horizontal;

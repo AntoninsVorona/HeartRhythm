@@ -313,7 +313,6 @@ public class GameSessionManager : MonoBehaviour
 		}
 
 		GameUI.Instance.messageBox.Hide(true);
-		Player.Instance.StopTalk(true);
 		PlayerInput.Instance.ConversationStarted();
 	}
 

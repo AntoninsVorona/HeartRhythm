@@ -5,8 +5,8 @@ using UnityEngine;
 	fileName = "InterceptionGuardDialogueRegistrator")]
 public class InterceptionGuardDialogueRegistrator : DialogueRegistrator
 {
-	public Vector2Int handlePosition; 
-	
+	public Vector2Int handlePosition;
+
 	public void MoveCameraToPlayer()
 	{
 		GameCamera.Instance.ChangeTargetPosition(Player.Instance.transform.position);
@@ -16,7 +16,7 @@ public class InterceptionGuardDialogueRegistrator : DialogueRegistrator
 	{
 		GameCamera.Instance.ChangeTargetPosition((Vector3Int) handlePosition + new Vector3(0.5f, 0.5f));
 	}
-	
+
 	public void SpawnDude()
 	{
 		((InterceptionGuardBattleRules) BattleRules.Instance).StartSpawning();
@@ -25,6 +25,16 @@ public class InterceptionGuardDialogueRegistrator : DialogueRegistrator
 	public void TurnAroundDamagingGuard()
 	{
 		((InterceptionGuardBattleRules) BattleRules.Instance).TurnAroundGuard();
+	}
+
+	public void DisableStartConversation()
+	{
+		((InterceptionGuardBattleRules) BattleRules.Instance).DisableStartConversation();
+	}
+
+	public void StartStars()
+	{
+		((InterceptionGuardBattleRules) BattleRules.Instance).StartStars();
 	}
 
 	public override void RegisterDialogueFunctions()
@@ -37,6 +47,10 @@ public class InterceptionGuardDialogueRegistrator : DialogueRegistrator
 			typeof(InterceptionGuardDialogueRegistrator).GetMethod("SpawnDude"));
 		Lua.RegisterFunction("TurnAroundDamagingGuard", this,
 			typeof(InterceptionGuardDialogueRegistrator).GetMethod("TurnAroundDamagingGuard"));
+		Lua.RegisterFunction("DisableStartConversation", this,
+			typeof(InterceptionGuardDialogueRegistrator).GetMethod("DisableStartConversation"));
+		Lua.RegisterFunction("StartStars", this,
+			typeof(InterceptionGuardDialogueRegistrator).GetMethod("StartStars"));
 	}
 
 	public override void UnregisterDialogueFunctions()
@@ -45,5 +59,7 @@ public class InterceptionGuardDialogueRegistrator : DialogueRegistrator
 		Lua.UnregisterFunction("MoveCameraToHandle");
 		Lua.UnregisterFunction("SpawnDude");
 		Lua.UnregisterFunction("TurnAroundDamagingGuard");
+		Lua.UnregisterFunction("DisableStartConversation");
+		Lua.UnregisterFunction("StartStars");
 	}
 }

@@ -46,6 +46,7 @@ public abstract class Unit : MonoBehaviour
 
 		public void Talk(MonoBehaviour coroutineStarter, string text = null)
 		{
+			Debug.Log("Talk");
 			if (text == null)
 			{
 				text = GetRandomText();
@@ -116,8 +117,7 @@ public abstract class Unit : MonoBehaviour
 		}
 	}
 
-	[SerializeField]
-	protected Animator animator;
+	public Animator animator;
 
 	[Header("Data")]
 	[SerializeField]
@@ -155,8 +155,11 @@ public abstract class Unit : MonoBehaviour
 
 	public List<Interaction> interactions;
 
-	public bool talksWhenInteractedWith;
+	public bool startsConversationUponInteraction;
+	[DrawIf("startsConversationUponInteraction", true)]
+	public string conversationToStart;
 
+	public bool talksWhenInteractedWith;
 	[SerializeField]
 	[DrawIf("talksWhenInteractedWith", true)]
 	protected TalkUI talkUI;
@@ -202,7 +205,7 @@ public abstract class Unit : MonoBehaviour
 		InitializeInteractions();
 	}
 
-	protected void InitializeInteractions()
+	public void InitializeInteractions()
 	{
 		var inter = new List<Interaction>();
 		foreach (var initializedInteraction in interactions.Where(i => i).Select(Instantiate))

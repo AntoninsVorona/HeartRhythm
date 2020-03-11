@@ -18,7 +18,7 @@ public class GameCamera : MonoBehaviour
 	public bool staticView;
 
 	private Coroutine shakeCoroutine;
-	private Vector3 shakeOffset, shakeRot;
+	private Vector3 shakeOffset;
 
 	private void Awake()
 	{
@@ -42,7 +42,6 @@ public class GameCamera : MonoBehaviour
 		newPosition.z = offset.z;
 		newPosition += shakeOffset;
 		transform.position = newPosition;
-		transform.rotation = Quaternion.Euler(shakeRot);
 	}
 
 	public void ChangeTargetPosition(Vector3 targetPosition, bool force = false)
@@ -57,17 +56,17 @@ public class GameCamera : MonoBehaviour
 		}
 	}
 
-	public void Shake(float duration = 0.4f, float posPower = 0.075f, float rotPower = 2.5f)
+	public void Shake(float duration = 0.4f, float posPower = 0.075f)
 	{
 		if (shakeCoroutine != null)
 		{
 			StopCoroutine(shakeCoroutine);
 		}
 
-		shakeCoroutine = StartCoroutine(ShakeSequence(duration, posPower, rotPower));
+		shakeCoroutine = StartCoroutine(ShakeSequence(duration, posPower));
 	}
 
-	private IEnumerator ShakeSequence(float duration, float posPower, float rotPower)
+	private IEnumerator ShakeSequence(float duration, float posPower)
 	{
 		const int shakeSegments = 10;
 		float t = 0;
@@ -79,16 +78,12 @@ public class GameCamera : MonoBehaviour
 			float t2 = 0;
 
 			float posAmplitude = Mathf.Lerp(posPower, 0, t);
-			float rotAmplitude = Mathf.Lerp(rotPower, 0, t);
 
-			Vector3 shakeRotStart = shakeRot;
 			Vector3 shakeOffsetStart = shakeOffset;
-			Vector3 shakeRotEnd = Vector3.zero;
 			Vector3 shakeOffsetEnd = Vector3.zero;
 
 			if (t < 1 - tSegmentSize)
 			{
-				shakeRotEnd = new Vector3(0, 0, Random.Range(-rotAmplitude, rotAmplitude));
 				shakeOffsetEnd = Random.insideUnitCircle * posAmplitude;
 			}
 
@@ -96,7 +91,6 @@ public class GameCamera : MonoBehaviour
 			{
 				t2 += Time.deltaTime / t2Duration;
 
-				shakeRot = Vector3.Lerp(shakeRotStart, shakeRotEnd, t2);
 				shakeOffset = Vector3.Lerp(shakeOffsetStart, shakeOffsetEnd, t2);
 
 				yield return null;
@@ -105,7 +99,6 @@ public class GameCamera : MonoBehaviour
 			t += tSegmentSize;
 		}
 
-		shakeRot = Vector3.zero;
 		shakeOffset = Vector3.zero;
 	}
 
