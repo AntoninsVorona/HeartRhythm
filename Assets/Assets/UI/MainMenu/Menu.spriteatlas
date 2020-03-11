@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Menu
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 329709c46fd028c42a2776ca15304b25, type: 3}
+    - {fileID: 2800000, guid: 7f563fce13604b448975d25cc4049ffd, type: 3}
+    - {fileID: 2800000, guid: b96e95df9a9a1764a800d1336306a18d, type: 3}
+    - {fileID: 2800000, guid: a9d1d5a1cca4acb439c1341bbe7807bc, type: 3}
+    - {fileID: 2800000, guid: fcbeaa3dc9ed7e54ca46ba966b74804b, type: 3}
+    - {fileID: 2800000, guid: fe6cc457dc6a27e4c9aafbca1cea0f9a, type: 3}
+    - {fileID: 2800000, guid: dc796fa060b9a094fba7464f9c2f05da, type: 3}
+    totalSpriteSurfaceArea: 67912
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: dc796fa060b9a094fba7464f9c2f05da, type: 3}
+  - {fileID: 21300000, guid: a9d1d5a1cca4acb439c1341bbe7807bc, type: 3}
+  - {fileID: 21300000, guid: 329709c46fd028c42a2776ca15304b25, type: 3}
+  - {fileID: 4606908045521496030, guid: fe6cc457dc6a27e4c9aafbca1cea0f9a, type: 3}
+  - {fileID: -4195582761621981391, guid: fe6cc457dc6a27e4c9aafbca1cea0f9a, type: 3}
+  - {fileID: 21300000, guid: fcbeaa3dc9ed7e54ca46ba966b74804b, type: 3}
+  - {fileID: 21300000, guid: 7f563fce13604b448975d25cc4049ffd, type: 3}
+  - {fileID: 21300000, guid: b96e95df9a9a1764a800d1336306a18d, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - MainMenuBackground
+  - MainMenuHeartButtonSeparator
+  - GameSavesBackground
+  - Heart_0
+  - Heart_1
+  - Button
+  - GameSaveButton
+  - MainMenuHeartButton
+  m_Tag: Menu
+  m_IsVariant: 0
