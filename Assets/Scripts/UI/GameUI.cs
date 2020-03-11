@@ -133,9 +133,9 @@ public class GameUI : MonoBehaviour
 		return blackAnnouncer.Show(announcementData);
 	}
 
-	public Coroutine CloseBlackAnnouncer()
+	public Coroutine CloseBlackAnnouncer(bool force = false)
 	{
-		return blackAnnouncer.Close();
+		return blackAnnouncer.Close(force);
 	}
 
 	public Coroutine GameOver()

@@ -307,7 +307,7 @@ public class AudioManager : MonoBehaviour
 			changeVolumeCoroutine = null;
 		}
 
-		if (instant)
+		if (instant || !isCurrentlyPlaying)
 		{
 			introAudioSource.volume = newVolume;
 			musicAudioSource.volume = newVolume;

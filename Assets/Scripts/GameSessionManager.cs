@@ -313,6 +313,7 @@ public class GameSessionManager : MonoBehaviour
 		}
 
 		GameUI.Instance.messageBox.Hide(true);
+		AudioManager.Instance.ChangeVolume(0.3f);
 		PlayerInput.Instance.ConversationStarted();
 	}
 
@@ -323,6 +324,8 @@ public class GameSessionManager : MonoBehaviour
 		{
 			currentCutScene.dialogueFinished = true;
 		}
+
+		AudioManager.Instance.ChangeVolume(1);
 	}
 
 	public void PlayCutScene(CutScene cutScene)
@@ -332,12 +335,14 @@ public class GameSessionManager : MonoBehaviour
 		PlayerInput.Instance.acceptor.CutSceneInProgress = true;
 		PlayerInput.Instance.acceptor.FirstBattleInputDone = false;
 		GameUI.Instance.CutSceneStarted();
+		AudioManager.Instance.ChangeVolume(0.3f);
 		currentCutScene.StartCutScene();
 	}
 
 	public void CutSceneFinished(bool force = false)
 	{
 		currentCutScene = null;
+		AudioManager.Instance.ChangeVolume(1);
 		if (force)
 		{
 			GameUI.Instance.CutSceneFinished(true);

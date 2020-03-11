@@ -13,10 +13,8 @@ public class ButtonTriggeredCutScene : CutScene
 		battleRules.CloseDoors();
 		GameSessionManager.Instance.currentBattleSettings.missedBeatDamage = new BattleArea.BattleDamage(0);
 		GameSessionManager.Instance.currentBattleSettings.invalidInputDamage = new BattleArea.BattleDamage(0);
-		AudioManager.Instance.ChangeVolume(0.3f);
 		GameSessionManager.Instance.StartConversation("InterceptionGuardPhewThatWasClose");
 		yield return new WaitUntil(() => dialogueFinished);
-		AudioManager.Instance.ChangeVolume(1f);
 		GameSessionManager.Instance.CutSceneFinished();
 	}
 }

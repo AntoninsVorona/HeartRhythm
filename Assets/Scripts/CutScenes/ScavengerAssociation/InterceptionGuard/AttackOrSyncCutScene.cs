@@ -10,6 +10,15 @@ public class AttackOrSyncCutScene : CutScene
 	protected override IEnumerator CutSceneSequence()
 	{
 		dialogueFinished = false;
+		if (SaveSystem.currentGameSave.globalVariables.scavengerAssociationVariables.interceptionGuardHeartAttack)
+		{
+			yield return new WaitForSeconds(3); //TODO According to destroy animation
+		}
+		else
+		{
+			yield return new WaitForSeconds(2);
+		}
+
 		GameCamera.Instance.Shake(2);
 		AudioManager.Instance.StopBeat();
 		GameUI.Instance.BackToRealWorld();

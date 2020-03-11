@@ -279,6 +279,8 @@ MonoBehaviour:
   initializeSpawnPointForMe: 0
   headsetLessInteraction: {fileID: 0}
   interactions: []
+  startsConversationUponInteraction: 0
+  conversationToStart: 
   talksWhenInteractedWith: 0
   talkUI:
     canvas: {fileID: 4271007624124603297}
@@ -483,7 +485,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 0.75, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

@@ -1,0 +1,481 @@
+fileFormatVersion: 2
+guid: 7504d6ef863ac6b4398394f08b51eaa0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6258573293179813789
+    second: HeadBangAnimation_0
+  - first:
+      213: 4515701682980128165
+    second: HeadBangAnimation_1
+  - first:
+      213: 3425395762024374984
+    second: HeadBangAnimation_2
+  - first:
+      213: -898060473623422232
+    second: HeadBangAnimation_3
+  - first:
+      213: -1712055805546793150
+    second: HeadBangAnimation_4
+  - first:
+      213: -4492395071027935448
+    second: HeadBangAnimation_5
+  - first:
+      213: 3740033635865926632
+    second: HeadBangAnimation_6
+  - first:
+      213: 2586869162738632835
+    second: HeadBangAnimation_7
+  - first:
+      213: 4533382581923355295
+    second: HeadBangAnimation_8
+  - first:
+      213: -5112779736904221831
+    second: HeadBangAnimation_9
+  - first:
+      213: -2284040440848743955
+    second: HeadBangAnimation_10
+  - first:
+      213: 2358006111705414120
+    second: HeadBangAnimation_11
+  - first:
+      213: 5868993842126296548
+    second: HeadBangAnimation_12
+  - first:
+      213: -4358582225293178932
+    second: HeadBangAnimation_13
+  - first:
+      213: 4934145940893336126
+    second: HeadBangAnimation_0
+  - first:
+      213: 8294027526049407539
+    second: HeadBangAnimation_1
+  - first:
+      213: 7883053397126435989
+    second: HeadBangAnimation_2
+  - first:
+      213: -7979243711108778994
+    second: HeadBangAnimation_3
+  - first:
+      213: -8196677282596163917
+    second: HeadBangAnimation_4
+  - first:
+      213: 7279606858042668765
+    second: HeadBangAnimation_5
+  - first:
+      213: 5432677615933638532
+    second: HeadBangAnimation_6
+  - first:
+      213: 3027674525846482501
+    second: HeadBangAnimation_7
+  - first:
+      213: -5705749994118680926
+    second: HeadBangAnimation_8
+  - first:
+      213: -7221404965697013043
+    second: HeadBangAnimation_9
+  - first:
+      213: 8566336863998671254
+    second: HeadBangAnimation_10
+  - first:
+      213: 5957384906187144142
+    second: HeadBangAnimation_11
+  - first:
+      213: -630765613704112882
+    second: HeadBangAnimation_12
+  - first:
+      213: -5529384621192083546
+    second: HeadBangAnimation_13
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HeadBangAnimation_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 0
+        width: 12
+        height: 24
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3202ec479b997440800000000000000
+      internalID: 4934145940893336126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadBangAnimation_1
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 0
+        width: 12
+        height: 24
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 332ac7f571e4a1370800000000000000
+      internalID: 8294027526049407539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadBangAnimation_2
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 0
+        width: 12
+        height: 24
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59458296c4b366d60800000000000000
+      internalID: 7883053397126435989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadBangAnimation_3
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 0
+        width: 12
+        height: 24
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e04771fde18044190800000000000000
+      internalID: -7979243711108778994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadBangAnimation_4
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 0
+        width: 12
+        height: 24
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3be6758707d8f3e80800000000000000
+      internalID: -8196677282596163917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadBangAnimation_5
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 0
+        width: 12
+        height: 24
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd6712e4edb560560800000000000000
+      internalID: 7279606858042668765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadBangAnimation_6
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 0
+        width: 12
+        height: 24
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 487c0f4128fb46b40800000000000000
+      internalID: 5432677615933638532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadBangAnimation_7
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 0
+        width: 12
+        height: 24
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54e2490a0f5740a20800000000000000
+      internalID: 3027674525846482501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadBangAnimation_8
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 0
+        width: 12
+        height: 24
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ae6e575c9a11d0b0800000000000000
+      internalID: -5705749994118680926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadBangAnimation_9
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 0
+        width: 12
+        height: 24
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dca3360c17a68cb90800000000000000
+      internalID: -7221404965697013043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadBangAnimation_10
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 0
+        width: 12
+        height: 24
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69979fccdfdb1e670800000000000000
+      internalID: 8566336863998671254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadBangAnimation_11
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 0
+        width: 12
+        height: 24
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecbfe833202eca250800000000000000
+      internalID: 5957384906187144142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadBangAnimation_12
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 0
+        width: 12
+        height: 24
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0592aa24021f37f0800000000000000
+      internalID: -630765613704112882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeadBangAnimation_13
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 0
+        width: 12
+        height: 24
+      alignment: 9
+      pivot: {x: 0.59, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a78653abfda343b0800000000000000
+      internalID: -5529384621192083546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

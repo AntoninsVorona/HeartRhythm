@@ -67,7 +67,7 @@ public class BlackAnnouncer : MonoBehaviour
 	private IEnumerator CloseSequence()
 	{
 		float t = 1;
-		while (t < 0)
+		while (t > 0)
 		{
 			t -= Time.deltaTime / 2;
 			canvasGroup.alpha = t;
