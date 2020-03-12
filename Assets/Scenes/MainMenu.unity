@@ -700,6 +700,51 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5207484258643799334, guid: ed0f4afa809c95f4f85703f4d1de5f63,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207484258643799334, guid: ed0f4afa809c95f4f85703f4d1de5f63,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207484258643799334, guid: ed0f4afa809c95f4f85703f4d1de5f63,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207484258643799334, guid: ed0f4afa809c95f4f85703f4d1de5f63,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207484259245780191, guid: ed0f4afa809c95f4f85703f4d1de5f63,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207484259245780191, guid: ed0f4afa809c95f4f85703f4d1de5f63,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207484259245780191, guid: ed0f4afa809c95f4f85703f4d1de5f63,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207484259245780191, guid: ed0f4afa809c95f4f85703f4d1de5f63,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207484259245780191, guid: ed0f4afa809c95f4f85703f4d1de5f63,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6547706726200290080, guid: ed0f4afa809c95f4f85703f4d1de5f63,
         type: 3}
       propertyPath: m_textInfo.characterCount

@@ -18,6 +18,7 @@ MonoBehaviour:
   - {fileID: 7848379482768926409}
   - {fileID: 7848379483706197799}
   - {fileID: 7848379483236689712}
+  - {fileID: 6407552002685645918}
   defaultHeartLocation:
     position: {x: 0, y: 160}
     rotation: 0
@@ -34,6 +35,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5964468284684799519, guid: 2aea7edf49b72e74d988c76192370874,
+        type: 3}
+      propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4276696100855776149}
+    - target: {fileID: 5964468284684799519, guid: 2aea7edf49b72e74d988c76192370874,
+        type: 3}
+      propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OptionsClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964468284684799519, guid: 2aea7edf49b72e74d988c76192370874,
+        type: 3}
+      propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6013460295480284818, guid: 2aea7edf49b72e74d988c76192370874,
         type: 3}
       propertyPath: m_Name
@@ -303,6 +319,18 @@ MonoBehaviour:
 --- !u!114 &7848379483236689712 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7404257925077294449, guid: 2aea7edf49b72e74d988c76192370874,
+    type: 3}
+  m_PrefabInstance: {fileID: 732466972898572865}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86db6e6a9f2d43119e7863714827d9b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6407552002685645918 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5964468284684799519, guid: 2aea7edf49b72e74d988c76192370874,
     type: 3}
   m_PrefabInstance: {fileID: 732466972898572865}
   m_PrefabAsset: {fileID: 0}

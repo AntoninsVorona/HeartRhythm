@@ -139,6 +139,10 @@ public static class SaveSystem
 	public class GameSettings : SaveData
 	{
 		private static readonly string GAME_SETTINGS_SAVE_PATH = Application.persistentDataPath + "/gameSettings.dat";
+		public int width;
+		public int height;
+		public int refreshRate;
+		public FullScreenMode fullScreenMode;
 
 		public override void Load()
 		{
@@ -216,6 +220,7 @@ public static class SaveSystem
 	public static void LoadData()
 	{
 		GAME_SETTINGS.Load();
+		ApplySettings();
 
 		uiGameSaves = new List<UILoadData>();
 		if (Directory.Exists(GAME_SAVE_FOLDER_PATH))
@@ -301,5 +306,21 @@ public static class SaveSystem
 		var uiLoadData = uiGameSaves.First(u => u.filePath == filePath);
 		uiGameSaves.Remove(uiLoadData);
 		File.Delete(uiLoadData.filePath);
+	}
+
+	public static void SetSettings(Resolution resolution, FullScreenMode fullScreenMode)
+	{
+		GAME_SETTINGS.width = resolution.width;
+		GAME_SETTINGS.height = resolution.height;
+		GAME_SETTINGS.refreshRate = resolution.refreshRate;
+		GAME_SETTINGS.fullScreenMode = fullScreenMode;
+		GAME_SETTINGS.Save();
+		ApplySettings();
+	}
+
+	private static void ApplySettings()
+	{
+		Screen.SetResolution(GAME_SETTINGS.width, GAME_SETTINGS.height, GAME_SETTINGS.fullScreenMode,
+			GAME_SETTINGS.refreshRate);
 	}
 }

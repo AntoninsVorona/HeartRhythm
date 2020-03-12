@@ -36,5 +36,10 @@ public abstract class MainScreen : MenuScreen
 		AbstractMainMenu.Instance.OpenScreen<LoadGameScreen>();
 	}
 
+	public void OptionsClicked()
+	{
+		AbstractMainMenu.Instance.OpenScreen<Options>();
+	}
+
 	public abstract void QuitClicked();
 }

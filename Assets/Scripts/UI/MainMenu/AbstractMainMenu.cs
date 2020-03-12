@@ -15,11 +15,12 @@ public abstract class AbstractMainMenu : MonoBehaviour
 		public MainScreen mainScreen;
 		public LoadGameScreen loadGameScreen;
 		public SaveGameScreen saveGameScreen;
+		public Options options;
 		private List<MenuScreen> allScreens;
 
 		public void InitScreens()
 		{
-			allScreens = new List<MenuScreen> {mainScreen, loadGameScreen, saveGameScreen};
+			allScreens = new List<MenuScreen> {mainScreen, loadGameScreen, saveGameScreen, options};
 			SaveLoadGameScreen.savesInitialized = false;
 			DisableScreens();
 		}
