@@ -11,7 +11,7 @@ public static class SaveSystem
 	private static readonly string GAME_SAVE_FOLDER_PATH = Application.persistentDataPath + "/saves";
 
 	private static readonly GameSettings GAME_SETTINGS =
-		new GameSettings(Screen.currentResolution.height, Screen.currentResolution.width, Screen.fullScreenMode);
+		new GameSettings(Screen.currentResolution.height, Screen.currentResolution.width, Screen.fullScreenMode, 60);
 
 	public static List<UILoadData> uiGameSaves;
 	public static GameSave currentGameSave;
@@ -145,12 +145,14 @@ public static class SaveSystem
 		public int width;
 		public int height;
 		public FullScreenMode fullScreenMode;
+		public int targetFrameRate;
 
-		public GameSettings(int width, int height, FullScreenMode fullScreenMode)
+		public GameSettings(int width, int height, FullScreenMode fullScreenMode, int targetFrameRate)
 		{
 			this.width = width;
 			this.height = height;
 			this.fullScreenMode = fullScreenMode;
+			this.targetFrameRate = targetFrameRate;
 		}
 
 		public override void Load()
@@ -317,11 +319,12 @@ public static class SaveSystem
 		File.Delete(uiLoadData.filePath);
 	}
 
-	public static void SetSettings(Resolution resolution, FullScreenMode fullScreenMode)
+	public static void SetSettings(Resolution resolution, FullScreenMode fullScreenMode, int targetFrameRate)
 	{
 		GAME_SETTINGS.width = resolution.width;
 		GAME_SETTINGS.height = resolution.height;
 		GAME_SETTINGS.fullScreenMode = fullScreenMode;
+		GAME_SETTINGS.targetFrameRate = targetFrameRate;
 		GAME_SETTINGS.Save();
 		ApplySettings();
 	}
@@ -330,5 +333,6 @@ public static class SaveSystem
 	{
 		Screen.SetResolution(GAME_SETTINGS.width, GAME_SETTINGS.height, GAME_SETTINGS.fullScreenMode,
 			60);
+		Application.targetFrameRate = GAME_SETTINGS.targetFrameRate;
 	}
 }

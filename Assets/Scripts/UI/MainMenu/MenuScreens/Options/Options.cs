@@ -13,6 +13,19 @@ public class Options : MenuScreen
 	[SerializeField]
 	private TMP_Dropdown fullScreenModeDropdown;
 
+	[SerializeField]
+	private TMP_Dropdown targetFrameRateDropdown;
+
+	private static readonly List<int> FRAME_RATES = new List<int>
+	{
+		30,
+		60,
+		90,
+		120,
+		144,
+		-1
+	};
+
 	private Resolution[] screenResolutions;
 	private bool initialized;
 	private bool somethingChanged;
@@ -35,6 +48,7 @@ public class Options : MenuScreen
 	private void Initialize()
 	{
 		initialized = true;
+		InitFrameRate();
 		InitFullScreenMode();
 		InitResolution();
 		InitializeSettingsAsPerSave();
@@ -44,6 +58,37 @@ public class Options : MenuScreen
 	{
 		SetCurrentResolution();
 		SetCurrentFullScreenMode();
+		SetCurrentFrameRate();
+	}
+
+	private void InitFrameRate()
+	{
+		targetFrameRateDropdown.ClearOptions();
+		var options = FRAME_RATES.Select(frameRate =>
+				new TMP_Dropdown.OptionData(
+					$"Frame Rate Cap: {(frameRate == -1 ? "Unlimited" : frameRate.ToString())}"))
+			.ToList();
+		targetFrameRateDropdown.AddOptions(options);
+	}
+
+	private void SetCurrentFrameRate()
+	{
+		targetFrameRateDropdown.SetValueWithoutNotify(GetCurrentFrameRate());
+	}
+
+	private int GetCurrentFrameRate()
+	{
+		var currentFrameRate = Application.targetFrameRate;
+		for (var i = 0; i < FRAME_RATES.Count; i++)
+		{
+			var frameRate = FRAME_RATES[i];
+			if (currentFrameRate == frameRate)
+			{
+				return i;
+			}
+		}
+
+		throw new ArgumentException("No such Frame Rate");
 	}
 
 	private void InitFullScreenMode()
@@ -97,7 +142,7 @@ public class Options : MenuScreen
 		if (somethingChanged)
 		{
 			SaveSystem.SetSettings(screenResolutions[screenResolutionDropdown.value],
-				(FullScreenMode) fullScreenModeDropdown.value);
+				(FullScreenMode) fullScreenModeDropdown.value, FRAME_RATES[targetFrameRateDropdown.value]);
 		}
 
 		BackToMainScreen();
