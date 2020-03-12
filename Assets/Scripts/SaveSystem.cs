@@ -9,7 +9,10 @@ public static class SaveSystem
 {
 	private const string SAVE_VERSION = "0.1";
 	private static readonly string GAME_SAVE_FOLDER_PATH = Application.persistentDataPath + "/saves";
-	private static readonly GameSettings GAME_SETTINGS = new GameSettings();
+
+	private static readonly GameSettings GAME_SETTINGS =
+		new GameSettings(Screen.currentResolution.height, Screen.currentResolution.width, Screen.fullScreenMode);
+
 	public static List<UILoadData> uiGameSaves;
 	public static GameSave currentGameSave;
 
@@ -142,6 +145,13 @@ public static class SaveSystem
 		public int width;
 		public int height;
 		public FullScreenMode fullScreenMode;
+
+		public GameSettings(int width, int height, FullScreenMode fullScreenMode)
+		{
+			this.width = width;
+			this.height = height;
+			this.fullScreenMode = fullScreenMode;
+		}
 
 		public override void Load()
 		{

@@ -251,7 +251,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   heartSettings:
-    position: {x: 1010, y: 620}
+    position: {x: 910, y: 520}
     rotation: 0
     scale: 0.25
 --- !u!225 &1807056160406929016
