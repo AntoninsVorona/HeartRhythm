@@ -56,10 +56,11 @@ public class UIInventory : MonoBehaviour
 
 		foreach (var slot in inventorySlots)
 		{
+			slot.ResetFill();
 			slot.Deselect();
 		}
 	}
-
+	
 	public void InitializeItems(List<Inventory.ItemInformation> itemInformation)
 	{
 		foreach (var information in itemInformation)
@@ -79,136 +80,137 @@ public class UIInventory : MonoBehaviour
 
 	private void Update()
 	{
-		if (!splitController.splitInProgress && !itemActionsUI.dropInProgress)
+		// if (!splitController.splitInProgress && !itemActionsUI.dropInProgress)
+		// {
+		// 	if (itemActionsUI.menuActive)
+		// 	{
+		// 		if (Input.GetMouseButtonDown(0))
+		// 		{
+		// 			if (!ItemActionsHit())
+		// 			{
+		// 				itemActionsUI.Close();
+		// 				DeselectInventorySlot();
+		// 			}
+		// 		}
+		//
+		// 		if (Input.GetMouseButtonDown(1))
+		// 		{
+		// 			if (!ItemActionsHit())
+		// 			{
+		// 				var slotHit = GetSlotHit();
+		// 				if (slotHit && slotHit.itemInside)
+		// 				{
+		// 					if (slotHit != selectedInventorySlot)
+		// 					{
+		// 						SelectInventorySlot(slotHit);
+		// 						itemActionsUI.OpenActionsFor(slotHit);
+		// 					}
+		// 				}
+		// 				else
+		// 				{
+		// 					itemActionsUI.Close();
+		// 					DeselectInventorySlot();
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// 	else
+		// 	{
+		if (Input.GetMouseButtonDown(0))
 		{
-			if (itemActionsUI.menuActive)
+			var slotHit = GetSlotHit();
+			if (slotHit && slotHit.itemInside)
 			{
-				if (Input.GetMouseButtonDown(0))
-				{
-					if (!ItemActionsHit())
-					{
-						itemActionsUI.Close();
-						DeselectInventorySlot();
-					}
-				}
-
-				if (Input.GetMouseButtonDown(1))
-				{
-					if (!ItemActionsHit())
-					{
-						var slotHit = GetSlotHit();
-						if (slotHit && slotHit.itemInside)
-						{
-							if (slotHit != selectedInventorySlot)
-							{
-								SelectInventorySlot(slotHit);
-								itemActionsUI.OpenActionsFor(slotHit);
-							}
-						}
-						else
-						{
-							itemActionsUI.Close();
-							DeselectInventorySlot();
-						}
-					}
-				}
+				SelectInventorySlot(slotHit);
+				dragTime = Time.time + TIME_HOLD_TO_DRAG;
 			}
 			else
 			{
-				if (Input.GetMouseButtonDown(0))
-				{
-					var slotHit = GetSlotHit();
-					if (slotHit && slotHit.itemInside)
-					{
-						SelectInventorySlot(slotHit);
-						dragTime = Time.time + TIME_HOLD_TO_DRAG;
-					}
-					else
-					{
-						dragTime = float.MaxValue;
-					}
-				}
-				else
-				{
-					if (Input.GetMouseButton(0))
-					{
-						if (Time.time >= dragTime)
-						{
-							if (dragController.draggedInventorySlot)
-							{
-								dragController.OnDrag();
-							}
-							else
-							{
-								itemActionsUI.Close();
-								dragController.BeginDrag(selectedInventorySlot);
-							}
-						}
-					}
-					else if (Input.GetMouseButtonUp(0))
-					{
-						if (dragController.draggedInventorySlot)
-						{
-							var newSlot = dragController.OnEndDrag();
-							if (newSlot)
-							{
-								SelectInventorySlot(newSlot);
-							}
-						}
-					}
-				}
-
-				if (Input.GetMouseButtonDown(1))
+				dragTime = float.MaxValue;
+			}
+		}
+		else
+		{
+			if (Input.GetMouseButton(0))
+			{
+				if (Time.time >= dragTime)
 				{
 					if (dragController.draggedInventorySlot)
 					{
-						dragController.StopDrag();
-						dragTime = float.MaxValue;
+						dragController.OnDrag();
 					}
 					else
 					{
-						var slotHit = GetSlotHit();
-						if (slotHit && slotHit.itemInside)
-						{
-							SelectInventorySlot(slotHit);
-							itemActionsUI.OpenActionsFor(slotHit);
-						}
+						// itemActionsUI.Close();
+						dragController.BeginDrag(selectedInventorySlot);
+					}
+				}
+			}
+			else if (Input.GetMouseButtonUp(0))
+			{
+				if (dragController.draggedInventorySlot)
+				{
+					var newSlot = dragController.OnEndDrag();
+					if (newSlot)
+					{
+						SelectInventorySlot(newSlot);
 					}
 				}
 			}
 		}
+
+		if (Input.GetMouseButtonDown(1))
+		{
+			if (dragController.draggedInventorySlot)
+			{
+				dragController.StopDrag();
+				dragTime = float.MaxValue;
+			}
+			else
+			{
+				var slotHit = GetSlotHit();
+				if (slotHit && slotHit.itemInside)
+				{
+					SelectInventorySlot(slotHit);
+					// itemActionsUI.OpenActionsFor(slotHit);
+				}
+			}
+		}
+
+		// }
+		// }
 	}
 
 	public void ApplySubmit()
 	{
-		if (splitController.splitInProgress)
-		{
-			splitController.ApplyInput();
-		}
-		else if (itemActionsUI.dropInProgress)
-		{
-			itemActionsUI.DropInputDone();
-		}
+		// if (splitController.splitInProgress)
+		// {
+		// 	splitController.ApplyInput();
+		// }
+		// else if (itemActionsUI.dropInProgress)
+		// {
+		// 	itemActionsUI.DropInputDone();
+		// }
 	}
 
 	public void ApplyCancel()
 	{
-		if (splitController.splitInProgress)
-		{
-			splitController.CancelSplit();
-		}
-		else if (itemActionsUI.dropInProgress)
-		{
-			itemActionsUI.DropCancel();
-		}
-		else if (itemActionsUI.menuActive)
-		{
-			itemActionsUI.Close();
-		}
-		else
-		{
-			Close();
-		}
+		// if (splitController.splitInProgress)
+		// {
+		// 	splitController.CancelSplit();
+		// }
+		// else if (itemActionsUI.dropInProgress)
+		// {
+		// 	itemActionsUI.DropCancel();
+		// }
+		// else if (itemActionsUI.menuActive)
+		// {
+		// 	itemActionsUI.Close();
+		// }
+		// else
+		// {
+		Close();
+		// }
 	}
 
 	public BackpackSlot AddBackpackSlot()
@@ -232,8 +234,8 @@ public class UIInventory : MonoBehaviour
 
 	public void Open()
 	{
-		splitController.Close();
-		itemActionsUI.Close();
+		// splitController.Close();
+		// itemActionsUI.Close();
 		gameObject.SetActive(true);
 		DeselectInventorySlot();
 		open = true;
@@ -241,8 +243,8 @@ public class UIInventory : MonoBehaviour
 
 	public void Close()
 	{
-		splitController.Close();
-		itemActionsUI.Close();
+		// splitController.Close();
+		// itemActionsUI.Close();
 		dragController.StopDrag();
 		gameObject.SetActive(false);
 		DeselectInventorySlot();
@@ -384,14 +386,14 @@ public class UIInventory : MonoBehaviour
 			}
 			else
 			{
-				if (shiftHeld && Player.Instance.ItemsInSlot(draggedInventorySlot) > 1)
-				{
-					splitController.Show(draggedInventorySlot, slotHit);
-				}
-				else
-				{
-					ChangeSlot(draggedInventorySlot, slotHit);
-				}
+				// if (shiftHeld && Player.Instance.ItemsInSlot(draggedInventorySlot) > 1)
+				// {
+				// 	splitController.Show(draggedInventorySlot, slotHit);
+				// }
+				// else
+				// {
+				ChangeSlot(draggedInventorySlot, slotHit);
+				// }
 			}
 		}
 	}

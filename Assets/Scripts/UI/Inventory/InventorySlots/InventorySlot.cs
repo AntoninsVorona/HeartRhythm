@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class InventorySlot : MonoBehaviour
+public abstract class InventorySlot : FillingButton
 {
 	public int slotId;
 
@@ -12,9 +12,6 @@ public abstract class InventorySlot : MonoBehaviour
 	
 	[SerializeField]
 	private Image spriteIcon;
-	
-	[SerializeField]
-	private Image selectedIcon;
 
 	[SerializeField]
 	private TextMeshProUGUI itemAmount;
@@ -31,7 +28,6 @@ public abstract class InventorySlot : MonoBehaviour
 		{
 			spriteIcon.sprite = item.spriteIcon;
 			spriteIcon.gameObject.SetActive(true);
-
 			UpdateItemAmount(amount);
 		}
 		else
@@ -65,15 +61,5 @@ public abstract class InventorySlot : MonoBehaviour
 	public void DisableIcon()
 	{
 		spriteIcon.gameObject.SetActive(false);
-	}
-
-	public void Select()
-	{
-		selectedIcon.gameObject.SetActive(true);
-	}
-
-	public void Deselect()
-	{
-		selectedIcon.gameObject.SetActive(false);
 	}
 }
