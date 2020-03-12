@@ -60,7 +60,7 @@ public class Options : MenuScreen
 
 	private void SetCurrentFullScreenMode()
 	{
-		screenResolutionDropdown.SetValueWithoutNotify((int) Screen.fullScreenMode);
+		fullScreenModeDropdown.SetValueWithoutNotify((int) Screen.fullScreenMode);
 	}
 
 	private void InitResolution()
