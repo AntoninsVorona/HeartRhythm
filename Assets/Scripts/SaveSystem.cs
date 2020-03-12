@@ -141,7 +141,6 @@ public static class SaveSystem
 		private static readonly string GAME_SETTINGS_SAVE_PATH = Application.persistentDataPath + "/gameSettings.dat";
 		public int width;
 		public int height;
-		public int refreshRate;
 		public FullScreenMode fullScreenMode;
 
 		public override void Load()
@@ -312,7 +311,6 @@ public static class SaveSystem
 	{
 		GAME_SETTINGS.width = resolution.width;
 		GAME_SETTINGS.height = resolution.height;
-		GAME_SETTINGS.refreshRate = resolution.refreshRate;
 		GAME_SETTINGS.fullScreenMode = fullScreenMode;
 		GAME_SETTINGS.Save();
 		ApplySettings();
@@ -321,6 +319,6 @@ public static class SaveSystem
 	private static void ApplySettings()
 	{
 		Screen.SetResolution(GAME_SETTINGS.width, GAME_SETTINGS.height, GAME_SETTINGS.fullScreenMode,
-			GAME_SETTINGS.refreshRate);
+			60);
 	}
 }
