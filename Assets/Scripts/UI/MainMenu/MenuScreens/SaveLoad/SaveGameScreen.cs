@@ -12,6 +12,13 @@ public class SaveGameScreen : SaveLoadGameScreen
 		base.InitializeSaves();
 	}
 
+	public override void Open(bool withAnimation = true)
+	{
+		base.Open(withAnimation);
+		selectedSaveLoadButton = emptySaveGameButton;
+		emptySaveGameButton.Select();
+	}
+
 	public void Save()
 	{
 		if (selectedSaveLoadButton)
@@ -24,7 +31,7 @@ public class SaveGameScreen : SaveLoadGameScreen
 
 			if (selectedSaveLoadButton is GameSaveLoadButton)
 			{
-				Erase(); //TODO Add YesNoWindow
+				Erase(); //TODO Add YesNoWindow (Empty UI Rect)
 			}
 
 			var newSave = AddSave(GameLogic.Instance.Save(), true, 0);

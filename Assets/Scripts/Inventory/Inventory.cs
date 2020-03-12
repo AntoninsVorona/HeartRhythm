@@ -71,9 +71,6 @@ public class Inventory : MonoBehaviour
 	{
 		GameUI.Instance.uiInventory.InitializeSlots(currentBackpack);
 		GameUI.Instance.uiInventory.InitializeItems(itemInformation);
-		
-		AddItem(ItemManager.Instance.GetItemByName("Sword"), 0, 1);
-		AddItem(ItemManager.Instance.GetItemByName("Sword"), 1, 1);
 	}
 
 	public void LoadData(InventoryData data)

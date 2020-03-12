@@ -5,7 +5,7 @@ public class HeadSetPlace : Obstacle
 	public enum HeadSetState
 	{
 		CantGetYet = 0,
-		CanGet = 1,
+		CanGet = 1, //TODO
 		OnPlayer = 2
 	}
 

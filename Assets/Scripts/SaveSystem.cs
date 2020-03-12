@@ -329,8 +329,7 @@ public static class SaveSystem
 
 	private static void ApplySettings()
 	{
-		Screen.SetResolution(GAME_SETTINGS.width, GAME_SETTINGS.height, GAME_SETTINGS.fullScreenMode,
-			60);
+		Screen.SetResolution(GAME_SETTINGS.width, GAME_SETTINGS.height, GAME_SETTINGS.fullScreenMode);
 		Application.targetFrameRate = GAME_SETTINGS.targetFrameRate;
 	}
 }
