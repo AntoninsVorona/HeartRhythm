@@ -12,10 +12,12 @@ public class AttackOrSyncCutScene : CutScene
 		dialogueFinished = false;
 		if (SaveSystem.currentGameSave.globalVariables.scavengerAssociationVariables.interceptionGuardHeartAttack)
 		{
+			//TODO Play Guitar Destroy Animation
 			yield return new WaitForSeconds(3); //TODO According to destroy animation
 		}
 		else
 		{
+			Player.Instance.PlayAnimation("Headbang");
 			yield return new WaitForSeconds(2);
 		}
 

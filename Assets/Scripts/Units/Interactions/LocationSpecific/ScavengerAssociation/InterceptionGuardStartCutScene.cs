@@ -15,13 +15,8 @@ public class InterceptionGuardStartCutScene : StartCutSceneInteraction
 		((InterceptionGuardBattleRules)BattleRules.Instance).DisableGuitarStar();
 		if (attack)
 		{
-			//TODO Play Guitar Destroy Animation
 			SaveSystem.currentGameSave.globalVariables.scavengerAssociationVariables.interceptionGuardHeartAttack =
 				true;
-		}
-		else
-		{
-			Player.Instance.PlayAnimation("Headbang");
 		}
 
 		return base.ApplyInteraction();

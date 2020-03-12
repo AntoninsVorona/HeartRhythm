@@ -7,13 +7,11 @@ public class GlobalVariables
 	[Serializable]
 	public class ScavengerAssociationVariables
 	{
-		public bool playerHasToSleepFirst;
-		public HeadSetHideAndSeekController.HeadSetState headSetState;
+		public HeadSetPlace.HeadSetState headSetState;
 		public bool interceptionGuardHeartAttack;
 
-		public ScavengerAssociationVariables(bool playerHasToSleepFirst, HeadSetHideAndSeekController.HeadSetState headSetState, bool interceptionGuardHeartAttack)
+		public ScavengerAssociationVariables(HeadSetPlace.HeadSetState headSetState, bool interceptionGuardHeartAttack)
 		{
-			this.playerHasToSleepFirst = playerHasToSleepFirst;
 			this.headSetState = headSetState;
 			this.interceptionGuardHeartAttack = interceptionGuardHeartAttack;
 		}
