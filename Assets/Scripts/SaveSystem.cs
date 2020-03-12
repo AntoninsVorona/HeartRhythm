@@ -258,7 +258,6 @@ public static class SaveSystem
 
 	public static void NewGame()
 	{
-		//TODO
 		const string startingLevel = "MainCharacterRoom";
 		MakeDefaultStartingGameSave(startingLevel, 2);
 	}

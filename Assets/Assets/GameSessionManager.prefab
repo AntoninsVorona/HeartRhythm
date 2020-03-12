@@ -43,9 +43,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397a3beb4977338439dd411748bb4704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newGameCutScene: {fileID: 11400000, guid: 14347ca38f7e9a84098edc83c49d20aa, type: 2}
+  splashArtController: {fileID: 0}
   currentLevelState:
     levelName: 
     unitData: []
+  currentBattleSettings:
+    startingHp: 0
+    maxHp: 0
+    missedBeatDamage:
+      damage: 0
+    invalidInputDamage:
+      damage: 0
+    hitsInARowToHeal: 0
   currentSceneObjects: {fileID: 0}
   gameStateObservers: []
   playState: 0

@@ -10,7 +10,9 @@ public class GameLogic : MonoBehaviour
 	private const string LEVEL_STORAGE_PATH = "Levels/";
 	private const string MAIN_MENU_SCENE = "MainMenu";
 	private const string GAME_SCENE = "Game";
-
+	
+	public NewGameCutScene newGameCutScene;
+	
 	[Header("Debug")]
 	public LevelData debugLevelToLoad;
 
@@ -61,16 +63,16 @@ public class GameLogic : MonoBehaviour
 	public void NewGame()
 	{
 		SaveSystem.NewGame();
-		StartCoroutine(LoadGameSequence(true));
+		StartCoroutine(LoadGameSequence(true, true));
 	}
 
 	public void LoadSave(string filePath, bool fade)
 	{
 		SaveSystem.LoadSave(filePath);
-		StartCoroutine(LoadGameSequence(fade));
+		StartCoroutine(LoadGameSequence(fade, false));
 	}
 
-	private IEnumerator LoadGameSequence(bool fade)
+	private IEnumerator LoadGameSequence(bool fade, bool newGame)
 	{
 		if (fade)
 		{
@@ -82,8 +84,21 @@ public class GameLogic : MonoBehaviour
 		var levelData = GetLevelByName(SaveSystem.currentGameSave.currentLevelName);
 		Player.Instance.ApplyUnitData(SaveSystem.currentGameSave.playerData);
 		PersistentDataManager.ApplySaveData(SaveSystem.currentGameSave.databaseData);
+		if (newGame)
+		{
+			SplashArtController.Instance.Activate();
+		}
+		else
+		{
+			SplashArtController.Instance.Deactivate();
+		}
+
 		yield return GameSessionManager.Instance.LoadLevel(levelData,
 			SaveSystem.currentGameSave.playerData.currentPosition);
+		if (newGame)
+		{
+			GameSessionManager.Instance.PlayCutScene(newGameCutScene);
+		}
 	}
 
 	public SaveSystem.UILoadData Save()
@@ -112,9 +127,9 @@ public class GameLogic : MonoBehaviour
 
 	public bool CanSave()
 	{
-		return GameSessionManager.Instance.CurrentGameState == GameSessionManager.GameState.Peace && 
-			!PlayerInput.Instance.acceptor.ConversationInProgress &&
-			!GameSessionManager.Instance.IsCutSceneInProgress();
+		return GameSessionManager.Instance.CurrentGameState == GameSessionManager.GameState.Peace &&
+		       !PlayerInput.Instance.acceptor.ConversationInProgress &&
+		       !GameSessionManager.Instance.IsCutSceneInProgress();
 	}
 
 	public static GameLogic Instance { get; private set; }
