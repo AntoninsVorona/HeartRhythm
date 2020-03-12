@@ -65,7 +65,7 @@ public class Options : MenuScreen
 
 	private void InitResolution()
 	{
-		screenResolutions = Screen.resolutions.Where(resolution => resolution.refreshRate == 60).ToArray();
+		screenResolutions = Screen.resolutions.Where(resolution => resolution.refreshRate == 60).Reverse().ToArray();
 		screenResolutionDropdown.ClearOptions();
 		var options = screenResolutions.Select(resolution => new TMP_Dropdown.OptionData(resolution.ToString()))
 			.ToList();
