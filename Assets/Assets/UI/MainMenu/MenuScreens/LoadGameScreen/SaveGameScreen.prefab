@@ -80,7 +80,7 @@ PrefabInstance:
     - target: {fileID: 270973907762390987, guid: ebf5c6291f7f48a4a9a14cacc86289d9,
         type: 3}
       propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Erase
+      value: EraseClicked
       objectReference: {fileID: 0}
     - target: {fileID: 270973907762390987, guid: ebf5c6291f7f48a4a9a14cacc86289d9,
         type: 3}
@@ -514,17 +514,17 @@ PrefabInstance:
     - target: {fileID: 3092231340597993185, guid: f1ce7d64abce275498855f4952ccfc3b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 650
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3092231340597993185, guid: f1ce7d64abce275498855f4952ccfc3b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3092231340597993185, guid: f1ce7d64abce275498855f4952ccfc3b,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3092231340597993185, guid: f1ce7d64abce275498855f4952ccfc3b,
         type: 3}
@@ -539,7 +539,7 @@ PrefabInstance:
     - target: {fileID: 3092231340597993185, guid: f1ce7d64abce275498855f4952ccfc3b,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3092231340597993185, guid: f1ce7d64abce275498855f4952ccfc3b,
         type: 3}
@@ -549,7 +549,7 @@ PrefabInstance:
     - target: {fileID: 3092231340597993185, guid: f1ce7d64abce275498855f4952ccfc3b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3092231340597993185, guid: f1ce7d64abce275498855f4952ccfc3b,
         type: 3}

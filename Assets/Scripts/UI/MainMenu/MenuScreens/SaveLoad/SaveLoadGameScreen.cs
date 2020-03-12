@@ -112,7 +112,15 @@ public abstract class SaveLoadGameScreen : MenuScreen
 		AbstractMainMenu.Instance.OpenScreen<MainScreen>();
 	}
 
-	public void Erase()
+	public void EraseClicked()
+	{
+		if (selectedSaveLoadButton && selectedSaveLoadButton is GameSaveLoadButton)
+		{
+			YesNoDialogue.Instance.Show(Erase);
+		}
+	}
+	
+	protected void Erase()
 	{
 		if (selectedSaveLoadButton && selectedSaveLoadButton is GameSaveLoadButton gameSaveLoadButton)
 		{

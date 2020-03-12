@@ -23,20 +23,33 @@ public class SaveGameScreen : SaveLoadGameScreen
 	{
 		if (selectedSaveLoadButton)
 		{
-			var last = saveLoadButtons.FirstOrDefault();
-			if (last)
-			{
-				last.ApplyLatest(false);
-			}
-
 			if (selectedSaveLoadButton is GameSaveLoadButton)
 			{
-				Erase(); //TODO Add YesNoWindow (Empty UI Rect)
+				YesNoDialogue.Instance.Show(EraseAndApplySave);
 			}
-
-			var newSave = AddSave(GameLogic.Instance.Save(), true, 0);
-			newSave.SetSiblingIndex(1);
+			else
+			{
+				ApplySave();
+			}
 		}
+	}
+
+	private void EraseAndApplySave()
+	{
+		Erase();
+		ApplySave();
+	}
+
+	private void ApplySave()
+	{
+		var last = saveLoadButtons.FirstOrDefault();
+		if (last)
+		{
+			last.ApplyLatest(false);
+		}
+
+		var newSave = AddSave(GameLogic.Instance.Save(), true, 0);
+		newSave.SetSiblingIndex(1);
 	}
 
 	protected override int StartingIndex()

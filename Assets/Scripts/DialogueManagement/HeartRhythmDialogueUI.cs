@@ -28,6 +28,7 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 	private Coroutine typeWriterDelay;
 	private float typeWriterSpeed;
 	private DialogueFillingButton lastSelectedDialogueButton;
+	private bool scan;
 
 	public override void Start()
 	{
@@ -41,26 +42,29 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 	public override void Update()
 	{
 		base.Update();
-		var hit = AbstractMainMenu.Instance.CurrentUIHit();
-		if (hit)
+		if (scan)
 		{
-			var dialogueFillingButton = hit.GetComponentInParent<DialogueFillingButton>();
-			if (dialogueFillingButton)
+			var hit = AbstractMainMenu.Instance.CurrentUIHit();
+			if (hit)
 			{
-				if (dialogueFillingButton != lastSelectedDialogueButton)
+				var dialogueFillingButton = hit.GetComponentInParent<DialogueFillingButton>();
+				if (dialogueFillingButton)
 				{
-					if (lastSelectedDialogueButton)
+					if (dialogueFillingButton != lastSelectedDialogueButton)
 					{
-						lastSelectedDialogueButton.Deselect();
+						if (lastSelectedDialogueButton)
+						{
+							lastSelectedDialogueButton.Deselect();
+						}
+
+						lastSelectedDialogueButton = dialogueFillingButton;
+						lastSelectedDialogueButton.Select();
 					}
 
-					lastSelectedDialogueButton = dialogueFillingButton;
-					lastSelectedDialogueButton.Select();
-				}
-
-				if (Input.GetMouseButtonDown(0))
-				{
-					dialogueFillingButton.Click();
+					if (Input.GetMouseButtonDown(0))
+					{
+						dialogueFillingButton.Click();
+					}
 				}
 			}
 		}
@@ -122,6 +126,7 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 
 	public override void ShowResponses(Subtitle subtitle, Response[] responses, float timeout)
 	{
+		scan = true;
 		conversationUIElements.defaultMenuPanel.pcImage = playerImage;
 		base.ShowResponses(subtitle, responses, timeout);
 		if (lastSubtitlePanel)
@@ -151,6 +156,8 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 			lastSelectedDialogueButton.Deselect();
 			lastSelectedDialogueButton = null;
 		}
+
+		scan = false;
 	}
 
 	public void FastForward()

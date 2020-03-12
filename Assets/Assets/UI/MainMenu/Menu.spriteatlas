@@ -57,7 +57,8 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 97a8db5861179444a8cb3121e92e69a9, type: 3}
     - {fileID: 2800000, guid: 0390248cdb32a514ba19d0cbbcb06bd9, type: 3}
     - {fileID: 2800000, guid: 5e76fbadf9fabe04d985849be1d94a86, type: 3}
-    totalSpriteSurfaceArea: 74682
+    - {fileID: 2800000, guid: 2a72cd6afb27dd8429a1d8862893a0d6, type: 3}
+    totalSpriteSurfaceArea: 74857
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -71,6 +72,7 @@ SpriteAtlas:
   - {fileID: -4195582761621981391, guid: fe6cc457dc6a27e4c9aafbca1cea0f9a, type: 3}
   - {fileID: 21300000, guid: 97a8db5861179444a8cb3121e92e69a9, type: 3}
   - {fileID: 21300000, guid: f05edb39ab3c52840b738f186f6f93db, type: 3}
+  - {fileID: 21300000, guid: 2a72cd6afb27dd8429a1d8862893a0d6, type: 3}
   - {fileID: 21300000, guid: 0390248cdb32a514ba19d0cbbcb06bd9, type: 3}
   - {fileID: 21300000, guid: fcbeaa3dc9ed7e54ca46ba966b74804b, type: 3}
   - {fileID: 21300000, guid: 5e76fbadf9fabe04d985849be1d94a86, type: 3}
@@ -87,6 +89,7 @@ SpriteAtlas:
   - Heart_1
   - DropdownViewport
   - DropdownArrow
+  - YesNoButton
   - DropdownItem
   - Button
   - DropdownMain

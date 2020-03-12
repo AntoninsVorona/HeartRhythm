@@ -63,7 +63,7 @@ PrefabInstance:
     - target: {fileID: 270973908369090098, guid: ebf5c6291f7f48a4a9a14cacc86289d9,
         type: 3}
       propertyPath: clickEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Erase
+      value: EraseClicked
       objectReference: {fileID: 0}
     - target: {fileID: 1056881414071529127, guid: ebf5c6291f7f48a4a9a14cacc86289d9,
         type: 3}
