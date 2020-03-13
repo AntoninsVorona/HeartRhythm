@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 676823425e4e43a48af22318d5ceb28d, type: 3}
   m_Name: TestLevel
   m_EditorClassIdentifier: 
-  sceneObjects: {fileID: 2955217442324748583, guid: bd1952feeaceb5d40a85930dc1a1f2ae,
-    type: 3}
+  sceneObjects: {fileID: 0}
   dialogueRegistrator: {fileID: 0}
   cameraIsStatic: 0
+  backgroundColor:
+    serializedVersion: 2
+    rgba: 4279440150
+  proclamationName: 
   levelState:
     levelName: 
     unitData: []
