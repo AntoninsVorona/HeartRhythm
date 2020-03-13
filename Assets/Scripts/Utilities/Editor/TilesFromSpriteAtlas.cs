@@ -17,11 +17,10 @@ public class TilesFromSpriteAtlas : EditorWindow
 
 	private void OnGUI()
 	{
-		ScriptableObject target = this;
-		SerializedObject so = new SerializedObject(target);
-		SerializedProperty prefabProperty = so.FindProperty("prefab");
+		var so = new SerializedObject(this);
+		var prefabProperty = so.FindProperty("prefab");
 		EditorGUILayout.PropertyField(prefabProperty, false);
-		SerializedProperty spritesProperty = so.FindProperty("sprites");
+		var spritesProperty = so.FindProperty("sprites");
 		EditorGUILayout.PropertyField(spritesProperty, true);
 		so.ApplyModifiedProperties();
 		if (GUILayout.Button("Convert"))
@@ -34,7 +33,11 @@ public class TilesFromSpriteAtlas : EditorWindow
 			{
 				var tile = Instantiate(prefab);
 				tile.m_DefaultSprite = s;
-				tile.m_TilingRules.First().m_Sprites[0] = s;
+				if (tile.m_TilingRules.Count > 0)
+				{
+					tile.m_TilingRules.First().m_Sprites[0] = s;
+				}
+
 				AssetDatabase.CreateAsset(tile, $"{directoryName}\\{prefabName}{++counter}.asset");
 			});
 

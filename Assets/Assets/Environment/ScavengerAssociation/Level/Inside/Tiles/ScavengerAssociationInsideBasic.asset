@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
-  m_Name: StoneGroundBlack
+  m_Name: ScavengerAssociationInsideBasic
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 4135697379690652517, guid: 0d2a7f760cf909e45b5e4476ff46516e,
+  m_DefaultSprite: {fileID: -267118691320795925, guid: 5ee2944fbcbe2a242b563c1b7fdedc07,
     type: 3}
   m_DefaultGameObject: {fileID: 7126541435430892409, guid: e7d03fd6cf6aa5c4497989fc1dc7d8b0,
     type: 3}
@@ -20,14 +20,17 @@ MonoBehaviour:
   m_TilingRules:
   - m_Neighbors: 0000000000000000000000000000000000000000000000000000000000000000
     m_Sprites:
-    - {fileID: -4796223363781546212, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
-    - {fileID: 7309596684555730250, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
-    - {fileID: 4135697379690652517, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: -5403026696768251728, guid: 5ee2944fbcbe2a242b563c1b7fdedc07, type: 3}
+    - {fileID: -6997521398971508804, guid: 5ee2944fbcbe2a242b563c1b7fdedc07, type: 3}
+    - {fileID: -267118691320795925, guid: 5ee2944fbcbe2a242b563c1b7fdedc07, type: 3}
+    - {fileID: 8042216027428942668, guid: 5ee2944fbcbe2a242b563c1b7fdedc07, type: 3}
+    - {fileID: -4195334989696892041, guid: 5ee2944fbcbe2a242b563c1b7fdedc07, type: 3}
+    - {fileID: 6881351230797757467, guid: 5ee2944fbcbe2a242b563c1b7fdedc07, type: 3}
     m_GameObject: {fileID: 7126541435430892409, guid: e7d03fd6cf6aa5c4497989fc1dc7d8b0,
       type: 3}
     m_AnimationSpeed: 1
-    m_PerlinScale: 0.4
+    m_PerlinScale: 0.5
     m_RuleTransform: 0
     m_Output: 1
-    m_ColliderType: 1
+    m_ColliderType: 0
     m_RandomTransform: 1

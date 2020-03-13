@@ -15,10 +15,10 @@ MonoBehaviour:
   sceneObjects: {fileID: 7357043137479388389, guid: 12a05bb07e59c074887147f41249b8a1,
     type: 3}
   dialogueRegistrator: {fileID: 0}
-  cameraIsStatic: 1
+  cameraIsStatic: 0
   backgroundColor:
     serializedVersion: 2
-    rgba: 4279440150
+    rgba: 4282716287
   proclamationName: Scavenger Asssociation Main Hall
   levelState:
     levelName: 
@@ -27,5 +27,5 @@ MonoBehaviour:
   playerSpawnPoints:
     m_keys: 0000000001000000
     m_values:
-    - {x: 1, y: 0}
     - {x: 4, y: -4}
+    - {x: 1, y: 0}

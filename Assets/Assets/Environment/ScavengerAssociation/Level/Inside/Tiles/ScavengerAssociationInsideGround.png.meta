@@ -29,6 +29,48 @@ TextureImporter:
   - first:
       213: 2464193228090898565
     second: ScavengerAssociationInsideGround_8
+  - first:
+      213: 5673465563111100477
+    second: ScavengerAssociationInsideGround_9
+  - first:
+      213: 715814597682656454
+    second: ScavengerAssociationInsideGround_10
+  - first:
+      213: -650071998727709258
+    second: ScavengerAssociationInsideGround_11
+  - first:
+      213: -7369077778530402064
+    second: ScavengerAssociationInsideGround_12
+  - first:
+      213: 5664409337126039309
+    second: ScavengerAssociationInsideGround_13
+  - first:
+      213: 7820300267767843035
+    second: ScavengerAssociationInsideGround_14
+  - first:
+      213: 8768956466812700622
+    second: ScavengerAssociationInsideGround_15
+  - first:
+      213: -8259769169906297063
+    second: ScavengerAssociationInsideGround_16
+  - first:
+      213: -6997521398971508804
+    second: ScavengerAssociationInsideGround_17
+  - first:
+      213: -5403026696768251728
+    second: ScavengerAssociationInsideGround_18
+  - first:
+      213: -4195334989696892041
+    second: ScavengerAssociationInsideGround_19
+  - first:
+      213: 8042216027428942668
+    second: ScavengerAssociationInsideGround_20
+  - first:
+      213: 6881351230797757467
+    second: ScavengerAssociationInsideGround_21
+  - first:
+      213: -8007078439489191388
+    second: ScavengerAssociationInsideGround_22
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -121,13 +163,13 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e188896d6c1885047b1fdd7cc9cf6853
+      spriteID: 6fdca6f47c65a7bd0800000000000000
       internalID: -2631695618213753354
       vertices: []
       indices: 
@@ -142,13 +184,13 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8aea04ced596ae847ab35d91b4f3cade
+      spriteID: 770daba6bd5f54e10800000000000000
       internalID: 2181419917268144247
       vertices: []
       indices: 
@@ -163,13 +205,13 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc33d73ec15344c43a6a212f491999ce
+      spriteID: 5f2759818a4f9aa30800000000000000
       internalID: 4227178728068051701
       vertices: []
       indices: 
@@ -179,18 +221,18 @@ TextureImporter:
       name: ScavengerAssociationInsideGround_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 48
+        y: 48
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85a408c162521754992d0445cf996d4a
+      spriteID: c4634ef8ccdb2c0e0800000000000000
       internalID: -2251028177446750644
       vertices: []
       indices: 
@@ -200,18 +242,18 @@ TextureImporter:
       name: ScavengerAssociationInsideGround_4
       rect:
         serializedVersion: 2
-        x: 16
-        y: 32
+        x: 64
+        y: 48
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b60f6b01c7c1ea4c8fac0305a4ff521
+      spriteID: 84e068aeca749fd70800000000000000
       internalID: 9077365331936546376
       vertices: []
       indices: 
@@ -221,18 +263,18 @@ TextureImporter:
       name: ScavengerAssociationInsideGround_5
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 80
+        y: 48
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e79e380977c29e04cb4fbcc8a9520e06
+      spriteID: f8e272888871a4670800000000000000
       internalID: 8523651119919345295
       vertices: []
       indices: 
@@ -243,17 +285,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
+        y: 32
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f2643d901cc58d4ebda5a99c9145872
+      spriteID: 1891ebbcc880330e0800000000000000
       internalID: -2291478384594773631
       vertices: []
       indices: 
@@ -264,17 +306,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 16
+        y: 32
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52cac9c6cb4e8394990c3a44e902a17c
+      spriteID: bece4fa27f00b4cf0800000000000000
       internalID: -267118691320795925
       vertices: []
       indices: 
@@ -285,18 +327,312 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 16
+        y: 32
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68a86dcb0317e7e4aa42701f969a1eb8
+      spriteID: 588f7426fa2923220800000000000000
       internalID: 2464193228090898565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScavengerAssociationInsideGround_9
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3016aeced23cbe40800000000000000
+      internalID: 5673465563111100477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScavengerAssociationInsideGround_10
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c4f9e385951fe900800000000000000
+      internalID: 715814597682656454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScavengerAssociationInsideGround_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bd186d16fa7af6f0800000000000000
+      internalID: -650071998727709258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScavengerAssociationInsideGround_12
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f08870bdc6cbb990800000000000000
+      internalID: -7369077778530402064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScavengerAssociationInsideGround_13
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0fadc1e7460c9e40800000000000000
+      internalID: 5664409337126039309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScavengerAssociationInsideGround_14
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd8c139e8a9478c60800000000000000
+      internalID: 7820300267767843035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScavengerAssociationInsideGround_15
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec74c37527791b970800000000000000
+      internalID: 8768956466812700622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScavengerAssociationInsideGround_16
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 917130db3b76f5d80800000000000000
+      internalID: -8259769169906297063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScavengerAssociationInsideGround_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb7db12bc5fc3ee90800000000000000
+      internalID: -6997521398971508804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScavengerAssociationInsideGround_18
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b81d2388d79405b0800000000000000
+      internalID: -5403026696768251728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScavengerAssociationInsideGround_19
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77389510e0d27c5c0800000000000000
+      internalID: -4195334989696892041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScavengerAssociationInsideGround_20
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c43fad11ed0bb9f60800000000000000
+      internalID: 8042216027428942668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScavengerAssociationInsideGround_21
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1cb5664c787f7f50800000000000000
+      internalID: 6881351230797757467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScavengerAssociationInsideGround_22
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 422ce85259421e090800000000000000
+      internalID: -8007078439489191388
       vertices: []
       indices: 
       edges: []

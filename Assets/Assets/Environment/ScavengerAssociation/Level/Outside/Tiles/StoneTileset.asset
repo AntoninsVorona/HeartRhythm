@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
+  m_Name: StoneTileset
+  m_EditorClassIdentifier: 
+  m_DefaultSprite: {fileID: 7519321116105547588, guid: 0d2a7f760cf909e45b5e4476ff46516e,
+    type: 3}
+  m_DefaultGameObject: {fileID: 7126541435430892409, guid: e7d03fd6cf6aa5c4497989fc1dc7d8b0,
+    type: 3}
+  m_DefaultColliderType: 0
+  m_TilingRules:
+  - m_Neighbors: 0000000000000000000000000000000000000000000000000000000000000000
+    m_Sprites:
+    - {fileID: 7472788087463305215, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: 7519321116105547588, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: -7077757218839446014, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: -8550987162471736417, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: -6054934974285267539, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: -4796223363781546212, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: 3452483523058720429, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: 4439089169260604733, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: 2680129392466252194, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: -7789408255202936009, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: 5782680977685434035, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: 4135697379690652517, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: 3996416354913809481, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: 8429663967062656457, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: 8967982413765748266, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: 7294928609231263614, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: -1526553699077748245, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: 5489861530773137404, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: -3734432584866573649, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: 4377593344641765318, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: -6763824125044558936, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: 6760210938482137912, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    - {fileID: 7309596684555730250, guid: 0d2a7f760cf909e45b5e4476ff46516e, type: 3}
+    m_GameObject: {fileID: 7126541435430892409, guid: e7d03fd6cf6aa5c4497989fc1dc7d8b0,
+      type: 3}
+    m_AnimationSpeed: 1
+    m_PerlinScale: 0.5
+    m_RuleTransform: 0
+    m_Output: 1
+    m_ColliderType: 1
+    m_RandomTransform: 1
