@@ -18,7 +18,7 @@ MonoBehaviour:
   cameraIsStatic: 1
   backgroundColor:
     serializedVersion: 2
-    rgba: 4282716287
+    rgba: 4281863526
   proclamationName: Your Room
   levelState:
     levelName: 

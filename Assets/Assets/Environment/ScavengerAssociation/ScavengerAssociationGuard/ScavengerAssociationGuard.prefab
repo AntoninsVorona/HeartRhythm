@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3687e43b81f84d889e4dfa51c45442ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   identifierName: 
   movementSpeed: 5
   sprite: {fileID: 7233437516225376871}
@@ -274,6 +275,8 @@ MonoBehaviour:
   initializeSpawnPointForMe: 0
   headsetLessInteraction: {fileID: 0}
   interactions: []
+  startsConversationUponInteraction: 0
+  conversationToStart: 
   talksWhenInteractedWith: 1
   talkUI:
     canvas: {fileID: 1321599299586812471}
@@ -424,6 +427,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DrawingBoardCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860851777215594346, guid: 49f82e130a341a44988ff9079968beff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f82e130a341a44988ff9079968beff, type: 3}
