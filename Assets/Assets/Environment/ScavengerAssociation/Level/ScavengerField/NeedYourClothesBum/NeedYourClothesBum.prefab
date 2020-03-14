@@ -229,8 +229,10 @@ MonoBehaviour:
   otherPoints: []
   initializeSelf: 1
   initializeSpawnPointForMe: 0
-  headsetLessInteraction: {fileID: 0}
-  interactions: []
+  headsetLessInteraction: {fileID: 11400000, guid: 1b5f5971f2493ae488003fd53910e281,
+    type: 2}
+  interactions:
+  - {fileID: 11400000, guid: 1b5f5971f2493ae488003fd53910e281, type: 2}
   startsConversationUponInteraction: 0
   conversationToStart: 
   talksWhenInteractedWith: 1
@@ -238,7 +240,7 @@ MonoBehaviour:
     canvas: {fileID: 2931924227086860157}
     drawingBoardAnimator: {fileID: 5580743478301737040}
     texts:
-    - 
+    - We are real twins! Woohoo!
     displayText: {fileID: 5526699432445491576}
     talkTimer: 0
   movementSettings:
@@ -248,6 +250,9 @@ MonoBehaviour:
       locations: []
     moveDuringPeaceMode: 0
     peaceModeMovementDelay: 1
+  naked: {fileID: 7135101537558222384, guid: 44cec2f6987eab140bcd5e145e746d05, type: 3}
+  clothed: {fileID: -5289527809424184679, guid: 44cec2f6987eab140bcd5e145e746d05,
+    type: 3}
 --- !u!1001 &7133000529379449321
 PrefabInstance:
   m_ObjectHideFlags: 0

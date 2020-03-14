@@ -60,7 +60,7 @@ public class UIInventory : MonoBehaviour
 			slot.Deselect();
 		}
 	}
-	
+
 	public void InitializeItems(List<Inventory.ItemInformation> itemInformation)
 	{
 		foreach (var information in itemInformation)
@@ -248,6 +248,10 @@ public class UIInventory : MonoBehaviour
 		dragController.StopDrag();
 		gameObject.SetActive(false);
 		DeselectInventorySlot();
+		foreach (var slot in inventorySlots)
+		{
+			slot.ResetFill();
+		}
 		open = false;
 	}
 

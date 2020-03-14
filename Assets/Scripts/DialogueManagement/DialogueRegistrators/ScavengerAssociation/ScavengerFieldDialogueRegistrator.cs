@@ -9,6 +9,8 @@ public class ScavengerFieldDialogueRegistrator : DialogueRegistrator
 	{
 		SaveSystem.currentGameSave.globalVariables.scavengerAssociationVariables.bumIsNaked = true;
 		NeedYourClothesBum.Instance.ClothesChanged();
+		Player.Instance.PickUpItem(ItemManager.Instance.GetItemByName("NeedYourClothesBumShirt"));
+		Player.Instance.PickUpItem(ItemManager.Instance.GetItemByName("NeedYourClothesBumPants"));
 	}
 
 	public override void RegisterDialogueFunctions()

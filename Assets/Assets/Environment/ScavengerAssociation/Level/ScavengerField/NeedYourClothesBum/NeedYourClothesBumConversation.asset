@@ -18,5 +18,13 @@ MonoBehaviour:
   visibility:
     visibleOnUI: 1
     canBeUsedIfInvisible: 1
-  danceMovesSetToApply: []
-  conversation: 
+  danceMovesSetToApply:
+  - lockedState:
+      locked: 0
+      lockedType: 0
+    danceMove: 3
+  - lockedState:
+      locked: 0
+      lockedType: 0
+    danceMove: 3
+  conversation: NeedYourClothesBum
