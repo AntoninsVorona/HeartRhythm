@@ -119,7 +119,31 @@ public class World : MonoBehaviour
 		return grid.GetCellCenterWorld((Vector3Int) position);
 	}
 
-	public void OccupyTargetTile(Vector2Int currentPosition, Unit unit)
+	public void AddUnitToTile(Vector2Int currentPosition, Unit unit)
+	{
+		if (unit is Obstacle obstacle)
+		{
+			AddObstacle(currentPosition, obstacle);
+		}
+		else
+		{
+			OccupyTargetTile(currentPosition, unit);
+		}
+	}
+
+	public void RemoveUnitFromTile(Vector2Int currentPosition, Unit unit)
+	{
+		if (unit is Obstacle)
+		{
+			RemoveObstacle(currentPosition);
+		}
+		else
+		{
+			UnoccupyTargetTile(currentPosition);
+		}
+	}
+
+	private void OccupyTargetTile(Vector2Int currentPosition, Unit unit)
 	{
 		if (gameTiles.ContainsKey(currentPosition))
 		{
@@ -131,7 +155,7 @@ public class World : MonoBehaviour
 		}
 	}
 
-	public void UnoccupyTargetTile(Vector2Int currentPosition)
+	private void UnoccupyTargetTile(Vector2Int currentPosition)
 	{
 		if (gameTiles.ContainsKey(currentPosition))
 		{
@@ -143,7 +167,7 @@ public class World : MonoBehaviour
 		}
 	}
 
-	public void AddObstacle(Vector2Int currentPosition, Obstacle obstacle)
+	private void AddObstacle(Vector2Int currentPosition, Obstacle obstacle)
 	{
 		if (gameTiles.ContainsKey(currentPosition))
 		{
@@ -163,7 +187,7 @@ public class World : MonoBehaviour
 		}
 	}
 
-	public void RemoveObstacle(Vector2Int currentPosition)
+	private void RemoveObstacle(Vector2Int currentPosition)
 	{
 		if (gameTiles.ContainsKey(currentPosition))
 		{

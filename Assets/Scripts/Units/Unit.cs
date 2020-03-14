@@ -142,6 +142,9 @@ public abstract class Unit : MonoBehaviour
 	[SerializeField]
 	protected Vector2Int spawnPoint;
 
+	[SerializeField]
+	protected List<Vector2Int> otherPoints;
+
 	protected Vector2Int currentPosition = new Vector2Int(int.MinValue, int.MaxValue);
 	public Vector2Int CurrentPosition => currentPosition;
 
@@ -156,10 +159,12 @@ public abstract class Unit : MonoBehaviour
 	public List<Interaction> interactions;
 
 	public bool startsConversationUponInteraction;
+
 	[DrawIf("startsConversationUponInteraction", true)]
 	public string conversationToStart;
 
 	public bool talksWhenInteractedWith;
+
 	[SerializeField]
 	[DrawIf("talksWhenInteractedWith", true)]
 	protected TalkUI talkUI;
@@ -290,12 +295,21 @@ public abstract class Unit : MonoBehaviour
 
 	protected virtual void OccupyTile()
 	{
-		GameSessionManager.Instance.currentSceneObjects.currentWorld.OccupyTargetTile(currentPosition, this);
+		GameSessionManager.Instance.currentSceneObjects.currentWorld.AddUnitToTile(currentPosition, this);
+		foreach (var point in otherPoints)
+		{
+			GameSessionManager.Instance.currentSceneObjects.currentWorld.AddUnitToTile(point, this);
+		}
 	}
 
 	protected virtual void UnoccupyTile()
 	{
-		GameSessionManager.Instance.currentSceneObjects.currentWorld.UnoccupyTargetTile(currentPosition);
+		GameSessionManager.Instance.currentSceneObjects.currentWorld.RemoveUnitFromTile(currentPosition, this);
+
+		foreach (var otherPoint in otherPoints)
+		{
+			GameSessionManager.Instance.currentSceneObjects.currentWorld.RemoveUnitFromTile(otherPoint, this);
+		}
 	}
 
 	protected abstract void InteractWithObject(Unit unit);
@@ -456,7 +470,7 @@ public abstract class Unit : MonoBehaviour
 	{
 		gameObject.SetActive(false);
 	}
-	
+
 	public virtual void ApplyUnitData(UnitData unitData)
 	{
 		if (unitData != null)
@@ -605,6 +619,13 @@ public abstract class Unit : MonoBehaviour
 		Gizmos.color = Color.red;
 		var size = new Vector3(1, 1, 0.2f);
 		Gizmos.DrawCube(CubeLocation(spawnPoint), size);
+		if (otherPoints != null && otherPoints.Count > 0)
+		{
+			foreach (var otherPoint in otherPoints)
+			{
+				Gizmos.DrawCube(CubeLocation(otherPoint), size);
+			}
+		}
 
 		Vector3 CubeLocation(Vector2Int point)
 		{
