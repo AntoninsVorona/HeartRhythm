@@ -7,13 +7,13 @@ public class GlobalVariables
 	[Serializable]
 	public class ScavengerAssociationVariables
 	{
-		public HeadSetPlace.HeadSetState headSetState;
 		public bool interceptionGuardHeartAttack;
+		public bool bumIsNaked;
 
-		public ScavengerAssociationVariables(HeadSetPlace.HeadSetState headSetState, bool interceptionGuardHeartAttack)
+		public ScavengerAssociationVariables(bool interceptionGuardHeartAttack, bool bumIsNaked)
 		{
-			this.headSetState = headSetState;
 			this.interceptionGuardHeartAttack = interceptionGuardHeartAttack;
+			this.bumIsNaked = bumIsNaked;
 		}
 	}
 

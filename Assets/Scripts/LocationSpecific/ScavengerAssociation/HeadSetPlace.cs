@@ -2,39 +2,20 @@
 
 public class HeadSetPlace : Obstacle
 {
-	public enum HeadSetState
-	{
-		CantGetYet = 0,
-		CanGet = 1, //TODO
-		OnPlayer = 2
-	}
-
 	[Header("Additional Data")]
 	[SerializeField]
 	private Interaction acquireHeadsetInteraction;
 
-	private void Awake()
+	protected override void Start()
 	{
-		HeadSetStateChanged();
-	}
-
-	public void ChangeHeadSetState(HeadSetState headSetState)
-	{
-		SaveSystem.currentGameSave.globalVariables.scavengerAssociationVariables.headSetState = headSetState;
-		HeadSetStateChanged();
-	}
-
-	private void HeadSetStateChanged()
-	{
-		var headSetState = SaveSystem.currentGameSave.globalVariables.scavengerAssociationVariables.headSetState;
-		switch (headSetState)
+		base.Start();
+		if (Player.Instance.HasItem("HeadsetChestKey"))
 		{
-			case HeadSetState.CanGet:
-				ActivateHidePlace();
-				break;
-			default:
-				DisableHidePlace();
-				break;
+			ActivateHidePlace();
+		}
+		else
+		{
+			DisableHidePlace();
 		}
 	}
 

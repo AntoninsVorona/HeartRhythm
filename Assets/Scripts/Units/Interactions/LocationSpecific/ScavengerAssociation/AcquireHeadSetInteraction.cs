@@ -9,7 +9,7 @@ public class AcquireHeadSetInteraction : StartCutSceneInteraction
 	public override bool ApplyInteraction()
 	{
 		GameLogic.Instance.Save();
-		((HeadSetPlace) owner).ChangeHeadSetState(HeadSetPlace.HeadSetState.OnPlayer);
+		Player.Instance.LoseItem("HeadsetChestKey");
 		GameSessionManager.Instance.PlayCutScene(cutSceneToStart);
 		return true;
 	}

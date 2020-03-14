@@ -290,6 +290,12 @@ public class Inventory : MonoBehaviour
 		return false;
 	}
 
+	public bool HasItem(string itemName)
+	{
+		var item = ItemManager.Instance.GetItemByName(itemName);		
+		return itemInformation.FirstOrDefault(i => i.item == item) != null;
+	}
+
 	public void ChangeSlots(InventorySlot draggedInventorySlot, InventorySlot slotToExchangeWith)
 	{
 		var oldSlotId = draggedInventorySlot.slotId;

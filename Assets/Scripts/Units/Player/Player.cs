@@ -324,6 +324,11 @@ public class Player : Unit
 		PlayerInput.Instance.acceptor.PerformingAnimation = false;
 	}
 
+	public void LoseItem(string itemName, int amount = 1)
+	{
+		LoseItem(ItemManager.Instance.GetItemByName(itemName), amount);
+	}
+	
 	public void LoseItem(Item item, int amount = 1)
 	{
 		if (amount > 0)
@@ -372,6 +377,11 @@ public class Player : Unit
 	public int ItemsInSlot(InventorySlot slot)
 	{
 		return Inventory.ItemsInSlot(slot);
+	}
+	
+	public bool HasItem(string itemName)
+	{
+		return Inventory.HasItem(itemName);
 	}
 
 	public void InitializeFightWithEnemyCombatData(BattleArea.BattleSettings battleSettings)

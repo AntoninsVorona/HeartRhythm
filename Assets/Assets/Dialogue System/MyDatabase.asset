@@ -317,8 +317,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: Nice!.\.\.\. I guess it won't hurt if I will put it on for now, no
-          one around...\.\.\.\, Ah, perfect!
+        value: Nice!.\.\.\. I wanna see if it fits me...\.\.\.\, Ah, perfect!
         type: 0
         typeString: 
       - title: Parenthetical
@@ -6736,7 +6735,7 @@ MonoBehaviour:
     - id: 1
       fields:
       - title: Title
-        value: New Dialogue Entry
+        value: 
         type: 0
         typeString: 
       - title: Pictures
@@ -6760,7 +6759,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: I have heard Panc Poc has something for me to show. I should give
+        value: I have heard Pank Poc has something for me to show. I should give
           him a visit.
         type: 0
         typeString: 
