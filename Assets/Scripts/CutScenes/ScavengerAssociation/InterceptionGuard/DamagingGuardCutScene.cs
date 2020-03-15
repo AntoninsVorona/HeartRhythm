@@ -10,7 +10,7 @@ public class DamagingGuardCutScene : CutScene
 		dialogueFinished = false;
 		GameSessionManager.Instance.StartConversation("InterceptionGuardSeeThatCreature");
 		yield return new WaitUntil(() => dialogueFinished);
-		var battleRules = (InterceptionGuardBattleRules) BattleRules.Instance;
+		var battleRules = (InterceptionGuardLocationRules) LocationRules.Instance;
 		yield return new WaitForSeconds((float) AudioManager.Instance.GetTimeUntilNextPulse());
 		battleRules.damagingGuard.Move(new Vector2Int(13, 2));
 		yield return new WaitForSeconds(0.1f);

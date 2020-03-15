@@ -12,7 +12,7 @@ public class InterceptionGuardStartCutScene : StartCutSceneInteraction
 
 	public override bool ApplyInteraction()
 	{
-		((InterceptionGuardBattleRules)BattleRules.Instance).DisableGuitarStar();
+		((InterceptionGuardLocationRules)LocationRules.Instance).DisableGuitarStar();
 		if (attack)
 		{
 			SaveSystem.currentGameSave.globalVariables.scavengerAssociationVariables.interceptionGuardHeartAttack =

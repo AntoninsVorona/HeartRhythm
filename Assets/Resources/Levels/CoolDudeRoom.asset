@@ -10,23 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 676823425e4e43a48af22318d5ceb28d, type: 3}
-  m_Name: ScavengerAssociationInside
+  m_Name: CoolDudeRoom
   m_EditorClassIdentifier: 
-  sceneObjects: {fileID: 7357043137479388389, guid: 12a05bb07e59c074887147f41249b8a1,
+  sceneObjects: {fileID: 1855322911122860780, guid: 8fb849faa1a0e794fa46d6340ad4c236,
     type: 3}
   dialogueRegistrator: {fileID: 0}
   cameraIsStatic: 0
   backgroundColor:
     serializedVersion: 2
-    rgba: 4281209933
-  proclamationName: Scavenger Asssociation Main Hall
+    rgba: 4281275469
+  proclamationName: Cool Dude Gang
   levelState:
     levelName: 
     unitData: []
-  focusPosition: {x: 4, y: -2}
+  focusPosition: {x: 0, y: 0}
   playerSpawnPoints:
-    m_keys: 000000000100000002000000
+    m_keys: 00000000
     m_values:
-    - {x: 4, y: -4}
-    - {x: 1, y: 0}
-    - {x: 24, y: 0}
+    - {x: 22, y: -22}

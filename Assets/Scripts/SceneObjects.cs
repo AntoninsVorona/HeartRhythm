@@ -77,5 +77,6 @@ public class SceneObjects : MonoBehaviour
 		beatListeners.RemoveAll(b => b.owner == null);
 		beatListeners.ForEach(b => b.NotifyBegin());
 		currentMobManager.MakeMobsActions();
+		beatListeners.ForEach(b => b.NotifyEnd());
 	}
 }

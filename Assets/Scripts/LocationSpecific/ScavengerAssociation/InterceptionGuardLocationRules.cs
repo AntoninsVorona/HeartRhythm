@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class InterceptionGuardBattleRules : BattleRules
+public class InterceptionGuardLocationRules : LocationRules
 {
 	[Serializable]
 	public class DoorObstacle

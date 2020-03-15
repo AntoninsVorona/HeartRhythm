@@ -19,22 +19,22 @@ public class InterceptionGuardDialogueRegistrator : DialogueRegistrator
 
 	public void SpawnDude()
 	{
-		((InterceptionGuardBattleRules) BattleRules.Instance).StartSpawning();
+		((InterceptionGuardLocationRules) LocationRules.Instance).StartSpawning();
 	}
 
 	public void TurnAroundDamagingGuard()
 	{
-		((InterceptionGuardBattleRules) BattleRules.Instance).TurnAroundGuard();
+		((InterceptionGuardLocationRules) LocationRules.Instance).TurnAroundGuard();
 	}
 
 	public void DisableStartConversation()
 	{
-		((InterceptionGuardBattleRules) BattleRules.Instance).DisableStartConversation();
+		((InterceptionGuardLocationRules) LocationRules.Instance).DisableStartConversation();
 	}
 
 	public void StartStars()
 	{
-		((InterceptionGuardBattleRules) BattleRules.Instance).StartStars();
+		((InterceptionGuardLocationRules) LocationRules.Instance).StartStars();
 	}
 
 	public override void RegisterDialogueFunctions()

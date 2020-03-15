@@ -13,7 +13,60 @@ public class Mob : Unit
 		Constant = 1,
 		Random = 2,
 		DefinedArea = 3,
-		FollowPlayer = 4
+		FollowPlayer = 4,
+		SpecificArea = 5
+	}
+
+	[Serializable]
+	public class SpecificArea
+	{
+		public List<Vector2Int> movement;
+		public bool circle;
+		private bool goBackward;
+
+		public MovementDirectionUtilities.MovementDirection GetNextMovementDirection(Vector2Int currentPosition)
+		{
+			var nextMoveLocation = GetNextMoveLocation(currentPosition);
+			return MovementDirectionUtilities.DirectionFromDifference(currentPosition, nextMoveLocation);
+		}
+
+		private Vector2Int GetNextMoveLocation(Vector2Int currentPosition)
+		{
+			var indexOf = movement.IndexOf(currentPosition);
+			if (indexOf == -1)
+			{
+				return currentPosition;
+			}
+
+			if (circle)
+			{
+				if (indexOf == movement.Count - 1)
+				{
+					return movement[0];
+				}
+
+				return movement[indexOf + 1];
+			}
+
+			if (goBackward)
+			{
+				if (indexOf == 0)
+				{
+					goBackward = false;
+					return movement[1];
+				}
+
+				return movement[indexOf - 1];
+			}
+
+			if (indexOf == movement.Count - 1)
+			{
+				goBackward = true;
+				return movement[movement.Count - 2];
+			}
+
+			return movement[indexOf + 1];
+		}
 	}
 
 	[Serializable]
@@ -71,6 +124,9 @@ public class Mob : Unit
 		[DrawIf("typeOfMovement", TypeOfMovement.DefinedArea)]
 		public DefinedArea definedArea;
 
+		[DrawIf("typeOfMovement", TypeOfMovement.SpecificArea)]
+		public SpecificArea specificArea;
+
 		[Header("Peace Mode")]
 		public bool moveDuringPeaceMode = true;
 
@@ -105,7 +161,7 @@ public class Mob : Unit
 		}
 	}
 
-	public void MakeAction()
+	public virtual void MakeAction()
 	{
 		switch (movementSettings.typeOfMovement)
 		{
@@ -134,13 +190,21 @@ public class Mob : Unit
 				else
 				{
 					(canMove, nextStep) = pathfinder.FindPath(Player.Instance.CurrentPosition, currentPosition, true);
-					if (canMove && GameSessionManager.Instance.currentSceneObjects.currentWorld.CanWalk(nextStep).Item1 == GameTile.CantMoveReason.None)
+					if (canMove &&
+					    GameSessionManager.Instance.currentSceneObjects.currentWorld.CanWalk(nextStep).Item1 ==
+					    GameTile.CantMoveReason.None)
 					{
 						movementSettings.movementDirection =
 							MovementDirectionUtilities.DirectionFromDifference(currentPosition, nextStep);
 						Move(movementSettings.movementDirection);
 					}
 				}
+
+				break;
+			case TypeOfMovement.SpecificArea:
+				movementSettings.movementDirection =
+					movementSettings.specificArea.GetNextMovementDirection(CurrentPosition);
+				Move(movementSettings.movementDirection);
 				break;
 			default:
 				throw new ArgumentOutOfRangeException();

@@ -22,11 +22,11 @@ public class Observer
 
 	public void NotifyBegin()
 	{
-		actionBegin();
+		actionBegin?.Invoke();
 	}
 	
 	public void NotifyEnd()
 	{
-		actionEnd();
+		actionEnd?.Invoke();
 	}
 }

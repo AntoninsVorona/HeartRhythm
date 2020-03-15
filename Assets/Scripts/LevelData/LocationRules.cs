@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class BattleRules : MonoBehaviour
+public abstract class LocationRules : MonoBehaviour
 {
 	protected SceneObjects sceneObjects;
 
@@ -12,11 +12,16 @@ public abstract class BattleRules : MonoBehaviour
 
 	protected virtual void Start()
 	{
+		CreateObservers();
+	}
+
+	protected virtual void CreateObservers()
+	{
 		var observer = new Observer(this, OnBeatDone);
 		sceneObjects.beatListeners.Add(observer);
 	}
 
 	protected abstract void OnBeatDone();
 
-	public static BattleRules Instance { get; private set; }
+	public static LocationRules Instance { get; private set; }
 }

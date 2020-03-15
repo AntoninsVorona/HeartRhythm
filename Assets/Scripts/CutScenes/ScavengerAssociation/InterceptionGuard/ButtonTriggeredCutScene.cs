@@ -9,7 +9,7 @@ public class ButtonTriggeredCutScene : CutScene
 	{
 		dialogueFinished = false;
 		yield return new WaitForSeconds(0.5f);
-		var battleRules = (InterceptionGuardBattleRules) BattleRules.Instance;
+		var battleRules = (InterceptionGuardLocationRules) LocationRules.Instance;
 		battleRules.CloseDoors();
 		GameSessionManager.Instance.currentBattleSettings.missedBeatDamage = new BattleArea.BattleDamage(0);
 		GameSessionManager.Instance.currentBattleSettings.invalidInputDamage = new BattleArea.BattleDamage(0);

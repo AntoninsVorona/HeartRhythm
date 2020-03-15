@@ -11,7 +11,7 @@ public class InterceptionGuardObstacleTalk : Interaction
 	public override bool ApplyInteraction()
 	{
 		owner.animator.SetTrigger(AnimatorUtilities.STOP_TRIGGER);
-		((InterceptionGuardBattleRules) BattleRules.Instance).RemoveLeftToInteract((Obstacle) owner);
+		((InterceptionGuardLocationRules) LocationRules.Instance).RemoveLeftToInteract((Obstacle) owner);
 		Player.Instance.Talk(textToTalk);
 		return true;
 	}
