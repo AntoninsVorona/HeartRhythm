@@ -34,6 +34,8 @@ public class SceneObjects : MonoBehaviour
 
 	[HideInInspector]
 	public List<Observer> beatListeners = new List<Observer>();
+	[HideInInspector]
+	public List<Observer> playerMovementListeners = new List<Observer>();
 
 	private string levelName;
 
@@ -78,5 +80,12 @@ public class SceneObjects : MonoBehaviour
 		beatListeners.ForEach(b => b.NotifyBegin());
 		currentMobManager.MakeMobsActions();
 		beatListeners.ForEach(b => b.NotifyEnd());
+	}
+	
+	public void ApplyPlayerMoved()
+	{
+		playerMovementListeners.RemoveAll(b => b.owner == null);
+		playerMovementListeners.ForEach(b => b.NotifyBegin());
+		playerMovementListeners.ForEach(b => b.NotifyEnd());
 	}
 }

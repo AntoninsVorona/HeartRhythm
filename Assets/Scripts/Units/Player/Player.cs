@@ -156,7 +156,9 @@ public class Player : Unit
 			combatData.SuccessfulBeatsInARow++;
 		}
 
-		return base.SuccessfulMove(newPosition, force);
+		var successfulMove = base.SuccessfulMove(newPosition, force);
+		GameSessionManager.Instance.currentSceneObjects.ApplyPlayerMoved();
+		return successfulMove;
 	}
 
 	private void ReceiveDanceMove(MovementDirectionUtilities.MovementDirection movementDirection)

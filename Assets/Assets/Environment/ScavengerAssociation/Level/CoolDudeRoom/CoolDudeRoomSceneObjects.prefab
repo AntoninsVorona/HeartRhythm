@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 1855322911122860780}
   - component: {fileID: 6573971914586848877}
   - component: {fileID: 5878227078485071683}
+  - component: {fileID: 4305050701563470883}
   m_Layer: 0
   m_Name: CoolDudeRoomSceneObjects
   m_TagString: Untagged
@@ -228,6 +229,7 @@ MonoBehaviour:
   currentMobManager: {fileID: 349488511635820734}
   currentObstacleManager: {fileID: 4556515425882739798}
   beatListeners: []
+  playerMovementListeners: []
 --- !u!114 &6573971914586848877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +256,95 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spotted: 0
+  levelToLoad: {fileID: 11400000, guid: 26f74a81b25f2774f9413f70211a1fe7, type: 2}
+--- !u!114 &4305050701563470883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349488511966253891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a5473918a168c44fa0294bd4d1399f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conversationEvents:
+    onConversationStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationEnd:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5878227078485071683}
+          m_MethodName: LoadLevel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onConversationCancelled:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationLine:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationLineEnd:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationLineCancelled:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationResponseMenu:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationResponseMenuTimeout:
+      m_PersistentCalls:
+        m_Calls: []
+    onLinkedConversationStart:
+      m_PersistentCalls:
+        m_Calls: []
+  barkEvents:
+    onBarkStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onBarkEnd:
+      m_PersistentCalls:
+        m_Calls: []
+    onBarkLine:
+      m_PersistentCalls:
+        m_Calls: []
+  sequenceEvents:
+    onSequenceStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onSequenceEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  questEvents:
+    onQuestStateChange:
+      m_PersistentCalls:
+        m_Calls: []
+    onQuestTrackingEnabled:
+      m_PersistentCalls:
+        m_Calls: []
+    onQuestTrackingDisabled:
+      m_PersistentCalls:
+        m_Calls: []
+    onUpdateQuestTracker:
+      m_PersistentCalls:
+        m_Calls: []
+  pauseEvents:
+    onDialogueSystemPause:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueSystemUnpause:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &1117810436334969727
 GameObject:
   m_ObjectHideFlags: 0
@@ -6286,7 +6377,7 @@ PrefabInstance:
     - target: {fileID: 5356045075983328772, guid: 75dcbdb0637ad754090f3f9bca1413c5,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 102
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75dcbdb0637ad754090f3f9bca1413c5, type: 3}

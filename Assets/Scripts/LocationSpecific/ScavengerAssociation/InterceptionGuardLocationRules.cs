@@ -81,6 +81,11 @@ public class InterceptionGuardLocationRules : LocationRules
 		}
 	}
 
+	protected override void OnMoveDone()
+	{
+		
+	}
+
 	public void SpawnDude()
 	{
 		if (sceneObjects.currentWorld.CanWalk(spawnPoint1).Item1 == GameTile.CantMoveReason.None)

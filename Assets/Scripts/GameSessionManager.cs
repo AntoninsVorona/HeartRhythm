@@ -298,11 +298,11 @@ public class GameSessionManager : MonoBehaviour
 		DialogueManager.instance.StartConversation(conversationTitle, Player.Instance.transform);
 	}
 
-	public void StartConversation(string conversationTitle, Unit conversationWith)
+	public void StartConversation(string conversationTitle, Transform conversationWith)
 	{
 		PreConversationStart();
 		DialogueManager.instance.StartConversation(conversationTitle, Player.Instance.transform,
-			conversationWith.transform);
+			conversationWith);
 	}
 
 	private static void PreConversationStart()

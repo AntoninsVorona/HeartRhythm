@@ -36,7 +36,7 @@ public class CoolDudeDetection : Mob
 		((CoolDudeRoomLocationRules) LocationRules.Instance).PlayerSpotted(this);
 	}
 
-	private void CheckPlayer()
+	public void CheckPlayer()
 	{
 		var playerPosition = Player.Instance.CurrentPosition;
 		var xDiff = Math.Abs(Math.Abs(playerPosition.x) - Math.Abs(CurrentPosition.x));
