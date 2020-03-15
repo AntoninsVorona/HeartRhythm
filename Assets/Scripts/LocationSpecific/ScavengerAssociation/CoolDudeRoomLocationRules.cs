@@ -3,12 +3,12 @@
 public class CoolDudeRoomLocationRules : LocationRules
 {
 	[HideInInspector]
-	public CoolDudeDetection caughtPlayer;
+	public bool spotted;
 
 	protected override void Awake()
 	{
 		base.Awake();
-		caughtPlayer = null;
+		spotted = false;
 	}
 
 	protected override void OnBeatDone()
@@ -16,18 +16,14 @@ public class CoolDudeRoomLocationRules : LocationRules
 		
 	}
 
-	protected override void CreateObservers()
+	public void PlayerSpotted(CoolDudeDetection coolDudeDetection)
 	{
-		base.CreateObservers();
-		var observer = new Observer(this, null, PlayerSpotted);
-		sceneObjects.beatListeners.Add(observer);
-	}
-
-	private void PlayerSpotted()
-	{
-		if (caughtPlayer)
+		if (!spotted)
 		{
-			
+			spotted = true;
+			GameCamera.Instance.ChangeTargetPosition(coolDudeDetection.transform.position);
+			GameCamera.Instance.staticView = true;
+			GameSessionManager.Instance.StartConversation("CoolDudeSpotted");
 		}
 	}
 }
