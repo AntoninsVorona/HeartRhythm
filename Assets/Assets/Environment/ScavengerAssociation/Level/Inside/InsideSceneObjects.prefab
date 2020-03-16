@@ -8517,6 +8517,7 @@ MonoBehaviour:
   currentMobManager: {fileID: 8899034152478840503}
   currentObstacleManager: {fileID: 4656131825778037343}
   beatListeners: []
+  playerMovementListeners: []
 --- !u!114 &2728079925854287663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8652,7 +8653,7 @@ PrefabInstance:
     - target: {fileID: 7315317668183789296, guid: bb33172512776f046b6db8223866f5c5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28.5
+      value: 29.5
       objectReference: {fileID: 0}
     - target: {fileID: 7315317668183789296, guid: bb33172512776f046b6db8223866f5c5,
         type: 3}
@@ -8709,15 +8710,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoolDude (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7315317668786608444, guid: bb33172512776f046b6db8223866f5c5,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7969479766417035597, guid: bb33172512776f046b6db8223866f5c5,
         type: 3}
       propertyPath: spawnPoint.x
-      value: 28
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 7969479766417035597, guid: bb33172512776f046b6db8223866f5c5,
         type: 3}
       propertyPath: spawnPoint.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969479766417035597, guid: bb33172512776f046b6db8223866f5c5,
+        type: 3}
+      propertyPath: talkUI.texts.Array.data[0]
+      value: Hey, sweety.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb33172512776f046b6db8223866f5c5, type: 3}
@@ -8793,6 +8804,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CoolDude (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7315317668786608444, guid: bb33172512776f046b6db8223866f5c5,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7969479766417035597, guid: bb33172512776f046b6db8223866f5c5,
         type: 3}
@@ -8953,6 +8969,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CoolDude (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7315317668786608444, guid: bb33172512776f046b6db8223866f5c5,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7969479766417035597, guid: bb33172512776f046b6db8223866f5c5,
         type: 3}
@@ -9193,6 +9214,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CoolDude (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7315317668786608444, guid: bb33172512776f046b6db8223866f5c5,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7969479766417035597, guid: bb33172512776f046b6db8223866f5c5,
         type: 3}
@@ -9739,7 +9765,7 @@ PrefabInstance:
     - target: {fileID: 7315317668786608444, guid: bb33172512776f046b6db8223866f5c5,
         type: 3}
       propertyPath: m_FlipX
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7969479766417035597, guid: bb33172512776f046b6db8223866f5c5,
         type: 3}
@@ -10135,6 +10161,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoolDude
       objectReference: {fileID: 0}
+    - target: {fileID: 7315317668786608444, guid: bb33172512776f046b6db8223866f5c5,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7969479766417035597, guid: bb33172512776f046b6db8223866f5c5,
         type: 3}
       propertyPath: spawnPoint.x
@@ -10223,7 +10254,7 @@ PrefabInstance:
     - target: {fileID: 7315317668786608444, guid: bb33172512776f046b6db8223866f5c5,
         type: 3}
       propertyPath: m_FlipX
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7969479766417035597, guid: bb33172512776f046b6db8223866f5c5,
         type: 3}
@@ -10753,7 +10784,7 @@ PrefabInstance:
     - target: {fileID: 7315317668786608444, guid: bb33172512776f046b6db8223866f5c5,
         type: 3}
       propertyPath: m_FlipX
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7969479766417035597, guid: bb33172512776f046b6db8223866f5c5,
         type: 3}

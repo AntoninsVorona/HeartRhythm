@@ -289,7 +289,7 @@ public class Mob : Unit
 				Gizmos.DrawCube(CubeLocation(location), size);
 			}
 		}
-		else if (movementSettings.typeOfMovement == TypeOfMovement.DefinedArea)
+		else if (movementSettings.typeOfMovement == TypeOfMovement.SpecificArea)
 		{
 			Gizmos.color = Color.cyan;
 			foreach (var location in movementSettings.specificArea.movement)

@@ -45,6 +45,7 @@ public class CoolDudeDetection : Mob
 		if (diff <= (int) detectionRadius)
 		{
 			SpotPlayer();
+			sprite.flipX = CurrentPosition.x > playerPosition.x;
 		}
 	}
 

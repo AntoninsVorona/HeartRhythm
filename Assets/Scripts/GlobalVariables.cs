@@ -9,11 +9,15 @@ public class GlobalVariables
 	{
 		public bool interceptionGuardHeartAttack;
 		public bool bumIsNaked;
+		public bool visitedCoolDude;
+		public bool bananaTaken;
 
-		public ScavengerAssociationVariables(bool interceptionGuardHeartAttack, bool bumIsNaked)
+		public ScavengerAssociationVariables(bool interceptionGuardHeartAttack, bool bumIsNaked, bool visitedCoolDude, bool bananaTaken)
 		{
 			this.interceptionGuardHeartAttack = interceptionGuardHeartAttack;
 			this.bumIsNaked = bumIsNaked;
+			this.visitedCoolDude = visitedCoolDude;
+			this.bananaTaken = bananaTaken;
 		}
 	}
 
