@@ -27,7 +27,7 @@ public class InGameMainScreen : MainScreen
 
 	public override void QuitClicked()
 	{
-		GameLogic.Instance.LoadMainMenuScene();
+		YesNoDialogue.Instance.Show(GameLogic.Instance.LoadMainMenuScene);
 	}
 
 	public override void ApplyCancel()
