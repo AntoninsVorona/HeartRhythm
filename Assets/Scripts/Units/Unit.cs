@@ -645,12 +645,14 @@ public abstract class Unit : MonoBehaviour
 			if (GUILayout.Button("Recalculate Position"))
 			{
 				unit.transform.position = (Vector3Int) unit.spawnPoint + new Vector3(0.5f, 0.5f, 0);
+				EditorUtility.SetDirty(unit);
 			}
 
 			if (GUILayout.Button("Recalculate Spawn Point Based on Position"))
 			{
 				var position = Vector2Int.FloorToInt(unit.transform.position);
 				unit.spawnPoint = position;
+				EditorUtility.SetDirty(unit);
 			}
 		}
 	}

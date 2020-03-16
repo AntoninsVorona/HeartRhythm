@@ -10,24 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 676823425e4e43a48af22318d5ceb28d, type: 3}
-  m_Name: ScavengerAssociationInside
+  m_Name: PankPocRoom
   m_EditorClassIdentifier: 
-  sceneObjects: {fileID: 7357043137479388389, guid: 12a05bb07e59c074887147f41249b8a1,
+  sceneObjects: {fileID: 5904113686362371950, guid: da1e69553296b6b418e89f62249a53fe,
     type: 3}
   dialogueRegistrator: {fileID: 0}
-  cameraIsStatic: 0
+  cameraIsStatic: 1
   backgroundColor:
     serializedVersion: 2
-    rgba: 4281209933
-  proclamationName: Scavenger Asssociation Main Hall
+    rgba: 4281275469
+  proclamationName: Pank Poc Labaratory
   levelState:
     levelName: 
     unitData: []
   focusPosition: {x: 4, y: -2}
   playerSpawnPoints:
-    m_keys: 00000000010000000200000003000000
+    m_keys: 00000000
     m_values:
-    - {x: 4, y: -4}
-    - {x: 1, y: 0}
-    - {x: 24, y: 0}
-    - {x: -8, y: 0}
+    - {x: 0, y: 1}

@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 8727915600509681796}
   identifierName: 
-  movementSpeed: 0
+  movementSpeed: 5
   sprite: {fileID: 2050073805666457185}
   movementSpeedCurve:
     serializedVersion: 2
@@ -145,7 +145,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  spawnPoint: {x: 0, y: 0}
+  spawnPoint: {x: 7, y: 1}
   otherPoints: []
   initializeSelf: 1
   initializeSpawnPointForMe: 0
@@ -153,12 +153,15 @@ MonoBehaviour:
   interactions: []
   startsConversationUponInteraction: 0
   conversationToStart: 
-  talksWhenInteractedWith: 0
+  talksWhenInteractedWith: 1
   talkUI:
     canvas: {fileID: 5547886225666542486}
     drawingBoardAnimator: {fileID: 2971403837966677179}
     texts:
-    - 
+    - This will be innovative!
+    - This will be collosal!
+    - This will be fantastic!
+    - This totaly is not harmful!
     displayText: {fileID: 2953379998942662035}
     talkTimer: 0
   movementSettings:
@@ -166,6 +169,9 @@ MonoBehaviour:
     movementDirection: 0
     definedArea:
       locations: []
+    specificArea:
+      movement: []
+      circle: 0
     moveDuringPeaceMode: 0
     peaceModeMovementDelay: 1
 --- !u!95 &8727915600509681796
@@ -384,6 +390,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DrawingBoardCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4860851777215594346, guid: 49f82e130a341a44988ff9079968beff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f82e130a341a44988ff9079968beff, type: 3}

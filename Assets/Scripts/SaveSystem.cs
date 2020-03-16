@@ -271,7 +271,7 @@ public static class SaveSystem
 				new Inventory.InventoryData(null, null)),
 			globalVariables =
 				new GlobalVariables(false, maxDanceMoveSymbols,
-					new GlobalVariables.ScavengerAssociationVariables(false, false, false, false)
+					new GlobalVariables.ScavengerAssociationVariables(false, false, false, false, false)
 				)
 		};
 	}
