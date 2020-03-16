@@ -135,17 +135,62 @@ MonoBehaviour:
   sprite: {fileID: 2050073805666457185}
   movementSpeedCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.4810358
+      outSlope: 1.4810358
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.039961
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.4700502
+      outSlope: 0.4700502
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.04775864
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   movementDisplaceCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.7999978
+      outSlope: 0.7999978
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.3999989
+      inSlope: 0.000011026859
+      outSlope: 0.000011026859
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.000011029726
+      inSlope: -0.79997575
+      outSlope: -0.79997575
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  spawnPoint: {x: 7, y: 1}
+  spawnPoint: {x: 6, y: 1}
   otherPoints: []
   initializeSelf: 1
   initializeSpawnPointForMe: 0

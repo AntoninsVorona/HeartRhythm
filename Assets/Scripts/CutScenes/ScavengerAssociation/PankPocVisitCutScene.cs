@@ -58,11 +58,16 @@ public class PankPocVisitCutScene : CutScene
 		}
 
 		pankPocRoomLocationRules.PlayShowHeadset();
-		yield return new WaitForSeconds(3); //TODO Animation Length
-		pankPocRoomLocationRules.PlayHideHeadset();
-		yield return new WaitForSeconds(3); //TODO Animation Length
+		yield return new WaitForSeconds(1.5f);
+		pankPocRoomLocationRules.RotatePankPoc();
 		dialogueFinished = false;
-		GameSessionManager.Instance.StartConversation("PankPocRequest"); //TODO
+		GameSessionManager.Instance.StartConversation("PankPocShowsHeadset");
+		yield return new WaitUntil(() => dialogueFinished);
+		pankPocRoomLocationRules.RotatePankPoc();
+		pankPocRoomLocationRules.PlayHideHeadset();
+		yield return new WaitForSeconds(1.5f);
+		dialogueFinished = false;
+		GameSessionManager.Instance.StartConversation("PankPocRequest");
 		pankId = -1;
 		while (true)
 		{
@@ -78,6 +83,7 @@ public class PankPocVisitCutScene : CutScene
 		}
 
 		yield return new WaitUntil(() => dialogueFinished);
+		GameLogic.Instance.Save();
 		GameSessionManager.Instance.CutSceneFinished();
 	}
 }

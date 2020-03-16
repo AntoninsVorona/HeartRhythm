@@ -6,6 +6,9 @@ public class PankPocRoomLocationRules : LocationRules
 	private PankPoc pankPoc;
 
 	[SerializeField]
+	private Obstacle chest;
+
+	[SerializeField]
 	private PankPocVisitCutScene pankPocVisitCutScene;
 
 	protected override void Awake()
@@ -38,11 +41,13 @@ public class PankPocRoomLocationRules : LocationRules
 
 	public void PlayShowHeadset()
 	{
-		
+		pankPoc.animator.SetTrigger(AnimatorUtilities.START_TRIGGER);
+		chest.animator.SetTrigger(AnimatorUtilities.START_TRIGGER);
 	}
 
 	public void PlayHideHeadset()
 	{
-		
+		pankPoc.animator.SetTrigger(AnimatorUtilities.STOP_TRIGGER);
+		chest.animator.SetTrigger(AnimatorUtilities.STOP_TRIGGER);
 	}
 }

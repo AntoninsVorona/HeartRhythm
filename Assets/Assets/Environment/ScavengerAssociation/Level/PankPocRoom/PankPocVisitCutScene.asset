@@ -13,3 +13,34 @@ MonoBehaviour:
   m_Name: PankPocVisitCutScene
   m_EditorClassIdentifier: 
   dialogueFinished: 0
+  playerPositions:
+  - {x: 0, y: 1}
+  - {x: 0, y: 0}
+  - {x: 0, y: -1}
+  - {x: 1, y: -1}
+  - {x: 2, y: -1}
+  - {x: 3, y: -1}
+  - {x: 4, y: -1}
+  - {x: 5, y: -1}
+  - {x: 6, y: -1}
+  - {x: 7, y: -1}
+  - {x: 8, y: -1}
+  - {x: 9, y: -1}
+  pankPositions:
+  - {x: 7, y: 1}
+  - {x: 7, y: 0}
+  - {x: 7, y: -1}
+  - {x: 8, y: -1}
+  - {x: 9, y: -1}
+  - {x: 10, y: -1}
+  - {x: 11, y: -1}
+  pankBackPositions:
+  - {x: 10, y: -1}
+  - {x: 10, y: -2}
+  - {x: 9, y: -2}
+  - {x: 8, y: -2}
+  - {x: 8, y: -1}
+  - {x: 8, y: 0}
+  - {x: 8, y: 1}
+  - {x: 7, y: 1}
+  - {x: 6, y: 1}
