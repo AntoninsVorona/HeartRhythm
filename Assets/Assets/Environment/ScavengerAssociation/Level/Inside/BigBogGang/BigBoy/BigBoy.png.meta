@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 923f5972358369045b6273c6b902ce8c
+guid: 411b16f4f37f587468826a71287d8650
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1259418443183593715
-    second: SnikyGot_0
+      213: 2487101647053186395
+    second: BigBoy_0
   - first:
-      213: -2744264005252995773
-    second: SnikyGot_1
+      213: -6892640289633176204
+    second: BigBoy_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -92,43 +92,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SnikyGot_0
+      name: BigBoy_0
       rect:
         serializedVersion: 2
-        x: 4
+        x: 0
         y: 0
-        width: 9
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 23
+        height: 25
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f89881c66a5a7110800000000000000
-      internalID: 1259418443183593715
+      spriteID: b55e4e055c5f38220800000000000000
+      internalID: 2487101647053186395
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SnikyGot_1
+      name: BigBoy_1
       rect:
         serializedVersion: 2
-        x: 20
+        x: 33
         y: 0
-        width: 9
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 23
+        height: 25
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 345210d4d6a6ae9d0800000000000000
-      internalID: -2744264005252995773
+      spriteID: 4757ed3ec2c6850a0800000000000000
+      internalID: -6892640289633176204
       vertices: []
       indices: 
       edges: []

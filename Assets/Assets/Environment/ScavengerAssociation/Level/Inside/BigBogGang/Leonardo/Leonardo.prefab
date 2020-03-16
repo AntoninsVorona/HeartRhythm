@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &924485106135215581
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 132499453797929341, guid: c3e35366c24bf0949b448ab5072ca703,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296819206718188581, guid: c3e35366c24bf0949b448ab5072ca703,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5680962014526422608, guid: 0e9946b4285194b43a8b00324fe7962c,
+        type: 3}
+    - target: {fileID: 1296819208260598761, guid: c3e35366c24bf0949b448ab5072ca703,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296819208260598761, guid: c3e35366c24bf0949b448ab5072ca703,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 16.640965
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296819208260598761, guid: c3e35366c24bf0949b448ab5072ca703,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296819208260598761, guid: c3e35366c24bf0949b448ab5072ca703,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296819208260598761, guid: c3e35366c24bf0949b448ab5072ca703,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296819208260598761, guid: c3e35366c24bf0949b448ab5072ca703,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296819208260598761, guid: c3e35366c24bf0949b448ab5072ca703,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296819208260598761, guid: c3e35366c24bf0949b448ab5072ca703,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296819208260598761, guid: c3e35366c24bf0949b448ab5072ca703,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296819208260598761, guid: c3e35366c24bf0949b448ab5072ca703,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296819208260598761, guid: c3e35366c24bf0949b448ab5072ca703,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296819208260598763, guid: c3e35366c24bf0949b448ab5072ca703,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 36cc2acfcfae38644add0a4b3381c7b1, type: 2}
+    - target: {fileID: 1296819208260598767, guid: c3e35366c24bf0949b448ab5072ca703,
+        type: 3}
+      propertyPath: m_Name
+      value: Leonardo
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462281492990095605, guid: c3e35366c24bf0949b448ab5072ca703,
+        type: 3}
+      propertyPath: talkUI.texts.Array.data[0]
+      value: Boss is on the other side of this room.
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c3e35366c24bf0949b448ab5072ca703, type: 3}

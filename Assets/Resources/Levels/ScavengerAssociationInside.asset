@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneObjects: {fileID: 7357043137479388389, guid: 12a05bb07e59c074887147f41249b8a1,
     type: 3}
-  dialogueRegistrator: {fileID: 0}
+  dialogueRegistrator: {fileID: 11400000, guid: fa97dc2d45de57f4cbe4d10f1c948fb5,
+    type: 2}
   cameraIsStatic: 0
   backgroundColor:
     serializedVersion: 2

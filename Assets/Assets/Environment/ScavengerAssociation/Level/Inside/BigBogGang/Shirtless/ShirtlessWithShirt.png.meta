@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 2ffd71a4504a31c489d7622f7417e435
+guid: d8323db2652272749b9cb47ddda6da77
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5166619316664215829
-    second: WatermelonIndusTrader_0
+      213: 6009942622916850764
+    second: ShirtlessWithShirt_0
   - first:
-      213: 7932358183862012453
-    second: WatermelonIndusTrader_1
+      213: 4180157490340891720
+    second: ShirtlessWithShirt_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -92,13 +92,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WatermelonIndusTrader_0
+      name: ShirtlessWithShirt_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 24
+        width: 9
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -106,20 +106,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be6de8cfa1b7c48b0800000000000000
-      internalID: -5166619316664215829
+      spriteID: c44307739fa976350800000000000000
+      internalID: 6009942622916850764
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WatermelonIndusTrader_1
+      name: ShirtlessWithShirt_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 9
         y: 0
-        width: 16
-        height: 24
+        width: 9
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52a0244adb5651e60800000000000000
-      internalID: 7932358183862012453
+      spriteID: 84c05fc0717e20a30800000000000000
+      internalID: 4180157490340891720
       vertices: []
       indices: 
       edges: []
