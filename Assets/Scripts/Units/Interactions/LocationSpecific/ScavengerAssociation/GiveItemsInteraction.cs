@@ -8,7 +8,11 @@ public class GiveItemsInteraction : Interaction
 {
 	public override bool ApplyInteraction()
 	{
-		if (!SaveSystem.currentGameSave.globalVariables.scavengerAssociationVariables.visitedBigBoyGang)
+		if (!SaveSystem.currentGameSave.globalVariables.scavengerAssociationVariables.visitedPankPoc)
+		{
+			((InsideLocationRules) LocationRules.Instance).PlayNotVisitedPankPoc();
+		}
+		else if (!SaveSystem.currentGameSave.globalVariables.scavengerAssociationVariables.visitedBigBoyGang)
 		{
 			((InsideLocationRules) LocationRules.Instance).PlayIntro();
 		}

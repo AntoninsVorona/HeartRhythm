@@ -277,6 +277,11 @@ public class Inventory : MonoBehaviour
 
 				itemExists.slotItemInformation.Remove(slotItemInformationExists);
 				GameUI.Instance.uiInventory.RemoveItem(slotId);
+				if (itemExists.slotItemInformation.Count == 0)
+				{
+					itemInformation.Remove(itemExists);
+				}
+
 				return true;
 			}
 
@@ -292,7 +297,7 @@ public class Inventory : MonoBehaviour
 
 	public bool HasItem(string itemName)
 	{
-		var item = ItemManager.Instance.GetItemByName(itemName);		
+		var item = ItemManager.Instance.GetItemByName(itemName);
 		return itemInformation.FirstOrDefault(i => i.item == item) != null;
 	}
 

@@ -85,6 +85,11 @@ public class InsideLocationRules : LocationRules
 		GameSessionManager.Instance.StartConversation("PlayIntro");
 	}
 
+	public void PlayNotVisitedPankPoc()
+	{
+		GameSessionManager.Instance.StartConversation("PlayNotVisitedPankPoc");
+	}
+
 	private void CheckAllDone(bool andPlayCutScene)
 	{
 		if (SaveSystem.currentGameSave.globalVariables.scavengerAssociationVariables.shirtGiven &&
