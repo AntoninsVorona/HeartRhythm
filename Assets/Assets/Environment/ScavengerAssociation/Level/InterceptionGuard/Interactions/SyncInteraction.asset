@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: SyncInteraction
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  interactionDescription: Synchronize
-  interactionSymbol: {fileID: 0}
+  interactionDescription: Feel It
+  interactionSymbol: {fileID: 7814257936360957532, guid: 8a02c5806a9fd4548bdf086d10ab0dc4,
+    type: 3}
   visibility:
     visibleOnUI: 1
     canBeUsedIfInvisible: 1
