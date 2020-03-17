@@ -17,9 +17,11 @@ public class GlobalVariables
 		public bool shirtGiven;
 		public bool pantsGiven;
 		public bool funkyGiven;
+		public bool alreadyVisitedMainCharacterRoom;
 
 		public ScavengerAssociationVariables(bool interceptionGuardHeartAttack, bool bumIsNaked, bool visitedCoolDude,
-			bool bananaTaken, bool visitedPankPoc, bool visitedBigBoyGang, bool bananaGiven, bool shirtGiven, bool pantsGiven, bool funkyGiven)
+			bool bananaTaken, bool visitedPankPoc, bool visitedBigBoyGang, bool bananaGiven, bool shirtGiven,
+			bool pantsGiven, bool funkyGiven, bool alreadyVisitedMainCharacterRoom)
 		{
 			this.interceptionGuardHeartAttack = interceptionGuardHeartAttack;
 			this.bumIsNaked = bumIsNaked;
@@ -31,6 +33,7 @@ public class GlobalVariables
 			this.shirtGiven = shirtGiven;
 			this.pantsGiven = pantsGiven;
 			this.funkyGiven = funkyGiven;
+			this.alreadyVisitedMainCharacterRoom = alreadyVisitedMainCharacterRoom;
 		}
 	}
 

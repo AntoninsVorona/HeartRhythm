@@ -175,8 +175,6 @@ public abstract class Unit : MonoBehaviour
 
 	protected virtual void Start()
 	{
-		gameStateChangedObserver = new Observer(this, GameStateChanged);
-		GameSessionManager.Instance.gameStateObservers.Add(gameStateChangedObserver);
 		if (ApplyDataOnStart())
 		{
 			ApplyUnitData(GameSessionManager.Instance.currentLevelState.GetDataByName(identifierName));
@@ -208,6 +206,8 @@ public abstract class Unit : MonoBehaviour
 
 		defaultMovementSpeed = movementSpeed;
 		InitializeInteractions();
+		gameStateChangedObserver = new Observer(this, GameStateChanged);
+		GameSessionManager.Instance.gameStateObservers.Add(gameStateChangedObserver);
 	}
 
 	public void InitializeInteractions()
