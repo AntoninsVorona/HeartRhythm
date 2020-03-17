@@ -34,6 +34,14 @@ public class InterceptionGuardLocationRules : LocationRules
 	public InterceptionGuardStartCutScene attack;
 	public InterceptionGuardStartCutScene sync;
 	[SerializeField]
+	private AudioClip destroySound;
+	[SerializeField]
+	private AudioClip earthQuakeSound;
+	[SerializeField]
+	private AudioSource earthQuakeDestroySource;
+	[SerializeField]
+	private AudioSource doorClosedSource;
+	[SerializeField]
 	private List<Animator> destroySequence;
 	private bool allObstaclesTriggered;
 
@@ -111,6 +119,7 @@ public class InterceptionGuardLocationRules : LocationRules
 
 	public void CloseDoors()
 	{
+		doorClosedSource.Play();
 		DespawnAllEnemies();
 		startedSpawning = false;
 		foreach (var doorPosition in placeDoor.doorPosition)
@@ -175,6 +184,8 @@ public class InterceptionGuardLocationRules : LocationRules
 
 	private IEnumerator DestroySequence()
 	{
+		earthQuakeDestroySource.clip = destroySound;
+		earthQuakeDestroySource.Play();
 		for (var i = 0; i < destroySequence.Count - 1; i++)
 		{
 			var animator = destroySequence[i];
@@ -185,5 +196,27 @@ public class InterceptionGuardLocationRules : LocationRules
 		yield return new WaitForSeconds(1);
 		destroySequence.Last().SetTrigger(AnimatorUtilities.DIE_TRIGGER);
 		yield return new WaitForSeconds(1.5f);
+	}
+
+	public Coroutine PlayHeadbang()
+	{
+		return StartCoroutine(HeadbangSequence());
+	}
+
+	private IEnumerator HeadbangSequence()
+	{
+		Player.Instance.PlayAnimation("Headbang");
+		yield return new WaitForSeconds(3);
+	}
+
+	public IEnumerator PlayEarthQuake()
+	{
+		GameCamera.Instance.Shake(2);
+		AudioManager.Instance.StopBeat();
+		GameUI.Instance.BackToRealWorld();
+		earthQuakeDestroySource.clip = earthQuakeSound;
+		earthQuakeDestroySource.Play();
+		yield return new WaitForSeconds(2);
+		earthQuakeDestroySource.Stop();
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Linq;
 using PixelCrushers.DialogueSystem;
+using PixelCrushers.DialogueSystem.UnityGUI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,6 +22,12 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 	[SerializeField]
 	private ScrollRect responseRect;
 
+	[SerializeField]
+	private AudioClip playerSound;
+
+	[SerializeField]
+	private AudioClip headsetSound;
+
 	private bool hasShownSubtitle;
 	private int lastSpeakerId;
 	private StandardUISubtitlePanel lastSubtitlePanel;
@@ -30,6 +37,8 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 	private DialogueFillingButton lastSelectedDialogueButton;
 	private bool scan;
 	private Actor playerActor;
+	private AbstractTypewriterEffect playerTypeWriter;
+	private AbstractTypewriterEffect headsetTypeWriter;
 
 	public override void Awake()
 	{
@@ -37,6 +46,8 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 		playerName.text = playerActor.fields.First(f => f.title == "Display Name").value;
 		playerPortrait.SetActive(true);
 		base.Awake();
+		playerTypeWriter = conversationUIElements.defaultPCSubtitlePanel.GetTypewriter();
+		headsetTypeWriter = conversationUIElements.defaultNPCSubtitlePanel.GetTypewriter();
 	}
 
 	public override void Update()
@@ -187,5 +198,21 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 			SaveSystem.currentGameSave.globalVariables.wearsHeadset
 				? playerActor.spritePortrait
 				: playerActor.GetPortraitSprite(2);
+	}
+
+	public void AssignAudioClips()
+	{
+		playerTypeWriter.audioClip = playerSound;
+		playerTypeWriter.audioSource.clip = playerSound;
+		headsetTypeWriter.audioClip = headsetSound;
+		headsetTypeWriter.audioSource.clip = headsetSound;
+	}
+
+	public void RemoveAudioClips()
+	{
+		playerTypeWriter.audioClip = null;
+		playerTypeWriter.audioSource.clip = null;
+		headsetTypeWriter.audioClip = null;
+		headsetTypeWriter.audioSource.clip = null;
 	}
 }

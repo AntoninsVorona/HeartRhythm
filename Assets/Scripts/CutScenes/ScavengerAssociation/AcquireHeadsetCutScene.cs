@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using PixelCrushers.DialogueSystem;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "CutScenes/Scavenger Association/Acquire Headset Cut Scene",
@@ -51,6 +52,7 @@ public class AcquireHeadsetCutScene : CutScene
 		interceptionGuard.Move(playerPosition);
 		yield return new WaitForSeconds(0.25f);
 		yield return GameSessionManager.Instance.LoadLevel(battleArea);
+		((HeartRhythmDialogueUI) DialogueManager.Instance.dialogueUI).AssignAudioClips();
 		SaveSystem.currentGameSave.GetLevelState("PankPocRoom").unitData
 			.Add(new Unit.UnitData("InterceptionGuard", interceptionGuardPosition));
 		GameSessionManager.Instance.StartConversation("WhereAmIInterceptionGuard");

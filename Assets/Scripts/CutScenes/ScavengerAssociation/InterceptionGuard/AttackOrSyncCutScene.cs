@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using PixelCrushers.DialogueSystem;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "CutScenes/Scavenger Association/Attack Or Sync Cut Scene",
@@ -11,21 +12,18 @@ public class AttackOrSyncCutScene : CutScene
 	protected override IEnumerator CutSceneSequence()
 	{
 		dialogueFinished = false;
+		var locationRules = (InterceptionGuardLocationRules) LocationRules.Instance;
 		if (SaveSystem.currentGameSave.globalVariables.scavengerAssociationVariables.interceptionGuardHeartAttack)
 		{
-			var locationRules = (InterceptionGuardLocationRules) LocationRules.Instance;
 			yield return locationRules.PlayDestroy();
 		}
 		else
 		{
-			Player.Instance.PlayAnimation("Headbang");
-			yield return new WaitForSeconds(3);
+			yield return locationRules.PlayHeadbang();
 		}
 
-		GameCamera.Instance.Shake(2);
-		AudioManager.Instance.StopBeat();
-		GameUI.Instance.BackToRealWorld();
-		yield return new WaitForSeconds(2);
+		((HeartRhythmDialogueUI) DialogueManager.Instance.dialogueUI).RemoveAudioClips();
+		yield return locationRules.PlayEarthQuake();
 		yield return GameSessionManager.Instance.BackToRealWorld();
 		GameSessionManager.Instance.StartConversation("AfterInterceptionGuard");
 		yield return new WaitUntil(() => dialogueFinished);
