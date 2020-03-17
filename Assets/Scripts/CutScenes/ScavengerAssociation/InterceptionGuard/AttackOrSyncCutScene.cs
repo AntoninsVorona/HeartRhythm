@@ -25,6 +25,7 @@ public class AttackOrSyncCutScene : CutScene
 		((HeartRhythmDialogueUI) DialogueManager.Instance.dialogueUI).RemoveAudioClips();
 		yield return locationRules.PlayEarthQuake();
 		yield return GameSessionManager.Instance.BackToRealWorld();
+		Player.Instance.TurnAround(true);
 		GameSessionManager.Instance.StartConversation("AfterInterceptionGuard");
 		yield return new WaitUntil(() => dialogueFinished);
 		yield return Player.Instance.Move(new Vector2Int(11, 0));

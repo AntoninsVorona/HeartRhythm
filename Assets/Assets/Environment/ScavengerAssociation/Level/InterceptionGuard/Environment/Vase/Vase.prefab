@@ -247,11 +247,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlinkingStar
       objectReference: {fileID: 0}
-    - target: {fileID: 4939215691003627905, guid: 1295c3eb49f4fad4cab1348334d5452e,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 101
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1295c3eb49f4fad4cab1348334d5452e, type: 3}
 --- !u!4 &4595375526139848522 stripped

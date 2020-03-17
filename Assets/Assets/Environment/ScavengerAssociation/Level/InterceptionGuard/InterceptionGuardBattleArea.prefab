@@ -332,7 +332,7 @@ MonoBehaviour:
   positionToTriggerDamagingGuardCutScene: {x: 10, y: 2}
   damagingGuardCutScene: {fileID: 11400000, guid: 015497aeb513ee944ab5943f4c54af8a,
     type: 2}
-  damagingGuard: {fileID: 5327563139690343140}
+  damagingGuard: {fileID: 7811203231228111989}
   buttonTriggerPosition: {x: 28, y: 11}
   buttonTriggeredCutScene: {fileID: 11400000, guid: 15598a7141749a34c834b197ed81f85a,
     type: 2}
@@ -408,8 +408,8 @@ Transform:
   - {fileID: 3911643533174003279}
   - {fileID: 4525606484413402998}
   - {fileID: 7707636889679415148}
-  - {fileID: 2738358460259858411}
-  - {fileID: 3208100937647249350}
+  - {fileID: 2099246872771063191}
+  - {fileID: 1704587876448652730}
   m_Father: {fileID: 1521203674098410096}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -456,7 +456,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 9019565702242620829}
+  - {fileID: 7811203231228108994}
   m_Father: {fileID: 1521203674098410096}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -30078,11 +30078,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4348864022184645397}
     m_Modifications:
-    - target: {fileID: 1301156816337981443, guid: 283b0b9a156473443a0f8bf1844162cc,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 101
-      objectReference: {fileID: 0}
     - target: {fileID: 1711162007551281548, guid: 283b0b9a156473443a0f8bf1844162cc,
         type: 3}
       propertyPath: otherPoints.Array.size
@@ -30263,7 +30258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7d03fd6cf6aa5c4497989fc1dc7d8b0, type: 3}
---- !u!4 &3208100937647249350 stripped
+--- !u!4 &1704587876448652730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4261143476271783683, guid: e7d03fd6cf6aa5c4497989fc1dc7d8b0,
     type: 3}
@@ -30338,7 +30333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7d03fd6cf6aa5c4497989fc1dc7d8b0, type: 3}
---- !u!4 &2738358460259858411 stripped
+--- !u!4 &2099246872771063191 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4261143476271783683, guid: e7d03fd6cf6aa5c4497989fc1dc7d8b0,
     type: 3}
@@ -30420,6 +30415,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6068147884637895810, guid: af4f4f18d8a85d34bb1cafd04ee78586,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6068147884637895837, guid: af4f4f18d8a85d34bb1cafd04ee78586,
         type: 3}
@@ -30674,7 +30674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78988e1094ccd54409b68618b009614e, type: 3}
---- !u!114 &5327563139690343140 stripped
+--- !u!114 &7811203231228111989 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2704897040181694261, guid: 78988e1094ccd54409b68618b009614e,
     type: 3}
@@ -30686,7 +30686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85679f8bcc8d430aa06785ba613f8f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &9019565702242620829 stripped
+--- !u!4 &7811203231228108994 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1246679901538086988, guid: 78988e1094ccd54409b68618b009614e,
     type: 3}
@@ -30738,11 +30738,6 @@ PrefabInstance:
         type: 3}
       propertyPath: otherPoints.Array.data[2].y
       value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 2621873903353238656, guid: 6bdaa98723005584997fc119b3a90f5b,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 101
       objectReference: {fileID: 0}
     - target: {fileID: 4313778987054505530, guid: 6bdaa98723005584997fc119b3a90f5b,
         type: 3}
@@ -30909,11 +30904,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4348864022184645397}
     m_Modifications:
-    - target: {fileID: 1370683232895386246, guid: 965eb6e45cc638148926ea9ab688c7d4,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 101
-      objectReference: {fileID: 0}
     - target: {fileID: 1370683232895386246, guid: 965eb6e45cc638148926ea9ab688c7d4,
         type: 3}
       propertyPath: m_WasSpriteAssigned
