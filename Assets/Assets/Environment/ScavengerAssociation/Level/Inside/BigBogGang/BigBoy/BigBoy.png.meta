@@ -95,8 +95,8 @@ TextureImporter:
       name: BigBoy_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 4
+        y: 4
         width: 23
         height: 25
       alignment: 9
@@ -116,8 +116,8 @@ TextureImporter:
       name: BigBoy_1
       rect:
         serializedVersion: 2
-        x: 33
-        y: 0
+        x: 36
+        y: 4
         width: 23
         height: 25
       alignment: 9
