@@ -111,9 +111,9 @@ public class GameUI : MonoBehaviour
 		fadeAlphaCanvasGroup.alpha = 0;
 	}
 	
-	public void FadeAlpha(float start, float end)
+	public Coroutine FadeAlpha(float start, float end)
 	{
-		StartCoroutine(FadeAlphaSequence(start, end));
+		return StartCoroutine(FadeAlphaSequence(start, end));
 	}
 
 	private IEnumerator FadeAlphaSequence(float start, float end)

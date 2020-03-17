@@ -6,6 +6,7 @@ using UnityEngine;
 public class AttackOrSyncCutScene : CutScene
 {
 	public LevelData runawayForest;
+	public LevelData gameEnd;
 
 	protected override IEnumerator CutSceneSequence()
 	{
@@ -45,8 +46,9 @@ public class AttackOrSyncCutScene : CutScene
 		var pankPocRoomLocationRules = (PankPocRoomLocationRules) LocationRules.Instance;
 		pankPocRoomLocationRules.Talk();
 		yield return new WaitForSeconds(3);
-		GameUI.Instance.FadeAlpha(0, 1);
+		yield return GameUI.Instance.FadeAlpha(0, 1);
 		yield return GameSessionManager.Instance.LoadLevel(runawayForest, 0);
+		Player.Instance.TurnAround(false);
 		GameCamera.Instance.ChangeTargetPosition(new Vector3(3.5f, 8.5f));
 		GameCamera.Instance.staticView = true;
 		yield return GameUI.Instance.gameLogo.Show();
@@ -67,7 +69,10 @@ public class AttackOrSyncCutScene : CutScene
 		Player.Instance.PlayAnimation("RunawayForestFall");
 		yield return new WaitForSeconds(6.5f);
 		Player.Instance.SetMovementSpeed(previousMovementSpeed);
-		//TODO Play Woodcutter
+		var runawayForestLocationRules = (RunawayForestLocationRules) LocationRules.Instance;
+		yield return runawayForestLocationRules.PlayPunka();
+		yield return GameSessionManager.Instance.LoadLevel(gameEnd, 0);
+		Player.Instance.BackToIdleAnimation();
 		GameSessionManager.Instance.CutSceneFinished();
 		GameLogic.Instance.Save();
 	}

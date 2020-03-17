@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 676823425e4e43a48af22318d5ceb28d, type: 3}
-  m_Name: RunawayForest
+  m_Name: GameEnd
   m_EditorClassIdentifier: 
-  sceneObjects: {fileID: 6606431193089279655, guid: 5af3ef523f340e54da500a1d3b4ada63,
+  sceneObjects: {fileID: 749516110795013870, guid: cabfd3270659a38479920505d2afa64f,
     type: 3}
   dialogueRegistrator: {fileID: 0}
   cameraIsStatic: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
   levelState:
     levelName: 
     unitData: []
-  focusPosition: {x: 3, y: 8}
+  focusPosition: {x: 0, y: 0}
   playerSpawnPoints:
     m_keys: 00000000
     m_values:

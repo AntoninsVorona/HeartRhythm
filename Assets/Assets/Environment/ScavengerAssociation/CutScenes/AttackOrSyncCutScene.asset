@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueFinished: 0
   runawayForest: {fileID: 11400000, guid: 0bce5cf4561d99b429e0db35eb135f43, type: 2}
+  gameEnd: {fileID: 11400000, guid: 5713278d489b3dd45a28a09006ade588, type: 2}
