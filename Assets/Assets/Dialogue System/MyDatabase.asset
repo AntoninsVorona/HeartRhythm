@@ -1471,7 +1471,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: i don't know...\. I was...\, Somewhere else.
+        value: I don't know...\. I was...\, Somewhere else.
         type: 0
         typeString: 
       - title: Parenthetical

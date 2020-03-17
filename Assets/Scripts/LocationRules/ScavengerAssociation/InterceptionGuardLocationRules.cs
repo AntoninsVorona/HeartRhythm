@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -32,6 +33,8 @@ public class InterceptionGuardLocationRules : LocationRules
 	public Obstacle guitar;
 	public InterceptionGuardStartCutScene attack;
 	public InterceptionGuardStartCutScene sync;
+	[SerializeField]
+	private List<Animator> destroySequence;
 	private bool allObstaclesTriggered;
 
 	[SerializeField]
@@ -163,5 +166,24 @@ public class InterceptionGuardLocationRules : LocationRules
 	public void DisableGuitarStar()
 	{
 		guitar.animator.SetTrigger(AnimatorUtilities.STOP_TRIGGER);
+	}
+
+	public Coroutine PlayDestroy()
+	{
+		return StartCoroutine(DestroySequence());
+	}
+
+	private IEnumerator DestroySequence()
+	{
+		for (var i = 0; i < destroySequence.Count - 1; i++)
+		{
+			var animator = destroySequence[i];
+			animator.SetTrigger(AnimatorUtilities.DIE_TRIGGER);
+			yield return new WaitForSeconds(1);
+		}
+
+		yield return new WaitForSeconds(1);
+		destroySequence.Last().SetTrigger(AnimatorUtilities.DIE_TRIGGER);
+		yield return new WaitForSeconds(1.5f);
 	}
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3394313391017496797}
   - component: {fileID: 250475269241145197}
+  - component: {fileID: 5585549004732559617}
   m_Layer: 0
   m_Name: Vase
   m_TagString: Untagged
@@ -62,6 +63,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   spawnPoint: {x: 23, y: 22}
+  otherPoints: []
   initializeSelf: 1
   initializeSpawnPointForMe: 0
   headsetLessInteraction: {fileID: 0}
@@ -77,7 +79,25 @@ MonoBehaviour:
     - 
     displayText: {fileID: 0}
     talkTimer: 0
-  otherPoints: []
+--- !u!95 &5585549004732559617
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3394313391017496795}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3e44d39e7fb5dff49ab6ee9d63ec30a9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3394313392694150927
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +168,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: a81ba78e95ddbac41b7a98447083121b, type: 3}
+  m_Sprite: {fileID: -182180890499328761, guid: e5110bf632c1e814ca03604623469e17,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

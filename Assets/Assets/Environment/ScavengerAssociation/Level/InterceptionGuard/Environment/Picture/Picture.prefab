@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4313778987054505532}
   - component: {fileID: 1711162007551281548}
+  - component: {fileID: 6184842298870758597}
   m_Layer: 0
-  m_Name: Table
+  m_Name: Picture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,8 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 3677601377299073828}
   identifierName: 
-  movementSpeed: 5
-  sprite: {fileID: 0}
+  movementSpeed: 0
+  sprite: {fileID: 4313778987793664496}
   movementSpeedCurve:
     serializedVersion: 2
     m_Curve: []
@@ -62,6 +63,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   spawnPoint: {x: 0, y: 0}
+  otherPoints: []
   initializeSelf: 1
   initializeSpawnPointForMe: 0
   headsetLessInteraction: {fileID: 0}
@@ -77,7 +79,25 @@ MonoBehaviour:
     - 
     displayText: {fileID: 0}
     talkTimer: 0
-  otherPoints: []
+--- !u!95 &6184842298870758597
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4313778987054505530}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 79b5539ddfa0ff94daabaa1d2b9ffbc7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4313778987793664494
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,13 +168,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: -8050771502477627457, guid: 287c94421ceb50b45a4be4230c494a59,
+  m_Sprite: {fileID: 5809383438227602484, guid: 28a200b278a6fc94aa0d648cb990bdb2,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

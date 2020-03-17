@@ -1,0 +1,994 @@
+fileFormatVersion: 2
+guid: 28a200b278a6fc94aa0d648cb990bdb2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5809383438227602484
+    second: ApartmentStuffPictureDestroyAnimation_0
+  - first:
+      213: 2091308849704891549
+    second: ApartmentStuffPictureDestroyAnimation_1
+  - first:
+      213: -7144657295817561376
+    second: ApartmentStuffPictureDestroyAnimation_2
+  - first:
+      213: -6105448307801189028
+    second: ApartmentStuffPictureDestroyAnimation_3
+  - first:
+      213: -2791982252336874772
+    second: ApartmentStuffPictureDestroyAnimation_4
+  - first:
+      213: 4801436209229478140
+    second: ApartmentStuffPictureDestroyAnimation_5
+  - first:
+      213: 896261525068898241
+    second: ApartmentStuffPictureDestroyAnimation_6
+  - first:
+      213: 1200362967561014623
+    second: ApartmentStuffPictureDestroyAnimation_7
+  - first:
+      213: 2200595728585576984
+    second: ApartmentStuffPictureDestroyAnimation_8
+  - first:
+      213: 675033534947095958
+    second: ApartmentStuffPictureDestroyAnimation_9
+  - first:
+      213: 2763890513347282816
+    second: ApartmentStuffPictureDestroyAnimation_10
+  - first:
+      213: -5901117336473560602
+    second: ApartmentStuffPictureDestroyAnimation_11
+  - first:
+      213: 3374667063708240817
+    second: ApartmentStuffPictureDestroyAnimation_12
+  - first:
+      213: -1955305052286569147
+    second: ApartmentStuffPictureDestroyAnimation_13
+  - first:
+      213: -1509998158146553920
+    second: ApartmentStuffPictureDestroyAnimation_14
+  - first:
+      213: 5387034640994400731
+    second: ApartmentStuffPictureDestroyAnimation_15
+  - first:
+      213: 85987304245122293
+    second: ApartmentStuffPictureDestroyAnimation_16
+  - first:
+      213: -9008494491148707625
+    second: ApartmentStuffPictureDestroyAnimation_17
+  - first:
+      213: 5640289831529092649
+    second: ApartmentStuffPictureDestroyAnimation_18
+  - first:
+      213: -6197249954652121816
+    second: ApartmentStuffPictureDestroyAnimation_19
+  - first:
+      213: 2096486554182471771
+    second: ApartmentStuffPictureDestroyAnimation_20
+  - first:
+      213: 236253436296550225
+    second: ApartmentStuffPictureDestroyAnimation_21
+  - first:
+      213: -5873664855076980282
+    second: ApartmentStuffPictureDestroyAnimation_22
+  - first:
+      213: -4765668155134531866
+    second: ApartmentStuffPictureDestroyAnimation_23
+  - first:
+      213: -2094930510534569057
+    second: ApartmentStuffPictureDestroyAnimation_24
+  - first:
+      213: 3241555796631217707
+    second: ApartmentStuffPictureDestroyAnimation_25
+  - first:
+      213: -6049003201861675937
+    second: ApartmentStuffPictureDestroyAnimation_26
+  - first:
+      213: 8608531150907915976
+    second: ApartmentStuffPictureDestroyAnimation_27
+  - first:
+      213: 8364819812268119171
+    second: ApartmentStuffPictureDestroyAnimation_28
+  - first:
+      213: 591044400235067771
+    second: ApartmentStuffPictureDestroyAnimation_29
+  - first:
+      213: 8772931125502317924
+    second: ApartmentStuffPictureDestroyAnimation_30
+  - first:
+      213: 1633204592149390526
+    second: ApartmentStuffPictureDestroyAnimation_31
+  - first:
+      213: -898285260217043777
+    second: ApartmentStuffPictureDestroyAnimation_32
+  - first:
+      213: -5387467776271238310
+    second: ApartmentStuffPictureDestroyAnimation_0
+  - first:
+      213: 6303934793669687698
+    second: ApartmentStuffPictureDestroyAnimation_1
+  - first:
+      213: -147241320135907293
+    second: ApartmentStuffPictureDestroyAnimation_2
+  - first:
+      213: -6613255378985240011
+    second: ApartmentStuffPictureDestroyAnimation_3
+  - first:
+      213: -3396951759367312543
+    second: ApartmentStuffPictureDestroyAnimation_4
+  - first:
+      213: -8607534376586352307
+    second: ApartmentStuffPictureDestroyAnimation_5
+  - first:
+      213: -8275523032780100744
+    second: ApartmentStuffPictureDestroyAnimation_6
+  - first:
+      213: 215371894721189402
+    second: ApartmentStuffPictureDestroyAnimation_7
+  - first:
+      213: -159962140676765637
+    second: ApartmentStuffPictureDestroyAnimation_8
+  - first:
+      213: 7164613775493943783
+    second: ApartmentStuffPictureDestroyAnimation_9
+  - first:
+      213: -1263926521277795838
+    second: ApartmentStuffPictureDestroyAnimation_10
+  - first:
+      213: -6665168101684295616
+    second: ApartmentStuffPictureDestroyAnimation_11
+  - first:
+      213: 3468681904345944373
+    second: ApartmentStuffPictureDestroyAnimation_12
+  - first:
+      213: 3556780228687689966
+    second: ApartmentStuffPictureDestroyAnimation_13
+  - first:
+      213: 6616883893245435428
+    second: ApartmentStuffPictureDestroyAnimation_14
+  - first:
+      213: 1665538653984792187
+    second: ApartmentStuffPictureDestroyAnimation_15
+  - first:
+      213: 6381693147633258079
+    second: ApartmentStuffPictureDestroyAnimation_16
+  - first:
+      213: 1332266639479877931
+    second: ApartmentStuffPictureDestroyAnimation_17
+  - first:
+      213: 1843047269835889950
+    second: ApartmentStuffPictureDestroyAnimation_18
+  - first:
+      213: 5357115855017507591
+    second: ApartmentStuffPictureDestroyAnimation_19
+  - first:
+      213: -2476166848736210625
+    second: ApartmentStuffPictureDestroyAnimation_20
+  - first:
+      213: 5620631003667915199
+    second: ApartmentStuffPictureDestroyAnimation_21
+  - first:
+      213: 3473968430556232257
+    second: ApartmentStuffPictureDestroyAnimation_22
+  - first:
+      213: 4751534929233241224
+    second: ApartmentStuffPictureDestroyAnimation_23
+  - first:
+      213: 5042798732298497065
+    second: ApartmentStuffPictureDestroyAnimation_24
+  - first:
+      213: 2840778860663283101
+    second: ApartmentStuffPictureDestroyAnimation_25
+  - first:
+      213: -2855650902820704982
+    second: ApartmentStuffPictureDestroyAnimation_26
+  - first:
+      213: -2648534849930301763
+    second: ApartmentStuffPictureDestroyAnimation_27
+  - first:
+      213: -7494578603932242340
+    second: ApartmentStuffPictureDestroyAnimation_28
+  - first:
+      213: -138487587278331435
+    second: ApartmentStuffPictureDestroyAnimation_29
+  - first:
+      213: 3620155455887057392
+    second: ApartmentStuffPictureDestroyAnimation_30
+  - first:
+      213: 8184202010413891905
+    second: ApartmentStuffPictureDestroyAnimation_31
+  - first:
+      213: -8360833864695986310
+    second: ApartmentStuffPictureDestroyAnimation_32
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5b3d7cf99edb35b0800000000000000
+      internalID: -5387467776271238310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29938ef8b431c7750800000000000000
+      internalID: 6303934793669687698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3282a09acc4e4fdf0800000000000000
+      internalID: -147241320135907293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53ab4a6754ff834a0800000000000000
+      internalID: -6613255378985240011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16be5c76f5a9bd0d0800000000000000
+      internalID: -3396951759367312543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d496b93d615eb8880800000000000000
+      internalID: -8607534376586352307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87b2494b5af672d80800000000000000
+      internalID: -8275523032780100744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a16957fd8972df200800000000000000
+      internalID: 215371894721189402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b384373d743b7cdf0800000000000000
+      internalID: -159962140676765637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_9
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e1df21e442dd6360800000000000000
+      internalID: 7164613775493943783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_10
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 202ba058681a57ee0800000000000000
+      internalID: -1263926521277795838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_11
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 048c7d2dce09083a0800000000000000
+      internalID: -6665168101684295616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_12
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5319d5b60db332030800000000000000
+      internalID: 3468681904345944373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_13
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee8ff0bf5c83c5130800000000000000
+      internalID: 3556780228687689966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_14
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42ed5e8d7d4e3db50800000000000000
+      internalID: 6616883893245435428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_15
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7e1276d49e2d1710800000000000000
+      internalID: 1665538653984792187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_16
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5e893a2b14509850800000000000000
+      internalID: 6381693147633258079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_17
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b213d4033792d7210800000000000000
+      internalID: 1332266639479877931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_18
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1d52de1ab1d39910800000000000000
+      internalID: 1843047269835889950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_19
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70b7ee6ac7c485a40800000000000000
+      internalID: 5357115855017507591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_20
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f31da70de53e2add0800000000000000
+      internalID: -2476166848736210625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_21
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb16c235e1e700e40800000000000000
+      internalID: 5620631003667915199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_22
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14ab938b1e3063030800000000000000
+      internalID: 3473968430556232257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_23
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 884eecae7d7d0f140800000000000000
+      internalID: 4751534929233241224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_24
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92c2178aabe9bf540800000000000000
+      internalID: 5042798732298497065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_25
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9d164b92597c6720800000000000000
+      internalID: 2840778860663283101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_26
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2d29de32a0be58d0800000000000000
+      internalID: -2855650902820704982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_27
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbe69a626938e3bd0800000000000000
+      internalID: -2648534849930301763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_28
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5e206bb778edf790800000000000000
+      internalID: -7494578603932242340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_29
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d1697ae54ef31ef0800000000000000
+      internalID: -138487587278331435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_30
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f127dbe4306d3230800000000000000
+      internalID: 3620155455887057392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_31
+      rect:
+        serializedVersion: 2
+        x: 1984
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14102c0ed50249170800000000000000
+      internalID: 8184202010413891905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ApartmentStuffPictureDestroyAnimation_32
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.485, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a774dbcc5e958fb80800000000000000
+      internalID: -8360833864695986310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -12,8 +12,8 @@ public class AttackOrSyncCutScene : CutScene
 		dialogueFinished = false;
 		if (SaveSystem.currentGameSave.globalVariables.scavengerAssociationVariables.interceptionGuardHeartAttack)
 		{
-			//TODO Play Guitar Destroy Animation
-			yield return new WaitForSeconds(3); //TODO According to destroy animation
+			var locationRules = (InterceptionGuardLocationRules) LocationRules.Instance;
+			yield return locationRules.PlayDestroy();
 		}
 		else
 		{
@@ -41,7 +41,6 @@ public class AttackOrSyncCutScene : CutScene
 		yield return Player.Instance.Move(new Vector2Int(1, 0));
 		yield return Player.Instance.Move(new Vector2Int(0, 0));
 		yield return Player.Instance.Move(new Vector2Int(0, 1));
-		yield return Player.Instance.Move(new Vector2Int(0, 2));
 		Player.Instance.Move(new Vector2Int(-31, -32), true);
 		var pankPocRoomLocationRules = (PankPocRoomLocationRules) LocationRules.Instance;
 		pankPocRoomLocationRules.Talk();
