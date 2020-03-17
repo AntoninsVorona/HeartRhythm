@@ -29,14 +29,14 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 	private float typeWriterSpeed;
 	private DialogueFillingButton lastSelectedDialogueButton;
 	private bool scan;
+	private Actor playerActor;
 
-	public override void Start()
+	public override void Awake()
 	{
-		var actor = DialogueManager.masterDatabase.GetActor("Player");
-		playerImage.sprite = actor.spritePortrait;
-		playerName.text = actor.fields.First(f => f.title == "Display Name").value;
+		playerActor = DialogueManager.masterDatabase.GetActor("Player");
+		playerName.text = playerActor.fields.First(f => f.title == "Display Name").value;
 		playerPortrait.SetActive(true);
-		base.Start();
+		base.Awake();
 	}
 
 	public override void Update()
@@ -76,6 +76,7 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 		conversationUIElements.defaultNPCSubtitlePanel.gameObject.SetActive(false);
 		conversationUIElements.defaultMenuPanel.gameObject.SetActive(false);
 		base.Open();
+		UpdateHeadset();
 		hasShownSubtitle = false;
 		lastSpeakerId = -1;
 		lastSubtitlePanel = null;
@@ -129,6 +130,7 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 		scan = true;
 		conversationUIElements.defaultMenuPanel.pcImage = playerImage;
 		base.ShowResponses(subtitle, responses, timeout);
+		UpdateHeadset();
 		if (lastSubtitlePanel)
 		{
 			lastSubtitlePanel.Close();
@@ -177,5 +179,13 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 				}
 			}
 		}
+	}
+
+	private void UpdateHeadset()
+	{
+		playerImage.sprite =
+			SaveSystem.currentGameSave.globalVariables.wearsHeadset
+				? playerActor.spritePortrait
+				: playerActor.GetPortraitSprite(2);
 	}
 }

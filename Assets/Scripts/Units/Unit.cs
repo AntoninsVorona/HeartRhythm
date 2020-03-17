@@ -44,6 +44,8 @@ public abstract class Unit : MonoBehaviour
 		[HideInInspector]
 		public Coroutine talkCoroutine;
 
+		private bool canUpdateTalkTimer;
+
 		public void Talk(MonoBehaviour coroutineStarter, string text = null)
 		{
 			Debug.Log("Talk");
@@ -54,7 +56,15 @@ public abstract class Unit : MonoBehaviour
 
 			if (talkCoroutine != null)
 			{
-				UpdateTalkTimer(text);
+				if (canUpdateTalkTimer)
+				{
+					UpdateTalkTimer(text);
+				}
+				else
+				{
+					coroutineStarter.StopCoroutine(talkCoroutine);
+					talkCoroutine = coroutineStarter.StartCoroutine(TalkCoroutine(text));
+				}
 			}
 			else
 			{
@@ -102,6 +112,7 @@ public abstract class Unit : MonoBehaviour
 
 		private IEnumerator TalkCoroutine(string text)
 		{
+			canUpdateTalkTimer = true;
 			displayText.text = text;
 			canvas.gameObject.SetActive(true);
 			drawingBoardAnimator.SetTrigger(AnimatorUtilities.SHOW_TRIGGER);
@@ -109,6 +120,7 @@ public abstract class Unit : MonoBehaviour
 			displayText.gameObject.SetActive(true);
 			UpdateTalkTimer();
 			yield return new WaitUntil(() => Time.time > talkTimer);
+			canUpdateTalkTimer = false;
 			displayText.gameObject.SetActive(false);
 			drawingBoardAnimator.SetTrigger(AnimatorUtilities.HIDE_TRIGGER);
 			yield return new WaitForSeconds(0.6f);
@@ -611,6 +623,14 @@ public abstract class Unit : MonoBehaviour
 		if (sprite)
 		{
 			sprite.flipX = !sprite.flipX;
+		}
+	}
+	
+	public void TurnAround(bool flipX)
+	{
+		if (sprite)
+		{
+			sprite.flipX = flipX;
 		}
 	}
 

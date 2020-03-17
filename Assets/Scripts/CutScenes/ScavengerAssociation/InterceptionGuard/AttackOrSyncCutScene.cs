@@ -18,7 +18,7 @@ public class AttackOrSyncCutScene : CutScene
 		else
 		{
 			Player.Instance.PlayAnimation("Headbang");
-			yield return new WaitForSeconds(2);
+			yield return new WaitForSeconds(3);
 		}
 
 		GameCamera.Instance.Shake(2);
@@ -28,16 +28,25 @@ public class AttackOrSyncCutScene : CutScene
 		yield return GameSessionManager.Instance.BackToRealWorld();
 		GameSessionManager.Instance.StartConversation("AfterInterceptionGuard");
 		yield return new WaitUntil(() => dialogueFinished);
+		yield return Player.Instance.Move(new Vector2Int(11, 0));
+		yield return Player.Instance.Move(new Vector2Int(10, 0));
+		yield return Player.Instance.Move(new Vector2Int(9, 0));
+		yield return Player.Instance.Move(new Vector2Int(8, 0));
+		yield return Player.Instance.Move(new Vector2Int(7, 0));
+		yield return Player.Instance.Move(new Vector2Int(6, 0));
+		yield return Player.Instance.Move(new Vector2Int(5, 0));
+		yield return Player.Instance.Move(new Vector2Int(4, 0));
+		yield return Player.Instance.Move(new Vector2Int(3, 0));
+		yield return Player.Instance.Move(new Vector2Int(2, 0));
+		yield return Player.Instance.Move(new Vector2Int(1, 0));
+		yield return Player.Instance.Move(new Vector2Int(0, 0));
+		yield return Player.Instance.Move(new Vector2Int(0, 1));
+		yield return Player.Instance.Move(new Vector2Int(0, 2));
+		Player.Instance.Move(new Vector2Int(-31, -32), true);
+		var pankPocRoomLocationRules = (PankPocRoomLocationRules) LocationRules.Instance;
+		pankPocRoomLocationRules.Talk();
+		yield return new WaitForSeconds(3);
 		GameUI.Instance.FadeAlpha(0, 1);
-		GameCamera.Instance.staticView = true;
-		Player.Instance.Move(new Vector2Int(21, -3));
-		yield return new WaitForSeconds(0.25f);
-		Player.Instance.Move(new Vector2Int(21, -2));
-		yield return new WaitForSeconds(0.25f);
-		Player.Instance.Move(new Vector2Int(22, -2));
-		yield return new WaitForSeconds(0.25f);
-		Player.Instance.Move(new Vector2Int(22, -1));
-		yield return new WaitForSeconds(0.25f);
 		yield return GameSessionManager.Instance.LoadLevel(runawayForest, 0);
 		GameCamera.Instance.ChangeTargetPosition(new Vector3(3.5f, 8.5f));
 		GameCamera.Instance.staticView = true;

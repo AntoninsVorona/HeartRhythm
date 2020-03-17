@@ -262,11 +262,15 @@ public class Player : Unit
 		animator.SetTrigger(AnimatorUtilities.IDLE_TRIGGER);
 	}
 
-	public (bool pickedUpAll, int amountLeft) PickUpItem(Item item, int amount = 1)
+	public (bool pickedUpAll, int amountLeft) PickUpItem(Item item, int amount = 1, bool animated = true)
 	{
 		if (amount > 0)
 		{
-			PerformTakeAnimation();
+			if (animated)
+			{
+				PerformTakeAnimation();
+			}
+
 			var pickUpItem = Inventory.PickUpItem(item, amount);
 
 			if (!pickUpItem.pickedUpAll)
@@ -330,7 +334,7 @@ public class Player : Unit
 	{
 		LoseItem(ItemManager.Instance.GetItemByName(itemName), amount);
 	}
-	
+
 	public void LoseItem(Item item, int amount = 1)
 	{
 		if (amount > 0)
@@ -380,7 +384,7 @@ public class Player : Unit
 	{
 		return Inventory.ItemsInSlot(slot);
 	}
-	
+
 	public bool HasItem(string itemName)
 	{
 		return Inventory.HasItem(itemName);

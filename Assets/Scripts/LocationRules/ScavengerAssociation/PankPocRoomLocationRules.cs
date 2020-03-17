@@ -10,6 +10,8 @@ public class PankPocRoomLocationRules : LocationRules
 
 	[SerializeField]
 	private PankPocVisitCutScene pankPocVisitCutScene;
+	[SerializeField]
+	private GetKeyCutScene getKeyCutScene;
 
 	protected override void Awake()
 	{
@@ -18,6 +20,20 @@ public class PankPocRoomLocationRules : LocationRules
 		{
 			SaveSystem.currentGameSave.globalVariables.scavengerAssociationVariables.visitedPankPoc = true;
 			GameSessionManager.Instance.PlayCutScene(pankPocVisitCutScene);
+		}
+		else if (Player.Instance.HasItem("Microscheme"))
+		{
+			GameSessionManager.Instance.PlayCutScene(getKeyCutScene);
+		}
+		
+		const string interceptionGuardName = "InterceptionGuard";
+		var interceptionGuardData = GameSessionManager.Instance.currentLevelState.GetDataByName(interceptionGuardName);
+		if (interceptionGuardData != null)
+		{
+			var interceptionGuard = (InterceptionGuard) sceneObjects.currentMobManager.SpawnMob(interceptionGuardName,
+				interceptionGuardData.currentPosition,
+				new Mob.MovementSettings {moveDuringPeaceMode = false});
+			interceptionGuard.Rotate();
 		}
 	}
 
@@ -33,7 +49,7 @@ public class PankPocRoomLocationRules : LocationRules
 	{
 		pankPoc.TurnAround();
 	}
-	
+
 	public void MovePankPoc(Vector2Int pos)
 	{
 		pankPoc.Move(pos);
@@ -49,5 +65,10 @@ public class PankPocRoomLocationRules : LocationRules
 	{
 		pankPoc.animator.SetTrigger(AnimatorUtilities.STOP_TRIGGER);
 		chest.animator.SetTrigger(AnimatorUtilities.STOP_TRIGGER);
+	}
+
+	public void Talk()
+	{
+		pankPoc.Talk("Sorry, Beatrice...");
 	}
 }

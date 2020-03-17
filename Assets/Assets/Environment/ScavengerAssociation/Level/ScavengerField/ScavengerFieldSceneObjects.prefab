@@ -29860,7 +29860,6 @@ GameObject:
   - component: {fileID: 6611371025857431796}
   - component: {fileID: 5090898556894703962}
   - component: {fileID: 297976139828766171}
-  - component: {fileID: 5123847586757319199}
   m_Layer: 0
   m_Name: ScavengerFieldSceneObjects
   m_TagString: Untagged
@@ -29915,18 +29914,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {x: 5, y: -1}
---- !u!114 &5123847586757319199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6611371025857431797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0b27c1d58564bfab1e93cd91b9b56f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7202721922022876839
 GameObject:
   m_ObjectHideFlags: 0
