@@ -128,7 +128,11 @@ public class PlayerInput : MonoBehaviour
 
 			if (Input.GetButtonDown("Submit"))
 			{
-				if (GameUI.Instance.uiInventory.open)
+				if (acceptor.ConversationInProgress)
+				{
+					((HeartRhythmDialogueUI) DialogueManager.DialogueUI).FastForward();
+				}
+				else if (GameUI.Instance.uiInventory.open)
 				{
 					GameUI.Instance.uiInventory.ApplySubmit();
 				}

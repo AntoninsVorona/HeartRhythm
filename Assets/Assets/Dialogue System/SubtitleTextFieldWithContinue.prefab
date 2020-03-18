@@ -175,7 +175,7 @@ MonoBehaviour:
   audioClip: {fileID: 0}
   alternateAudioClips: []
   audioSource: {fileID: 2253486591423200485}
-  interruptAudioClip: 0
+  interruptAudioClip: 1
   usePlayOneShot: 0
   silentCharacters: 
   fullPauseCharacters: 

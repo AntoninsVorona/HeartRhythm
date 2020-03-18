@@ -48,7 +48,6 @@ public abstract class Unit : MonoBehaviour
 
 		public void Talk(MonoBehaviour coroutineStarter, string text = null)
 		{
-			Debug.Log("Talk");
 			if (text == null)
 			{
 				text = GetRandomText();
