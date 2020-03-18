@@ -26841,6 +26841,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1684955714039418235}
     m_Modifications:
+    - target: {fileID: 4334193187247944026, guid: 75d530d5d8792c44692adbb656b5860e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5093963016836033441, guid: 75d530d5d8792c44692adbb656b5860e,
         type: 3}
       propertyPath: otherPoints.Array.size
@@ -26871,6 +26876,11 @@ PrefabInstance:
       propertyPath: otherPoints.Array.data[1].y
       value: 22
       objectReference: {fileID: 0}
+    - target: {fileID: 5093963016836033441, guid: 75d530d5d8792c44692adbb656b5860e,
+        type: 3}
+      propertyPath: drawingBoard
+      value: 
+      objectReference: {fileID: 239171149718397530}
     - target: {fileID: 7319341761731130700, guid: 75d530d5d8792c44692adbb656b5860e,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -26948,6 +26958,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75d530d5d8792c44692adbb656b5860e, type: 3}
+--- !u!114 &239171149718397530 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 56897273388253967, guid: 75d530d5d8792c44692adbb656b5860e,
+    type: 3}
+  m_PrefabInstance: {fileID: 259967569136607573}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d08dc70174b4121a46587c19c7cfa2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7352145829063934922 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7319341763544195743, guid: 75d530d5d8792c44692adbb656b5860e,
@@ -27342,6 +27364,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1684955714039418235}
     m_Modifications:
+    - target: {fileID: 1977008617602053065, guid: 125507802bc466445b6ecaa860cef952,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6324874088676031073, guid: 125507802bc466445b6ecaa860cef952,
         type: 3}
       propertyPath: spawnPoint.x
@@ -27718,6 +27745,11 @@ PrefabInstance:
         type: 3}
       propertyPath: otherPoints.Array.data[1].y
       value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677655167258052591, guid: e6f4082b590190b4e9c993da4c0ce48f,
+        type: 3}
+      propertyPath: talksWhenInteractedWith
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7222457822457210221, guid: e6f4082b590190b4e9c993da4c0ce48f,
         type: 3}

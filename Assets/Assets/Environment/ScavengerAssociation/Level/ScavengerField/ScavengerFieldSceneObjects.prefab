@@ -35247,6 +35247,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6611371025537746167}
     m_Modifications:
+    - target: {fileID: 1370689314957621643, guid: 5eea7d685b9d88f4abcaa8bfe574da32,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5036941130595710870, guid: 5eea7d685b9d88f4abcaa8bfe574da32,
         type: 3}
       propertyPath: spawnPoint.x
@@ -35417,6 +35422,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6611371025537746167}
     m_Modifications:
+    - target: {fileID: 2416380072347248259, guid: a5b4749a731bdb84aa5664715ee2b163,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3711843530751231872, guid: a5b4749a731bdb84aa5664715ee2b163,
         type: 3}
       propertyPath: spawnPoint.x

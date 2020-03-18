@@ -1968,13 +1968,10 @@ MonoBehaviour:
   conversationToStart: 
   talksWhenInteractedWith: 0
   talkUI:
-    canvas: {fileID: 0}
-    drawingBoardAnimator: {fileID: 0}
     texts:
     - Nothing of use here.
     - Meh. No items.
-    displayText: {fileID: 0}
-    talkTimer: 0
+  drawingBoard: {fileID: 0}
 --- !u!1 &2555256232104035807
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,13 +2041,10 @@ MonoBehaviour:
   conversationToStart: 
   talksWhenInteractedWith: 0
   talkUI:
-    canvas: {fileID: 0}
-    drawingBoardAnimator: {fileID: 0}
     texts:
     - Nothing of use here.
     - Meh. No items.
-    displayText: {fileID: 0}
-    talkTimer: 0
+  drawingBoard: {fileID: 0}
 --- !u!1 &2766359142253263899
 GameObject:
   m_ObjectHideFlags: 0
@@ -2120,13 +2114,10 @@ MonoBehaviour:
   conversationToStart: 
   talksWhenInteractedWith: 0
   talkUI:
-    canvas: {fileID: 0}
-    drawingBoardAnimator: {fileID: 0}
     texts:
     - Nothing of use here.
     - Meh. No items.
-    displayText: {fileID: 0}
-    talkTimer: 0
+  drawingBoard: {fileID: 0}
 --- !u!1 &3033054924992068875
 GameObject:
   m_ObjectHideFlags: 0
@@ -2630,13 +2621,10 @@ MonoBehaviour:
   conversationToStart: 
   talksWhenInteractedWith: 0
   talkUI:
-    canvas: {fileID: 0}
-    drawingBoardAnimator: {fileID: 0}
     texts:
     - Nothing of use here.
     - Meh. No items.
-    displayText: {fileID: 0}
-    talkTimer: 0
+  drawingBoard: {fileID: 0}
 --- !u!1001 &725834123596368564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3100,6 +3088,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5515062043031077571}
     m_Modifications:
+    - target: {fileID: 1641308341264404477, guid: 1bb1a3f5625b71a43943db6492dfe5bd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.3
+      objectReference: {fileID: 0}
     - target: {fileID: 2050073806269366699, guid: 1bb1a3f5625b71a43943db6492dfe5bd,
         type: 3}
       propertyPath: m_Name
@@ -3158,6 +3151,11 @@ PrefabInstance:
     - target: {fileID: 2050073806269366701, guid: 1bb1a3f5625b71a43943db6492dfe5bd,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027970413778145896, guid: 1bb1a3f5625b71a43943db6492dfe5bd,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

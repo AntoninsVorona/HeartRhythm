@@ -192,7 +192,7 @@ Transform:
   m_Children:
   - {fileID: 7319341761731130700}
   - {fileID: 7319341763532748206}
-  - {fileID: 8483100759560423435}
+  - {fileID: 8009595809308617935}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -234,17 +234,17 @@ MonoBehaviour:
   conversationToStart: 
   talksWhenInteractedWith: 1
   talkUI:
-    canvas: {fileID: 3827735253793663140}
-    drawingBoardAnimator: {fileID: 5826630707962910601}
     texts:
     - The Red Line is crossable only for Security.
-    displayText: {fileID: 5844641765432749729}
-    talkTimer: 0
+  drawingBoard: {fileID: 0}
   movementSettings:
     typeOfMovement: 0
     movementDirection: 0
     definedArea:
       locations: []
+    specificArea:
+      movement: []
+      circle: 0
     moveDuringPeaceMode: 1
     peaceModeMovementDelay: 1
 --- !u!1001 &9174698110924230192
@@ -359,6 +359,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1185818487966802687, guid: 49f82e130a341a44988ff9079968beff,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185818487966802687, guid: 49f82e130a341a44988ff9079968beff,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4860851777215594346, guid: 49f82e130a341a44988ff9079968beff,
         type: 3}
       propertyPath: m_Name
@@ -366,33 +376,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f82e130a341a44988ff9079968beff, type: 3}
---- !u!224 &8483100759560423435 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 786182014522099259, guid: 49f82e130a341a44988ff9079968beff,
+--- !u!4 &8009595809308617935 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1185818487966802687, guid: 49f82e130a341a44988ff9079968beff,
     type: 3}
   m_PrefabInstance: {fileID: 9174698110924230192}
   m_PrefabAsset: {fileID: 0}
---- !u!223 &3827735253793663140 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 5354159543004325524, guid: 49f82e130a341a44988ff9079968beff,
-    type: 3}
-  m_PrefabInstance: {fileID: 9174698110924230192}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &5826630707962910601 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3427039825643248057, guid: 49f82e130a341a44988ff9079968beff,
-    type: 3}
-  m_PrefabInstance: {fileID: 9174698110924230192}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5844641765432749729 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3336962721623171217, guid: 49f82e130a341a44988ff9079968beff,
-    type: 3}
-  m_PrefabInstance: {fileID: 9174698110924230192}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

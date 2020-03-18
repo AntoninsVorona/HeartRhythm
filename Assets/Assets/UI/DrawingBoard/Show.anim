@@ -44,7 +44,7 @@ AnimationClip:
       value: {fileID: -8820101725213580024, guid: dc881f938c1fc34459063fb9a2eb2adc,
         type: 3}
     attribute: m_Sprite
-    path: DrawingBoard
+    path: Canvas/DrawingBoard
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_SampleRate: 60
@@ -55,7 +55,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 443555860
+      path: 446289940
       attribute: 2015549526
       script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
       typeID: 114

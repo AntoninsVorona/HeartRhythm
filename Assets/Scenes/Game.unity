@@ -2381,27 +2381,27 @@ PrefabInstance:
     - target: {fileID: 6865496395969011108, guid: a8f397eef70e6a24bb09af57fb206bd2,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 35
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6865496395969011108, guid: a8f397eef70e6a24bb09af57fb206bd2,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6865496395969011108, guid: a8f397eef70e6a24bb09af57fb206bd2,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6865496395969011108, guid: a8f397eef70e6a24bb09af57fb206bd2,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6865496395969011108, guid: a8f397eef70e6a24bb09af57fb206bd2,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6865496395969011108, guid: a8f397eef70e6a24bb09af57fb206bd2,
         type: 3}

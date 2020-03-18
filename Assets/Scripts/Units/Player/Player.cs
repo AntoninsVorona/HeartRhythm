@@ -477,7 +477,10 @@ public class Player : Unit
 
 	public override void Talk(string text = null)
 	{
-		talkUI.Talk(CoroutineStarter(), text);
+		if (drawingBoard)
+		{
+			drawingBoard.Talk(CoroutineStarter(), string.IsNullOrEmpty(text) ? talkUI.GetRandomText() : text);
+		}
 	}
 
 	public override void ApplyUnitData(UnitData unitData)

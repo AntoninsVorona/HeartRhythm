@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 406124350582367633}
-  - {fileID: 1552429391542311126}
+  - {fileID: 1087229600833960978}
   - {fileID: 3023053681154758004}
   - {fileID: 3098176569892340212}
   - {fileID: 2221301417062038800}
@@ -78,12 +78,9 @@ MonoBehaviour:
   conversationToStart: 
   talksWhenInteractedWith: 1
   talkUI:
-    canvas: {fileID: 6138276079740074105}
-    drawingBoardAnimator: {fileID: 3525483697101883220}
     texts:
     - Gerrrrara herrrre!
-    displayText: {fileID: 3543497021794336380}
-    talkTimer: 0
+  drawingBoard: {fileID: 6988305384520651730}
   movementSettings:
     typeOfMovement: 0
     movementDirection: 0
@@ -861,6 +858,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1185818487966802687, guid: 49f82e130a341a44988ff9079968beff,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185818487966802687, guid: 49f82e130a341a44988ff9079968beff,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1185818487966802687, guid: 49f82e130a341a44988ff9079968beff,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.75
+      objectReference: {fileID: 0}
     - target: {fileID: 4860851777215594346, guid: 49f82e130a341a44988ff9079968beff,
         type: 3}
       propertyPath: m_Name
@@ -873,33 +885,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f82e130a341a44988ff9079968beff, type: 3}
---- !u!224 &1552429391542311126 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 786182014522099259, guid: 49f82e130a341a44988ff9079968beff,
+--- !u!4 &1087229600833960978 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1185818487966802687, guid: 49f82e130a341a44988ff9079968beff,
     type: 3}
   m_PrefabInstance: {fileID: 2261442728458280685}
   m_PrefabAsset: {fileID: 0}
---- !u!223 &6138276079740074105 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 5354159543004325524, guid: 49f82e130a341a44988ff9079968beff,
-    type: 3}
-  m_PrefabInstance: {fileID: 2261442728458280685}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &3525483697101883220 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3427039825643248057, guid: 49f82e130a341a44988ff9079968beff,
-    type: 3}
-  m_PrefabInstance: {fileID: 2261442728458280685}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3543497021794336380 stripped
+--- !u!114 &6988305384520651730 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3336962721623171217, guid: 49f82e130a341a44988ff9079968beff,
+  m_CorrespondingSourceObject: {fileID: 9194433538142293311, guid: 49f82e130a341a44988ff9079968beff,
     type: 3}
   m_PrefabInstance: {fileID: 2261442728458280685}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d08dc70174b4121a46587c19c7cfa2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

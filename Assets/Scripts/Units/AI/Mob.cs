@@ -274,7 +274,10 @@ public class Mob : Unit
 
 	public override void Talk(string text = null)
 	{
-		talkUI.Talk(CoroutineStarter(), text);
+		if (drawingBoard)
+		{
+			drawingBoard.Talk(CoroutineStarter(), string.IsNullOrEmpty(text) ? talkUI.GetRandomText() : text);
+		}
 	}
 
 	protected override void OnDrawGizmosSelected()

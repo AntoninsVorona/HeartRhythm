@@ -641,12 +641,9 @@ MonoBehaviour:
   conversationToStart: 
   talksWhenInteractedWith: 0
   talkUI:
-    canvas: {fileID: 0}
-    drawingBoardAnimator: {fileID: 0}
     texts:
     - Once here was a banana...
-    displayText: {fileID: 0}
-    talkTimer: 0
+  drawingBoard: {fileID: 0}
 --- !u!1 &6182942456694204216
 GameObject:
   m_ObjectHideFlags: 0
