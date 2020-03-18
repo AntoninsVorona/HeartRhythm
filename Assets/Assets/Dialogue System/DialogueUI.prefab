@@ -238,8 +238,8 @@ MonoBehaviour:
   playerImage: {fileID: 5264162957025956423}
   playerName: {fileID: 5755170474250723416}
   responseRect: {fileID: 3481312463181355006}
-  playerSound: {fileID: 8300000, guid: cbd3958a3d5a2da48b943f58b29852ad, type: 3}
-  headsetSound: {fileID: 8300000, guid: cbd3958a3d5a2da48b943f58b29852ad, type: 3}
+  playerSound: {fileID: 0}
+  headsetSound: {fileID: 0}
 --- !u!1 &2560864865114748749
 GameObject:
   m_ObjectHideFlags: 0
