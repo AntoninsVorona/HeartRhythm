@@ -12,9 +12,10 @@ public class YesNoDialogue : MonoBehaviour
 	[SerializeField]
 	private FillingButton no;
 
+	[HideInInspector]
+	public bool showing;
 	private FillingButton selected;
 	private Action callback;
-	private bool scan;
 
 	private void Awake()
 	{
@@ -41,7 +42,7 @@ public class YesNoDialogue : MonoBehaviour
 		no.Deselect();
 		selected = null;
 		this.callback = callback;
-		scan = true;
+		showing = true;
 	}
 
 	public void Hide()
@@ -50,12 +51,12 @@ public class YesNoDialogue : MonoBehaviour
 		no.Deselect();
 		selected = null;
 		canvas.gameObject.SetActive(false);
-		scan = false;
+		showing = false;
 	}
 
 	private void Update()
 	{
-		if (scan)
+		if (showing)
 		{
 			var hit = AbstractMainMenu.Instance.CurrentUIHit();
 			if (hit)

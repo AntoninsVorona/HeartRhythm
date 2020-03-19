@@ -170,7 +170,14 @@ public abstract class AbstractMainMenu : MonoBehaviour
 	{
 		if (globalCanvasGroup.interactable)
 		{
-			screens.currentScreen.ApplyCancel();
+			if (YesNoDialogue.Instance.showing)
+			{
+				YesNoDialogue.Instance.Hide();
+			}
+			else
+			{
+				screens.currentScreen.ApplyCancel();
+			}
 		}
 	}
 
