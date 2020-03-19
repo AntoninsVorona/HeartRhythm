@@ -1,97 +1,49 @@
 fileFormatVersion: 2
-guid: f5e224b6720e6a742a97bcf9b7013f33
+guid: a48c5bc55885f6f4096fd50d73f68687
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 210942762593536411
-    second: Cat Animation_0
+      213: -1356069129580027629
+    second: CharacterRoomAssets_0
   - first:
-      213: 8917851302794872751
-    second: Cat Animation_1
+      213: 8463368894031128510
+    second: CharacterRoomAssets_1
   - first:
-      213: -6449869785831211458
-    second: Cat Animation_2
+      213: 7954566884090004511
+    second: CharacterRoomAssets_2
   - first:
-      213: -6059901614073832475
-    second: Cat Animation_3
+      213: -5435107696390874741
+    second: CharacterRoomAssets_3
   - first:
-      213: 6560767029299752881
-    second: Cat Animation_4
+      213: 3606654194192139392
+    second: CharacterRoomAssets_4
   - first:
-      213: -1608441426097448249
-    second: Cat Animation_5
+      213: 6576244769830876344
+    second: CharacterRoomAssets_5
   - first:
-      213: -4640320748814918782
-    second: Cat Animation_6
+      213: -8197892679695340926
+    second: CharacterRoomAssets_6
   - first:
-      213: 6980201746415784584
-    second: Cat Animation_7
+      213: -5765548188154392471
+    second: CharacterRoomAssets_7
   - first:
-      213: -5133347077613007262
-    second: Cat Animation_8
+      213: 6387542355340794007
+    second: CharacterRoomAssets_8
   - first:
-      213: -3848135440689304778
-    second: Cat Animation_9
+      213: 7482933290680354264
+    second: CharacterRoomAssets_9
   - first:
-      213: -8738866517684501839
-    second: Cat Animation_10
+      213: -1797459403994332789
+    second: CharacterRoomAssets_10
   - first:
-      213: -8617634719163905504
-    second: Cat Animation_11
+      213: 8226155916686454897
+    second: CharacterRoomAssets_11
   - first:
-      213: 4113471529457743942
-    second: Cat Animation_12
+      213: 3940138049187941842
+    second: CharacterRoomAssets_12
   - first:
-      213: -2050793673382245272
-    second: Cat Animation_13
-  - first:
-      213: -2811567660865953114
-    second: Cat Animation_14
-  - first:
-      213: 5918668310111121863
-    second: Cat Animation_0
-  - first:
-      213: 7634849628182868057
-    second: Cat Animation_1
-  - first:
-      213: 9041736198540375821
-    second: Cat Animation_2
-  - first:
-      213: -6029561206230495656
-    second: Cat Animation_3
-  - first:
-      213: -3249795940292821384
-    second: Cat Animation_4
-  - first:
-      213: -2518901675767092851
-    second: Cat Animation_5
-  - first:
-      213: -2130746747749072769
-    second: Cat Animation_6
-  - first:
-      213: 6292867266743416184
-    second: Cat Animation_7
-  - first:
-      213: -2000221922987138534
-    second: Cat Animation_8
-  - first:
-      213: -6612624742382426918
-    second: Cat Animation_9
-  - first:
-      213: -1588082000292843744
-    second: Cat Animation_10
-  - first:
-      213: 6959059214048154519
-    second: Cat Animation_11
-  - first:
-      213: 1456824106695125760
-    second: Cat Animation_12
-  - first:
-      213: 2685902894137178661
-    second: Cat Animation_13
-  - first:
-      213: -2817560501888102211
-    second: Cat Animation_14
+      213: -2070343318475636099
+    second: CharacterRoomAssets_13
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -176,316 +128,295 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cat Animation_0
+      name: CharacterRoomAssets_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 122
+        width: 115
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3116288bf464e2de0800000000000000
+      internalID: -1356069129580027629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterRoomAssets_1
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 120
+        width: 68
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb7e0d31b2de37570800000000000000
+      internalID: 8463368894031128510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterRoomAssets_2
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 139
+        width: 55
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f14454c9f6c446e60800000000000000
+      internalID: 7954566884090004511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterRoomAssets_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 20
-        height: 23
+        y: 56
+        width: 61
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c1f8873875532250800000000000000
-      internalID: 5918668310111121863
+      spriteID: b8951a8b85e9294b0800000000000000
+      internalID: -5435107696390874741
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat Animation_1
+      name: CharacterRoomAssets_4
       rect:
         serializedVersion: 2
-        x: 20
-        y: 0
-        width: 20
-        height: 23
+        x: 64
+        y: 88
+        width: 40
+        height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 950fc51294f64f960800000000000000
-      internalID: 7634849628182868057
+      spriteID: 084ce7871e86d0230800000000000000
+      internalID: 3606654194192139392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat Animation_2
+      name: CharacterRoomAssets_5
       rect:
         serializedVersion: 2
-        x: 40
-        y: 0
-        width: 20
-        height: 23
+        x: 144
+        y: 88
+        width: 22
+        height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d073acada23ba7d70800000000000000
-      internalID: 9041736198540375821
+      spriteID: 8b43ac596c3834b50800000000000000
+      internalID: 6576244769830876344
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat Animation_3
+      name: CharacterRoomAssets_6
       rect:
         serializedVersion: 2
-        x: 60
-        y: 0
-        width: 20
-        height: 23
+        x: 187
+        y: 56
+        width: 28
+        height: 49
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85ec7276702b25ca0800000000000000
-      internalID: -6029561206230495656
+      spriteID: 28aebf7ca0c3b3e80800000000000000
+      internalID: -8197892679695340926
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat Animation_4
+      name: CharacterRoomAssets_7
       rect:
         serializedVersion: 2
-        x: 80
-        y: 0
-        width: 20
-        height: 23
+        x: 64
+        y: 56
+        width: 40
+        height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87ef65a7fc766e2d0800000000000000
-      internalID: -3249795940292821384
+      spriteID: 96019a55878acffa0800000000000000
+      internalID: -5765548188154392471
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat Animation_5
+      name: CharacterRoomAssets_8
       rect:
         serializedVersion: 2
-        x: 100
-        y: 0
-        width: 20
-        height: 23
+        x: 112
+        y: 56
+        width: 21
+        height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8924c785401b0dd0800000000000000
-      internalID: -2518901675767092851
+      spriteID: 79899d5fdeb15a850800000000000000
+      internalID: 6387542355340794007
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat Animation_6
+      name: CharacterRoomAssets_9
       rect:
         serializedVersion: 2
-        x: 120
-        y: 0
-        width: 20
-        height: 23
+        x: 144
+        y: 56
+        width: 24
+        height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7009124f111e62e0800000000000000
-      internalID: -2130746747749072769
+      spriteID: 8d582fc7e28b8d760800000000000000
+      internalID: 7482933290680354264
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat Animation_7
+      name: CharacterRoomAssets_10
       rect:
         serializedVersion: 2
-        x: 140
-        y: 0
-        width: 20
-        height: 23
+        x: 227
+        y: 63
+        width: 7
+        height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 875bce42071c45750800000000000000
-      internalID: 6292867266743416184
+      spriteID: b818bb602342e07e0800000000000000
+      internalID: -1797459403994332789
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat Animation_8
+      name: CharacterRoomAssets_11
       rect:
         serializedVersion: 2
-        x: 160
-        y: 0
-        width: 20
-        height: 23
+        x: 271
+        y: 56
+        width: 31
+        height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a12276832c8cd34e0800000000000000
-      internalID: -2000221922987138534
+      spriteID: 170f211e83d292270800000000000000
+      internalID: 8226155916686454897
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat Animation_9
+      name: CharacterRoomAssets_12
       rect:
         serializedVersion: 2
-        x: 180
-        y: 0
-        width: 20
-        height: 23
+        x: 0
+        y: 8
+        width: 30
+        height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad4265df4dc3b34a0800000000000000
-      internalID: -6612624742382426918
+      spriteID: 2dd09d31eae2ea630800000000000000
+      internalID: 3940138049187941842
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cat Animation_10
+      name: CharacterRoomAssets_13
       rect:
         serializedVersion: 2
-        x: 200
-        y: 0
-        width: 20
-        height: 23
+        x: 48
+        y: 8
+        width: 29
+        height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02f6a52b5dff5f9e0800000000000000
-      internalID: -1588082000292843744
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cat Animation_11
-      rect:
-        serializedVersion: 2
-        x: 220
-        y: 0
-        width: 20
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 793df380c7b839060800000000000000
-      internalID: 6959059214048154519
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cat Animation_12
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 0
-        width: 20
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 00be9c37ecda73410800000000000000
-      internalID: 1456824106695125760
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cat Animation_13
-      rect:
-        serializedVersion: 2
-        x: 260
-        y: 0
-        width: 20
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 52a7d32a37e364520800000000000000
-      internalID: 2685902894137178661
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cat Animation_14
-      rect:
-        serializedVersion: 2
-        x: 280
-        y: 0
-        width: 20
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db0d9cfc6a306e8d0800000000000000
-      internalID: -2817560501888102211
+      spriteID: d72082398b9a443e0800000000000000
+      internalID: -2070343318475636099
       vertices: []
       indices: 
       edges: []

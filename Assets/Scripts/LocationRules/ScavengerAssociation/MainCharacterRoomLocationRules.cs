@@ -10,7 +10,7 @@ public class MainCharacterRoomLocationRules : LocationRules
 			SaveSystem.currentGameSave.globalVariables.scavengerAssociationVariables.alreadyVisitedMainCharacterRoom =
 				true;
 			GameSessionManager.Instance.currentSceneObjects.currentObstacleManager.SpawnItemOnGround(
-				ItemManager.Instance.GetItemByName("Funky"), 1, new Vector2Int(4, 0)
+				ItemManager.Instance.GetItemByName("Funky"), 1, new Vector2Int(7, -4)
 			);
 		}
 	}
