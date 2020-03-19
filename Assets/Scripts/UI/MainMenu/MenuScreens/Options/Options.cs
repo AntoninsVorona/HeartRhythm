@@ -48,8 +48,8 @@ public class Options : MenuScreen
 	private void Initialize()
 	{
 		initialized = true;
-		InitFrameRate();
 		InitFullScreenMode();
+		InitFrameRate();
 		InitResolution();
 		InitializeSettingsAsPerSave();
 	}
@@ -57,8 +57,8 @@ public class Options : MenuScreen
 	private void InitializeSettingsAsPerSave()
 	{
 		SetCurrentFullScreenMode();
-		SetCurrentResolution();
 		SetCurrentFrameRate();
+		SetCurrentResolution();
 	}
 
 	private void InitFrameRate()
@@ -108,6 +108,8 @@ public class Options : MenuScreen
 	private void SetCurrentFullScreenMode()
 	{
 		fullScreenModeDropdown.SetValueWithoutNotify((int) Screen.fullScreenMode);
+		InitResolution();
+		SetCurrentResolution();
 	}
 
 	private void InitResolution()
@@ -138,7 +140,9 @@ public class Options : MenuScreen
 
 		Debug.LogError($"No such resolution: {currentResolution}");
 		var screenResolution = screenResolutions[0];
-		Screen.SetResolution(screenResolution.width, screenResolution.height, Screen.fullScreenMode); 
+		Screen.SetResolution(screenResolution.width, screenResolution.height, Screen.fullScreenMode,
+			FRAME_RATES[GetCurrentFrameRate()]);
+		somethingChanged = true;
 		return 0;
 	}
 
