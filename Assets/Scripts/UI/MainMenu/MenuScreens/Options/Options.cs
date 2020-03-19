@@ -56,8 +56,8 @@ public class Options : MenuScreen
 
 	private void InitializeSettingsAsPerSave()
 	{
-		SetCurrentResolution();
 		SetCurrentFullScreenMode();
+		SetCurrentResolution();
 		SetCurrentFrameRate();
 	}
 
@@ -88,7 +88,9 @@ public class Options : MenuScreen
 			}
 		}
 
-		throw new ArgumentException("No such Frame Rate");
+		Debug.LogError($"No such Frame Rate: {currentFrameRate}");
+		Application.targetFrameRate = 60;
+		return 1;
 	}
 
 	private void InitFullScreenMode()
@@ -134,7 +136,10 @@ public class Options : MenuScreen
 			}
 		}
 
-		throw new ArgumentException("No such resolution");
+		Debug.LogError($"No such resolution: {currentResolution}");
+		var screenResolution = screenResolutions[0];
+		Screen.SetResolution(screenResolution.width, screenResolution.height, Screen.fullScreenMode); 
+		return 0;
 	}
 
 	public void SaveClicked()
