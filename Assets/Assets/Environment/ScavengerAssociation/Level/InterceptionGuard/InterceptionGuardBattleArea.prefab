@@ -332,7 +332,7 @@ MonoBehaviour:
   positionToTriggerDamagingGuardCutScene: {x: 10, y: 2}
   damagingGuardCutScene: {fileID: 11400000, guid: 015497aeb513ee944ab5943f4c54af8a,
     type: 2}
-  damagingGuard: {fileID: 7811203231228111989}
+  damagingGuard: {fileID: 5327563139690343140}
   buttonTriggerPosition: {x: 28, y: 11}
   buttonTriggeredCutScene: {fileID: 11400000, guid: 15598a7141749a34c834b197ed81f85a,
     type: 2}
@@ -408,8 +408,8 @@ Transform:
   - {fileID: 3911643533174003279}
   - {fileID: 4525606484413402998}
   - {fileID: 7707636889679415148}
-  - {fileID: 2099246872771063191}
-  - {fileID: 1704587876448652730}
+  - {fileID: 2738358460259858411}
+  - {fileID: 3208100937647249350}
   m_Father: {fileID: 1521203674098410096}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -456,7 +456,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7811203231228108994}
+  - {fileID: 9019565702242620829}
   m_Father: {fileID: 1521203674098410096}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2200,13 +2200,10 @@ MonoBehaviour:
   conversationToStart: 
   talksWhenInteractedWith: 0
   talkUI:
-    canvas: {fileID: 0}
-    drawingBoardAnimator: {fileID: 0}
     texts:
     - Nothing of use here.
     - Meh. No items.
-    displayText: {fileID: 0}
-    talkTimer: 0
+  drawingBoard: {fileID: 0}
 --- !u!1 &3490254283201890847
 GameObject:
   m_ObjectHideFlags: 0
@@ -2360,7 +2357,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3911643533174003278}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 28.5, y: 11.6, z: 0}
+  m_LocalPosition: {x: 28.5, y: 11.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1521203674746251149}
@@ -2405,7 +2402,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 98
-  m_Sprite: {fileID: 1566552715412073297, guid: 89ba63b0c1522e443ac0111b912a581c,
+  m_Sprite: {fileID: 7219218137441291984, guid: e86dc1e61e1e4e04fb8b8b6cf8fa5d34,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -30014,13 +30011,10 @@ MonoBehaviour:
   conversationToStart: 
   talksWhenInteractedWith: 0
   talkUI:
-    canvas: {fileID: 0}
-    drawingBoardAnimator: {fileID: 0}
     texts:
     - Nothing of use here.
     - Meh. No items.
-    displayText: {fileID: 0}
-    talkTimer: 0
+  drawingBoard: {fileID: 0}
 --- !u!1 &8323384908318544315
 GameObject:
   m_ObjectHideFlags: 0
@@ -30258,7 +30252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7d03fd6cf6aa5c4497989fc1dc7d8b0, type: 3}
---- !u!4 &1704587876448652730 stripped
+--- !u!4 &3208100937647249350 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4261143476271783683, guid: e7d03fd6cf6aa5c4497989fc1dc7d8b0,
     type: 3}
@@ -30333,7 +30327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7d03fd6cf6aa5c4497989fc1dc7d8b0, type: 3}
---- !u!4 &2099246872771063191 stripped
+--- !u!4 &2738358460259858411 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4261143476271783683, guid: e7d03fd6cf6aa5c4497989fc1dc7d8b0,
     type: 3}
@@ -30674,7 +30668,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78988e1094ccd54409b68618b009614e, type: 3}
---- !u!114 &7811203231228111989 stripped
+--- !u!114 &5327563139690343140 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2704897040181694261, guid: 78988e1094ccd54409b68618b009614e,
     type: 3}
@@ -30686,7 +30680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85679f8bcc8d430aa06785ba613f8f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &7811203231228108994 stripped
+--- !u!4 &9019565702242620829 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1246679901538086988, guid: 78988e1094ccd54409b68618b009614e,
     type: 3}

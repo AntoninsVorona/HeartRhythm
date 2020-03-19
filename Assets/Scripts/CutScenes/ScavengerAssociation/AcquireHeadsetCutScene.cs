@@ -43,7 +43,7 @@ public class AcquireHeadsetCutScene : CutScene
 			yield return new WaitForSeconds(0.25f);
 		}
 
-		Player.Instance.TurnAround(true);
+		Player.Instance.LookLeft();
 		GameSessionManager.Instance.StartConversation("HandOverHeadset");
 		yield return new WaitUntil(() => dialogueFinished);
 		dialogueFinished = false;

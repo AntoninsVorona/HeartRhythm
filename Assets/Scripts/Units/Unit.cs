@@ -541,12 +541,22 @@ public abstract class Unit : MonoBehaviour
 		}
 	}
 	
-	public void TurnAround(bool flipX)
+	private void TurnAround(bool flipX)
 	{
 		if (sprite)
 		{
 			sprite.flipX = flipX;
 		}
+	}
+
+	public void LookLeft()
+	{
+		TurnAround(false);
+	}
+
+	public void LookRight()
+	{
+		TurnAround(false);
 	}
 
 	protected virtual void OnDrawGizmosSelected()

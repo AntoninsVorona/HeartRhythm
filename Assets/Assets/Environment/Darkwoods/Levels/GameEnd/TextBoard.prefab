@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1507688877336665925}
-  - component: {fileID: 1755563662804306950}
   m_Layer: 0
   m_Name: TextBoard
   m_TagString: Untagged
@@ -33,50 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1755563662804306950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1507688877336665923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c7ae1663c3c1de418e75ba0b8789703, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  identifierName: 
-  movementSpeed: 0
-  sprite: {fileID: 0}
-  movementSpeedCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  movementDisplaceCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spawnPoint: {x: 0, y: 0}
-  otherPoints: []
-  initializeSelf: 1
-  initializeSpawnPointForMe: 0
-  headsetLessInteraction: {fileID: 0}
-  interactions: []
-  startsConversationUponInteraction: 0
-  conversationToStart: 
-  talksWhenInteractedWith: 0
-  talkUI:
-    canvas: {fileID: 0}
-    drawingBoardAnimator: {fileID: 0}
-    texts:
-    - 
-    displayText: {fileID: 0}
-    talkTimer: 0
 --- !u!1 &1507688877671073943
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507688877671073943}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0.5, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1507688877336665925}
@@ -147,8 +102,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: 3427114271967980436, guid: 8e1f545696ba131449d0aeab170589de,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd976b5d7b02370468ee703ae468d719, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -193,8 +147,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 500}
-  m_SizeDelta: {x: 1000, y: 500}
+  m_AnchoredPosition: {x: 45, y: 500}
+  m_SizeDelta: {x: 1050, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4708799220102689358
 CanvasRenderer:
@@ -351,7 +305,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2560, y: 1440}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2695540583085173961
 Canvas:

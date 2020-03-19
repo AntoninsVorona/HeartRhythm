@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: 2e36ed3e0a6f5804384c4a3471a1b2f5
+guid: 1a29e937d0ac5d04db2f6ad06986905a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3896971804526776712
-    second: Inkognito_0
+      213: 3516625422798491831
+    second: AllPoses_0
   - first:
-      213: 3261487147169723480
-    second: Inkognito_1
+      213: 459253649027895002
+    second: AllPoses_1
   - first:
-      213: 2819703902827858852
-    second: Inkognito_2
+      213: -2164688185400705818
+    second: AllPoses_2
+  - first:
+      213: -9042728662259377504
+    second: AllPoses_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -95,64 +98,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Inkognito_0
+      name: AllPoses_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 19
-        width: 36
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.515, y: 0.375}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87ee7737acc2be9c0800000000000000
-      internalID: -3896971804526776712
+      spriteID: 7b0130ea0309dc030800000000000000
+      internalID: 3516625422798491831
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Inkognito_1
+      name: AllPoses_1
       rect:
         serializedVersion: 2
-        x: 19
-        y: 4
-        width: 10
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.375}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 854bd8eb741234d20800000000000000
-      internalID: 3261487147169723480
+      spriteID: ade0c14b2c89f5600800000000000000
+      internalID: 459253649027895002
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Inkognito_2
+      name: AllPoses_2
       rect:
         serializedVersion: 2
-        x: 35
-        y: 5
-        width: 7
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.375}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ab46db92c9912720800000000000000
-      internalID: 2819703902827858852
+      spriteID: 6ecb4bb709b75f1e0800000000000000
+      internalID: -2164688185400705818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllPoses_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aa59cd2136c18280800000000000000
+      internalID: -9042728662259377504
       vertices: []
       indices: 
       edges: []

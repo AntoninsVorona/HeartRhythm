@@ -18,7 +18,7 @@ public class PankPocVisitCutScene : CutScene
 	protected override IEnumerator CutSceneSequence()
 	{
 		yield return new WaitForSeconds(0.5f);
-		Player.Instance.TurnAround(false);
+		Player.Instance.LookRight();
 		var pankPocRoomLocationRules = (PankPocRoomLocationRules) LocationRules.Instance;
 		pankPocRoomLocationRules.RotatePankPoc();
 		yield return new WaitForSeconds(0.5f);

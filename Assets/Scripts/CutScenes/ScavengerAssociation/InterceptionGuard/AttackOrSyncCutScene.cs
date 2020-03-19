@@ -25,7 +25,7 @@ public class AttackOrSyncCutScene : CutScene
 		((HeartRhythmDialogueUI) DialogueManager.Instance.dialogueUI).RemoveAudioClips();
 		yield return locationRules.PlayEarthQuake();
 		yield return GameSessionManager.Instance.BackToRealWorld();
-		Player.Instance.TurnAround(true);
+		Player.Instance.LookLeft();
 		GameSessionManager.Instance.StartConversation("AfterInterceptionGuard");
 		yield return new WaitUntil(() => dialogueFinished);
 		yield return Player.Instance.Move(new Vector2Int(11, 0));
@@ -47,7 +47,7 @@ public class AttackOrSyncCutScene : CutScene
 		yield return new WaitForSeconds(3);
 		yield return GameUI.Instance.FadeAlpha(0, 1);
 		yield return GameSessionManager.Instance.LoadLevel(runawayForest, 0);
-		Player.Instance.TurnAround(false);
+		Player.Instance.LookRight();
 		GameCamera.Instance.ChangeTargetPosition(new Vector3(3.5f, 8.5f));
 		GameCamera.Instance.staticView = true;
 		yield return GameUI.Instance.gameLogo.Show();
