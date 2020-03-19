@@ -23,7 +23,7 @@ MonoBehaviour:
   levelState:
     levelName: 
     unitData: []
-  focusPosition: {x: 4, y: -2}
+  focusPosition: {x: 4, y: 0}
   playerSpawnPoints:
     m_keys: 00000000
     m_values:
