@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newGameCutScene: {fileID: 11400000, guid: 14347ca38f7e9a84098edc83c49d20aa, type: 2}
-  debugLevelToLoad: {fileID: 11400000, guid: 8cb7e2661381a2a45ad52952d0b00858, type: 2}
+  debugLevelToLoad: {fileID: 11400000, guid: 54f8c481e3e4fe64a84d7ad8b362affc, type: 2}
   debugMaxDanceMoveSymbols: 2
   wearsHeadset: 0
   testFightMusic: {fileID: 11400000, guid: 60eaf042f444f644ba3113a34593d82f, type: 2}
