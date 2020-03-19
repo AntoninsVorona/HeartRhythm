@@ -13,7 +13,7 @@ public class RunawayForestLocationRules : LocationRules
 
 	private IEnumerator PunkaSequence()
 	{
-		for (var i = 18; i > 4; i--)
+		for (var i = 26; i > 4; i--)
 		{
 			yield return punka.Move(new Vector2Int(0, i));
 		}

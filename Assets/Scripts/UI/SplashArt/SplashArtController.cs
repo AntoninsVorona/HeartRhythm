@@ -68,7 +68,16 @@ public class SplashArtController : MonoBehaviour
 			}
 
 			currentSplashArt = s;
-			splashArtImage.sprite = currentSplashArt.image;
+			if (currentSplashArt.image)
+			{
+				splashArtImage.sprite = currentSplashArt.image;
+				splashArtImage.color = Color.white;
+			}
+			else
+			{
+				splashArtImage.color = Color.black;
+			}
+
 			splashArtText.text = currentSplashArt.text;
 			t = 0;
 			while (t < 1)

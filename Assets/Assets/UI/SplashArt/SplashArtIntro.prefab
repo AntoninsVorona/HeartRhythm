@@ -211,6 +211,9 @@ MonoBehaviour:
       became deaf. Since then, everything we knew became different: The way people
       communicate, the way people behave, the way people live...'
     image: {fileID: 0}
+  - text: Now everyone talks using typing and tablets, which highlight the text you
+      type right away.
+    image: {fileID: 21300000, guid: f72a582673facfd47901a7d51759597a, type: 3}
   - text: Quite some years have passed, and I recently joined so called Scavenger
       Association. Not the job I have been dreaming about, but... At least I have
       something to do, somewhere to live and something to eat.
