@@ -119,7 +119,7 @@ MonoBehaviour:
   talksWhenInteractedWith: 1
   talkUI:
     texts: []
-  drawingBoard: {fileID: 0}
+  drawingBoard: {fileID: 8078532102171071074}
   movementSettings:
     typeOfMovement: 0
     movementDirection: 0
@@ -444,6 +444,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5948126221336974012, guid: 49f82e130a341a44988ff9079968beff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f82e130a341a44988ff9079968beff, type: 3}
 --- !u!4 &2301718819897212322 stripped
@@ -452,3 +457,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1118448188372016989}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8078532102171071074 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9194433538142293311, guid: 49f82e130a341a44988ff9079968beff,
+    type: 3}
+  m_PrefabInstance: {fileID: 1118448188372016989}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d08dc70174b4121a46587c19c7cfa2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

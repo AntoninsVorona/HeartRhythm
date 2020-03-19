@@ -551,7 +551,7 @@ public abstract class Unit : MonoBehaviour
 
 	public void LookLeft()
 	{
-		TurnAround(false);
+		TurnAround(true);
 	}
 
 	public void LookRight()
