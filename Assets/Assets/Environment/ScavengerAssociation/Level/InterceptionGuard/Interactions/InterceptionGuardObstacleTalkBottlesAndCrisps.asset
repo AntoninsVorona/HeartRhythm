@@ -27,5 +27,5 @@ MonoBehaviour:
   - lockedState:
       locked: 0
       lockedType: 0
-    danceMove: 3
+    danceMove: 4
   textToTalk: Seems like this is a bad part of his heart. Damn.

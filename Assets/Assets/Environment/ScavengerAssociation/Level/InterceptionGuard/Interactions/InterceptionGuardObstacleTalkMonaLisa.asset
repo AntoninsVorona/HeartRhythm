@@ -23,9 +23,9 @@ MonoBehaviour:
   - lockedState:
       locked: 0
       lockedType: 0
-    danceMove: 3
+    danceMove: 1
   - lockedState:
       locked: 0
       lockedType: 0
-    danceMove: 3
+    danceMove: 4
   textToTalk: Ah... I see, he is a man of art.

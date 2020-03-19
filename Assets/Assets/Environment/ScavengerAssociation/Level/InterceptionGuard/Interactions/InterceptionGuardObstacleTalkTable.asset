@@ -23,7 +23,7 @@ MonoBehaviour:
   - lockedState:
       locked: 0
       lockedType: 0
-    danceMove: 3
+    danceMove: 4
   - lockedState:
       locked: 0
       lockedType: 0

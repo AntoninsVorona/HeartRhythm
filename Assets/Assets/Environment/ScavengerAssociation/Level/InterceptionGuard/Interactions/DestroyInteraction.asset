@@ -27,6 +27,6 @@ MonoBehaviour:
   - lockedState:
       locked: 0
       lockedType: 0
-    danceMove: 3
+    danceMove: 4
   cutSceneToStart: {fileID: 11400000, guid: a08eea0bc74cfe94898b078f6b4e3295, type: 2}
   attack: 1

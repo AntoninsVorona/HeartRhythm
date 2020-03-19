@@ -23,9 +23,9 @@ MonoBehaviour:
   - lockedState:
       locked: 0
       lockedType: 0
-    danceMove: 3
+    danceMove: 1
   - lockedState:
       locked: 0
       lockedType: 0
-    danceMove: 3
+    danceMove: 2
   textToTalk: A vase. Yep, just a vase.
