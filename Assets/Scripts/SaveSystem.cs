@@ -10,8 +10,7 @@ public static class SaveSystem
 	private const string SAVE_VERSION = "0.1";
 	private static readonly string GAME_SAVE_FOLDER_PATH = Application.persistentDataPath + "/saves";
 
-	private static readonly GameSettings GAME_SETTINGS =
-		new GameSettings(Screen.currentResolution.height, Screen.currentResolution.width, Screen.fullScreenMode, 60);
+	private static readonly GameSettings GAME_SETTINGS = new GameSettings();
 
 	public static List<UILoadData> uiGameSaves;
 	public static GameSave currentGameSave;
@@ -69,36 +68,9 @@ public static class SaveSystem
 			ProcessSaveVersion();
 		}
 
-		private void ProcessSaveVersion()
-		{
-			var saveData = GetSelfData();
-			if (saveData.saveVersion != SAVE_VERSION)
-			{
-				if (string.IsNullOrEmpty(saveData.saveVersion))
-				{
-					saveData.saveVersion = "0";
-				}
+		protected abstract void ProcessSaveVersion();
 
-				var versionNumbers = saveData.saveVersion.Split('.').Select(v =>
-				{
-					var success = int.TryParse(v, out var result);
-					if (!success)
-					{
-						throw new ArgumentException("Invalid Save Version, cannot parse");
-					}
-
-					return result;
-				}).ToList();
-
-//				if (VersionSmallerThan("1.0", versionNumbers))
-//				{
-//				}
-
-				Save(false);
-			}
-		}
-
-		private bool VersionSmallerThan(string versionToCompare, List<int> realVersionNumbers)
+		protected bool VersionSmallerThan(string versionToCompare, List<int> realVersionNumbers)
 		{
 			var versionNumbers = versionToCompare.Split('.').Select(v =>
 			{
@@ -147,14 +119,6 @@ public static class SaveSystem
 		public FullScreenMode fullScreenMode;
 		public int targetFrameRate;
 
-		public GameSettings(int width, int height, FullScreenMode fullScreenMode, int targetFrameRate)
-		{
-			this.width = width;
-			this.height = height;
-			this.fullScreenMode = fullScreenMode;
-			this.targetFrameRate = targetFrameRate;
-		}
-
 		public override void Load()
 		{
 			base.Load();
@@ -169,6 +133,39 @@ public static class SaveSystem
 		protected override string GetSavePath()
 		{
 			return GAME_SETTINGS_SAVE_PATH;
+		}
+
+		protected override void ProcessSaveVersion()
+		{
+			var saveData = GetSelfData();
+			if (saveData.saveVersion != SAVE_VERSION)
+			{
+				if (string.IsNullOrEmpty(saveData.saveVersion))
+				{
+					saveData.saveVersion = "0";
+				}
+
+				var versionNumbers = saveData.saveVersion.Split('.').Select(v =>
+				{
+					var success = int.TryParse(v, out var result);
+					if (!success)
+					{
+						throw new ArgumentException("Invalid Save Version, cannot parse");
+					}
+
+					return result;
+				}).ToList();
+				
+				if (VersionSmallerThan("0.1", versionNumbers))
+				{
+					width = Screen.currentResolution.width;
+					height = Screen.currentResolution.height;
+					fullScreenMode = Screen.fullScreenMode;
+					targetFrameRate = Application.targetFrameRate;
+				}
+
+				Save(false);
+			}
 		}
 	}
 
@@ -225,6 +222,35 @@ public static class SaveSystem
 				filePath = filePath,
 				lastChanged = lastChanged
 			};
+		}
+		
+		protected override void ProcessSaveVersion()
+		{
+			var saveData = GetSelfData();
+			if (saveData.saveVersion != SAVE_VERSION)
+			{
+				if (string.IsNullOrEmpty(saveData.saveVersion))
+				{
+					saveData.saveVersion = "0";
+				}
+
+				var versionNumbers = saveData.saveVersion.Split('.').Select(v =>
+				{
+					var success = int.TryParse(v, out var result);
+					if (!success)
+					{
+						throw new ArgumentException("Invalid Save Version, cannot parse");
+					}
+
+					return result;
+				}).ToList();
+				
+				// if (VersionSmallerThan("0.1", versionNumbers))
+				// {
+				// }
+
+				Save(false);
+			}
 		}
 	}
 
