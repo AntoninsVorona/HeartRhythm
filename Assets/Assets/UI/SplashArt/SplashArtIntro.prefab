@@ -375,18 +375,18 @@ MonoBehaviour:
   splashArts:
   - text: I have been a dancer since childhood. Music used to run through my veins.
       Music, which I no longer remember, because one day...
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: df66b934103de68429a4c82f4f402a6a, type: 3}
   - text: 'One day, I woke up completely deaf, and it was not just me - everyone
       became deaf. Since then, everything we knew became different: The way people
       communicate, the way people behave, the way people live...'
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 190d69e735652a5418c8c5b81a528666, type: 3}
   - text: Now everyone talks using typing and tablets, which highlight the text you
       type right away.
     image: {fileID: 21300000, guid: f72a582673facfd47901a7d51759597a, type: 3}
   - text: Quite some years have passed, and I recently joined so called Scavenger
       Association. Not the job I have been dreaming about, but... At least I have
       something to do, somewhere to live and something to eat.
-    image: {fileID: 0}
+    image: {fileID: 21300000, guid: 4da473114afa502459ca6be6c9572ea7, type: 3}
   splashArtHolder: {fileID: 1499537445205470436}
   splashArtText: {fileID: 4783423909398742785}
   splashArtImage: {fileID: 8137915803636378380}
