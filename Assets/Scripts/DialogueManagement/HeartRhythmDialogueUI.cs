@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class HeartRhythmDialogueUI : StandardDialogueUI
 {
-	private const float DELAY = 0.55f;
+	private const float DELAY = 0.35f;
 
 	[SerializeField]
 	private GameObject playerPortrait;

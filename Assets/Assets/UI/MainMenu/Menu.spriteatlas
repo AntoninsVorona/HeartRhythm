@@ -58,12 +58,16 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 0390248cdb32a514ba19d0cbbcb06bd9, type: 3}
     - {fileID: 2800000, guid: 5e76fbadf9fabe04d985849be1d94a86, type: 3}
     - {fileID: 2800000, guid: 2a72cd6afb27dd8429a1d8862893a0d6, type: 3}
-    totalSpriteSurfaceArea: 74857
+    - {fileID: 2800000, guid: 3b9c4f3111afd744f83f444c7e9fb840, type: 3}
+    - {fileID: 2800000, guid: ec833c91bf3c3134eb6d2d897e6bdd05, type: 3}
+    totalSpriteSurfaceArea: 75129
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: dc796fa060b9a094fba7464f9c2f05da, type: 3}
+  - {fileID: 21300000, guid: 3b9c4f3111afd744f83f444c7e9fb840, type: 3}
   - {fileID: 21300000, guid: 5d66ee615a67fc845aa50c2b97bfe0f9, type: 3}
+  - {fileID: 21300000, guid: ec833c91bf3c3134eb6d2d897e6bdd05, type: 3}
   - {fileID: 21300000, guid: a9d1d5a1cca4acb439c1341bbe7807bc, type: 3}
   - {fileID: 21300000, guid: 3e31bdc1532195345b11f37e9c54fe99, type: 3}
   - {fileID: 21300000, guid: 329709c46fd028c42a2776ca15304b25, type: 3}
@@ -80,7 +84,9 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b96e95df9a9a1764a800d1336306a18d, type: 3}
   m_PackedSpriteNamesToIndex:
   - MainMenuBackground
+  - ScrollHandle
   - Checkmark
+  - ScrollBar
   - MainMenuHeartButtonSeparator
   - OptionsButton
   - GameSavesBackground

@@ -119,7 +119,7 @@ public abstract class AbstractMainMenu : MonoBehaviour
 				while (t < 1)
 				{
 					yield return new WaitForFixedUpdate();
-					t += Time.fixedDeltaTime * 3;
+					t += Time.fixedDeltaTime * 6;
 					var realT = heartMovementCurve.Evaluate(t);
 					uiHeart.Reposition(new HeartSettings(
 						Vector2.Lerp(startSettings.position, currentSettings.position, realT),
@@ -127,8 +127,6 @@ public abstract class AbstractMainMenu : MonoBehaviour
 						Mathf.Lerp(startSettings.scale, currentSettings.scale, realT)
 					));
 				}
-
-				yield return new WaitForSeconds(0.25f);
 			}
 			else
 			{

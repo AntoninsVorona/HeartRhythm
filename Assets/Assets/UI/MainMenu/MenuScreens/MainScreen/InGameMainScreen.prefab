@@ -23,8 +23,8 @@ MonoBehaviour:
     position: {x: 0, y: 160}
     rotation: 0
     scale: 1
-  openDuration: 1.1
-  closeDuration: 0.7
+  openDuration: 0.7
+  closeDuration: 0.42
   separatorGameObject: {fileID: 7402635902619788568}
   loadButton: {fileID: 7848379483236689712}
   saveButton: {fileID: 7848379482768926409}
