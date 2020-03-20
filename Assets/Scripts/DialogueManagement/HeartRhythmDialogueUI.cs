@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using PixelCrushers.DialogueSystem;
 using PixelCrushers.DialogueSystem.UnityGUI;
@@ -39,6 +40,7 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 	private Actor playerActor;
 	private AbstractTypewriterEffect playerTypeWriter;
 	private AbstractTypewriterEffect headsetTypeWriter;
+	private List<DialogueFillingButton> currentButtons;
 
 	public override void Awake()
 	{
@@ -76,6 +78,21 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 					{
 						dialogueFillingButton.Click();
 					}
+				}
+			}
+
+			for (var i = 1; i <= currentButtons.Count; i++)
+			{
+				if (Input.GetKeyDown(i.ToString()))
+				{
+					if (lastSelectedDialogueButton)
+					{
+						lastSelectedDialogueButton.Deselect();
+					}
+
+					lastSelectedDialogueButton = currentButtons[i - 1];
+					lastSelectedDialogueButton.Select();
+					break;
 				}
 			}
 		}
@@ -150,11 +167,12 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 		lastSpeakerId = -1;
 		lastSubtitlePanel = null;
 		lastMenuPanel = conversationUIElements.defaultMenuPanel;
-		foreach (var responseButton in lastMenuPanel.instantiatedButtons.Select(b =>
-			b.GetComponent<HeartRhythmResponseButton>()))
+		currentButtons = lastMenuPanel.instantiatedButtons.Select(b =>
+			b.GetComponent<HeartRhythmResponseButton>().fillingButton).ToList();
+		foreach (var responseButton in currentButtons)
 		{
-			responseButton.fillingButton.ResetFill();
-			responseButton.fillingButton.Deselect();
+			responseButton.ResetFill();
+			responseButton.Deselect();
 		}
 
 		responseRect.verticalNormalizedPosition = 1;
@@ -189,6 +207,10 @@ public class HeartRhythmDialogueUI : StandardDialogueUI
 					OnContinue();
 				}
 			}
+		}
+		else if (lastSelectedDialogueButton)
+		{
+			lastSelectedDialogueButton.Click();
 		}
 	}
 

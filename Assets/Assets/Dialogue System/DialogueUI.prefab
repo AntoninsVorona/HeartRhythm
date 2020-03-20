@@ -843,10 +843,10 @@ MonoBehaviour:
   explicitNavigationForTemplateButtons: 0
   loopExplicitNavigation: 0
   autonumber:
-    enabled: 0
+    enabled: 1
     regularNumberHotkeys: 0
     numpadHotkeys: 0
-    format: '{0}. {1}'
+    format: '{0}) {1}'
   onContentChanged:
     m_PersistentCalls:
       m_Calls: []
