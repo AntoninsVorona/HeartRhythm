@@ -16,6 +16,9 @@ public class Options : MenuScreen
 	[SerializeField]
 	private TMP_Dropdown targetFrameRateDropdown;
 
+	[SerializeField]
+	private TextMeshProUGUI version;
+
 	private static readonly List<int> FRAME_RATES = new List<int>
 	{
 		30,
@@ -48,6 +51,7 @@ public class Options : MenuScreen
 	private void Initialize()
 	{
 		initialized = true;
+		version.text = $"Version: {SaveSystem.SAVE_VERSION}";
 		InitFullScreenMode();
 		InitFrameRate();
 		InitResolution();

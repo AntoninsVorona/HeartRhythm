@@ -7,7 +7,7 @@ using static SceneObjects;
 
 public static class SaveSystem
 {
-	private const string SAVE_VERSION = "0.1";
+	public const string SAVE_VERSION = "1.0";
 	private static readonly string GAME_SAVE_FOLDER_PATH = Application.persistentDataPath + "/saves";
 
 	private static readonly GameSettings GAME_SETTINGS = new GameSettings();
@@ -156,7 +156,7 @@ public static class SaveSystem
 					return result;
 				}).ToList();
 				
-				if (VersionSmallerThan("0.1", versionNumbers))
+				if (VersionSmallerThan("1.0", versionNumbers))
 				{
 					width = Screen.currentResolution.width;
 					height = Screen.currentResolution.height;
