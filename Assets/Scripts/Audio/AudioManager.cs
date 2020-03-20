@@ -202,7 +202,7 @@ public class AudioManager : MonoBehaviour
 	private IEnumerator BeatChecker()
 	{
 		const double lowerAccuracy = 0.1;
-		const double upperAccuracy = 0.1;
+		const double upperAccuracy = 0.15;
 		var timeWasValidAFrameAgo = false;
 		var timeInLowerBounds = false;
 		while (true)
