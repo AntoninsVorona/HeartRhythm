@@ -24,8 +24,10 @@ public class DamagingGuardCutScene : CutScene
 		battleRules.damagingGuard.Move(new Vector2Int(10, 2));
 		yield return new WaitForSeconds(0.5f);
 		dialogueFinished = false;
+		GameCamera.Instance.ChangeSpeedModifier(0.2f);
 		GameSessionManager.Instance.StartConversation("InterceptionGuardHeDealtCorruption");
 		yield return new WaitUntil(() => dialogueFinished);
+		GameCamera.Instance.ChangeSpeedModifier(1);
 		GameSessionManager.Instance.CutSceneFinished();
 	}
 }

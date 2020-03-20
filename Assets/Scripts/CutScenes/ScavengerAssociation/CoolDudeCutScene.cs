@@ -10,10 +10,12 @@ public class CoolDudeCutScene : CutScene
 	protected override IEnumerator CutSceneSequence()
 	{
 		yield return new WaitForSeconds(0.5f);
+		GameCamera.Instance.ChangeSpeedModifier(0.2f);
 		GameCamera.Instance.ChangeTargetPosition(cameraPosition);
 		yield return new WaitForSeconds(3);
 		GameCamera.Instance.ChangeTargetPosition(Player.Instance.transform.position);
 		yield return new WaitForSeconds(1);
+		GameCamera.Instance.ChangeSpeedModifier(1);
 		GameSessionManager.Instance.CutSceneFinished();
 	}
 }

@@ -19,6 +19,7 @@ public class GameCamera : MonoBehaviour
 
 	private Coroutine shakeCoroutine;
 	private Vector3 shakeOffset;
+	private float speedModifier;
 
 	private void Awake()
 	{
@@ -33,17 +34,18 @@ public class GameCamera : MonoBehaviour
 		}
 
 		camera = GetComponent<Camera>();
+		speedModifier = 1;
 	}
 
 	private void LateUpdate()
 	{
 		var newPosition = Vector3.Lerp(transform.position, targetPosition,
-			20 * Time.deltaTime);
+			20 * Time.deltaTime * speedModifier);
 		newPosition.z = offset.z;
 		newPosition += shakeOffset;
 		transform.position = newPosition;
 	}
-
+	
 	public void ChangeTargetPosition(Vector3 targetPosition, bool force = false)
 	{
 		if (!staticView)
@@ -54,6 +56,11 @@ public class GameCamera : MonoBehaviour
 				transform.position = this.targetPosition;
 			}
 		}
+	}
+
+	public void ChangeSpeedModifier(float speedModifier)
+	{
+		this.speedModifier = speedModifier;
 	}
 
 	public void Shake(float duration = 0.4f, float posPower = 0.075f)
