@@ -31,6 +31,11 @@ public class SplashArtController : MonoBehaviour
 	[SerializeField]
 	private Image splashArtImage;
 
+	[SerializeField]
+	private CanvasGroup pressAnyKey;
+
+	private Coroutine showPress;
+
 	private void Awake()
 	{
 		if (Instance == null)
@@ -87,7 +92,15 @@ public class SplashArtController : MonoBehaviour
 				yield return null;
 			}
 
+			showPress = StartCoroutine(ShowPress());
 			yield return new WaitUntil(() => Input.anyKeyDown);
+			if (showPress != null)
+			{
+				StopCoroutine(showPress);
+				showPress = null;
+			}
+
+			pressAnyKey.alpha = 0;
 		}
 
 		t = 1;
@@ -113,10 +126,24 @@ public class SplashArtController : MonoBehaviour
 	{
 		globalCanvasGroup.gameObject.SetActive(true);
 	}
-	
+
 	public void Deactivate()
 	{
 		globalCanvasGroup.gameObject.SetActive(false);
+	}
+
+	private IEnumerator ShowPress()
+	{
+		yield return new WaitForSeconds(3);
+		float t = 0;
+		while (t < 1)
+		{
+			t += Time.deltaTime / 2;
+			pressAnyKey.alpha = t;
+			yield return null;
+		}
+
+		showPress = null;
 	}
 
 	public static SplashArtController Instance { get; private set; }
