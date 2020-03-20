@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   interactionDescription: Quit
-  interactionSymbol: {fileID: 0}
+  interactionSymbol: {fileID: 21300000, guid: 0599d33b49f9423409443787692a3f3d, type: 3}
   visibility:
     visibleOnUI: 1
     canBeUsedIfInvisible: 1
